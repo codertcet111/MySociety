@@ -7,3 +7,8 @@
 //
 
 import Foundation
+
+var is_admin: Bool = false
+var u_id: Int = 0
+var userName: String = ""
+
