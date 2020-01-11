@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -18,6 +18,7 @@
 		842CCF9A23C8476E003FF488 /* eventHomePageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842CCF9923C8476E003FF488 /* eventHomePageTableViewCell.swift */; };
 		842CCF9C23C8477D003FF488 /* liveElectionHomePageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842CCF9B23C8477D003FF488 /* liveElectionHomePageTableViewCell.swift */; };
 		842CCF9E23C87D6A003FF488 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842CCF9D23C87D6A003FF488 /* PlayerView.swift */; };
+		84867EA723C9F11100D9B83C /* menuViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84867EA623C9F11100D9B83C /* menuViewCollectionViewCell.swift */; };
 		84F2921523C7372400502408 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F2921423C7372400502408 /* AppDelegate.swift */; };
 		84F2921C23C7372400502408 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F2921A23C7372400502408 /* Main.storyboard */; };
 		84F2921F23C7372400502408 /* MySociety.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84F2921D23C7372400502408 /* MySociety.xcdatamodeld */; };
@@ -42,6 +43,7 @@
 		842CCF9923C8476E003FF488 /* eventHomePageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eventHomePageTableViewCell.swift; sourceTree = "<group>"; };
 		842CCF9B23C8477D003FF488 /* liveElectionHomePageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = liveElectionHomePageTableViewCell.swift; sourceTree = "<group>"; };
 		842CCF9D23C87D6A003FF488 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
+		84867EA623C9F11100D9B83C /* menuViewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuViewCollectionViewCell.swift; sourceTree = "<group>"; };
 		84F2921123C7372400502408 /* MySociety.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MySociety.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F2921423C7372400502408 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84F2921B23C7372400502408 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -80,7 +82,6 @@
 				26E4484AD80C2B227BCF7FD7 /* Pods-MySociety.debug.xcconfig */,
 				67FE426745B0933B74F71AD5 /* Pods-MySociety.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -107,6 +108,15 @@
 				842CCF9D23C87D6A003FF488 /* PlayerView.swift */,
 			);
 			path = "TableView Cells";
+			sourceTree = "<group>";
+		};
+		84867EA523C9F0CE00D9B83C /* Menu Controller */ = {
+			isa = PBXGroup;
+			children = (
+				842CCF8823C83FD7003FF488 /* MenuViewController.swift */,
+				84867EA623C9F11100D9B83C /* menuViewCollectionViewCell.swift */,
+			);
+			path = "Menu Controller";
 			sourceTree = "<group>";
 		};
 		84F2920823C7372400502408 = {
@@ -159,8 +169,8 @@
 		84F2922D23C753DA00502408 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				84867EA523C9F0CE00D9B83C /* Menu Controller */,
 				842CCF8B23C8453A003FF488 /* Home Controllers */,
-				842CCF8823C83FD7003FF488 /* MenuViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -295,6 +305,7 @@
 				84F2923023C7541200502408 /* helper.swift in Sources */,
 				842CCF8923C83FD7003FF488 /* MenuViewController.swift in Sources */,
 				842CCF9E23C87D6A003FF488 /* PlayerView.swift in Sources */,
+				84867EA723C9F11100D9B83C /* menuViewCollectionViewCell.swift in Sources */,
 				84F2921F23C7372400502408 /* MySociety.xcdatamodeld in Sources */,
 				842CCF9C23C8477D003FF488 /* liveElectionHomePageTableViewCell.swift in Sources */,
 				842CCF9823C8475A003FF488 /* pollResultHomePageTableViewCell.swift in Sources */,
