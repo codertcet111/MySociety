@@ -23,6 +23,7 @@
 		8413858823CB89A5005CFA57 /* MemberDirectoryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413858723CB89A5005CFA57 /* MemberDirectoryListViewController.swift */; };
 		8413858A23CB89B9005CFA57 /* ChangeMemberPositionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413858923CB89B9005CFA57 /* ChangeMemberPositionViewController.swift */; };
 		8413858C23CB89D8005CFA57 /* MemberDirectoryListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413858B23CB89D8005CFA57 /* MemberDirectoryListTableViewCell.swift */; };
+		8413858E23CBA422005CFA57 /* EventDetailImageGalleryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413858D23CBA422005CFA57 /* EventDetailImageGalleryCollectionViewCell.swift */; };
 		842CCF8923C83FD7003FF488 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842CCF8823C83FD7003FF488 /* MenuViewController.swift */; };
 		842CCF8E23C846F0003FF488 /* videoHomePageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842CCF8D23C846F0003FF488 /* videoHomePageTableViewCell.swift */; };
 		842CCF9023C8470B003FF488 /* upcomingElectionHomePageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842CCF8F23C8470B003FF488 /* upcomingElectionHomePageTableViewCell.swift */; };
@@ -63,6 +64,7 @@
 		8413858723CB89A5005CFA57 /* MemberDirectoryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberDirectoryListViewController.swift; sourceTree = "<group>"; };
 		8413858923CB89B9005CFA57 /* ChangeMemberPositionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeMemberPositionViewController.swift; sourceTree = "<group>"; };
 		8413858B23CB89D8005CFA57 /* MemberDirectoryListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberDirectoryListTableViewCell.swift; sourceTree = "<group>"; };
+		8413858D23CBA422005CFA57 /* EventDetailImageGalleryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailImageGalleryCollectionViewCell.swift; sourceTree = "<group>"; };
 		842CCF8823C83FD7003FF488 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		842CCF8D23C846F0003FF488 /* videoHomePageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = videoHomePageTableViewCell.swift; sourceTree = "<group>"; };
 		842CCF8F23C8470B003FF488 /* upcomingElectionHomePageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = upcomingElectionHomePageTableViewCell.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				8413857523CB8854005CFA57 /* EventListViewController.swift */,
 				8413857723CB8862005CFA57 /* EventDetailViewController.swift */,
 				8413857923CB886D005CFA57 /* AddEventViewController.swift */,
+				8413858D23CBA422005CFA57 /* EventDetailImageGalleryCollectionViewCell.swift */,
 			);
 			path = "Event List Controller";
 			sourceTree = "<group>";
@@ -427,6 +430,7 @@
 				84F2921523C7372400502408 /* AppDelegate.swift in Sources */,
 				842CCF9023C8470B003FF488 /* upcomingElectionHomePageTableViewCell.swift in Sources */,
 				8413858A23CB89B9005CFA57 /* ChangeMemberPositionViewController.swift in Sources */,
+				8413858E23CBA422005CFA57 /* EventDetailImageGalleryCollectionViewCell.swift in Sources */,
 				8413857C23CB888A005CFA57 /* complaintsListViewController.swift in Sources */,
 				84F2923423C7547000502408 /* HomePageViewController.swift in Sources */,
 				842CCF8E23C846F0003FF488 /* videoHomePageTableViewCell.swift in Sources */,

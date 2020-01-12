@@ -38,6 +38,7 @@ class noticeListViewController: UIViewController, UITableViewDelegate, UITableVi
         cell.noticeCellDateTimeLabel.text = tempNotice[1]
         cell.noticeCellDescriptionLabel.text = tempNotice[2]
         cell.noticeCellBackgoundView.layer.cornerRadius = 10.0
+        cell.selectionStyle = .none
         UIView.animate(withDuration: 1) {
             cell.alpha = 1.0
         }
