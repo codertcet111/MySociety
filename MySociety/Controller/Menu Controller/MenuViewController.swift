@@ -17,10 +17,10 @@ class MenuViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let layout = AnimatedCollectionViewLayout()
-        layout.animator = LinearCardAttributesAnimator()
-        menuCollectionViewOutlet.collectionViewLayout = layout
-        menuCollectionViewOutlet.reloadData()
+//        let layout = AnimatedCollectionViewLayout()
+//        layout.animator = LinearCardAttributesAnimator()
+//        menuCollectionViewOutlet.collectionViewLayout = layout
+//        menuCollectionViewOutlet.reloadData()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -32,8 +32,11 @@ class MenuViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let tempData = adminMenuOptions[indexPath.row]
         cell.cellImageView.image = UIImage(named: "\(tempData[1])")
         cell.cellMenuLabelOutlet.text = tempData[0]
-        cell.cellBackgroundView.layer.cornerRadius = 10.0
+//        cell.cellBackgroundView.layer.cornerRadius = 10.0
         return cell
     }
+//    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+//        return CGSize(width: 263.0, height: 170.0)
+//    }
 
 }
