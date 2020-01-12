@@ -8,6 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		67861BC36EF596250B6D9B8F /* Pods_MySociety.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 616CD4AE33FB49C3F6E2F425 /* Pods_MySociety.framework */; };
+		8413856E23CB87FE005CFA57 /* noticeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413856D23CB87FE005CFA57 /* noticeListViewController.swift */; };
+		8413857023CB880C005CFA57 /* NewNoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413856F23CB880C005CFA57 /* NewNoticeViewController.swift */; };
+		8413857223CB8824005CFA57 /* NoticeListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413857123CB8824005CFA57 /* NoticeListTableViewCell.swift */; };
+		8413857423CB883A005CFA57 /* EventListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413857323CB883A005CFA57 /* EventListTableViewCell.swift */; };
+		8413857623CB8854005CFA57 /* EventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413857523CB8854005CFA57 /* EventListViewController.swift */; };
+		8413857823CB8862005CFA57 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413857723CB8862005CFA57 /* EventDetailViewController.swift */; };
+		8413857A23CB886D005CFA57 /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413857923CB886D005CFA57 /* AddEventViewController.swift */; };
+		8413857C23CB888A005CFA57 /* complaintsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413857B23CB888A005CFA57 /* complaintsListViewController.swift */; };
+		8413857E23CB88A1005CFA57 /* ComplaintDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413857D23CB88A1005CFA57 /* ComplaintDetailViewController.swift */; };
+		8413858023CB88B8005CFA57 /* NewComplaintsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413857F23CB88B8005CFA57 /* NewComplaintsViewController.swift */; };
+		8413858223CB88D4005CFA57 /* complaintsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413858123CB88D4005CFA57 /* complaintsListTableViewCell.swift */; };
+		8413858423CB88F7005CFA57 /* complaintChatListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413858323CB88F7005CFA57 /* complaintChatListTableViewCell.swift */; };
+		8413858823CB89A5005CFA57 /* MemberDirectoryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413858723CB89A5005CFA57 /* MemberDirectoryListViewController.swift */; };
+		8413858A23CB89B9005CFA57 /* ChangeMemberPositionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413858923CB89B9005CFA57 /* ChangeMemberPositionViewController.swift */; };
+		8413858C23CB89D8005CFA57 /* MemberDirectoryListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413858B23CB89D8005CFA57 /* MemberDirectoryListTableViewCell.swift */; };
 		842CCF8923C83FD7003FF488 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842CCF8823C83FD7003FF488 /* MenuViewController.swift */; };
 		842CCF8E23C846F0003FF488 /* videoHomePageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842CCF8D23C846F0003FF488 /* videoHomePageTableViewCell.swift */; };
 		842CCF9023C8470B003FF488 /* upcomingElectionHomePageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842CCF8F23C8470B003FF488 /* upcomingElectionHomePageTableViewCell.swift */; };
@@ -33,6 +48,21 @@
 		26E4484AD80C2B227BCF7FD7 /* Pods-MySociety.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySociety.debug.xcconfig"; path = "Target Support Files/Pods-MySociety/Pods-MySociety.debug.xcconfig"; sourceTree = "<group>"; };
 		616CD4AE33FB49C3F6E2F425 /* Pods_MySociety.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MySociety.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		67FE426745B0933B74F71AD5 /* Pods-MySociety.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySociety.release.xcconfig"; path = "Target Support Files/Pods-MySociety/Pods-MySociety.release.xcconfig"; sourceTree = "<group>"; };
+		8413856D23CB87FE005CFA57 /* noticeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = noticeListViewController.swift; sourceTree = "<group>"; };
+		8413856F23CB880C005CFA57 /* NewNoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoticeViewController.swift; sourceTree = "<group>"; };
+		8413857123CB8824005CFA57 /* NoticeListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeListTableViewCell.swift; sourceTree = "<group>"; };
+		8413857323CB883A005CFA57 /* EventListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListTableViewCell.swift; sourceTree = "<group>"; };
+		8413857523CB8854005CFA57 /* EventListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListViewController.swift; sourceTree = "<group>"; };
+		8413857723CB8862005CFA57 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
+		8413857923CB886D005CFA57 /* AddEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
+		8413857B23CB888A005CFA57 /* complaintsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = complaintsListViewController.swift; sourceTree = "<group>"; };
+		8413857D23CB88A1005CFA57 /* ComplaintDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplaintDetailViewController.swift; sourceTree = "<group>"; };
+		8413857F23CB88B8005CFA57 /* NewComplaintsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewComplaintsViewController.swift; sourceTree = "<group>"; };
+		8413858123CB88D4005CFA57 /* complaintsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = complaintsListTableViewCell.swift; sourceTree = "<group>"; };
+		8413858323CB88F7005CFA57 /* complaintChatListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = complaintChatListTableViewCell.swift; sourceTree = "<group>"; };
+		8413858723CB89A5005CFA57 /* MemberDirectoryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberDirectoryListViewController.swift; sourceTree = "<group>"; };
+		8413858923CB89B9005CFA57 /* ChangeMemberPositionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeMemberPositionViewController.swift; sourceTree = "<group>"; };
+		8413858B23CB89D8005CFA57 /* MemberDirectoryListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberDirectoryListTableViewCell.swift; sourceTree = "<group>"; };
 		842CCF8823C83FD7003FF488 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		842CCF8D23C846F0003FF488 /* videoHomePageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = videoHomePageTableViewCell.swift; sourceTree = "<group>"; };
 		842CCF8F23C8470B003FF488 /* upcomingElectionHomePageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = upcomingElectionHomePageTableViewCell.swift; sourceTree = "<group>"; };
@@ -83,6 +113,70 @@
 				67FE426745B0933B74F71AD5 /* Pods-MySociety.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		8413856623CB861D005CFA57 /* Notice And Announcement Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8413856D23CB87FE005CFA57 /* noticeListViewController.swift */,
+				8413856F23CB880C005CFA57 /* NewNoticeViewController.swift */,
+				8413857123CB8824005CFA57 /* NoticeListTableViewCell.swift */,
+			);
+			path = "Notice And Announcement Controller";
+			sourceTree = "<group>";
+		};
+		8413856723CB8630005CFA57 /* Event List Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8413857323CB883A005CFA57 /* EventListTableViewCell.swift */,
+				8413857523CB8854005CFA57 /* EventListViewController.swift */,
+				8413857723CB8862005CFA57 /* EventDetailViewController.swift */,
+				8413857923CB886D005CFA57 /* AddEventViewController.swift */,
+			);
+			path = "Event List Controller";
+			sourceTree = "<group>";
+		};
+		8413856823CB8645005CFA57 /* Complaints Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8413857B23CB888A005CFA57 /* complaintsListViewController.swift */,
+				8413857D23CB88A1005CFA57 /* ComplaintDetailViewController.swift */,
+				8413857F23CB88B8005CFA57 /* NewComplaintsViewController.swift */,
+				8413858123CB88D4005CFA57 /* complaintsListTableViewCell.swift */,
+				8413858323CB88F7005CFA57 /* complaintChatListTableViewCell.swift */,
+			);
+			path = "Complaints Controller";
+			sourceTree = "<group>";
+		};
+		8413856923CB8666005CFA57 /* Member Directory Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8413858723CB89A5005CFA57 /* MemberDirectoryListViewController.swift */,
+				8413858923CB89B9005CFA57 /* ChangeMemberPositionViewController.swift */,
+				8413858B23CB89D8005CFA57 /* MemberDirectoryListTableViewCell.swift */,
+			);
+			path = "Member Directory Controller";
+			sourceTree = "<group>";
+		};
+		8413856A23CB8691005CFA57 /* Opinion Poll Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Opinion Poll Controller";
+			sourceTree = "<group>";
+		};
+		8413856B23CB86A4005CFA57 /* Election Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Election Controller";
+			sourceTree = "<group>";
+		};
+		8413856C23CB86B4005CFA57 /* Group Chat Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Group Chat Controller";
 			sourceTree = "<group>";
 		};
 		842CCF8B23C8453A003FF488 /* Home Controllers */ = {
@@ -169,6 +263,13 @@
 		84F2922D23C753DA00502408 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				8413856C23CB86B4005CFA57 /* Group Chat Controller */,
+				8413856B23CB86A4005CFA57 /* Election Controller */,
+				8413856A23CB8691005CFA57 /* Opinion Poll Controller */,
+				8413856923CB8666005CFA57 /* Member Directory Controller */,
+				8413856823CB8645005CFA57 /* Complaints Controller */,
+				8413856723CB8630005CFA57 /* Event List Controller */,
+				8413856623CB861D005CFA57 /* Notice And Announcement Controller */,
 				84867EA523C9F0CE00D9B83C /* Menu Controller */,
 				842CCF8B23C8453A003FF488 /* Home Controllers */,
 			);
@@ -301,21 +402,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8413857A23CB886D005CFA57 /* AddEventViewController.swift in Sources */,
+				8413857223CB8824005CFA57 /* NoticeListTableViewCell.swift in Sources */,
+				8413858223CB88D4005CFA57 /* complaintsListTableViewCell.swift in Sources */,
+				8413857623CB8854005CFA57 /* EventListViewController.swift in Sources */,
 				842CCF9A23C8476E003FF488 /* eventHomePageTableViewCell.swift in Sources */,
+				8413858C23CB89D8005CFA57 /* MemberDirectoryListTableViewCell.swift in Sources */,
+				8413858423CB88F7005CFA57 /* complaintChatListTableViewCell.swift in Sources */,
 				84F2923023C7541200502408 /* helper.swift in Sources */,
 				842CCF8923C83FD7003FF488 /* MenuViewController.swift in Sources */,
+				8413857423CB883A005CFA57 /* EventListTableViewCell.swift in Sources */,
+				8413857023CB880C005CFA57 /* NewNoticeViewController.swift in Sources */,
 				842CCF9E23C87D6A003FF488 /* PlayerView.swift in Sources */,
+				8413856E23CB87FE005CFA57 /* noticeListViewController.swift in Sources */,
 				84867EA723C9F11100D9B83C /* menuViewCollectionViewCell.swift in Sources */,
 				84F2921F23C7372400502408 /* MySociety.xcdatamodeld in Sources */,
 				842CCF9C23C8477D003FF488 /* liveElectionHomePageTableViewCell.swift in Sources */,
+				8413858023CB88B8005CFA57 /* NewComplaintsViewController.swift in Sources */,
 				842CCF9823C8475A003FF488 /* pollResultHomePageTableViewCell.swift in Sources */,
+				8413857E23CB88A1005CFA57 /* ComplaintDetailViewController.swift in Sources */,
 				842CCF9623C84748003FF488 /* livePollHomepgeTableViewCell.swift in Sources */,
 				842CCF9423C8472B003FF488 /* electionResultsHomePageTableViewCell.swift in Sources */,
+				8413858823CB89A5005CFA57 /* MemberDirectoryListViewController.swift in Sources */,
 				84F2921523C7372400502408 /* AppDelegate.swift in Sources */,
 				842CCF9023C8470B003FF488 /* upcomingElectionHomePageTableViewCell.swift in Sources */,
+				8413858A23CB89B9005CFA57 /* ChangeMemberPositionViewController.swift in Sources */,
+				8413857C23CB888A005CFA57 /* complaintsListViewController.swift in Sources */,
 				84F2923423C7547000502408 /* HomePageViewController.swift in Sources */,
 				842CCF8E23C846F0003FF488 /* videoHomePageTableViewCell.swift in Sources */,
 				842CCF9223C8471A003FF488 /* noticeHomePageTableViewCell.swift in Sources */,
+				8413857823CB8862005CFA57 /* EventDetailViewController.swift in Sources */,
 				84F2923223C7542C00502408 /* extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

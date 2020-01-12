@@ -43,6 +43,15 @@ class MenuViewController: UIViewController, UICollectionViewDelegate, UICollecti
 //        cell.cellBackgroundView.layer.cornerRadius = 10.0
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch(indexPath.row){
+        case 0:
+            self.performSegue(withIdentifier: "noticeListSegue", sender: self)
+        default:
+            self.performSegue(withIdentifier: "noticeListSegue", sender: self)
+        }
+    }
 //    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
 //        return CGSize(width: 263.0, height: 170.0)
 //    }
