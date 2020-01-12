@@ -14,13 +14,21 @@ class MenuViewController: UIViewController, UICollectionViewDelegate, UICollecti
     var adminMenuOptions: [[String]] = [["Notice & Circular","Notice_Circulate"], ["Event","EventLogo"], ["Complaints", "complaint"], ["Maintenance", "maintenance"], ["Member Directory", "memberDirectory"], ["Opinion Poll", "poll"], ["Election", "ElectionIcon"], ["Group Chat","GroupChat"], ["FeedBack","feedback"], ["Manual Video","video-players"]]
     var userMenuOptions: [[String]] = []
     @IBOutlet weak var menuCollectionViewOutlet: UICollectionView!
+    @IBOutlet weak var collectionTopConstraints: NSLayoutConstraint!
     
+    @IBOutlet weak var collectionHeightConstraints: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
 //        let layout = AnimatedCollectionViewLayout()
 //        layout.animator = LinearCardAttributesAnimator()
 //        menuCollectionViewOutlet.collectionViewLayout = layout
 //        menuCollectionViewOutlet.reloadData()
+        collectionTopConstraints.constant = 200
+        collectionHeightConstraints.constant = 50.0
+        collectionHeightConstraints.constant = 200
+        UIView.animate(withDuration: 1.5, animations: {
+            self.view.layoutIfNeeded()
+        })
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
