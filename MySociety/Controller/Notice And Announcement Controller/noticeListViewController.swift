@@ -20,7 +20,6 @@ class noticeListViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.noticeListTableView.estimatedRowHeight = 316
         self.noticeListTableView.rowHeight = UITableView.automaticDimension
         // Do any additional setup after loading the view.

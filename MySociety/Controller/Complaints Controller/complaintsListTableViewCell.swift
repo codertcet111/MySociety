@@ -9,16 +9,11 @@
 import UIKit
 
 class complaintsListTableViewCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
+    
+    @IBOutlet weak var complaintsCellBackgroundView: UIView!
+    @IBOutlet weak var userNameLAbel: UILabel!
+    @IBOutlet weak var subjectLbel: UILabel!
+    @IBOutlet weak var dateAndTimeLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
+    
 }
