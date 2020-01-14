@@ -24,6 +24,8 @@
 		8413858A23CB89B9005CFA57 /* ChangeMemberPositionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413858923CB89B9005CFA57 /* ChangeMemberPositionViewController.swift */; };
 		8413858C23CB89D8005CFA57 /* MemberDirectoryListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413858B23CB89D8005CFA57 /* MemberDirectoryListTableViewCell.swift */; };
 		8413858E23CBA422005CFA57 /* EventDetailImageGalleryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413858D23CBA422005CFA57 /* EventDetailImageGalleryCollectionViewCell.swift */; };
+		8421442E23CCB57700803589 /* complaintsChatMyChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8421442D23CCB57700803589 /* complaintsChatMyChatTableViewCell.swift */; };
+		8421443023CCB5A300803589 /* complaintsChatOtherChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8421442F23CCB5A300803589 /* complaintsChatOtherChatTableViewCell.swift */; };
 		842CCF8923C83FD7003FF488 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842CCF8823C83FD7003FF488 /* MenuViewController.swift */; };
 		842CCF8E23C846F0003FF488 /* videoHomePageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842CCF8D23C846F0003FF488 /* videoHomePageTableViewCell.swift */; };
 		842CCF9023C8470B003FF488 /* upcomingElectionHomePageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842CCF8F23C8470B003FF488 /* upcomingElectionHomePageTableViewCell.swift */; };
@@ -65,6 +67,8 @@
 		8413858923CB89B9005CFA57 /* ChangeMemberPositionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeMemberPositionViewController.swift; sourceTree = "<group>"; };
 		8413858B23CB89D8005CFA57 /* MemberDirectoryListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberDirectoryListTableViewCell.swift; sourceTree = "<group>"; };
 		8413858D23CBA422005CFA57 /* EventDetailImageGalleryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailImageGalleryCollectionViewCell.swift; sourceTree = "<group>"; };
+		8421442D23CCB57700803589 /* complaintsChatMyChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = complaintsChatMyChatTableViewCell.swift; sourceTree = "<group>"; };
+		8421442F23CCB5A300803589 /* complaintsChatOtherChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = complaintsChatOtherChatTableViewCell.swift; sourceTree = "<group>"; };
 		842CCF8823C83FD7003FF488 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		842CCF8D23C846F0003FF488 /* videoHomePageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = videoHomePageTableViewCell.swift; sourceTree = "<group>"; };
 		842CCF8F23C8470B003FF488 /* upcomingElectionHomePageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = upcomingElectionHomePageTableViewCell.swift; sourceTree = "<group>"; };
@@ -117,6 +121,33 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		8410615323CD885300CCA206 /* Complaints List */ = {
+			isa = PBXGroup;
+			children = (
+				8413857B23CB888A005CFA57 /* complaintsListViewController.swift */,
+				8413858123CB88D4005CFA57 /* complaintsListTableViewCell.swift */,
+			);
+			path = "Complaints List";
+			sourceTree = "<group>";
+		};
+		8410615423CD887100CCA206 /* Complaint Detail */ = {
+			isa = PBXGroup;
+			children = (
+				8413857D23CB88A1005CFA57 /* ComplaintDetailViewController.swift */,
+				8421442D23CCB57700803589 /* complaintsChatMyChatTableViewCell.swift */,
+				8421442F23CCB5A300803589 /* complaintsChatOtherChatTableViewCell.swift */,
+			);
+			path = "Complaint Detail";
+			sourceTree = "<group>";
+		};
+		8410615523CD887C00CCA206 /* New Complaint  */ = {
+			isa = PBXGroup;
+			children = (
+				8413857F23CB88B8005CFA57 /* NewComplaintsViewController.swift */,
+			);
+			path = "New Complaint ";
+			sourceTree = "<group>";
+		};
 		8413856623CB861D005CFA57 /* Notice And Announcement Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,10 +173,9 @@
 		8413856823CB8645005CFA57 /* Complaints Controller */ = {
 			isa = PBXGroup;
 			children = (
-				8413857B23CB888A005CFA57 /* complaintsListViewController.swift */,
-				8413857D23CB88A1005CFA57 /* ComplaintDetailViewController.swift */,
-				8413857F23CB88B8005CFA57 /* NewComplaintsViewController.swift */,
-				8413858123CB88D4005CFA57 /* complaintsListTableViewCell.swift */,
+				8410615523CD887C00CCA206 /* New Complaint  */,
+				8410615423CD887100CCA206 /* Complaint Detail */,
+				8410615323CD885300CCA206 /* Complaints List */,
 				8413858323CB88F7005CFA57 /* complaintChatListTableViewCell.swift */,
 			);
 			path = "Complaints Controller";
@@ -417,6 +447,7 @@
 				8413857423CB883A005CFA57 /* EventListTableViewCell.swift in Sources */,
 				8413857023CB880C005CFA57 /* NewNoticeViewController.swift in Sources */,
 				842CCF9E23C87D6A003FF488 /* PlayerView.swift in Sources */,
+				8421443023CCB5A300803589 /* complaintsChatOtherChatTableViewCell.swift in Sources */,
 				8413856E23CB87FE005CFA57 /* noticeListViewController.swift in Sources */,
 				84867EA723C9F11100D9B83C /* menuViewCollectionViewCell.swift in Sources */,
 				84F2921F23C7372400502408 /* MySociety.xcdatamodeld in Sources */,
@@ -427,6 +458,7 @@
 				842CCF9623C84748003FF488 /* livePollHomepgeTableViewCell.swift in Sources */,
 				842CCF9423C8472B003FF488 /* electionResultsHomePageTableViewCell.swift in Sources */,
 				8413858823CB89A5005CFA57 /* MemberDirectoryListViewController.swift in Sources */,
+				8421442E23CCB57700803589 /* complaintsChatMyChatTableViewCell.swift in Sources */,
 				84F2921523C7372400502408 /* AppDelegate.swift in Sources */,
 				842CCF9023C8470B003FF488 /* upcomingElectionHomePageTableViewCell.swift in Sources */,
 				8413858A23CB89B9005CFA57 /* ChangeMemberPositionViewController.swift in Sources */,

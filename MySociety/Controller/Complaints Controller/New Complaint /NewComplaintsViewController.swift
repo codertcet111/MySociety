@@ -1,5 +1,5 @@
 //
-//  MemberDirectoryListViewController.swift
+//  NewComplaintsViewController.swift
 //  MySociety
 //
 //  Created by Admin on 12/01/20.
@@ -8,13 +8,12 @@
 
 import UIKit
 
-class MemberDirectoryListViewController: UIViewController {
+class NewComplaintsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-    
 
 }
