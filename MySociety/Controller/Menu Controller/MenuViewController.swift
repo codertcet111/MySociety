@@ -52,6 +52,8 @@ class MenuViewController: UIViewController, UICollectionViewDelegate, UICollecti
             self.performSegue(withIdentifier: "eventListMenuSegue", sender: self)
         case 2:
             self.performSegue(withIdentifier: "complaintListFromMenuSegue", sender: self)
+        case 4:
+            self.performSegue(withIdentifier: "MemberDirectoryFromMenuSegue", sender: self)
         default:
             self.performSegue(withIdentifier: "noticeListSegue", sender: self)
         }

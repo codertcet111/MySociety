@@ -12,6 +12,12 @@ class complaintsListViewController: UIViewController, UITableViewDelegate, UITab
 
     var tempComplaintsListArray:[[String]] = [["Nahu Patil", "Subject is available", "20-12-2020", "Open"], ["Shreyansh Tipod", "Their must be a gym", "20-12-2020", "Closed"], ["Nahu Patil", "Subject is available", "20-12-2020", "Open"], ["Nahu Patil", "Subject is available", "20-12-2020", "Open"]]
     @IBOutlet weak var complaintsListTableView: UITableView!
+    @IBOutlet weak var complaintListNewComplaintBtn: UIButton!
+    
+    @IBAction func complaintListNewComplaintAction(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "newComplaintSegue", sender: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.complaintsListTableView.estimatedRowHeight = 164

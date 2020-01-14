@@ -10,15 +10,21 @@ import UIKit
 
 class MemberDirectoryListTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
+    @IBOutlet weak var memberDIrectoryCellPositionLabel: UILabel!
+    
+    @IBOutlet weak var memberDirectoryCellPositionHeightConstraints: NSLayoutConstraint!
+    
+    @IBOutlet weak var memebrDirectoryMobileNumberlabel: UILabel!
+    @IBOutlet weak var memberDirectoryuserNameLabel: UILabel!
+    @IBOutlet weak var memberDirectoryUserEmailIDLabel: UILabel!
+    
+    @IBOutlet weak var memberDirectoryPhoneBtn: UIButton!
+    
+    @IBOutlet weak var memberDiretoryEMailBtn: UIButton!
+    
+    @IBOutlet weak var memberDirectoryWhatsappBtn: UIButton!
+    
+    @IBOutlet weak var memberDirectoryBackgroundView: UIView!
+    
+    
 }

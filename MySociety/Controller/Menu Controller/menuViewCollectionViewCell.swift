@@ -12,6 +12,4 @@ class menuViewCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var cellBackgroundView: UIView!
     @IBOutlet weak var cellMenuLabelOutlet: UILabel!
     @IBOutlet weak var cellImageView: UIImageView!
-    
-    
 }
