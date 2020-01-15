@@ -13,6 +13,13 @@ class ELectionListViewController: UIViewController, UITableViewDelegate, UITable
 
     @IBOutlet weak var electionListTableView: UITableView!
     var insideTableViewTagCount = 0
+    
+    @IBOutlet weak var addElectionBtn: UIButton!
+    
+    @IBAction func addElectionBtnAction(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "newElectionFromListSegue", sender: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.electionListTableView.estimatedRowHeight = 325
