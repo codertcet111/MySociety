@@ -54,6 +54,10 @@ class MenuViewController: UIViewController, UICollectionViewDelegate, UICollecti
             self.performSegue(withIdentifier: "complaintListFromMenuSegue", sender: self)
         case 4:
             self.performSegue(withIdentifier: "MemberDirectoryFromMenuSegue", sender: self)
+        case 5:
+            self.performSegue(withIdentifier: "OpenOpinionPollListViewSegue", sender: self)
+        case 6:
+            self.performSegue(withIdentifier: "electionListFromMenuSegue", sender: self)
         default:
             self.performSegue(withIdentifier: "noticeListSegue", sender: self)
         }
