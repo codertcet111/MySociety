@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		67861BC36EF596250B6D9B8F /* Pods_MySociety.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 616CD4AE33FB49C3F6E2F425 /* Pods_MySociety.framework */; };
+		840A264923D03C2E005D1232 /* NotificationInMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840A264823D03C2E005D1232 /* NotificationInMenuTableViewCell.swift */; };
 		8413856E23CB87FE005CFA57 /* noticeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413856D23CB87FE005CFA57 /* noticeListViewController.swift */; };
 		8413857023CB880C005CFA57 /* NewNoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413856F23CB880C005CFA57 /* NewNoticeViewController.swift */; };
 		8413857223CB8824005CFA57 /* NoticeListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413857123CB8824005CFA57 /* NoticeListTableViewCell.swift */; };
@@ -71,6 +72,7 @@
 		26E4484AD80C2B227BCF7FD7 /* Pods-MySociety.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySociety.debug.xcconfig"; path = "Target Support Files/Pods-MySociety/Pods-MySociety.debug.xcconfig"; sourceTree = "<group>"; };
 		616CD4AE33FB49C3F6E2F425 /* Pods_MySociety.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MySociety.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		67FE426745B0933B74F71AD5 /* Pods-MySociety.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySociety.release.xcconfig"; path = "Target Support Files/Pods-MySociety/Pods-MySociety.release.xcconfig"; sourceTree = "<group>"; };
+		840A264823D03C2E005D1232 /* NotificationInMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationInMenuTableViewCell.swift; sourceTree = "<group>"; };
 		8413856D23CB87FE005CFA57 /* noticeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = noticeListViewController.swift; sourceTree = "<group>"; };
 		8413856F23CB880C005CFA57 /* NewNoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoticeViewController.swift; sourceTree = "<group>"; };
 		8413857123CB8824005CFA57 /* NoticeListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeListTableViewCell.swift; sourceTree = "<group>"; };
@@ -347,6 +349,7 @@
 			children = (
 				842CCF8823C83FD7003FF488 /* MenuViewController.swift */,
 				84867EA623C9F11100D9B83C /* menuViewCollectionViewCell.swift */,
+				840A264823D03C2E005D1232 /* NotificationInMenuTableViewCell.swift */,
 			);
 			path = "Menu Controller";
 			sourceTree = "<group>";
@@ -576,6 +579,7 @@
 				8451C04823CDEFC300250292 /* createOpinionPollViewController.swift in Sources */,
 				842CCF9823C8475A003FF488 /* pollResultHomePageTableViewCell.swift in Sources */,
 				8413857E23CB88A1005CFA57 /* ComplaintDetailViewController.swift in Sources */,
+				840A264923D03C2E005D1232 /* NotificationInMenuTableViewCell.swift in Sources */,
 				842CCF9623C84748003FF488 /* livePollHomepgeTableViewCell.swift in Sources */,
 				842CCF9423C8472B003FF488 /* electionResultsHomePageTableViewCell.swift in Sources */,
 				841C427E23CF2E8400993483 /* FeedbackViewController.swift in Sources */,

@@ -9,12 +9,20 @@
 import UIKit
 import AnimatedCollectionViewLayout
 
-class MenuViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
+class MenuViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource{
 
     var adminMenuOptions: [[String]] = [["Notice & Circular","Notice_Circulate"], ["Event","EventLogo"], ["Complaints", "complaint"], ["Maintenance", "maintenance"], ["Member Directory", "memberDirectory"], ["Opinion Poll", "poll"], ["Election", "ElectionIcon"], ["Group Chat","GroupChat"], ["FeedBack","feedback"], ["Manual Video","video-players"]]
     var userMenuOptions: [[String]] = []
     @IBOutlet weak var menuCollectionViewOutlet: UICollectionView!
     @IBOutlet weak var collectionTopConstraints: NSLayoutConstraint!
+    
+    @IBOutlet weak var notificationMenuTableView: UITableView!
+    
+    @IBOutlet weak var readMoreBtn: UIButton!
+    @IBAction func readMoreAction(_ sender: UIButton) {
+        
+    }
+    
     
     @IBOutlet weak var collectionHeightConstraints: NSLayoutConstraint!
     override func viewDidLoad() {
@@ -23,12 +31,20 @@ class MenuViewController: UIViewController, UICollectionViewDelegate, UICollecti
 //        layout.animator = LinearCardAttributesAnimator()
 //        menuCollectionViewOutlet.collectionViewLayout = layout
 //        menuCollectionViewOutlet.reloadData()
-        collectionTopConstraints.constant = 200
+        collectionTopConstraints.constant = 400
+        collectionTopConstraints.constant = 90
         collectionHeightConstraints.constant = 50.0
         collectionHeightConstraints.constant = 200
+        notificationMenuTableView.alpha = 0
+        notificationMenuTableView.alpha = 1
+        readMoreBtn.layer.cornerRadius = 10
+        readMoreBtn.alpha = 0
+        readMoreBtn.alpha = 1
         UIView.animate(withDuration: 1.5, animations: {
             self.view.layoutIfNeeded()
         })
+        self.notificationMenuTableView.estimatedRowHeight = 59
+        self.notificationMenuTableView.rowHeight = UITableView.automaticDimension
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -73,5 +89,22 @@ class MenuViewController: UIViewController, UICollectionViewDelegate, UICollecti
 //    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
 //        return CGSize(width: 263.0, height: 170.0)
 //    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationInMenuTableViewCell") as! NotificationInMenuTableViewCell
+        cell.alpha = 0
+        
+        cell.notificationMenuBackgroundView.layer.cornerRadius = 10.0
+        cell.selectionStyle = .none
+        UIView.animate(withDuration: 1) {
+            cell.alpha = 1.0
+        }
+        return cell
+    }
+    
 
 }
