@@ -32,7 +32,7 @@ class MenuViewController: UIViewController, UICollectionViewDelegate, UICollecti
 //        menuCollectionViewOutlet.collectionViewLayout = layout
 //        menuCollectionViewOutlet.reloadData()
         collectionTopConstraints.constant = 400
-        collectionTopConstraints.constant = 90
+        collectionTopConstraints.constant = 40
         collectionHeightConstraints.constant = 50.0
         collectionHeightConstraints.constant = 200
         notificationMenuTableView.alpha = 0
