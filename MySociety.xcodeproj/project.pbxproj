@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		67861BC36EF596250B6D9B8F /* Pods_MySociety.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 616CD4AE33FB49C3F6E2F425 /* Pods_MySociety.framework */; };
 		840A264923D03C2E005D1232 /* NotificationInMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840A264823D03C2E005D1232 /* NotificationInMenuTableViewCell.swift */; };
+		8413595323D1769C0033AD1E /* registrationOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413595223D1769C0033AD1E /* registrationOptionsViewController.swift */; };
+		8413595623D17A860033AD1E /* registerSocietyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413595523D17A860033AD1E /* registerSocietyViewController.swift */; };
+		8413595823D189010033AD1E /* logInUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413595723D189010033AD1E /* logInUserViewController.swift */; };
+		8413595A23D18C270033AD1E /* RegisterInExistingSocietyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413595923D18C270033AD1E /* RegisterInExistingSocietyViewController.swift */; };
+		8413595E23D1ABA80033AD1E /* notificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413595D23D1ABA80033AD1E /* notificationViewController.swift */; };
+		8413596023D1AC720033AD1E /* notificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413595F23D1AC720033AD1E /* notificationTableViewCell.swift */; };
 		8413856E23CB87FE005CFA57 /* noticeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413856D23CB87FE005CFA57 /* noticeListViewController.swift */; };
 		8413857023CB880C005CFA57 /* NewNoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413856F23CB880C005CFA57 /* NewNoticeViewController.swift */; };
 		8413857223CB8824005CFA57 /* NoticeListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413857123CB8824005CFA57 /* NoticeListTableViewCell.swift */; };
@@ -73,6 +79,12 @@
 		616CD4AE33FB49C3F6E2F425 /* Pods_MySociety.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MySociety.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		67FE426745B0933B74F71AD5 /* Pods-MySociety.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySociety.release.xcconfig"; path = "Target Support Files/Pods-MySociety/Pods-MySociety.release.xcconfig"; sourceTree = "<group>"; };
 		840A264823D03C2E005D1232 /* NotificationInMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationInMenuTableViewCell.swift; sourceTree = "<group>"; };
+		8413595223D1769C0033AD1E /* registrationOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = registrationOptionsViewController.swift; sourceTree = "<group>"; };
+		8413595523D17A860033AD1E /* registerSocietyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = registerSocietyViewController.swift; sourceTree = "<group>"; };
+		8413595723D189010033AD1E /* logInUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = logInUserViewController.swift; sourceTree = "<group>"; };
+		8413595923D18C270033AD1E /* RegisterInExistingSocietyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInExistingSocietyViewController.swift; sourceTree = "<group>"; };
+		8413595D23D1ABA80033AD1E /* notificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = notificationViewController.swift; sourceTree = "<group>"; };
+		8413595F23D1AC720033AD1E /* notificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = notificationTableViewCell.swift; sourceTree = "<group>"; };
 		8413856D23CB87FE005CFA57 /* noticeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = noticeListViewController.swift; sourceTree = "<group>"; };
 		8413856F23CB880C005CFA57 /* NewNoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoticeViewController.swift; sourceTree = "<group>"; };
 		8413857123CB8824005CFA57 /* NoticeListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeListTableViewCell.swift; sourceTree = "<group>"; };
@@ -188,6 +200,33 @@
 				8413857F23CB88B8005CFA57 /* NewComplaintsViewController.swift */,
 			);
 			path = "New Complaint ";
+			sourceTree = "<group>";
+		};
+		8413595123D1766C0033AD1E /* Registration_login controller */ = {
+			isa = PBXGroup;
+			children = (
+				8413595223D1769C0033AD1E /* registrationOptionsViewController.swift */,
+				8413595723D189010033AD1E /* logInUserViewController.swift */,
+				8413595923D18C270033AD1E /* RegisterInExistingSocietyViewController.swift */,
+			);
+			path = "Registration_login controller";
+			sourceTree = "<group>";
+		};
+		8413595423D17A5C0033AD1E /* Register Society Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8413595523D17A860033AD1E /* registerSocietyViewController.swift */,
+			);
+			path = "Register Society Controller";
+			sourceTree = "<group>";
+		};
+		8413595C23D1AB900033AD1E /* Notification COntroller */ = {
+			isa = PBXGroup;
+			children = (
+				8413595D23D1ABA80033AD1E /* notificationViewController.swift */,
+				8413595F23D1AC720033AD1E /* notificationTableViewCell.swift */,
+			);
+			path = "Notification COntroller";
 			sourceTree = "<group>";
 		};
 		8413856623CB861D005CFA57 /* Notice And Announcement Controller */ = {
@@ -404,6 +443,9 @@
 		84F2922D23C753DA00502408 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				8413595C23D1AB900033AD1E /* Notification COntroller */,
+				8413595423D17A5C0033AD1E /* Register Society Controller */,
+				8413595123D1766C0033AD1E /* Registration_login controller */,
 				841C428423CF3D9A00993483 /* Maintenance Controller */,
 				841C428123CF361D00993483 /* Video Controller */,
 				841C427C23CF2E6100993483 /* Feedback Controller */,
@@ -548,7 +590,9 @@
 			files = (
 				841C428623CF3DF600993483 /* maintenanceListViewController.swift in Sources */,
 				8413857A23CB886D005CFA57 /* AddEventViewController.swift in Sources */,
+				8413595E23D1ABA80033AD1E /* notificationViewController.swift in Sources */,
 				841C426323CEE17800993483 /* ELectionListViewController.swift in Sources */,
+				8413595823D189010033AD1E /* logInUserViewController.swift in Sources */,
 				841C427723CF1A7900993483 /* GroupChatViewController.swift in Sources */,
 				841C427123CEE2BA00993483 /* ElectionLiveInsideTableViewCell.swift in Sources */,
 				8413857223CB8824005CFA57 /* NoticeListTableViewCell.swift in Sources */,
@@ -559,6 +603,7 @@
 				841C428323CF363F00993483 /* postVideoViewController.swift in Sources */,
 				8413858C23CB89D8005CFA57 /* MemberDirectoryListTableViewCell.swift in Sources */,
 				84F2923023C7541200502408 /* helper.swift in Sources */,
+				8413596023D1AC720033AD1E /* notificationTableViewCell.swift in Sources */,
 				841C427523CF144D00993483 /* newElectionTableViewCell.swift in Sources */,
 				841C426E23CEE25300993483 /* ResultElectionListTableViewCell.swift in Sources */,
 				842CCF8923C83FD7003FF488 /* MenuViewController.swift in Sources */,
@@ -570,6 +615,7 @@
 				8451C04F23CDF03800250292 /* opinionPollLiveVotedTableViewCell.swift in Sources */,
 				8451C05123CDF05100250292 /* opinionPollResultTableViewCell.swift in Sources */,
 				842CCF9E23C87D6A003FF488 /* PlayerView.swift in Sources */,
+				8413595623D17A860033AD1E /* registerSocietyViewController.swift in Sources */,
 				8421443023CCB5A300803589 /* complaintsChatOtherChatTableViewCell.swift in Sources */,
 				8413856E23CB87FE005CFA57 /* noticeListViewController.swift in Sources */,
 				84867EA723C9F11100D9B83C /* menuViewCollectionViewCell.swift in Sources */,
@@ -578,6 +624,7 @@
 				8413858023CB88B8005CFA57 /* NewComplaintsViewController.swift in Sources */,
 				8451C04823CDEFC300250292 /* createOpinionPollViewController.swift in Sources */,
 				842CCF9823C8475A003FF488 /* pollResultHomePageTableViewCell.swift in Sources */,
+				8413595323D1769C0033AD1E /* registrationOptionsViewController.swift in Sources */,
 				8413857E23CB88A1005CFA57 /* ComplaintDetailViewController.swift in Sources */,
 				840A264923D03C2E005D1232 /* NotificationInMenuTableViewCell.swift in Sources */,
 				842CCF9623C84748003FF488 /* livePollHomepgeTableViewCell.swift in Sources */,
@@ -593,6 +640,7 @@
 				841C426A23CEE1CF00993483 /* liveElectionListTableViewCell.swift in Sources */,
 				8413857C23CB888A005CFA57 /* complaintsListViewController.swift in Sources */,
 				84F2923423C7547000502408 /* HomePageViewController.swift in Sources */,
+				8413595A23D18C270033AD1E /* RegisterInExistingSocietyViewController.swift in Sources */,
 				842CCF8E23C846F0003FF488 /* videoHomePageTableViewCell.swift in Sources */,
 				842CCF9223C8471A003FF488 /* noticeHomePageTableViewCell.swift in Sources */,
 				841C428823CF3E1600993483 /* PayManintenanceMAountViewController.swift in Sources */,

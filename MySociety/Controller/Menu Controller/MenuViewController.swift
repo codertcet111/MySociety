@@ -23,7 +23,6 @@ class MenuViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
     }
     
-    
     @IBOutlet weak var collectionHeightConstraints: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +44,55 @@ class MenuViewController: UIViewController, UICollectionViewDelegate, UICollecti
         })
         self.notificationMenuTableView.estimatedRowHeight = 59
         self.notificationMenuTableView.rowHeight = UITableView.automaticDimension
+        self.setUpNavigationButtons()
+        
+    }
+    
+    func setUpNavigationButtons(){
+        
+        let notificationItemBtn = UIButton(type: .custom)
+        notificationItemBtn.setImage(UIImage(named: "christmas-bell"), for: .normal)
+        notificationItemBtn.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
+        if notificationBadgedCount > 0{
+            notificationItemBtn.addSubview(getBadgedLabelWithValue(count: notificationBadgedCount))
+        }
+        notificationItemBtn.addTarget(self, action: #selector(NotificationNavigationButtonClicked), for: .touchUpInside)
+        let notificationItem = UIBarButtonItem(customView: notificationItemBtn)
+        
+        
+        let logOutItemBtn = UIButton(type: .custom)
+        logOutItemBtn.setImage(UIImage(named: "exit-2"), for: .normal)
+        logOutItemBtn.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
+        logOutItemBtn.addTarget(self, action: #selector(logOutNavigationButtonClicked), for: .touchUpInside)
+        let notificationItem1 = UIBarButtonItem(customView: logOutItemBtn)
+        
+        
+    self.navigationItem.setRightBarButtonItems([notificationItem1, notificationItem], animated: true)
+    }
+    
+    @objc func NotificationNavigationButtonClicked(){
+        notificationBadgedCount = 0
+        //Now, Task 1: Notify to all VC to remove badge, Task 2: Remove badge in this VC also
+        //WARNING: For the timming I have implemented by calling 'setUpNavigationButtons' again, in future just removeSubView only from the clicked bar item
+//        let vc2 = self.storyboard?.instantiateViewController(withIdentifier: "notificationViewController") as? notificationViewController
+//        self.navigationController?.pushViewController(vc2!, animated: true)
+        
+        self.performSegue(withIdentifier: "notificationFromMenuSegue", sender: self)
+    }
+    
+    @objc func logOutNavigationButtonClicked(){
+        //Delete default user data, then redirect to registration Options screen
+//        let vc2 = self.storyboard?.instantiateViewController(withIdentifier: "registrationOptionsViewController") as? registrationOptionsViewController
+//        self.navigationController?.pushViewController(vc2!, animated: true)
+        UserDefaults.standard.set("", forKey: loggedInUserIdDefaultKeyName)
+        UserDefaults.standard.set("", forKey: loggedInUserNameDefaultKeyName)
+        UserDefaults.standard.set("", forKey: loggedInUserIsAdminDefaultKeyName)
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let vc = storyboard.instantiateViewController(withIdentifier: "registrationOptionsViewController") as! registrationOptionsViewController
+       appDelegate.window!.rootViewController = vc
+        self.performSegue(withIdentifier: "loggedOutSegue", sender: self)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
