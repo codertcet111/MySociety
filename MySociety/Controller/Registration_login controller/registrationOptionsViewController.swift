@@ -20,6 +20,7 @@ class registrationOptionsViewController: UIViewController {
     @IBOutlet weak var makeMySocietyBtn: UIButton!
     
     @IBAction func makeMySocietyAction(_ sender: UIButton) {
+        
     }
     
     @IBOutlet weak var becomeMmberBtn: UIButton!
@@ -31,6 +32,7 @@ class registrationOptionsViewController: UIViewController {
     @IBOutlet weak var contactUsBtn: UIButton!
     
     @IBAction func contactUsAction(_ sender: UIButton) {
+        
     }
     
     override func viewDidLoad() {

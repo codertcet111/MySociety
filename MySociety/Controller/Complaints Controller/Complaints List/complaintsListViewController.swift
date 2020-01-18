@@ -10,6 +10,7 @@ import UIKit
 
 class complaintsListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    var complaintsListModel: complaints?
     var tempComplaintsListArray:[[String]] = [["Nahu Patil", "Subject is available", "20-12-2020", "Open"], ["Shreyansh Tipod", "Their must be a gym", "20-12-2020", "Closed"], ["Nahu Patil", "Subject is available", "20-12-2020", "Open"], ["Nahu Patil", "Subject is available", "20-12-2020", "Open"]]
     @IBOutlet weak var complaintsListTableView: UITableView!
     @IBOutlet weak var complaintListNewComplaintBtn: UIButton!
@@ -22,22 +23,67 @@ class complaintsListViewController: UIViewController, UITableViewDelegate, UITab
         super.viewDidLoad()
         self.complaintsListTableView.estimatedRowHeight = 164
         self.complaintsListTableView.rowHeight = UITableView.automaticDimension
+        getComplaintsData()
     }
     
+    func getComplaintsData(){
+        showSpinner(onView: self.view)
+            let headerValues = globalHeaderValue
+            let request = getRequestUrlWithHeader(url: "complaints/\(loggedInUserId)", method: "GET", header: headerValues , bodyParams: nil)
+            let session = URLSession.shared
+            let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+                self.removeSpinner()
+                if (error != nil) {
+                    print(error ?? "")
+                } else {
+                    let httpResponse = response as? HTTPURLResponse
+                    let strData = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+                    print("Body: \(String(describing: strData))")
+                    
+                    if(response != nil && data != nil){
+                        switch  httpResponse?.statusCode {
+                        case 200:
+                            self.complaintsListModel = try? JSONDecoder().decode(complaints.self,from: data!)
+                                DispatchQueue.main.sync {
+                                    self.complaintsListTableView.reloadData()
+                                }
+                        case 401:
+                            self.showAlert("Unauthorized User")
+                        default:
+                            self.showAlert("something Went Wrong Message")
+                        }
+                    }else{
+                        self.showAlert("No data!")
+                    }
+                }
+            })
+            dataTask.resume()
+        }
+        
+        func showAlert(_ message: String) -> (){
+               let alert = UIAlertController(title: message, message: nil , preferredStyle: UIAlertController.Style.alert)
+               alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: { _ in
+                self.getComplaintsData()
+               }))
+               alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in
+               }))
+               self.present(alert, animated: true, completion: nil)
+           }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tempComplaintsListArray.count
+        return self.complaintsListModel?.complaintsData.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if tempComplaintsListArray.indices.contains(indexPath.row) {
-            let tempComplaint = tempComplaintsListArray[indexPath.row]
+        if self.complaintsListModel?.complaintsData.indices.contains(indexPath.row) ?? false{
+            let tempchat = self.complaintsListModel?.complaintsData[indexPath.row]
             let cell = tableView.dequeueReusableCell(withIdentifier: "complaintsListTableViewCell") as! complaintsListTableViewCell
             cell.alpha = 0
             cell.complaintsCellBackgroundView.layer.cornerRadius = 10
-            cell.userNameLAbel.text = tempComplaint[0]
-            cell.subjectLbel.text = tempComplaint[1]
-            cell.dateAndTimeLabel.text = tempComplaint[2]
-            cell.statusLabel.text = tempComplaint[3]
+            cell.userNameLAbel.text = tempchat?.userName ?? ""
+            cell.subjectLbel.text = tempchat?.subject ?? ""
+            cell.dateAndTimeLabel.text = tempchat?.date ?? ""
+            cell.statusLabel.text = tempchat?.status ?? 0 == 0 ? "Open" : "Closed"
             cell.selectionStyle = .none
             UIView.animate(withDuration: 1) {
                 cell.alpha = 1.0

@@ -17,6 +17,9 @@ var notificationBadgedCount: Int = 2
 let loggedInUserIdDefaultKeyName = "loggedInUserId"
 let loggedInUserNameDefaultKeyName = "loggedInUserName"
 let loggedInUserIsAdminDefaultKeyName = "loggedInuserIsAdmin"
+let baseUrl = "https://cortexsolutions.co.in/mysociety/api/"
+var globalHeaderValue = ["x-api-key": "1c552e6f2a95a883209e9b449d6f4973"]
+var loggedInUserId = 2
 
 //MARK: Get badged label
 func getBadgedLabelWithValue(count: Int) -> UILabel{
@@ -32,4 +35,17 @@ func getBadgedLabelWithValue(count: Int) -> UILabel{
     label.backgroundColor = .red
     label.text = "\(count)"
     return label
+}
+
+func getRequestUrlWithHeader(url: String, method: String, header: [String: String], bodyParams: [String: Any]?) -> NSMutableURLRequest{
+    let request = NSMutableURLRequest(url: NSURL(string: baseUrl+url)! as URL,
+                                      cachePolicy: .useProtocolCachePolicy,
+                                      timeoutInterval: 10.0)
+    request.httpMethod = method
+    request.allHTTPHeaderFields = header
+    if bodyParams != nil{
+        let jsonData = try? JSONSerialization.data(withJSONObject: bodyParams ?? ["":""])
+        request.httpBody = jsonData
+    }
+    return request
 }

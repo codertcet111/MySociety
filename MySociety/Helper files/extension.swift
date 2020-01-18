@@ -106,3 +106,109 @@ extension UITabBarController {
     return interactionViews.sorted(by: {$0.frame.minX < $1.frame.minX})
     }
 }
+
+
+extension String
+{
+    func trim() -> String
+    {
+        return self.trimmingCharacters(in: NSCharacterSet.whitespaces)
+    }
+}
+
+extension UIViewController {
+    
+    func showToast(message : String, fontSize: CGFloat) {
+        let toastLabel = UITextView(frame: CGRect(x: self.view.frame.size.width/16, y: self.view.frame.size.height-250, width: self.view.frame.size.width * 7/8, height: 35))
+        toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        toastLabel.textColor = UIColor.white
+        toastLabel.textAlignment = .center;
+        toastLabel.text = "   \(message)   "
+        toastLabel.alpha = 1.0
+        toastLabel.layer.cornerRadius = 10;
+        toastLabel.clipsToBounds  =  true
+        toastLabel.font = UIFont(name: (toastLabel.font?.fontName)!, size: 16)
+        //        toastLabel.layoutEdgeInsets.left = 8
+        //        toastLabel.layoutEdgeInsets.right = 8
+        toastLabel.center.x = self.view.frame.size.width/2
+        self.view.addSubview(toastLabel)
+        UIView.animate(withDuration: 5.0, delay: 0.1, options: .curveEaseOut, animations: {
+            toastLabel.alpha = 0.0
+        }, completion: {(isCompleted) in
+            toastLabel.removeFromSuperview()
+        })
+    }
+}
+
+var vSpinner : UIView?
+
+extension UIViewController {
+    func showSpinner(onView : UIView) {
+        let spinnerView = UIView.init(frame: onView.bounds)
+        spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+        let ai = UIActivityIndicatorView.init(style: .whiteLarge)
+        ai.startAnimating()
+        ai.center = spinnerView.center
+        
+        DispatchQueue.main.async {
+            spinnerView.addSubview(ai)
+            onView.addSubview(spinnerView)
+        }
+        
+        vSpinner = spinnerView
+    }
+    
+    func removeSpinner() {
+        DispatchQueue.main.async {
+            vSpinner?.removeFromSuperview()
+            vSpinner = nil
+        }
+    }
+    
+}
+
+extension UIView{
+    func giveCornerradius(){
+        self.layer.cornerRadius = 5
+        self.layer.masksToBounds = true
+    }
+}
+
+extension UITextField{
+    
+    func giveBackShadow(){
+        self.layer.backgroundColor = UIColor.white.cgColor
+        self.layer.borderColor = UIColor.gray.cgColor
+        self.layer.borderWidth = 0.0
+        self.layer.cornerRadius = 5
+        self.layer.masksToBounds = false
+        self.layer.shadowRadius = 2.0
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOffset = CGSize(1.0, 1.0)
+        self.layer.shadowOpacity = 1.0
+        self.layer.shadowRadius = 1.0
+    }
+    
+}
+extension CGSize{
+    init(_ width:CGFloat,_ height:CGFloat) {
+        self.init(width:width,height:height)
+    }
+}
+
+extension CGRect{
+    init(_ x:CGFloat,_ y:CGFloat,_ width:CGFloat,_ height:CGFloat) {
+        self.init(x:x,y:y,width:width,height:height)
+    }
+    
+}
+
+extension UIView {
+    func roundCornersWithLayerMask(cornerRadii: CGFloat, corners: UIRectCorner) {
+        let path = UIBezierPath(roundedRect: bounds,
+                                byRoundingCorners: corners,
+                                cornerRadii: CGSize(width: cornerRadii, height: cornerRadii))
+        let maskLayer = CAShapeLayer()
+        maskLayer.path = path.cgPath
+        layer.mask = maskLayer
+    } }
