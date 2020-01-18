@@ -34,6 +34,10 @@
 		8413AFDD23D2F9990033F5BB /* complaints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413AFDB23D2F9990033F5BB /* complaints.swift */; };
 		8413AFE023D304290033F5BB /* ChatData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413AFDE23D304290033F5BB /* ChatData.swift */; };
 		8413AFE123D304290033F5BB /* chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413AFDF23D304290033F5BB /* chat.swift */; };
+		8413AFF523D335AC0033F5BB /* notice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413AFF323D335AC0033F5BB /* notice.swift */; };
+		8413AFF623D335AC0033F5BB /* NoticeDatas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413AFF423D335AC0033F5BB /* NoticeDatas.swift */; };
+		8413AFFA23D342EA0033F5BB /* EventDatas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413AFF823D342E90033F5BB /* EventDatas.swift */; };
+		8413AFFB23D342EA0033F5BB /* event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413AFF923D342E90033F5BB /* event.swift */; };
 		841C426323CEE17800993483 /* ELectionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C426223CEE17800993483 /* ELectionListViewController.swift */; };
 		841C426523CEE18800993483 /* newElectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C426423CEE18800993483 /* newElectionViewController.swift */; };
 		841C426A23CEE1CF00993483 /* liveElectionListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C426923CEE1CF00993483 /* liveElectionListTableViewCell.swift */; };
@@ -108,6 +112,10 @@
 		8413AFDB23D2F9990033F5BB /* complaints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = complaints.swift; path = ../../../../../Downloads/complaints/complaints.swift; sourceTree = "<group>"; };
 		8413AFDE23D304290033F5BB /* ChatData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatData.swift; path = ../../../../../Downloads/chat/ChatData.swift; sourceTree = "<group>"; };
 		8413AFDF23D304290033F5BB /* chat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = chat.swift; path = ../../../../../Downloads/chat/chat.swift; sourceTree = "<group>"; };
+		8413AFF323D335AC0033F5BB /* notice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = notice.swift; path = ../../../../../Downloads/notice/notice.swift; sourceTree = "<group>"; };
+		8413AFF423D335AC0033F5BB /* NoticeDatas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoticeDatas.swift; path = ../../../../../Downloads/notice/NoticeDatas.swift; sourceTree = "<group>"; };
+		8413AFF823D342E90033F5BB /* EventDatas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventDatas.swift; path = ../../../../../Downloads/event/EventDatas.swift; sourceTree = "<group>"; };
+		8413AFF923D342E90033F5BB /* event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = event.swift; path = ../../../../../Downloads/event/event.swift; sourceTree = "<group>"; };
 		841C426223CEE17800993483 /* ELectionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ELectionListViewController.swift; sourceTree = "<group>"; };
 		841C426423CEE18800993483 /* newElectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newElectionViewController.swift; sourceTree = "<group>"; };
 		841C426923CEE1CF00993483 /* liveElectionListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = liveElectionListTableViewCell.swift; sourceTree = "<group>"; };
@@ -320,13 +328,31 @@
 			path = "Chat Model";
 			sourceTree = "<group>";
 		};
-		8413AFD923D2F94E0033F5BB /* Complaints Controller */ = {
+		8413AFD923D2F94E0033F5BB /* Complaints Model */ = {
 			isa = PBXGroup;
 			children = (
 				8413AFDB23D2F9990033F5BB /* complaints.swift */,
 				8413AFDA23D2F9990033F5BB /* ComplaintsData.swift */,
 			);
-			path = "Complaints Controller";
+			path = "Complaints Model";
+			sourceTree = "<group>";
+		};
+		8413AFF223D335920033F5BB /* Notice Model */ = {
+			isa = PBXGroup;
+			children = (
+				8413AFF323D335AC0033F5BB /* notice.swift */,
+				8413AFF423D335AC0033F5BB /* NoticeDatas.swift */,
+			);
+			path = "Notice Model";
+			sourceTree = "<group>";
+		};
+		8413AFF723D342BE0033F5BB /* Event Model */ = {
+			isa = PBXGroup;
+			children = (
+				8413AFF923D342E90033F5BB /* event.swift */,
+				8413AFF823D342E90033F5BB /* EventDatas.swift */,
+			);
+			path = "Event Model";
 			sourceTree = "<group>";
 		};
 		841C426623CEE19300993483 /* Election list Cells */ = {
@@ -453,7 +479,9 @@
 		84F2922B23C753CC00502408 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8413AFD923D2F94E0033F5BB /* Complaints Controller */,
+				8413AFF723D342BE0033F5BB /* Event Model */,
+				8413AFF223D335920033F5BB /* Notice Model */,
+				8413AFD923D2F94E0033F5BB /* Complaints Model */,
 				8413AFD623D2F92E0033F5BB /* Chat Model */,
 			);
 			path = Model;
@@ -631,6 +659,7 @@
 				8413857623CB8854005CFA57 /* EventListViewController.swift in Sources */,
 				842CCF9A23C8476E003FF488 /* eventHomePageTableViewCell.swift in Sources */,
 				841C428323CF363F00993483 /* postVideoViewController.swift in Sources */,
+				8413AFF523D335AC0033F5BB /* notice.swift in Sources */,
 				8413858C23CB89D8005CFA57 /* MemberDirectoryListTableViewCell.swift in Sources */,
 				84F2923023C7541200502408 /* helper.swift in Sources */,
 				8413596023D1AC720033AD1E /* notificationTableViewCell.swift in Sources */,
@@ -647,8 +676,10 @@
 				8413AFDD23D2F9990033F5BB /* complaints.swift in Sources */,
 				842CCF9E23C87D6A003FF488 /* PlayerView.swift in Sources */,
 				8413595623D17A860033AD1E /* registerSocietyViewController.swift in Sources */,
+				8413AFF623D335AC0033F5BB /* NoticeDatas.swift in Sources */,
 				8421443023CCB5A300803589 /* complaintsChatOtherChatTableViewCell.swift in Sources */,
 				8413856E23CB87FE005CFA57 /* noticeListViewController.swift in Sources */,
+				8413AFFB23D342EA0033F5BB /* event.swift in Sources */,
 				84867EA723C9F11100D9B83C /* menuViewCollectionViewCell.swift in Sources */,
 				84F2921F23C7372400502408 /* MySociety.xcdatamodeld in Sources */,
 				842CCF9C23C8477D003FF488 /* liveElectionHomePageTableViewCell.swift in Sources */,
@@ -664,6 +695,7 @@
 				841C427E23CF2E8400993483 /* FeedbackViewController.swift in Sources */,
 				8413858823CB89A5005CFA57 /* MemberDirectoryListViewController.swift in Sources */,
 				8421442E23CCB57700803589 /* complaintsChatMyChatTableViewCell.swift in Sources */,
+				8413AFFA23D342EA0033F5BB /* EventDatas.swift in Sources */,
 				84F2921523C7372400502408 /* AppDelegate.swift in Sources */,
 				842CCF9023C8470B003FF488 /* upcomingElectionHomePageTableViewCell.swift in Sources */,
 				841C426523CEE18800993483 /* newElectionViewController.swift in Sources */,

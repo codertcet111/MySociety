@@ -10,6 +10,7 @@ import UIKit
 
 class EventListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    var eventModel: event?
     var eventListArry: [[String]] = [["Anmol's Birthday", "22/09/2020", "We will be having the birthday celebration for Anmol. He will be the morgan boy of the year. Lets celbrate his birthday for this year."], ["Navrathri Festival", "03/09/2020", "We will be having the birthday celebration for Anmol. Lets celbrate his birthday for this year."],["Holi 2019", "04/03/2020", "We will be having the birthday celebration for Anmol. He will be the morgan boy of the year. Lets celbrate his birthday for this year."],["Anmol's Birthday", "22/09/2020", "He will be the morgan boy of the year. Lets celbrate his birthday for this year."],]
     @IBOutlet weak var eventListTableView: UITableView!
     
