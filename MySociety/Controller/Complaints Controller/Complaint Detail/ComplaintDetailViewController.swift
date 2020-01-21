@@ -38,6 +38,24 @@ class ComplaintDetailViewController: UIViewController, UITableViewDelegate, UITa
     
     
     @IBOutlet weak var complaintChatTableView: UITableView!
+    @IBAction func adminCOmmentUploadImageAction(_ sender: UIButton) {
+        
+    }
+    @IBAction func adminCommentSaveBtnAction(_ sender: UIButton) {
+        
+    }
+    
+    @IBAction func furtherAddCommentUploadImageBtnAction(_ sender: UIButton) {
+        
+    }
+    
+    @IBAction func furtherAddCommentSaveBtnAction(_ sender: UIButton) {
+        
+    }
+    
+    
+    
+    
     
     
     override func viewDidLoad() {
@@ -60,6 +78,8 @@ class ComplaintDetailViewController: UIViewController, UITableViewDelegate, UITa
         addCommentView.layer.cornerRadius = 10
         adminReactionUploadImageBtn.layer.cornerRadius = 10
         adminReactionSaveAdminReactionBtn.layer.cornerRadius = 10
+        addCommentUploadImageBtn.layer.cornerRadius = 10
+        addCommentSaveBtn.layer.cornerRadius = 10
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -38,11 +38,23 @@ class registerSocietyViewController: UIViewController {
     }
     
     @IBAction func flatAreaTectField(_ sender: Any) {
+        
     }
     
     @IBAction func pricePrSqFttextFiuedl(_ sender: Any) {
+        
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        selectYourRoleBtn.layer.cornerRadius = 10
+        registerButtn.layer.cornerRadius = 10
+        self.societyNameTitleTopConstraints.constant = 400
+        self.societyNameTitleTopConstraints.constant = 40
+        UIView.animate(withDuration: 1.5, animations: {
+            self.view.layoutIfNeeded()
+        })
+    }
     
     
 }

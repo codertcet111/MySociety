@@ -39,10 +39,23 @@ class RegisterInExistingSocietyViewController: UIViewController {
         
     }
     
+    @IBOutlet weak var registerInExistingSocietyTopConstraints: NSLayoutConstraint!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        selectSocietyBtn.layer.cornerRadius = 10
+        selectSocietyBtnAction.layer.cornerRadius = 10
+        selectYourMemberBtn.layer.cornerRadius = 10
+        registerBtn.layer.cornerRadius = 10
+        
         // Do any additional setup after loading the view.
+        self.registerInExistingSocietyTopConstraints.constant = 400
+        self.registerInExistingSocietyTopConstraints.constant = 40
+        UIView.animate(withDuration: 1.5, animations: {
+            self.view.layoutIfNeeded()
+        })
     }
 
 }

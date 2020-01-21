@@ -9,7 +9,6 @@
 import UIKit
 
 class ELectionListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
 
     @IBOutlet weak var electionListTableView: UITableView!
     var insideTableViewTagCount = 0
@@ -41,6 +40,7 @@ class ELectionListViewController: UIViewController, UITableViewDelegate, UITable
             switch(indexPath.row){
             case 0, 1:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "liveElectionListTableViewCell") as! liveElectionListTableViewCell
+                //NOTE: Cell's vote Btn show and enable if not voted at, else show till vote count for each options
                 cell.alpha = 0
                 cell.liveElectionListBackgroundView.layer.cornerRadius = 10
                 cell.electionInsideTableView.tag = insideTableViewTagCount

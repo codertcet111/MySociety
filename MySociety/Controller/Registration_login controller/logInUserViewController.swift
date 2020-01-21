@@ -22,8 +22,13 @@ class logInUserViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        LogInBtn.layer.cornerRadius = 10
         // Do any additional setup after loading the view.
+        self.mySocietyImageTopConstraints.constant = 400
+        self.mySocietyImageTopConstraints.constant = 40
+        UIView.animate(withDuration: 1.5, animations: {
+            self.view.layoutIfNeeded()
+        })
     }
 
 }

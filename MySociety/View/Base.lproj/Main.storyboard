@@ -101,8 +101,15 @@
                         <outlet property="becomeMmberBtn" destination="013-39-BFB" id="qgE-Ks-eKk"/>
                         <outlet property="contactUsBtn" destination="7dF-Pd-phw" id="IeJ-ma-XCQ"/>
                         <outlet property="lgoINButton" destination="vh8-Wa-gAL" id="wHa-TQ-ErR"/>
+                        <outlet property="logInBtnWidthConstraits" destination="RxY-K2-hwc" id="MIA-9N-e1z"/>
                         <outlet property="makeMySocietyBtn" destination="UQM-pA-h4b" id="Tab-Fb-WON"/>
                         <outlet property="mySocietyImageView" destination="JF3-J0-hDR" id="Sey-V9-xlh"/>
+                        <outlet property="mySocietyImageViewTopConstraints" destination="uIS-qt-4r6" id="cad-KE-W73"/>
+                        <outlet property="registerSocietyWidthConstraints" destination="qwb-XJ-O7h" id="Brt-cY-E3h"/>
+                        <outlet property="signUpMemberBtnWidthConstraints" destination="2h5-SV-ift" id="FjM-4O-wSR"/>
+                        <segue destination="8ak-WC-hUf" kind="show" identifier="registerSocietySegue" id="P3g-GM-KFb"/>
+                        <segue destination="fSq-BI-I2O" kind="show" identifier="logINUserSegue" id="6yh-XX-1Ug"/>
+                        <segue destination="utQ-7Q-tzt" kind="show" identifier="registerUserSegue" id="e51-fG-51j"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lAv-6m-tUN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -114,11 +121,11 @@
             <objects>
                 <viewController storyboardIdentifier="registerSocietyViewController" id="8ak-WC-hUf" customClass="registerSocietyViewController" customModule="MySociety" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A7L-lu-qhe">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="1500"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1446"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JkA-Um-H1w">
-                                <rect key="frame" x="0.0" y="88" width="414" height="1378"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="1412"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qRr-rP-W36">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1500"/>
@@ -444,11 +451,11 @@
             <objects>
                 <viewController storyboardIdentifier="logInUserViewController" id="fSq-BI-I2O" customClass="logInUserViewController" customModule="MySociety" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="y4S-AZ-yxR">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="946"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jdv-VH-yRf">
-                                <rect key="frame" x="0.0" y="88" width="414" height="878"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="912"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hWr-8v-edf">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
@@ -554,11 +561,11 @@
             <objects>
                 <viewController storyboardIdentifier="RegisterInExistingSocietyViewController" id="utQ-7Q-tzt" customClass="RegisterInExistingSocietyViewController" customModule="MySociety" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dSt-Ib-wcT">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="1200"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1146"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VGp-Bv-ZEU">
-                                <rect key="frame" x="0.0" y="88" width="414" height="1078"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="1112"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ETK-dD-648">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1200"/>
@@ -810,6 +817,7 @@
                         <outlet property="passwordTextField" destination="wtx-fm-Y1W" id="7KI-mk-SYr"/>
                         <outlet property="priceSqFtTextField" destination="AHq-Kr-Fjx" id="Uvr-Ac-zWX"/>
                         <outlet property="registerBtn" destination="wAm-Q5-TcH" id="Pm4-yZ-k0L"/>
+                        <outlet property="registerInExistingSocietyTopConstraints" destination="qc7-6k-9b8" id="t24-jB-FgM"/>
                         <outlet property="selectSocietyBtn" destination="CzA-w1-Pn5" id="MDp-Lh-NFG"/>
                         <outlet property="selectSocietyBtnAction" destination="CzA-w1-Pn5" id="nIh-yb-T2A"/>
                         <outlet property="selectSocietyTitleLabel" destination="n8P-OR-CWJ" id="b3l-Bk-Fhf"/>
@@ -1547,6 +1555,9 @@
                                                         <state key="normal" title="Upload Image">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="adminCOmmentUploadImageAction:" destination="OIs-81-2av" eventType="touchUpInside" id="K3m-6d-hcp"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U7W-Dm-Pcq">
                                                         <rect key="frame" x="110" y="92" width="70" height="30"/>
@@ -1559,6 +1570,9 @@
                                                         <state key="normal" title="Save">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="adminCommentSaveBtnAction:" destination="OIs-81-2av" eventType="touchUpInside" id="VdW-Ii-6Lh"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.98193607230000002" green="0.98193607230000002" blue="0.98193607230000002" alpha="0.97999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1627,6 +1641,9 @@
                                                         <state key="normal" title="Upload Image">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="furtherAddCommentUploadImageBtnAction:" destination="OIs-81-2av" eventType="touchUpInside" id="1ka-pN-yaX"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cyy-NZ-7eP">
                                                         <rect key="frame" x="148" y="139" width="70" height="30"/>
@@ -1638,6 +1655,9 @@
                                                         <state key="normal" title="Save">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="furtherAddCommentSaveBtnAction:" destination="OIs-81-2av" eventType="touchUpInside" id="wgS-9Z-q75"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.98193607230000002" green="0.98193607230000002" blue="0.98193607230000002" alpha="0.97999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2908,7 +2928,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z1z-wD-sao">
-                                <rect key="frame" x="266" y="665" width="128" height="128"/>
+                                <rect key="frame" x="330" y="729" width="64" height="64"/>
                                 <state key="normal" image="plus"/>
                                 <connections>
                                     <action selector="addEventAction:" destination="ZYW-eV-3wC" eventType="touchUpInside" id="qnF-dY-WUC"/>
@@ -3275,7 +3295,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u5a-ws-slj">
-                                <rect key="frame" x="266" y="665" width="128" height="128"/>
+                                <rect key="frame" x="330" y="729" width="64" height="64"/>
                                 <state key="normal" image="plus"/>
                                 <connections>
                                     <action selector="addNoticeAction:" destination="wi4-VD-LvS" eventType="touchUpInside" id="27G-LT-BH2"/>
@@ -3866,7 +3886,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zjq-lS-Zv9">
-                                <rect key="frame" x="262" y="661" width="128" height="128"/>
+                                <rect key="frame" x="326" y="725" width="64" height="64"/>
                                 <state key="normal" image="plus"/>
                                 <connections>
                                     <action selector="addElectionBtnAction:" destination="Gwj-k0-2aJ" eventType="touchUpInside" id="dtf-1r-Fye"/>
@@ -3981,7 +4001,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q78-uN-gup">
-                                                                    <rect key="frame" x="328" y="25.5" width="24" height="32"/>
+                                                                    <rect key="frame" x="328" y="30.5" width="24" height="22"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="24" id="ZEc-kS-xr4"/>
                                                                     </constraints>
@@ -5829,7 +5849,10 @@
         <segue reference="C4x-pK-r1E"/>
         <segue reference="ojj-Uo-eiq"/>
         <segue reference="nac-6L-Ws2"/>
-        <segue reference="yXa-8U-aYM"/>
+        <segue reference="0WD-tB-Lcf"/>
+        <segue reference="e51-fG-51j"/>
+        <segue reference="6yh-XX-1Ug"/>
+        <segue reference="P3g-GM-KFb"/>
         <segue reference="MeX-dj-MnM"/>
     </inferredMetricsTieBreakers>
 </document>
