@@ -65,36 +65,31 @@ class newElectionViewController: UIViewController, UITableViewDataSource, UITabl
                     print(error ?? "")
                 } else {
                     let httpResponse = response as? HTTPURLResponse
-                    let strData = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
-                    print("Body: \(String(describing: strData))")
-                    
-                    let json: NSDictionary?
-                    do {
-                        if data != nil{
-                            json = try JSONSerialization.jsonObject(with: Data(data!), options: .allowFragments) as? NSDictionary
-                        }else{
-                            json = nil
-                        }
-                    } catch let dataError {
-                        // Did the JSONObjectWithData constructor return an error? If so, log the error to the console
-                        print("**********")
-                        print(dataError)
-                        let jsonStr = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
-                        print("Error could not parse JSON: '\(String(describing: jsonStr))'")
-                        self.showToast(message : "Some Error has occured, try after!", fontSize: CGFloat(15))
-                        // return or throw?
-                        return
-                    }
+//                    let strData = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+//                    print("Body: \(String(describing: strData))")
+//
+//                    let json: NSDictionary?
+//                    do {
+//                        if data != nil{
+//                            json = try JSONSerialization.jsonObject(with: Data(data!), options: .allowFragments) as? NSDictionary
+//                        }else{
+//                            json = nil
+//                        }
+//                    } catch let dataError {
+//                        // Did the JSONObjectWithData constructor return an error? If so, log the error to the console
+//                        print("**********")
+//                        print(dataError)
+//                        let jsonStr = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+//                        print("Error could not parse JSON: '\(String(describing: jsonStr))'")
+//                        self.showToast(message : "Some Error has occured, try after!", fontSize: CGFloat(15))
+//                        // return or throw?
+//                        return
+//                    }
                     
                     switch(httpResponse?.statusCode ?? 201){
                     case 200, 201:
                         DispatchQueue.main.async {
                             self.showAlert("Election Created Successfully!!")
-                        }
-                    case 404, 202:
-                        DispatchQueue.main.async {
-                            print(json?.value(forKey: "message") as! String)
-                            self.showAlert(json?.value(forKey: "message") as! String)
                         }
                     default:
                         DispatchQueue.main.async {
