@@ -3309,7 +3309,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u5a-ws-slj">
-                                <rect key="frame" x="330" y="729" width="64" height="64"/>
+                                <rect key="frame" x="266" y="665" width="128" height="128"/>
                                 <state key="normal" image="plus"/>
                                 <connections>
                                     <action selector="addNoticeAction:" destination="wi4-VD-LvS" eventType="touchUpInside" id="27G-LT-BH2"/>
@@ -3389,6 +3389,9 @@
                                                 <state key="normal" title="Select Image">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="0.97999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="selectImageAction:" destination="3cj-65-JIe" eventType="touchUpInside" id="go4-WF-YWV"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vgm-NJ-epv">
                                                 <rect key="frame" x="122" y="460" width="170" height="34"/>
@@ -3400,6 +3403,9 @@
                                                 <state key="normal" title="Save">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="0.97999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="saveNoticeAction:" destination="3cj-65-JIe" eventType="touchUpInside" id="AEC-8F-1W1"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -3900,7 +3906,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zjq-lS-Zv9">
-                                <rect key="frame" x="326" y="725" width="64" height="64"/>
+                                <rect key="frame" x="262" y="661" width="128" height="128"/>
                                 <state key="normal" image="plus"/>
                                 <connections>
                                     <action selector="addElectionBtnAction:" destination="Gwj-k0-2aJ" eventType="touchUpInside" id="dtf-1r-Fye"/>
