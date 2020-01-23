@@ -21,8 +21,21 @@ class registerSocietyViewController: UIViewController {
     @IBOutlet weak var societyRegistrationNumber: UITextField!
     @IBOutlet weak var selectYourRoleBtn: UIButton!
     
+    var rolesArray = ["Secretary", "Treasurer", "Chairman"]
+    var selectedRole: Int = 0
+    
     @IBAction func selectYourRoleAction(_ sender: UIButton) {
+        let alert = UIAlertController(title: "Select Role", message: nil, preferredStyle: .alert)
         
+        let closure = { (action: UIAlertAction!) -> Void in
+            self.selectYourRoleBtn.setTitle(action.title, for: .normal)
+            self.selectedRole = self.rolesArray.firstIndex(where: {$0 == action.title}) ?? 0
+        }
+        for tempRole in rolesArray {
+            alert.addAction(UIAlertAction(title: tempRole, style: .default, handler: closure))
+        }
+        alert.addAction(UIAlertAction(title: "cancel", style: .cancel, handler: {(_) in }))
+        self.present(alert, animated: false, completion: nil)
     }
     @IBOutlet weak var flatAreaTextField: UITextField!
     @IBOutlet weak var pricePerSqFtTextField: UITextField!
@@ -34,15 +47,62 @@ class registerSocietyViewController: UIViewController {
     @IBOutlet weak var emailIdTextField: UITextField!
     @IBOutlet weak var registerButtn: UIButton!
     @IBAction func registerBtnAction(_ sender: UIButton) {
-        
+        if checkAndValidateFieldBfrRegister(){
+            self.saveRegisterAction()
+        }
     }
     
-    @IBAction func flatAreaTectField(_ sender: Any) {
-        
+    func checkAndValidateFieldBfrRegister() -> Bool{
+        if societyNameTextField.text == ""{
+            showAlert("Please Type Society Name 🙁🙁")
+            return false
+        }else if societyRegistrationNumber.text == ""{
+            showAlert("Please Type Society Registration Number 🙁🙁")
+            return false
+        }else if selectYourRoleBtn.title(for: .normal) == "Role"{
+            showAlert("Please Select Role 🙁🙁")
+            return false
+        }else if addressTextField.text == ""{
+            showAlert("Please Type Society Address 🙁🙁")
+            return false
+        }else if cityTextField.text == ""{
+            showAlert("Please Type City 🙁🙁")
+            return false
+        }else if adminNameTextField.text == ""{
+            showAlert("Please Type Your Name 🙁🙁")
+            return false
+        }else if flatnumberTextField.text == ""{
+            showAlert("Please Type Flat Number 🙁🙁")
+            return false
+        }else if flatAreaTextField.text == ""{
+            showAlert("Please Type FLat Area 🙁🙁")
+            return false
+        }else if pricePerSqFtTextField.text == ""{
+            showAlert("Please Type Price Per sq ft 🙁🙁")
+            return false
+        }else if adminUsernameTextField.text == ""{
+            showAlert("Please Create Username for U 🙁🙁")
+            return false
+        }else if adminPasswordTextField.text == ""{
+            showAlert("Please Create Password for U 🙁🙁")
+            return false
+        }else if adminMobileNumber.text == ""{
+            showAlert("Please Type Mobile Number 🙁🙁")
+            return false
+        }else{
+            return true
+        }
     }
     
-    @IBAction func pricePrSqFttextFiuedl(_ sender: Any) {
-        
+    func saveRegisterAction(){
+        showAlert("Successfully!!")
+    }
+    
+    func showAlert(_ message: String) -> (){
+        let alert = UIAlertController(title: message, message: nil , preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -54,6 +114,7 @@ class registerSocietyViewController: UIViewController {
         UIView.animate(withDuration: 1.5, animations: {
             self.view.layoutIfNeeded()
         })
+        self.selectYourRoleBtn.setTitle("Role", for: .normal)
     }
     
     

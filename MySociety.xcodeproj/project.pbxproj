@@ -49,6 +49,8 @@
 		8413AFF623D335AC0033F5BB /* NoticeDatas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413AFF423D335AC0033F5BB /* NoticeDatas.swift */; };
 		8413AFFA23D342EA0033F5BB /* EventDatas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413AFF823D342E90033F5BB /* EventDatas.swift */; };
 		8413AFFB23D342EA0033F5BB /* event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413AFF923D342E90033F5BB /* event.swift */; };
+		8418EBB523D9CDFC0037AE57 /* MemberDirectoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8418EBB323D9CDFC0037AE57 /* MemberDirectoryData.swift */; };
+		8418EBB623D9CDFC0037AE57 /* memeberUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8418EBB423D9CDFC0037AE57 /* memeberUsers.swift */; };
 		841C426323CEE17800993483 /* ELectionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C426223CEE17800993483 /* ELectionListViewController.swift */; };
 		841C426523CEE18800993483 /* newElectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C426423CEE18800993483 /* newElectionViewController.swift */; };
 		841C426A23CEE1CF00993483 /* liveElectionListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C426923CEE1CF00993483 /* liveElectionListTableViewCell.swift */; };
@@ -138,6 +140,8 @@
 		8413AFF423D335AC0033F5BB /* NoticeDatas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoticeDatas.swift; path = ../../../../../Downloads/notice/NoticeDatas.swift; sourceTree = "<group>"; };
 		8413AFF823D342E90033F5BB /* EventDatas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventDatas.swift; path = ../../../../../Downloads/event/EventDatas.swift; sourceTree = "<group>"; };
 		8413AFF923D342E90033F5BB /* event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = event.swift; path = ../../../../../Downloads/event/event.swift; sourceTree = "<group>"; };
+		8418EBB323D9CDFC0037AE57 /* MemberDirectoryData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MemberDirectoryData.swift; path = ../../../../../Downloads/memeberUsers/MemberDirectoryData.swift; sourceTree = "<group>"; };
+		8418EBB423D9CDFC0037AE57 /* memeberUsers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = memeberUsers.swift; path = ../../../../../Downloads/memeberUsers/memeberUsers.swift; sourceTree = "<group>"; };
 		841C426223CEE17800993483 /* ELectionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ELectionListViewController.swift; sourceTree = "<group>"; };
 		841C426423CEE18800993483 /* newElectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newElectionViewController.swift; sourceTree = "<group>"; };
 		841C426923CEE1CF00993483 /* liveElectionListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = liveElectionListTableViewCell.swift; sourceTree = "<group>"; };
@@ -402,6 +406,15 @@
 			path = "Event Model";
 			sourceTree = "<group>";
 		};
+		8418EBB223D9CDDC0037AE57 /* MemeberDirectory Users */ = {
+			isa = PBXGroup;
+			children = (
+				8418EBB323D9CDFC0037AE57 /* MemberDirectoryData.swift */,
+				8418EBB423D9CDFC0037AE57 /* memeberUsers.swift */,
+			);
+			path = "MemeberDirectory Users";
+			sourceTree = "<group>";
+		};
 		841C426623CEE19300993483 /* Election list Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -533,6 +546,7 @@
 		84F2922B23C753CC00502408 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8418EBB223D9CDDC0037AE57 /* MemeberDirectory Users */,
 				84A64F7D23D88783005D8185 /* ComplainDetail Model */,
 				840F820223D87EED00671370 /* Event Detail Model */,
 				840F81ED23D8569800671370 /* Home Page Model */,
@@ -759,6 +773,7 @@
 				840F81F823D856BD00671370 /* PollResultHome.swift in Sources */,
 				842CCF9623C84748003FF488 /* livePollHomepgeTableViewCell.swift in Sources */,
 				842CCF9423C8472B003FF488 /* electionResultsHomePageTableViewCell.swift in Sources */,
+				8418EBB523D9CDFC0037AE57 /* MemberDirectoryData.swift in Sources */,
 				841C427E23CF2E8400993483 /* FeedbackViewController.swift in Sources */,
 				8413858823CB89A5005CFA57 /* MemberDirectoryListViewController.swift in Sources */,
 				8421442E23CCB57700803589 /* complaintsChatMyChatTableViewCell.swift in Sources */,
@@ -766,6 +781,7 @@
 				84F2921523C7372400502408 /* AppDelegate.swift in Sources */,
 				842CCF9023C8470B003FF488 /* upcomingElectionHomePageTableViewCell.swift in Sources */,
 				841C426523CEE18800993483 /* newElectionViewController.swift in Sources */,
+				8418EBB623D9CDFC0037AE57 /* memeberUsers.swift in Sources */,
 				8413858A23CB89B9005CFA57 /* ChangeMemberPositionViewController.swift in Sources */,
 				8413858E23CBA422005CFA57 /* EventDetailImageGalleryCollectionViewCell.swift in Sources */,
 				841C426A23CEE1CF00993483 /* liveElectionListTableViewCell.swift in Sources */,

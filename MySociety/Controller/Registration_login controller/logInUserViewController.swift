@@ -17,7 +17,24 @@ class logInUserViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var LogInBtn: UIButton!
     @IBAction func logInBtnAction(_ sender: UIButton) {
-        
+        if self.checkAndValidateFields(){
+            self.logINUserRequest()
+        }
+    }
+    
+    func checkAndValidateFields() -> Bool{
+        return true
+    }
+    
+    func logINUserRequest(){
+        self.showAlert("Successfully!!!")
+    }
+    
+    func showAlert(_ message: String) -> (){
+        let alert = UIAlertController(title: message, message: nil , preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {

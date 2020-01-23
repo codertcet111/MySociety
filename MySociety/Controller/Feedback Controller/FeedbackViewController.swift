@@ -17,6 +17,19 @@ class FeedbackViewController: UIViewController, UITableViewDataSource, UITableVi
     
     @IBAction func selectEventBtnAction(_ sender: UIButton) {
         //Fetch and show all events Availabel
+        let alert = UIAlertController(title: "Select Event", message: nil, preferredStyle: .alert)
+        
+        let closure = { (action: UIAlertAction!) -> Void in
+            self.selectEventButton.setTitle(action.title, for: .normal)
+            let indexForEventSelected = self.eventModelData?.eventDatas.firstIndex(where: {($0.title ) == "\(action.title ?? "")"})
+            self.selectedEventName = action.title ?? ""
+            self.slectedEventId = self.eventModelData?.eventDatas[indexForEventSelected ?? 0].eventId
+        }
+        for eventData in self.eventModelData?.eventDatas ?? [] {
+            alert.addAction(UIAlertAction(title: eventData.title, style: .default, handler: closure))
+        }
+        alert.addAction(UIAlertAction(title: "cancel", style: .cancel, handler: {(_) in }))
+        self.present(alert, animated: false, completion: nil)
     }
     
     @IBOutlet weak var commentTypeTextField: UITextField!
@@ -26,6 +39,10 @@ class FeedbackViewController: UIViewController, UITableViewDataSource, UITableVi
         
     }
     
+    var eventModelData: event?
+    var selectedEventName: String?
+    var slectedEventId: Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.feedbackTableView.estimatedRowHeight = 150
@@ -33,7 +50,57 @@ class FeedbackViewController: UIViewController, UITableViewDataSource, UITableVi
         postBtn.layer.cornerRadius = 10
         selectEventButton.layer.cornerRadius = 10
         // Do any additional setup after loading the view.
+        getSetEventData()
     }
+    
+    func getSetEventData(){
+        showSpinner(onView: self.view)
+            let headerValues = globalHeaderValue
+            let request = getRequestUrlWithHeader(url: "event/\(loggedInUserId)", method: "GET", header: headerValues , bodyParams: nil)
+            let session = URLSession.shared
+            let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+                self.removeSpinner()
+                if (error != nil) {
+                    print(error ?? "")
+                } else {
+                    let httpResponse = response as? HTTPURLResponse
+                    let strData = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+                    print("Body: \(String(describing: strData))")
+                    
+                    if(response != nil && data != nil){
+                        switch  httpResponse?.statusCode {
+                        case 200:
+                            self.eventModelData = try? JSONDecoder().decode(event.self,from: data!)
+                                DispatchQueue.main.sync {
+                                    //Got the event data
+                                    self.showAlert("Select the Event and give feedback 😁")
+                                }
+                        case 401:
+                            DispatchQueue.main.sync {
+                                self.showAlert("Unauthorized User")
+                            }
+                        default:
+                            DispatchQueue.main.sync {
+                                self.showAlert("something Went Wrong Message")
+                            }
+                        }
+                    }else{
+                        self.showAlert("No data!")
+                    }
+                }
+            })
+            dataTask.resume()
+        }
+        
+        func showAlert(_ message: String) -> (){
+               let alert = UIAlertController(title: message, message: nil , preferredStyle: UIAlertController.Style.alert)
+               alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: { _ in
+                self.getSetEventData()
+               }))
+               alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in
+               }))
+               self.present(alert, animated: true, completion: nil)
+           }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 6
