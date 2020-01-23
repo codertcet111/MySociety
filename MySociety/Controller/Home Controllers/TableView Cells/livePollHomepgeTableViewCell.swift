@@ -15,5 +15,6 @@ class livePollHomepgeTableViewCell: UITableViewCell {
     @IBOutlet weak var livePolltitleLabel: UILabel!
     @IBOutlet weak var livePollDescriptionLabel: UILabel!
     @IBOutlet weak var goAndVoteLabel: UILabel!
+    @IBOutlet weak var timeStampDateLabel: UILabel!
     
 }

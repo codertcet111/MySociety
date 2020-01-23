@@ -840,7 +840,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NQA-xZ-YZW">
-                                <rect key="frame" x="10" y="98" width="394" height="705"/>
+                                <rect key="frame" x="10" y="98" width="394" height="754"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="notificationTableViewCell" rowHeight="75" id="i7T-Cj-S5q" customClass="notificationTableViewCell" customModule="MySociety" customModuleProvider="target">
@@ -2065,6 +2065,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="timeStampDateLabel" destination="0pW-gK-50k" id="89t-aa-jMm"/>
                                             <outlet property="videoBackgroundView" destination="PzV-CH-xYt" id="mfF-mA-EEM"/>
                                             <outlet property="videoTitleLabel" destination="3WN-UQ-f32" id="HuU-fg-xu0"/>
                                             <outlet property="videoView" destination="nI1-9u-rk9" id="zHL-kO-LeP"/>
@@ -2179,6 +2180,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="timeStampDateLabel" destination="b8E-nF-8xK" id="tDZ-8j-dz8"/>
                                             <outlet property="upcomingElectionBackgroundView" destination="af3-N6-xXf" id="tF6-3Y-fFC"/>
                                             <outlet property="upcomingElectionDescriptionLabel" destination="Zme-jL-nHQ" id="A34-qM-nyB"/>
                                             <outlet property="upcomingElectionEndDateLabel" destination="PSU-rg-Rlq" id="WWf-3u-kIf"/>
@@ -2289,6 +2291,7 @@
                                             <outlet property="noticeDescriptionLabel" destination="zoW-c6-f6k" id="xqs-wK-QwE"/>
                                             <outlet property="noticeTitleLabel" destination="lGG-Bm-ORT" id="I9s-rX-rGa"/>
                                             <outlet property="noticeimageView" destination="dCS-tr-veF" id="bZt-H3-KZJ"/>
+                                            <outlet property="timeStampDateLabel" destination="0qh-Tm-cBI" id="yyM-fY-qlt"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="electionResultsHomePageTableViewCell" rowHeight="176" id="IL7-Wr-bm5" customClass="electionResultsHomePageTableViewCell" customModule="MySociety" customModuleProvider="target">
@@ -2396,6 +2399,7 @@
                                             <outlet property="electionResultDescriptionLabel" destination="dwT-i9-QUU" id="t9Z-eu-RSq"/>
                                             <outlet property="electionResultResultLabel" destination="Y9M-Jd-iHX" id="OuP-gT-gBV"/>
                                             <outlet property="electionResultTitleLabel" destination="e5e-Kp-4tO" id="dMz-ID-006"/>
+                                            <outlet property="timeStampDateLabel" destination="zC5-Oo-9X3" id="lwV-Ve-q4e"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="livePollHomepgeTableViewCell" rowHeight="178" id="Gmy-PG-V7r" customClass="livePollHomepgeTableViewCell" customModule="MySociety" customModuleProvider="target">
@@ -2502,6 +2506,7 @@
                                             <outlet property="livePollBackgroundView" destination="srX-Lc-GG0" id="0lt-kA-yBS"/>
                                             <outlet property="livePollDescriptionLabel" destination="BX0-ss-glD" id="7Fm-tw-wii"/>
                                             <outlet property="livePolltitleLabel" destination="m2H-j8-oTP" id="aTO-ng-bA6"/>
+                                            <outlet property="timeStampDateLabel" destination="MWF-zk-m1g" id="ZbH-pz-CB0"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="pollResultHomePageTableViewCell" rowHeight="173" id="7zj-KF-T7M" customClass="pollResultHomePageTableViewCell" customModule="MySociety" customModuleProvider="target">
@@ -2609,6 +2614,7 @@
                                             <outlet property="pollResultDesriptionLabel" destination="bZ5-jq-NzT" id="eIV-eF-ptD"/>
                                             <outlet property="pollResultResultLabel" destination="VbT-Qz-oLm" id="eUM-3z-QWY"/>
                                             <outlet property="pollResultTitleLabel" destination="cd2-5I-zO4" id="VhV-Qk-Y0J"/>
+                                            <outlet property="timeStampDateLabel" destination="dvc-21-Vih" id="Vh5-7U-ky3"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="eventHomePageTableViewCell" rowHeight="174" id="iye-wo-pz3" customClass="eventHomePageTableViewCell" customModule="MySociety" customModuleProvider="target">
@@ -2716,6 +2722,7 @@
                                             <outlet property="eventHomeDescriptionLabel" destination="LOR-Y1-b1Z" id="2b3-Lf-C7K"/>
                                             <outlet property="eventHomeTitleLabekl" destination="aDA-zq-cpu" id="v7d-qM-rbA"/>
                                             <outlet property="evetnHomeackgroundView" destination="LrG-bm-anV" id="I4e-Ny-EcK"/>
+                                            <outlet property="timeStampDateLabel" destination="YzZ-ox-VHG" id="FuJ-sd-3aD"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="liveElectionHomePageTableViewCell" rowHeight="175" id="el5-bB-Z8C" customClass="liveElectionHomePageTableViewCell" customModule="MySociety" customModuleProvider="target">
@@ -2823,6 +2830,7 @@
                                             <outlet property="liveElectionDescriptionLabel" destination="ZbB-8h-p57" id="dAX-DS-rlz"/>
                                             <outlet property="liveElectionGoAndVoteLabel" destination="KIA-se-aLe" id="eUs-vc-mcc"/>
                                             <outlet property="liveElectionTitleLabel" destination="yjo-Cl-ppv" id="CxT-dq-1LG"/>
+                                            <outlet property="timeStampDateLabel" destination="3z5-cC-XTa" id="FOW-bS-LCH"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

@@ -15,5 +15,6 @@ class pollResultHomePageTableViewCell: UITableViewCell {
     @IBOutlet weak var pollResultDesriptionLabel: UILabel!
     @IBOutlet weak var pollResultResultLabel: UILabel!
     
-
+    @IBOutlet weak var timeStampDateLabel: UILabel!
+    
 }

@@ -17,4 +17,6 @@ class upcomingElectionHomePageTableViewCell: UITableViewCell {
     @IBOutlet weak var upcomingElectionStartDateLAbel: UILabel!
     
     @IBOutlet weak var upcomingElectionEndDateLabel: UILabel!
+    @IBOutlet weak var timeStampDateLabel: UILabel!
+    
 }

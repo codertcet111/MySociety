@@ -15,5 +15,6 @@ class noticeHomePageTableViewCell: UITableViewCell {
     @IBOutlet weak var noticeDescriptionLabel: UILabel!
     @IBOutlet weak var noticeTitleLabel: UILabel!
     @IBOutlet weak var noticeimageView: UIImageView!
+    @IBOutlet weak var timeStampDateLabel: UILabel!
     
 }

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import AlamofireImage
 
 class EventDetailViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
@@ -18,13 +20,64 @@ class EventDetailViewController: UIViewController, UICollectionViewDelegate, UIC
     @IBOutlet weak var eventDetailGalleryCOllectionViewHeightConstraints: NSLayoutConstraint!
     
     @IBOutlet weak var eventDetailLAbelTopConstraints: NSLayoutConstraint!
-    
+    var selectedEventId: Int = 1
+    var eventDetailModel: EventDetail?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.eventDetailDescriptionText.text = "We will be having the birthday celebration for Anmol. He will be the morgan boy of the year. Lets celbrate his birthday for this year. We will be having the birthday celebration for Anmol. He will be the morgan boy of the year. Lets celbrate his birthday for this year."
         self.animateView()
-        
+        getEventDetailData()
     }
+    
+    func getEventDetailData(){
+        showSpinner(onView: self.view)
+        let headerValues = globalHeaderValue
+        let request = getRequestUrlWithHeader(url: "eventdetail/\(selectedEventId)", method: "GET", header: headerValues , bodyParams: nil)
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+            self.removeSpinner()
+            if (error != nil) {
+                print(error ?? "")
+            } else {
+                let httpResponse = response as? HTTPURLResponse
+                let strData = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+                print("Body: \(String(describing: strData))")
+                
+                if(response != nil && data != nil){
+                    switch  httpResponse?.statusCode {
+                    case 200:
+                        self.eventDetailModel = try? JSONDecoder().decode(EventDetail.self,from: data!)
+                            DispatchQueue.main.sync {
+                                self.eventTitleLabel.text = self.eventDetailModel?.title ?? ""
+                                self.eventDetailDescriptionText.text = self.eventDetailModel?.description ?? ""
+                                self.eventDetailPhotoGalleryCollectionView.reloadData()
+                            }
+                    case 401:
+                        DispatchQueue.main.sync {
+                            self.showAlert("Unauthorized User")
+                        }
+                    default:
+                        DispatchQueue.main.sync {
+                            self.showAlert("something Went Wrong Message")
+                        }
+                    }
+                }else{
+                    self.showAlert("No data!")
+                }
+            }
+        })
+        dataTask.resume()
+    }
+    
+    func showAlert(_ message: String) -> (){
+           let alert = UIAlertController(title: message, message: nil , preferredStyle: UIAlertController.Style.alert)
+           alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: { _ in
+            self.getEventDetailData()
+           }))
+           alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in
+           }))
+           self.present(alert, animated: true, completion: nil)
+       }
     
     func animateView(){
         eventTitleLabel.font = eventTitleLabel.font.withSize(50)
@@ -39,11 +92,18 @@ class EventDetailViewController: UIViewController, UICollectionViewDelegate, UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return 10
+        return 1
         }
         
         func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EventDetailImageGalleryCollectionViewCell", for: indexPath) as! EventDetailImageGalleryCollectionViewCell
+            Alamofire.request("\(self.eventDetailModel?.imageUrl ?? "")")
+            .responseImage { response in
+
+                if let image = response.result.value {
+                    cell.eventDetailCollectionViewCellImageView?.image = image
+                }
+            }
     //        cell.cellBackgroundView.layer.cornerRadius = 10.0
             return cell
         }

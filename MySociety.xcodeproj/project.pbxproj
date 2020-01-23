@@ -9,6 +9,17 @@
 /* Begin PBXBuildFile section */
 		67861BC36EF596250B6D9B8F /* Pods_MySociety.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 616CD4AE33FB49C3F6E2F425 /* Pods_MySociety.framework */; };
 		840A264923D03C2E005D1232 /* NotificationInMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840A264823D03C2E005D1232 /* NotificationInMenuTableViewCell.swift */; };
+		840F81F823D856BD00671370 /* PollResultHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F81EE23D856BC00671370 /* PollResultHome.swift */; };
+		840F81F923D856BD00671370 /* UpcomingElectionHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F81EF23D856BC00671370 /* UpcomingElectionHome.swift */; };
+		840F81FA23D856BD00671370 /* VideoHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F81F023D856BC00671370 /* VideoHome.swift */; };
+		840F81FB23D856BD00671370 /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F81F123D856BC00671370 /* Feed.swift */; };
+		840F81FC23D856BD00671370 /* homePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F81F223D856BD00671370 /* homePage.swift */; };
+		840F81FD23D856BD00671370 /* LivePolHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F81F323D856BD00671370 /* LivePolHome.swift */; };
+		840F81FE23D856BD00671370 /* Notice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F81F423D856BD00671370 /* Notice.swift */; };
+		840F81FF23D856BD00671370 /* EventHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F81F523D856BD00671370 /* EventHome.swift */; };
+		840F820023D856BD00671370 /* ElectionResultHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F81F623D856BD00671370 /* ElectionResultHome.swift */; };
+		840F820123D856BD00671370 /* LiveElectionHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F81F723D856BD00671370 /* LiveElectionHome.swift */; };
+		840F820423D87EFE00671370 /* EventDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F820323D87EFD00671370 /* EventDetail.swift */; };
 		8413595323D1769C0033AD1E /* registrationOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413595223D1769C0033AD1E /* registrationOptionsViewController.swift */; };
 		8413595623D17A860033AD1E /* registerSocietyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413595523D17A860033AD1E /* registerSocietyViewController.swift */; };
 		8413595823D189010033AD1E /* logInUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413595723D189010033AD1E /* logInUserViewController.swift */; };
@@ -87,6 +98,17 @@
 		616CD4AE33FB49C3F6E2F425 /* Pods_MySociety.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MySociety.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		67FE426745B0933B74F71AD5 /* Pods-MySociety.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySociety.release.xcconfig"; path = "Target Support Files/Pods-MySociety/Pods-MySociety.release.xcconfig"; sourceTree = "<group>"; };
 		840A264823D03C2E005D1232 /* NotificationInMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationInMenuTableViewCell.swift; sourceTree = "<group>"; };
+		840F81EE23D856BC00671370 /* PollResultHome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PollResultHome.swift; path = ../../../../../Downloads/homePage/PollResultHome.swift; sourceTree = "<group>"; };
+		840F81EF23D856BC00671370 /* UpcomingElectionHome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UpcomingElectionHome.swift; path = ../../../../../Downloads/homePage/UpcomingElectionHome.swift; sourceTree = "<group>"; };
+		840F81F023D856BC00671370 /* VideoHome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideoHome.swift; path = ../../../../../Downloads/homePage/VideoHome.swift; sourceTree = "<group>"; };
+		840F81F123D856BC00671370 /* Feed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Feed.swift; path = ../../../../../Downloads/homePage/Feed.swift; sourceTree = "<group>"; };
+		840F81F223D856BD00671370 /* homePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = homePage.swift; path = ../../../../../Downloads/homePage/homePage.swift; sourceTree = "<group>"; };
+		840F81F323D856BD00671370 /* LivePolHome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LivePolHome.swift; path = ../../../../../Downloads/homePage/LivePolHome.swift; sourceTree = "<group>"; };
+		840F81F423D856BD00671370 /* Notice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Notice.swift; path = ../../../../../Downloads/homePage/Notice.swift; sourceTree = "<group>"; };
+		840F81F523D856BD00671370 /* EventHome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventHome.swift; path = ../../../../../Downloads/homePage/EventHome.swift; sourceTree = "<group>"; };
+		840F81F623D856BD00671370 /* ElectionResultHome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ElectionResultHome.swift; path = ../../../../../Downloads/homePage/ElectionResultHome.swift; sourceTree = "<group>"; };
+		840F81F723D856BD00671370 /* LiveElectionHome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LiveElectionHome.swift; path = ../../../../../Downloads/homePage/LiveElectionHome.swift; sourceTree = "<group>"; };
+		840F820323D87EFD00671370 /* EventDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventDetail.swift; path = ../../../../../Downloads/EventDetail.swift; sourceTree = "<group>"; };
 		8413595223D1769C0033AD1E /* registrationOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = registrationOptionsViewController.swift; sourceTree = "<group>"; };
 		8413595523D17A860033AD1E /* registerSocietyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = registerSocietyViewController.swift; sourceTree = "<group>"; };
 		8413595723D189010033AD1E /* logInUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = logInUserViewController.swift; sourceTree = "<group>"; };
@@ -189,6 +211,31 @@
 				67FE426745B0933B74F71AD5 /* Pods-MySociety.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		840F81ED23D8569800671370 /* Home Page Model */ = {
+			isa = PBXGroup;
+			children = (
+				840F81F623D856BD00671370 /* ElectionResultHome.swift */,
+				840F81F523D856BD00671370 /* EventHome.swift */,
+				840F81F123D856BC00671370 /* Feed.swift */,
+				840F81F223D856BD00671370 /* homePage.swift */,
+				840F81F723D856BD00671370 /* LiveElectionHome.swift */,
+				840F81F323D856BD00671370 /* LivePolHome.swift */,
+				840F81F423D856BD00671370 /* Notice.swift */,
+				840F81EE23D856BC00671370 /* PollResultHome.swift */,
+				840F81EF23D856BC00671370 /* UpcomingElectionHome.swift */,
+				840F81F023D856BC00671370 /* VideoHome.swift */,
+			);
+			path = "Home Page Model";
+			sourceTree = "<group>";
+		};
+		840F820223D87EED00671370 /* Event Detail Model */ = {
+			isa = PBXGroup;
+			children = (
+				840F820323D87EFD00671370 /* EventDetail.swift */,
+			);
+			path = "Event Detail Model";
 			sourceTree = "<group>";
 		};
 		8410615323CD885300CCA206 /* Complaints List */ = {
@@ -445,6 +492,13 @@
 			path = "Menu Controller";
 			sourceTree = "<group>";
 		};
+		84A64F7D23D88783005D8185 /* ComplainDetail Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "ComplainDetail Model";
+			sourceTree = "<group>";
+		};
 		84F2920823C7372400502408 = {
 			isa = PBXGroup;
 			children = (
@@ -479,6 +533,9 @@
 		84F2922B23C753CC00502408 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				84A64F7D23D88783005D8185 /* ComplainDetail Model */,
+				840F820223D87EED00671370 /* Event Detail Model */,
+				840F81ED23D8569800671370 /* Home Page Model */,
 				8413AFF723D342BE0033F5BB /* Event Model */,
 				8413AFF223D335920033F5BB /* Notice Model */,
 				8413AFD923D2F94E0033F5BB /* Complaints Model */,
@@ -651,6 +708,7 @@
 				8413595E23D1ABA80033AD1E /* notificationViewController.swift in Sources */,
 				841C426323CEE17800993483 /* ELectionListViewController.swift in Sources */,
 				8413595823D189010033AD1E /* logInUserViewController.swift in Sources */,
+				840F820123D856BD00671370 /* LiveElectionHome.swift in Sources */,
 				841C427723CF1A7900993483 /* GroupChatViewController.swift in Sources */,
 				841C427123CEE2BA00993483 /* ElectionLiveInsideTableViewCell.swift in Sources */,
 				8413857223CB8824005CFA57 /* NoticeListTableViewCell.swift in Sources */,
@@ -661,22 +719,30 @@
 				841C428323CF363F00993483 /* postVideoViewController.swift in Sources */,
 				8413AFF523D335AC0033F5BB /* notice.swift in Sources */,
 				8413858C23CB89D8005CFA57 /* MemberDirectoryListTableViewCell.swift in Sources */,
+				840F81FE23D856BD00671370 /* Notice.swift in Sources */,
+				840F81F923D856BD00671370 /* UpcomingElectionHome.swift in Sources */,
 				84F2923023C7541200502408 /* helper.swift in Sources */,
 				8413596023D1AC720033AD1E /* notificationTableViewCell.swift in Sources */,
 				841C427523CF144D00993483 /* newElectionTableViewCell.swift in Sources */,
 				841C426E23CEE25300993483 /* ResultElectionListTableViewCell.swift in Sources */,
+				840F81FF23D856BD00671370 /* EventHome.swift in Sources */,
 				842CCF8923C83FD7003FF488 /* MenuViewController.swift in Sources */,
 				8451C04D23CDF02600250292 /* opinionPollLiveVoteItTableViewCell.swift in Sources */,
+				840F81FB23D856BD00671370 /* Feed.swift in Sources */,
 				8413857423CB883A005CFA57 /* EventListTableViewCell.swift in Sources */,
+				840F820023D856BD00671370 /* ElectionResultHome.swift in Sources */,
 				8413857023CB880C005CFA57 /* NewNoticeViewController.swift in Sources */,
 				841C428023CF2E9D00993483 /* feedbackTableViewCell.swift in Sources */,
 				841C427923CF1AD300993483 /* groupChatOthersCHatTableViewCell.swift in Sources */,
+				840F820423D87EFE00671370 /* EventDetail.swift in Sources */,
 				8451C04F23CDF03800250292 /* opinionPollLiveVotedTableViewCell.swift in Sources */,
 				8451C05123CDF05100250292 /* opinionPollResultTableViewCell.swift in Sources */,
 				8413AFDD23D2F9990033F5BB /* complaints.swift in Sources */,
 				842CCF9E23C87D6A003FF488 /* PlayerView.swift in Sources */,
+				840F81FC23D856BD00671370 /* homePage.swift in Sources */,
 				8413595623D17A860033AD1E /* registerSocietyViewController.swift in Sources */,
 				8413AFF623D335AC0033F5BB /* NoticeDatas.swift in Sources */,
+				840F81FA23D856BD00671370 /* VideoHome.swift in Sources */,
 				8421443023CCB5A300803589 /* complaintsChatOtherChatTableViewCell.swift in Sources */,
 				8413856E23CB87FE005CFA57 /* noticeListViewController.swift in Sources */,
 				8413AFFB23D342EA0033F5BB /* event.swift in Sources */,
@@ -690,6 +756,7 @@
 				8413595323D1769C0033AD1E /* registrationOptionsViewController.swift in Sources */,
 				8413857E23CB88A1005CFA57 /* ComplaintDetailViewController.swift in Sources */,
 				840A264923D03C2E005D1232 /* NotificationInMenuTableViewCell.swift in Sources */,
+				840F81F823D856BD00671370 /* PollResultHome.swift in Sources */,
 				842CCF9623C84748003FF488 /* livePollHomepgeTableViewCell.swift in Sources */,
 				842CCF9423C8472B003FF488 /* electionResultsHomePageTableViewCell.swift in Sources */,
 				841C427E23CF2E8400993483 /* FeedbackViewController.swift in Sources */,
@@ -713,6 +780,7 @@
 				841C426C23CEE1E300993483 /* UpcomingElectionTableViewCell.swift in Sources */,
 				84F2923223C7542C00502408 /* extension.swift in Sources */,
 				841C427B23CF1AE200993483 /* GroupCHatMyCHatTableViewCell.swift in Sources */,
+				840F81FD23D856BD00671370 /* LivePolHome.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

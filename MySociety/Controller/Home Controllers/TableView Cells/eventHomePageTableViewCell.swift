@@ -15,5 +15,6 @@ class eventHomePageTableViewCell: UITableViewCell {
     @IBOutlet weak var eventHomeDateTimeLabel: UILabel!
     @IBOutlet weak var eventHomeDescriptionLabel: UILabel!
     
-
+    @IBOutlet weak var timeStampDateLabel: UILabel!
+    
 }

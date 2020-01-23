@@ -16,4 +16,6 @@ class liveElectionHomePageTableViewCell: UITableViewCell {
     @IBOutlet weak var liveElectionDescriptionLabel: UILabel!
     @IBOutlet weak var liveElectionGoAndVoteLabel: UILabel!
     
+    @IBOutlet weak var timeStampDateLabel: UILabel!
+    
 }
