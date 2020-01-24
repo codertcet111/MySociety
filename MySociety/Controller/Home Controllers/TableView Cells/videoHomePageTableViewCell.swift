@@ -10,7 +10,7 @@ import UIKit
 
 class videoHomePageTableViewCell: UITableViewCell {
 
-    
+    var Id: Int = 0
     @IBOutlet weak var videoBackgroundView: UIView!
     @IBOutlet weak var videoTitleLabel: UILabel!
     @IBOutlet weak var videoView: PlayerView!

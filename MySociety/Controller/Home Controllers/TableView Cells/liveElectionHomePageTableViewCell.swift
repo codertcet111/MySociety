@@ -10,6 +10,7 @@ import UIKit
 
 class liveElectionHomePageTableViewCell: UITableViewCell {
 
+    var Id: Int = 0
     @IBOutlet weak var liveElectionBackgroundView: UIView!
     
     @IBOutlet weak var liveElectionTitleLabel: UILabel!

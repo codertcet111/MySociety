@@ -10,6 +10,7 @@ import UIKit
 
 class electionResultsHomePageTableViewCell: UITableViewCell {
 
+    var Id: Int = 0
     @IBOutlet weak var electionResultBackgroundView: UIView!
     
     @IBOutlet weak var electionResultResultLabel: UILabel!

@@ -10,6 +10,7 @@ import UIKit
 
 class RegisterInExistingSocietyViewController: UIViewController {
 
+    let nc = NotificationCenter.default
     @IBOutlet weak var selectSocietyTitleLabel: UILabel!
     @IBOutlet weak var selectSocietyTitleTopConstraints: UIView!
     @IBOutlet weak var selectSocietyBtn: UIButton!
@@ -119,6 +120,11 @@ class RegisterInExistingSocietyViewController: UIViewController {
         })
         self.selectSocietyBtn.setTitle("Select Society", for: .normal)
         self.selectYourMemberBtn.setTitle("Role", for: .normal)
+        nc.addObserver(self, selector: #selector(updateSelectedSocietyLabels), name: Notification.Name.selectSocietyPopOverDismissNC, object: nil)
+    }
+    
+    @objc func updateSelectedSocietyLabels(){
+        self.selectSocietyBtn.setTitle("\(selectSocietySharedFile.shared.societySelectedName)", for: .normal)
     }
 
 }

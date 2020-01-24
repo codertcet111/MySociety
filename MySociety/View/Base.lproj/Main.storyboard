@@ -487,7 +487,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IRx-gm-JRm">
                                                 <rect key="frame" x="24" y="322" width="366" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JUx-37-Uz4">
                                                 <rect key="frame" x="122" y="410" width="170" height="34"/>
@@ -651,6 +651,11 @@
                                                 <state key="normal" title="Select Society">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <segue destination="pOw-bV-sTl" kind="popoverPresentation" popoverAnchorView="CzA-w1-Pn5" id="qwV-pD-zOR">
+                                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                                    </segue>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nr2-9x-Ob0">
                                                 <rect key="frame" x="122" y="148" width="170" height="30"/>
@@ -912,6 +917,107 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fpJ-eu-tjf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5110.144927536232" y="-1577.0089285714284"/>
+        </scene>
+        <!--Select Society Pop Over View Controller-->
+        <scene sceneID="Lep-al-M6K">
+            <objects>
+                <viewController storyboardIdentifier="selectSocietyPopOverViewController" id="pOw-bV-sTl" customClass="selectSocietyPopOverViewController" customModule="MySociety" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yki-Od-6xy">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sut-e7-GST">
+                                <rect key="frame" x="15" y="45" width="384" height="718"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="v7d-NK-2Tf">
+                                        <rect key="frame" x="5" y="24" width="374" height="616"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RegisterUserSelctSocietyTableViewCell" rowHeight="90" id="U5z-z2-YLW" customClass="RegisterUserSelctSocietyTableViewCell" customModule="MySociety" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="374" height="90"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="U5z-z2-YLW" id="luJ-Zl-bqx">
+                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="90"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Society Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cZO-3P-h2A">
+                                                            <rect key="frame" x="28" y="19" width="318" height="18"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Society Registration Number" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H2I-yn-hKP">
+                                                            <rect key="frame" x="28" y="47" width="318" height="16"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="H2I-yn-hKP" firstAttribute="top" secondItem="cZO-3P-h2A" secondAttribute="bottom" constant="10" id="47p-UH-6JJ"/>
+                                                        <constraint firstAttribute="bottomMargin" secondItem="H2I-yn-hKP" secondAttribute="bottom" constant="16" id="GXo-9u-Sna"/>
+                                                        <constraint firstItem="cZO-3P-h2A" firstAttribute="top" secondItem="luJ-Zl-bqx" secondAttribute="topMargin" constant="8" id="J2E-3D-jbG"/>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="H2I-yn-hKP" secondAttribute="trailing" constant="8" id="cVW-7I-4Q7"/>
+                                                        <constraint firstItem="cZO-3P-h2A" firstAttribute="leading" secondItem="luJ-Zl-bqx" secondAttribute="leadingMargin" constant="8" id="nk3-3e-Zmk"/>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="cZO-3P-h2A" secondAttribute="trailing" constant="8" id="pC4-mR-VAK"/>
+                                                        <constraint firstItem="H2I-yn-hKP" firstAttribute="leading" secondItem="luJ-Zl-bqx" secondAttribute="leadingMargin" constant="8" id="tqw-BH-Uw4"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="societyNameLabel" destination="cZO-3P-h2A" id="lAB-xB-0ZI"/>
+                                                    <outlet property="societyRegistrationNumberLabel" destination="H2I-yn-hKP" id="1Mp-3S-6Oo"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="pOw-bV-sTl" id="e7H-Bk-dpW"/>
+                                            <outlet property="delegate" destination="pOw-bV-sTl" id="ZrS-9i-ZvI"/>
+                                        </connections>
+                                    </tableView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Frn-Ky-O6U">
+                                        <rect key="frame" x="132" y="664" width="120" height="30"/>
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="Qzj-4n-pYw"/>
+                                            <constraint firstAttribute="width" constant="120" id="rUu-0l-G0t"/>
+                                        </constraints>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="cancelButtonAction:" destination="pOw-bV-sTl" eventType="touchUpInside" id="7CO-Hn-h4n"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="Frn-Ky-O6U" firstAttribute="top" secondItem="v7d-NK-2Tf" secondAttribute="bottom" constant="24" id="5uP-gF-JR1"/>
+                                    <constraint firstItem="Frn-Ky-O6U" firstAttribute="centerX" secondItem="sut-e7-GST" secondAttribute="centerX" id="C0d-EV-gCW"/>
+                                    <constraint firstItem="v7d-NK-2Tf" firstAttribute="top" secondItem="sut-e7-GST" secondAttribute="top" constant="24" id="FEb-V0-SqG"/>
+                                    <constraint firstItem="v7d-NK-2Tf" firstAttribute="leading" secondItem="sut-e7-GST" secondAttribute="leading" constant="5" id="HyJ-Gi-WfD"/>
+                                    <constraint firstAttribute="trailing" secondItem="v7d-NK-2Tf" secondAttribute="trailing" constant="5" id="a7b-Yx-mh6"/>
+                                    <constraint firstAttribute="bottom" secondItem="Frn-Ky-O6U" secondAttribute="bottom" constant="24" id="ede-mv-gSQ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.95784422589999996" green="0.95784422589999996" blue="0.95784422589999996" alpha="0.97999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="sut-e7-GST" firstAttribute="top" secondItem="Gmo-65-rik" secondAttribute="top" constant="45" id="6Pl-VC-kPA"/>
+                            <constraint firstItem="Gmo-65-rik" firstAttribute="trailing" secondItem="sut-e7-GST" secondAttribute="trailing" constant="15" id="6YV-1B-6ff"/>
+                            <constraint firstItem="sut-e7-GST" firstAttribute="leading" secondItem="Gmo-65-rik" secondAttribute="leading" constant="15" id="ImV-m0-41F"/>
+                            <constraint firstItem="Gmo-65-rik" firstAttribute="bottom" secondItem="sut-e7-GST" secondAttribute="bottom" constant="45" id="knu-wZ-7AQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Gmo-65-rik"/>
+                    </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="Frn-Ky-O6U" id="6ba-f9-q3M"/>
+                        <outlet property="popOverBackgroundView" destination="sut-e7-GST" id="8dh-fT-640"/>
+                        <outlet property="societyListTableView" destination="v7d-NK-2Tf" id="7FD-iH-gay"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9eB-cN-uqk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5886.9565217391309" y="-1567.6339285714284"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -3309,7 +3415,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u5a-ws-slj">
-                                <rect key="frame" x="266" y="665" width="128" height="128"/>
+                                <rect key="frame" x="330" y="729" width="64" height="64"/>
                                 <state key="normal" image="plus"/>
                                 <connections>
                                     <action selector="addNoticeAction:" destination="wi4-VD-LvS" eventType="touchUpInside" id="27G-LT-BH2"/>
@@ -3906,7 +4012,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zjq-lS-Zv9">
-                                <rect key="frame" x="262" y="661" width="128" height="128"/>
+                                <rect key="frame" x="326" y="725" width="64" height="64"/>
                                 <state key="normal" image="plus"/>
                                 <connections>
                                     <action selector="addElectionBtnAction:" destination="Gwj-k0-2aJ" eventType="touchUpInside" id="dtf-1r-Fye"/>

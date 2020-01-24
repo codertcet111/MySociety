@@ -10,6 +10,7 @@ import UIKit
 
 class eventHomePageTableViewCell: UITableViewCell {
 
+    var Id: Int = 0
     @IBOutlet weak var evetnHomeackgroundView: UIView!
     @IBOutlet weak var eventHomeTitleLabekl: UILabel!
     @IBOutlet weak var eventHomeDateTimeLabel: UILabel!

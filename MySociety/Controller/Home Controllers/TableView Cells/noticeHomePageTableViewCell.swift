@@ -10,6 +10,7 @@ import UIKit
 
 class noticeHomePageTableViewCell: UITableViewCell {
 
+    var Id: Int = 0
     @IBOutlet weak var noticeBackgroundView: UIView!
     
     @IBOutlet weak var noticeDescriptionLabel: UILabel!

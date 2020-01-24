@@ -27,7 +27,7 @@ class GroupChatViewController: UIViewController, UITableViewDataSource, UITableV
         self.groupChatTableView.estimatedRowHeight = 164
         self.groupChatTableView.rowHeight = UITableView.automaticDimension
         
-        getChatData()
+        getChatData(true)
     }
     
     
@@ -37,7 +37,7 @@ class GroupChatViewController: UIViewController, UITableViewDataSource, UITableV
             "text": "\(self.typeMessageTextField.text ?? "")",
             "userId": "\(loggedInUserId)"
             ] as [String : Any]
-    let headerValues = ["x-api-key": "1c552e6f2a95a883209e9b449d6f4973", "Content-Type": "application/json"]
+        let headerValues = ["x-api-key": "1c552e6f2a95a883209e9b449d6f4973", "Content-Type": "application/json"]
         let request = getRequestUrlWithHeader(url: "addchat/\(loggedInUserId)", method: "POST", header: headerValues, bodyParams: parameters)
         let session = URLSession.shared
         let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
@@ -52,8 +52,8 @@ class GroupChatViewController: UIViewController, UITableViewDataSource, UITableV
                 switch(httpResponse?.statusCode ?? 201){
                 case 200, 201:
                     DispatchQueue.main.async {
-                        self.showAlertForError("Chat Posted Successfully!!")
-//                        self.getChatData()
+//                        self.showAlertForError("Chat Posted Successfully!!")
+                        self.getChatData(false)
                     }
                 default:
                     DispatchQueue.main.async {
@@ -75,8 +75,10 @@ class GroupChatViewController: UIViewController, UITableViewDataSource, UITableV
         }
     
     
-    func getChatData(){
-        showSpinner(onView: self.view)
+    func getChatData(_ showSpinnerView: Bool){
+        if showSpinnerView{
+            showSpinner(onView: self.view)
+        }
         let headerValues = globalHeaderValue
         let request = getRequestUrlWithHeader(url: "chat/\(loggedInUserId)", method: "GET", header: headerValues , bodyParams: nil)
         let session = URLSession.shared
@@ -95,11 +97,16 @@ class GroupChatViewController: UIViewController, UITableViewDataSource, UITableV
                         self.chatModel = try? JSONDecoder().decode(chat.self,from: data!)
                             DispatchQueue.main.sync {
                                 self.groupChatTableView.reloadData()
+                                self.removeSpinner()
                             }
                     case 401:
-                        self.showAlert("Unauthorized User")
+                        DispatchQueue.main.sync{
+                            self.showAlert("Unauthorized User")
+                        }
                     default:
-                        self.showAlert("something Went Wrong Message")
+                        DispatchQueue.main.sync{
+                            self.showAlert("something Went Wrong Message")
+                        }
                     }
                 }else{
                     self.showAlert("No data!")
@@ -112,7 +119,7 @@ class GroupChatViewController: UIViewController, UITableViewDataSource, UITableV
     func showAlert(_ message: String) -> (){
            let alert = UIAlertController(title: message, message: nil , preferredStyle: UIAlertController.Style.alert)
            alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: { _ in
-            self.getChatData()
+            self.getChatData(true)
            }))
            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in
            }))
@@ -142,6 +149,7 @@ class GroupChatViewController: UIViewController, UITableViewDataSource, UITableV
                 let cell = tableView.dequeueReusableCell(withIdentifier: "groupChatOthersCHatTableViewCell") as! groupChatOthersCHatTableViewCell
                 cell.alpha = 0
                 cell.otherChatBackgroundView.layer.cornerRadius = 10
+                cell.otherChatUserNameLabel.text = tempchat?.userName ?? ""
                 cell.otherCHatMEssageLabel.text = tempchat?.text ?? ""
                 cell.otherChatDatetimeLabel.text = tempchat?.datetime ?? ""
                 cell.selectionStyle = .none

@@ -23,7 +23,15 @@ class logInUserViewController: UIViewController {
     }
     
     func checkAndValidateFields() -> Bool{
-        return true
+        if userNameTextField.text == ""{
+            showAlert("Please Enter User Name 🙁🙁")
+            return false
+        }else if passwordTextField.text == ""{
+            showAlert("Please Enter Password 🙁🙁")
+            return false
+        }else{
+            return true
+        }
     }
     
     func logINUserRequest(){

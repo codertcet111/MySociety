@@ -10,6 +10,7 @@ import UIKit
 
 class livePollHomepgeTableViewCell: UITableViewCell {
 
+    var Id: Int = 0
     @IBOutlet weak var livePollBackgroundView: UIView!
     
     @IBOutlet weak var livePolltitleLabel: UILabel!

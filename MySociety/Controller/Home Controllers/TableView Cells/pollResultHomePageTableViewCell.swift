@@ -10,6 +10,7 @@ import UIKit
 
 class pollResultHomePageTableViewCell: UITableViewCell {
 
+    var Id: Int = 0
     @IBOutlet weak var pollResultBackgroundView: UIView!
     @IBOutlet weak var pollResultTitleLabel: UILabel!
     @IBOutlet weak var pollResultDesriptionLabel: UILabel!

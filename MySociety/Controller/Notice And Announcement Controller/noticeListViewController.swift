@@ -50,9 +50,13 @@ class noticeListViewController: UIViewController, UITableViewDelegate, UITableVi
                                 self.noticeListTableView.reloadData()
                             }
                     case 401:
-                        self.showAlert("Unauthorized User")
+                        DispatchQueue.main.sync{
+                            self.showAlert("Unauthorized User")
+                        }
                     default:
-                        self.showAlert("something Went Wrong Message")
+                        DispatchQueue.main.sync{
+                            self.showAlert("something Went Wrong Message")
+                        }
                     }
                 }else{
                     self.showAlert("No data!")

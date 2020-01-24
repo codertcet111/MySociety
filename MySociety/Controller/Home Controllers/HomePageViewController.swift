@@ -112,6 +112,7 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
             cell.alpha = 0
             cell.videoTitleLabel.text = tempVideoData?.title ?? ""
             cell.timeStampDateLabel.text = tempVideoData?.date ?? ""
+            cell.Id = tempVideoData?.destinationId ?? 0
             let url = NSURL(string: tempVideoData?.videoUrl ?? "")
             let avPlayer = AVPlayer(url: url! as URL);
             cell.videoView.playerLayer.player = avPlayer;
@@ -128,8 +129,9 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
             let tempUpcomingElectionData = self.homePageModel?.feed.upcomingElectionHome[indexPath.row - (self.homePagevideoCount)]
             cell.upcomingElectionTitle.text = tempUpcomingElectionData?.title ?? ""
             cell.upcomingElectionDescriptionLabel.text = tempUpcomingElectionData?.description ?? ""
-            cell.upcomingElectionStartDateLAbel.text = tempUpcomingElectionData?.startDate ?? ""
-            cell.upcomingElectionEndDateLabel.text = tempUpcomingElectionData?.endDate ?? ""
+            cell.upcomingElectionStartDateLAbel.text = "Start: \(tempUpcomingElectionData?.startDate ?? "")"
+            cell.upcomingElectionEndDateLabel.text = "End: \(tempUpcomingElectionData?.endDate ?? "")"
+            cell.Id = tempUpcomingElectionData?.destinationId ?? 0
             cell.timeStampDateLabel.text = tempUpcomingElectionData?.date ?? ""
             cell.upcomingElectionBackgroundView.layer.cornerRadius = 10.0
             cell.selectionStyle = .none
@@ -143,6 +145,7 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
             let tempBoticeData = self.homePageModel?.feed.notice[indexPath.row - (self.homePagevideoCount + self.homePageUpcomingElectionCount)]
             cell.noticeTitleLabel.text = tempBoticeData?.title ?? ""
             cell.noticeDescriptionLabel.text = tempBoticeData?.description ?? ""
+            cell.Id = tempBoticeData?.destinationId ?? 0
             cell.timeStampDateLabel.text = tempBoticeData?.date ?? ""
             cell.noticeBackgroundView.layer.cornerRadius = 10.0
             cell.selectionStyle = .none
@@ -165,6 +168,7 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
             cell.electionResultDescriptionLabel.text = tempElectionData?.description ?? ""
             cell.electionResultResultLabel.text = tempElectionData?.result ?? ""
             cell.timeStampDateLabel.text = tempElectionData?.date ?? ""
+            cell.Id = tempElectionData?.destinationId ?? 0
             cell.electionResultBackgroundView.layer.cornerRadius = 10.0
             cell.selectionStyle = .none
             UIView.animate(withDuration: 1) {
@@ -178,6 +182,7 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
             cell.livePolltitleLabel.text = templivePollData?.title ?? ""
             cell.livePollDescriptionLabel.text = templivePollData?.description ?? ""
             cell.timeStampDateLabel.text = templivePollData?.date ?? ""
+            cell.Id = templivePollData?.destinationId ?? 0
             cell.livePollBackgroundView.layer.cornerRadius = 10.0
             cell.selectionStyle = .none
             UIView.animate(withDuration: 1) {
@@ -192,6 +197,7 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
             cell.pollResultDesriptionLabel.text = temppollResultData?.description ?? ""
             cell.pollResultResultLabel.text = temppollResultData?.result ?? ""
             cell.timeStampDateLabel.text = temppollResultData?.date ?? ""
+            cell.Id = temppollResultData?.destinationId ?? 0
             cell.pollResultBackgroundView.layer.cornerRadius = 10.0
             cell.selectionStyle = .none
             UIView.animate(withDuration: 1) {
@@ -206,6 +212,7 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
             cell.eventHomeDateTimeLabel.text = tempEventData?.date ?? ""
             cell.eventHomeDescriptionLabel.text = tempEventData?.description ?? ""
             cell.timeStampDateLabel.text = tempEventData?.date ?? ""
+            cell.Id = tempEventData?.destinationId ?? 0
             cell.evetnHomeackgroundView.layer.cornerRadius = 10.0
             cell.selectionStyle = .none
             UIView.animate(withDuration: 1) {
@@ -219,6 +226,7 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
             cell.liveElectionTitleLabel.text = tempLiveElectionData?.title ?? ""
             cell.liveElectionDescriptionLabel.text = tempLiveElectionData?.description ?? ""
             cell.timeStampDateLabel.text = tempLiveElectionData?.date ?? ""
+            cell.Id = tempLiveElectionData?.destinationId ?? 0
             cell.liveElectionBackgroundView.layer.cornerRadius = 10.0
             cell.selectionStyle = .none
             UIView.animate(withDuration: 1) {
