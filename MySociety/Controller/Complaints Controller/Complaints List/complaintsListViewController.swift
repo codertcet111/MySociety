@@ -12,6 +12,7 @@ class complaintsListViewController: UIViewController, UITableViewDelegate, UITab
 
     var complaintsListModel: complaints?
     var tempComplaintsListArray:[[String]] = [["Nahu Patil", "Subject is available", "20-12-2020", "Open"], ["Shreyansh Tipod", "Their must be a gym", "20-12-2020", "Closed"], ["Nahu Patil", "Subject is available", "20-12-2020", "Open"], ["Nahu Patil", "Subject is available", "20-12-2020", "Open"]]
+    var selectedComplainRowIndex = 0
     @IBOutlet weak var complaintsListTableView: UITableView!
     @IBOutlet weak var complaintListNewComplaintBtn: UIButton!
     
@@ -65,14 +66,21 @@ class complaintsListViewController: UIViewController, UITableViewDelegate, UITab
         }
         
         func showAlert(_ message: String) -> (){
-               let alert = UIAlertController(title: message, message: nil , preferredStyle: UIAlertController.Style.alert)
-               alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: { _ in
-                self.getComplaintsData()
-               }))
-               alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in
-               }))
-               self.present(alert, animated: true, completion: nil)
-           }
+           let alert = UIAlertController(title: message, message: nil , preferredStyle: UIAlertController.Style.alert)
+           alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: { _ in
+            self.getComplaintsData()
+           }))
+           alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in
+           }))
+           self.present(alert, animated: true, completion: nil)
+       }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "complaintDetailFromListSegue") {
+            let vc = segue.destination as! ComplaintDetailViewController
+            vc.complaintId = self.complaintsListModel?.complaintsData[self.selectedComplainRowIndex].complainId ?? 0
+        }
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.complaintsListModel?.complaintsData.count ?? 0
@@ -102,6 +110,7 @@ class complaintsListViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.selectedComplainRowIndex = indexPath.row
         self.performSegue(withIdentifier: "complaintDetailFromListSegue", sender: self)
     }
 

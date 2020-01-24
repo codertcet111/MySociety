@@ -11,6 +11,7 @@ import UIKit
 class EventListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     var eventModelData: event?
+    var selectedEventIndex: Int = 0
     var eventListArry: [[String]] = [["Anmol's Birthday", "22/09/2020", "We will be having the birthday celebration for Anmol. He will be the morgan boy of the year. Lets celbrate his birthday for this year."], ["Navrathri Festival", "03/09/2020", "We will be having the birthday celebration for Anmol. Lets celbrate his birthday for this year."],["Holi 2019", "04/03/2020", "We will be having the birthday celebration for Anmol. He will be the morgan boy of the year. Lets celbrate his birthday for this year."],["Anmol's Birthday", "22/09/2020", "He will be the morgan boy of the year. Lets celbrate his birthday for this year."],]
     @IBOutlet weak var eventListTableView: UITableView!
     
@@ -76,6 +77,13 @@ class EventListViewController: UIViewController, UITableViewDataSource, UITableV
            self.present(alert, animated: true, completion: nil)
        }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "EventDetailFromListOpenSegue") {
+            let vc = segue.destination as! EventDetailViewController
+            vc.selectedEventId = self.eventModelData?.eventDatas[self.selectedEventIndex].eventId ?? 0
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.eventModelData?.eventDatas.count ?? 0
     }
@@ -109,6 +117,7 @@ class EventListViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.selectedEventIndex = indexPath.row
         self.performSegue(withIdentifier: "EventDetailFromListOpenSegue", sender: self)
     }
 

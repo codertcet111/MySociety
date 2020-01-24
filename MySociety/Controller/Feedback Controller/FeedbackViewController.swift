@@ -14,7 +14,7 @@ class FeedbackViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var feedbackTableView: UITableView!
     @IBOutlet weak var typeFeedbackView: UIView!
     @IBOutlet weak var selectEventButton: UIButton!
-    
+    var feedbackModelData: FeedbackList?
     @IBAction func selectEventBtnAction(_ sender: UIButton) {
         //Fetch and show all events Availabel
         let alert = UIAlertController(title: "Select Event", message: nil, preferredStyle: .alert)
@@ -73,37 +73,84 @@ class FeedbackViewController: UIViewController, UITableViewDataSource, UITableVi
                             self.eventModelData = try? JSONDecoder().decode(event.self,from: data!)
                                 DispatchQueue.main.sync {
                                     //Got the event data
-                                    self.showAlert("Select the Event and give feedback 😁")
+                                    self.showToast(message: "Select the Event and give feedback 😁", fontSize: 11.0)
+                                    self.getFeedbackData(false)
+                                    
                                 }
                         case 401:
                             DispatchQueue.main.sync {
-                                self.showAlert("Unauthorized User")
+                                self.showAlert("Unauthorized User", 0)
                             }
                         default:
                             DispatchQueue.main.sync {
-                                self.showAlert("something Went Wrong Message")
+                                self.showAlert("something Went Wrong Message", 0)
                             }
                         }
                     }else{
-                        self.showAlert("No data!")
+                        self.showAlert("No data!", 0)
                     }
                 }
             })
             dataTask.resume()
         }
         
-        func showAlert(_ message: String) -> (){
-               let alert = UIAlertController(title: message, message: nil , preferredStyle: UIAlertController.Style.alert)
-               alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: { _ in
+    func showAlert(_ message: String,_ eventOrFeedback: Int) -> (){
+           let alert = UIAlertController(title: message, message: nil , preferredStyle: UIAlertController.Style.alert)
+           alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: { _ in
+            if eventOrFeedback == 0{
                 self.getSetEventData()
-               }))
-               alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in
-               }))
-               self.present(alert, animated: true, completion: nil)
-           }
+            }else{
+                self.getFeedbackData(false)
+            }
+           }))
+           alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in
+           }))
+           self.present(alert, animated: true, completion: nil)
+       }
     
+    
+    func getFeedbackData(_ showSpinnerView: Bool){
+        if showSpinnerView{
+            showSpinner(onView: self.view)
+        }
+        let headerValues = globalHeaderValue
+        let request = getRequestUrlWithHeader(url: "feedback/\(loggedInUserId)", method: "GET", header: headerValues , bodyParams: nil)
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+            self.removeSpinner()
+            if (error != nil) {
+                print(error ?? "")
+            } else {
+                let httpResponse = response as? HTTPURLResponse
+                let strData = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+                print("Body: \(String(describing: strData))")
+                
+                if(response != nil && data != nil){
+                    switch  httpResponse?.statusCode {
+                    case 200:
+                        self.feedbackModelData = try? JSONDecoder().decode(FeedbackList.self,from: data!)
+                            DispatchQueue.main.sync {
+                                self.feedbackTableView.reloadData()
+                                self.removeSpinner()
+                            }
+                    case 401:
+                        DispatchQueue.main.sync{
+                            self.showAlert("Unauthorized User", 1)
+                        }
+                    default:
+                        DispatchQueue.main.sync{
+                            self.showAlert("something Went Wrong Message", 1)
+                        }
+                    }
+                }else{
+                    self.showAlert("No data!", 1)
+                }
+            }
+        })
+        dataTask.resume()
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return self.feedbackModelData?.feedbackData.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -111,6 +158,12 @@ class FeedbackViewController: UIViewController, UITableViewDataSource, UITableVi
        cell.alpha = 0
        cell.feedbackCellBackgroundView.layer.cornerRadius = 10
        
+        if self.feedbackModelData?.feedbackData.indices.contains(indexPath.row) ?? false{
+            cell.eventNameLabel.text = self.feedbackModelData?.feedbackData[indexPath.row].eventName ?? ""
+            cell.userDescriptionTextLabel.text = self.feedbackModelData?.feedbackData[indexPath.row].description ?? ""
+            cell.userName.text = self.feedbackModelData?.feedbackData[indexPath.row].fullName ?? ""
+        }
+        
        cell.selectionStyle = .none
        UIView.animate(withDuration: 1) {
            cell.alpha = 1.0

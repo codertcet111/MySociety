@@ -13,7 +13,7 @@ class ComplaintDetailViewController: UIViewController, UITableViewDelegate, UITa
 
     //0: For me, 1: For front one walas
     var complaintsChatData = [["The problem is persistent, still I cannot find out the way?","URL","0"], ["The problem is persistent, still I cannot find out the way?","URL","1"],["The problem is persistent, still I cannot find out the way?","URL","0"],["The problem is persistent, still I cannot find out the way?","URL","1"]]
-    
+    var complaintId: Int = 0
     @IBOutlet weak var userComplaintInfoView: UIView!
     @IBOutlet weak var userComplaintUserNameLabel: UILabel!
     @IBOutlet weak var userComplaintSubjectLabel: UILabel!
@@ -36,7 +36,6 @@ class ComplaintDetailViewController: UIViewController, UITableViewDelegate, UITa
     @IBOutlet weak var addCommentUploadImageBtn: UIButton!
     @IBOutlet weak var addCommentSaveBtn: UIButton!
     
-    
     @IBOutlet weak var complaintChatTableView: UITableView!
     @IBAction func adminCOmmentUploadImageAction(_ sender: UIButton) {
         
@@ -52,10 +51,6 @@ class ComplaintDetailViewController: UIViewController, UITableViewDelegate, UITa
     @IBAction func furtherAddCommentSaveBtnAction(_ sender: UIButton) {
         
     }
-    
-    
-    
-    
     
     
     override func viewDidLoad() {
