@@ -107,9 +107,9 @@
                         <outlet property="mySocietyImageViewTopConstraints" destination="uIS-qt-4r6" id="cad-KE-W73"/>
                         <outlet property="registerSocietyWidthConstraints" destination="qwb-XJ-O7h" id="Brt-cY-E3h"/>
                         <outlet property="signUpMemberBtnWidthConstraints" destination="2h5-SV-ift" id="FjM-4O-wSR"/>
-                        <segue destination="8ak-WC-hUf" kind="show" identifier="registerSocietySegue" id="P3g-GM-KFb"/>
-                        <segue destination="fSq-BI-I2O" kind="show" identifier="logINUserSegue" id="6yh-XX-1Ug"/>
-                        <segue destination="utQ-7Q-tzt" kind="show" identifier="registerUserSegue" id="e51-fG-51j"/>
+                        <segue destination="8ak-WC-hUf" kind="showDetail" identifier="registerSocietySegue" id="P3g-GM-KFb"/>
+                        <segue destination="fSq-BI-I2O" kind="showDetail" identifier="logINUserSegue" id="6yh-XX-1Ug"/>
+                        <segue destination="utQ-7Q-tzt" kind="showDetail" identifier="registerUserSegue" id="e51-fG-51j"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lAv-6m-tUN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1555,7 +1555,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B8m-gs-QLH">
-                                <rect key="frame" x="330" y="725" width="64" height="64"/>
+                                <rect key="frame" x="266" y="661" width="128" height="128"/>
                                 <state key="normal" image="plus"/>
                                 <connections>
                                     <action selector="complaintListNewComplaintAction:" destination="0qq-pW-mPb" eventType="touchUpInside" id="Lac-Na-Znx"/>
@@ -3048,7 +3048,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z1z-wD-sao">
-                                <rect key="frame" x="330" y="729" width="64" height="64"/>
+                                <rect key="frame" x="266" y="665" width="128" height="128"/>
                                 <state key="normal" image="plus"/>
                                 <connections>
                                     <action selector="addEventAction:" destination="ZYW-eV-3wC" eventType="touchUpInside" id="qnF-dY-WUC"/>
@@ -3569,10 +3569,10 @@
             </objects>
             <point key="canvasLocation" x="4615.9420289855079" y="-475.44642857142856"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar Controller View Controller-->
         <scene sceneID="Kia-FC-GY8">
             <objects>
-                <tabBarController id="Pps-Nn-JN5" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabBarControllerViewController" id="Pps-Nn-JN5" customClass="tabBarControllerViewController" customModule="MySociety" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="LvH-Gj-YyQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

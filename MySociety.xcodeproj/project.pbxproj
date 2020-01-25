@@ -84,6 +84,7 @@
 		842CCF9E23C87D6A003FF488 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842CCF9D23C87D6A003FF488 /* PlayerView.swift */; };
 		843755CA23DB0B240085DA0D /* FeedbackData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843755C823DB0B240085DA0D /* FeedbackData.swift */; };
 		843755CB23DB0B240085DA0D /* FeedbackList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843755C923DB0B240085DA0D /* FeedbackList.swift */; };
+		8441C01423DC722E00B0B1E0 /* tabBarControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8441C01323DC722E00B0B1E0 /* tabBarControllerViewController.swift */; };
 		8451C04623CDEFAC00250292 /* opinionPollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8451C04523CDEFAC00250292 /* opinionPollViewController.swift */; };
 		8451C04823CDEFC300250292 /* createOpinionPollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8451C04723CDEFC300250292 /* createOpinionPollViewController.swift */; };
 		8451C04D23CDF02600250292 /* opinionPollLiveVoteItTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8451C04C23CDF02600250292 /* opinionPollLiveVoteItTableViewCell.swift */; };
@@ -180,6 +181,7 @@
 		842CCF9D23C87D6A003FF488 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		843755C823DB0B240085DA0D /* FeedbackData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedbackData.swift; path = ../../../../../Downloads/FeedbackList/FeedbackData.swift; sourceTree = "<group>"; };
 		843755C923DB0B240085DA0D /* FeedbackList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedbackList.swift; path = ../../../../../Downloads/FeedbackList/FeedbackList.swift; sourceTree = "<group>"; };
+		8441C01323DC722E00B0B1E0 /* tabBarControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tabBarControllerViewController.swift; sourceTree = "<group>"; };
 		8451C04523CDEFAC00250292 /* opinionPollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = opinionPollViewController.swift; sourceTree = "<group>"; };
 		8451C04723CDEFC300250292 /* createOpinionPollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createOpinionPollViewController.swift; sourceTree = "<group>"; };
 		8451C04C23CDF02600250292 /* opinionPollLiveVoteItTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = opinionPollLiveVoteItTableViewCell.swift; sourceTree = "<group>"; };
@@ -593,6 +595,7 @@
 		84F2922D23C753DA00502408 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				8441C01323DC722E00B0B1E0 /* tabBarControllerViewController.swift */,
 				8413595C23D1AB900033AD1E /* Notification COntroller */,
 				8413595423D17A5C0033AD1E /* Register Society Controller */,
 				8413595123D1766C0033AD1E /* Registration_login controller */,
@@ -760,6 +763,7 @@
 				840F81FE23D856BD00671370 /* Notice.swift in Sources */,
 				840F81F923D856BD00671370 /* UpcomingElectionHome.swift in Sources */,
 				84F2923023C7541200502408 /* helper.swift in Sources */,
+				8441C01423DC722E00B0B1E0 /* tabBarControllerViewController.swift in Sources */,
 				8413596023D1AC720033AD1E /* notificationTableViewCell.swift in Sources */,
 				841C427523CF144D00993483 /* newElectionTableViewCell.swift in Sources */,
 				841C426E23CEE25300993483 /* ResultElectionListTableViewCell.swift in Sources */,

@@ -17,11 +17,15 @@ var notificationBadgedCount: Int = 2
 let loggedInUserIdDefaultKeyName = "loggedInUserId"
 let loggedInUserNameDefaultKeyName = "loggedInUserName"
 let loggedInUserIsAdminDefaultKeyName = "loggedInuserIsAdmin"
+//boolValue = UserDefaults.standard.bool(forKey: loggedInUserIsAdminDefaultKeyName)
+//UserDefaults.standard.set(true, forKey: loggedInUserIsAdminDefaultKeyName)
+
 //let baseUrl = "https://cortexsolutions.co.in/mysociety/api/"
 let baseUrl = "https://27c7eca2.ngrok.io/society/api/"
 var globalHeaderValue = ["x-api-key": "1c552e6f2a95a883209e9b449d6f4973"]
-var loggedInUserId = 2
-
+//Update loggedInUserId everytime
+var loggedInUserId = 2//UserDefaults.standard.integer(forKey: loggedInUserIdDefaultKeyName)
+var isAdminLoggedIn = UserDefaults.standard.bool(forKey: loggedInUserIsAdminDefaultKeyName)
 //MARK: Get badged label
 func getBadgedLabelWithValue(count: Int) -> UILabel{
     //Badged set

@@ -84,9 +84,8 @@ class MenuViewController: UIViewController, UICollectionViewDelegate, UICollecti
         //Delete default user data, then redirect to registration Options screen
 //        let vc2 = self.storyboard?.instantiateViewController(withIdentifier: "registrationOptionsViewController") as? registrationOptionsViewController
 //        self.navigationController?.pushViewController(vc2!, animated: true)
-        UserDefaults.standard.set("", forKey: loggedInUserIdDefaultKeyName)
-        UserDefaults.standard.set("", forKey: loggedInUserNameDefaultKeyName)
-        UserDefaults.standard.set("", forKey: loggedInUserIsAdminDefaultKeyName)
+        UserDefaults.standard.set(0, forKey: loggedInUserIdDefaultKeyName)
+        UserDefaults.standard.set(false, forKey: loggedInUserIsAdminDefaultKeyName)
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
