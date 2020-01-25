@@ -36,7 +36,8 @@ class FeedbackViewController: UIViewController, UITableViewDataSource, UITableVi
     
     @IBOutlet weak var postBtn: UIButton!
     @IBAction func postBtnAction(_ sender: UIButton) {
-        
+        postFeedback()
+        self.commentTypeTextField.text = ""
     }
     
     var eventModelData: event?
@@ -93,20 +94,63 @@ class FeedbackViewController: UIViewController, UITableViewDataSource, UITableVi
             })
             dataTask.resume()
         }
+    
+    func postFeedback(){
+        self.showSpinner(onView: self.view)
+        let parameters = [
+            "description": "\(self.commentTypeTextField.text ?? "")",
+            "event_id": "\(self.slectedEventId ?? 0)",
+            "user_id": "\(loggedInUserId)"
+            ] as [String : Any]
+        let headerValues = ["x-api-key": "1c552e6f2a95a883209e9b449d6f4973", "Content-Type": "application/json"]
+        let request = getRequestUrlWithHeader(url: "addfeedback/\(loggedInUserId)", method: "POST", header: headerValues, bodyParams: parameters)
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+            DispatchQueue.main.async {
+                self.removeSpinner()
+            }
+            if (error != nil) {
+                print(error ?? "")
+            } else {
+                let httpResponse = response as? HTTPURLResponse
+                
+                switch(httpResponse?.statusCode ?? 201){
+                case 200, 201:
+                    DispatchQueue.main.async {
+                        self.showAlertForError("Feedback Posted Successfully!!")
+                    }
+                default:
+                    DispatchQueue.main.async {
+                        self.showAlertForError("Some Error has occured, try again!")
+                    }
+                }
+            }
+        })
+        
+        dataTask.resume()
+    }
+        
+    func showAlertForError(_ message: String) -> (){
+        let alert = UIAlertController(title: message, message: nil , preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
         
     func showAlert(_ message: String,_ eventOrFeedback: Int) -> (){
-           let alert = UIAlertController(title: message, message: nil , preferredStyle: UIAlertController.Style.alert)
-           alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: { _ in
-            if eventOrFeedback == 0{
-                self.getSetEventData()
-            }else{
-                self.getFeedbackData(false)
-            }
-           }))
-           alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in
-           }))
-           self.present(alert, animated: true, completion: nil)
-       }
+       let alert = UIAlertController(title: message, message: nil , preferredStyle: UIAlertController.Style.alert)
+       alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: { _ in
+        if eventOrFeedback == 0{
+            self.getSetEventData()
+        }else{
+            self.getFeedbackData(false)
+        }
+       }))
+       alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in
+       }))
+       self.present(alert, animated: true, completion: nil)
+   }
     
     
     func getFeedbackData(_ showSpinnerView: Bool){
