@@ -121,7 +121,7 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
             cell.videoView.playerLayer.player = avPlayer;
             cell.videoBackgroundView.layer.cornerRadius = 10.0
             cell.videoView.layer.cornerRadius = 10.0
-//            cell.selectionStyle = .none
+            cell.selectionStyle = .none
             UIView.animate(withDuration: 1) {
                 cell.alpha = 1.0
             }
@@ -250,8 +250,10 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let indexPath = tableView.indexPathForSelectedRow //optional, to get from any UIButton for example
 
-        if let currentCell = tableView.cellForRow(at: indexPath!) as? videoHomePageTableViewCell{
-            currentCell.videoView.player?.play()
+        if indexPath != nil{
+            if let currentCell = tableView.cellForRow(at: indexPath!) as? videoHomePageTableViewCell{
+                currentCell.videoView.player?.play()
+            }
         }
     }
     
