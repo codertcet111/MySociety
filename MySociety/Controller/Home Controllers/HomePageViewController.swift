@@ -29,7 +29,7 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
     var homePagePollResultCount: Int = 0
     var homePageEventCount: Int = 0
     var homePageLiveElectionCount: Int = 0
-    
+    var videoPlaying = false
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUiView()
@@ -113,7 +113,7 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
             cell.videoTitleLabel.text = tempVideoData?.title ?? ""
             cell.timeStampDateLabel.text = tempVideoData?.date ?? ""
             cell.Id = tempVideoData?.destinationId ?? 0
-            let url = NSURL(string: tempVideoData?.videoUrl ?? "")
+            let url = NSURL(string: "https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4")//tempVideoData?.videoUrl ?? "")
             let avPlayer = AVPlayer(url: url! as URL);
             cell.videoView.playerLayer.player = avPlayer;
             cell.videoBackgroundView.layer.cornerRadius = 10.0
@@ -245,21 +245,28 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if self.homePagevideoCount > (indexPath.row){
-            let cell = tableView.dequeueReusableCell(withIdentifier: "videoHomePageTableViewCell") as! videoHomePageTableViewCell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "videoHomePageTableViewCell") as? videoHomePageTableViewCell{
             let visibleCells = tableView.visibleCells;
             let minIndex = visibleCells.startIndex;
+//            tableView.indexPathsForVisibleRows?.startIndex
             if tableView.visibleCells.firstIndex(of: cell) == minIndex {
                 cell.videoView.player?.play()
             }
+            let cellRect = tableView.rectForRow(at: indexPath)
+            let completelyVisible = tableView.bounds.contains(cellRect)
+            if completelyVisible && !videoPlaying{
+                cell.videoView.player?.play()
+                videoPlaying = true
+            }
         }
     }
+
     
     func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if self.homePagevideoCount > (indexPath.row){
-            let cell = tableView.dequeueReusableCell(withIdentifier: "videoHomePageTableViewCell") as! videoHomePageTableViewCell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "videoHomePageTableViewCell") as? videoHomePageTableViewCell{
             cell.videoView.player?.pause();
             cell.videoView.player = nil;
+            videoPlaying = false
         }
     }
 }

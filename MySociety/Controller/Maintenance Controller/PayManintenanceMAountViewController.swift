@@ -11,15 +11,12 @@ import UIKit
 class PayManintenanceMAountViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     var tempSelectedImage: UIImage?
-    @IBOutlet weak var selectWingBtn: UIButton!
-    @IBAction func selectWingAction(_ sender: UIButton) {
-        
-    }
     
-    @IBOutlet weak var sleectFlatBtn: UIButton!
-    @IBAction func selectFlatAction(_ sender: UIButton) {
-        
-    }
+    @IBOutlet weak var flatNumberTextField: UITextField!
+    @IBOutlet weak var wingTextField: UITextField!
+    
+    @IBOutlet weak var seleectMemberButton: UIButton!
+    
     @IBOutlet weak var balancedAmountLABL: UILabel!
     @IBOutlet weak var balancedAmountTextLabel: UILabel!
     
@@ -65,8 +62,7 @@ class PayManintenanceMAountViewController: UIViewController, UIImagePickerContro
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        selectWingBtn.layer.cornerRadius = 10
-        sleectFlatBtn.layer.cornerRadius = 10
+        seleectMemberButton.layer.cornerRadius = 10
         uploadImageBtn.layer.cornerRadius = 10
         saveBtn.layer.cornerRadius = 10
         // Do any additional setup after loading the view.

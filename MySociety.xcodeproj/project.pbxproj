@@ -91,6 +91,11 @@
 		8451C04F23CDF03800250292 /* opinionPollLiveVotedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8451C04E23CDF03800250292 /* opinionPollLiveVotedTableViewCell.swift */; };
 		8451C05123CDF05100250292 /* opinionPollResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8451C05023CDF05100250292 /* opinionPollResultTableViewCell.swift */; };
 		84867EA723C9F11100D9B83C /* menuViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84867EA623C9F11100D9B83C /* menuViewCollectionViewCell.swift */; };
+		84A209CB23DD3986008E9574 /* selectMemberPopOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A209CA23DD3986008E9574 /* selectMemberPopOverViewController.swift */; };
+		84A209CD23DD399B008E9574 /* selectMemberSharedFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A209CC23DD399B008E9574 /* selectMemberSharedFile.swift */; };
+		84A209CF23DD39B9008E9574 /* selectMemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A209CE23DD39B9008E9574 /* selectMemberTableViewCell.swift */; };
+		84A209D223DD4802008E9574 /* payMaintenaceSelectMemberPopOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A209D123DD4802008E9574 /* payMaintenaceSelectMemberPopOverViewController.swift */; };
+		84A209D423DD4821008E9574 /* payMaintenanceSelectMemberSharedFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A209D323DD4821008E9574 /* payMaintenanceSelectMemberSharedFile.swift */; };
 		84F2921523C7372400502408 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F2921423C7372400502408 /* AppDelegate.swift */; };
 		84F2921C23C7372400502408 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F2921A23C7372400502408 /* Main.storyboard */; };
 		84F2921F23C7372400502408 /* MySociety.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84F2921D23C7372400502408 /* MySociety.xcdatamodeld */; };
@@ -188,6 +193,11 @@
 		8451C04E23CDF03800250292 /* opinionPollLiveVotedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = opinionPollLiveVotedTableViewCell.swift; sourceTree = "<group>"; };
 		8451C05023CDF05100250292 /* opinionPollResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = opinionPollResultTableViewCell.swift; sourceTree = "<group>"; };
 		84867EA623C9F11100D9B83C /* menuViewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuViewCollectionViewCell.swift; sourceTree = "<group>"; };
+		84A209CA23DD3986008E9574 /* selectMemberPopOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = selectMemberPopOverViewController.swift; sourceTree = "<group>"; };
+		84A209CC23DD399B008E9574 /* selectMemberSharedFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = selectMemberSharedFile.swift; sourceTree = "<group>"; };
+		84A209CE23DD39B9008E9574 /* selectMemberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = selectMemberTableViewCell.swift; sourceTree = "<group>"; };
+		84A209D123DD4802008E9574 /* payMaintenaceSelectMemberPopOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = payMaintenaceSelectMemberPopOverViewController.swift; sourceTree = "<group>"; };
+		84A209D323DD4821008E9574 /* payMaintenanceSelectMemberSharedFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = payMaintenanceSelectMemberSharedFile.swift; sourceTree = "<group>"; };
 		84F2921123C7372400502408 /* MySociety.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MySociety.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F2921423C7372400502408 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84F2921B23C7372400502408 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -346,6 +356,7 @@
 		8413856923CB8666005CFA57 /* Member Directory Controller */ = {
 			isa = PBXGroup;
 			children = (
+				84A209C923DD3900008E9574 /* Select Member */,
 				8413858723CB89A5005CFA57 /* MemberDirectoryListViewController.swift */,
 				8413858923CB89B9005CFA57 /* ChangeMemberPositionViewController.swift */,
 				8413858B23CB89D8005CFA57 /* MemberDirectoryListTableViewCell.swift */,
@@ -468,6 +479,7 @@
 		841C428423CF3D9A00993483 /* Maintenance Controller */ = {
 			isa = PBXGroup;
 			children = (
+				84A209D023DD47D3008E9574 /* maintenanceSelectMember */,
 				841C428523CF3DF600993483 /* maintenanceListViewController.swift */,
 				841C428723CF3E1600993483 /* PayManintenanceMAountViewController.swift */,
 				841C428923CF3E3200993483 /* maintenanceTableViewCell.swift */,
@@ -527,6 +539,25 @@
 				840A264823D03C2E005D1232 /* NotificationInMenuTableViewCell.swift */,
 			);
 			path = "Menu Controller";
+			sourceTree = "<group>";
+		};
+		84A209C923DD3900008E9574 /* Select Member */ = {
+			isa = PBXGroup;
+			children = (
+				84A209CA23DD3986008E9574 /* selectMemberPopOverViewController.swift */,
+				84A209CC23DD399B008E9574 /* selectMemberSharedFile.swift */,
+				84A209CE23DD39B9008E9574 /* selectMemberTableViewCell.swift */,
+			);
+			path = "Select Member";
+			sourceTree = "<group>";
+		};
+		84A209D023DD47D3008E9574 /* maintenanceSelectMember */ = {
+			isa = PBXGroup;
+			children = (
+				84A209D123DD4802008E9574 /* payMaintenaceSelectMemberPopOverViewController.swift */,
+				84A209D323DD4821008E9574 /* payMaintenanceSelectMemberSharedFile.swift */,
+			);
+			path = maintenanceSelectMember;
 			sourceTree = "<group>";
 		};
 		84A64F7D23D88783005D8185 /* ComplainDetail Model */ = {
@@ -757,6 +788,7 @@
 				841C428A23CF3E3200993483 /* maintenanceTableViewCell.swift in Sources */,
 				8413857623CB8854005CFA57 /* EventListViewController.swift in Sources */,
 				842CCF9A23C8476E003FF488 /* eventHomePageTableViewCell.swift in Sources */,
+				84A209CB23DD3986008E9574 /* selectMemberPopOverViewController.swift in Sources */,
 				841C428323CF363F00993483 /* postVideoViewController.swift in Sources */,
 				8413AFF523D335AC0033F5BB /* notice.swift in Sources */,
 				8413858C23CB89D8005CFA57 /* MemberDirectoryListTableViewCell.swift in Sources */,
@@ -768,8 +800,10 @@
 				841C427523CF144D00993483 /* newElectionTableViewCell.swift in Sources */,
 				841C426E23CEE25300993483 /* ResultElectionListTableViewCell.swift in Sources */,
 				840F81FF23D856BD00671370 /* EventHome.swift in Sources */,
+				84A209D223DD4802008E9574 /* payMaintenaceSelectMemberPopOverViewController.swift in Sources */,
 				842CCF8923C83FD7003FF488 /* MenuViewController.swift in Sources */,
 				8451C04D23CDF02600250292 /* opinionPollLiveVoteItTableViewCell.swift in Sources */,
+				84A209CD23DD399B008E9574 /* selectMemberSharedFile.swift in Sources */,
 				840F81FB23D856BD00671370 /* Feed.swift in Sources */,
 				8413857423CB883A005CFA57 /* EventListTableViewCell.swift in Sources */,
 				840F820023D856BD00671370 /* ElectionResultHome.swift in Sources */,
@@ -782,6 +816,8 @@
 				8413AFDD23D2F9990033F5BB /* complaints.swift in Sources */,
 				842CCF9E23C87D6A003FF488 /* PlayerView.swift in Sources */,
 				840F81FC23D856BD00671370 /* homePage.swift in Sources */,
+				84A209D423DD4821008E9574 /* payMaintenanceSelectMemberSharedFile.swift in Sources */,
+				84A209CF23DD39B9008E9574 /* selectMemberTableViewCell.swift in Sources */,
 				8413595623D17A860033AD1E /* registerSocietyViewController.swift in Sources */,
 				8413AFF623D335AC0033F5BB /* NoticeDatas.swift in Sources */,
 				840F81FA23D856BD00671370 /* VideoHome.swift in Sources */,

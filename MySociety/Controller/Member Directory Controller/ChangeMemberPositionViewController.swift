@@ -10,6 +10,9 @@ import UIKit
 
 class ChangeMemberPositionViewController: UIViewController {
 
+    let nc = NotificationCenter.default
+    var selectedMemberId: Int = 0
+    var selectedMemberName: String = ""
     @IBOutlet weak var selectMemberTitleLabel: UILabel!
     @IBOutlet weak var selectMemberButton: UIButton!
     
@@ -36,7 +39,11 @@ class ChangeMemberPositionViewController: UIViewController {
         self.updateButton.layer.cornerRadius = 10
         self.selectMemberButton.layer.cornerRadius  = 10
         // Do any additional setup after loading the view.
+        nc.addObserver(self, selector: #selector(updateSelectedMemberLabels), name: Notification.Name.selectUserMemberPopOverDismissNC, object: nil)
     }
     
+    @objc func updateSelectedMemberLabels(){
+        self.selectMemberButton.setTitle("\(selectMemberSharedFile.shared.memberSelectedName)", for: .normal)
+    }
 
 }
