@@ -65,7 +65,7 @@ class ComplaintDetailViewController: UIViewController, UITableViewDelegate, UITa
 
         // Set photoImageView to display the selected image.
         self.tempSelectedImage = selectedImage
-        self.addCommentUploadImageBtn.setTitle("\(selectedImage.accessibilityIdentifier ?? "😄 Selected")", for: .normal)
+        self.addCommentUploadImageBtn.setTitle("\(selectedImage.accessibilityIdentifier ?? "Image Selected")", for: .normal)
 
         // Dismiss the picker.
         dismiss(animated: true, completion: nil)

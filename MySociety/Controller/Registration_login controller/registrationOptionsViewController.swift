@@ -43,7 +43,7 @@ class registrationOptionsViewController: UIViewController {
         super.viewDidLoad()
 
         self.animateView()
-        
+        self.navigationController?.navigationBar.isHidden = false
         // Do any additional setup after loading the view.
     }
     

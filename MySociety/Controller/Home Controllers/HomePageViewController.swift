@@ -19,7 +19,9 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
     //Below it will be like, [type, title, date, start_date, end_date,  video_url, description, destination_id, Result]
     var tempVarData: [[String]] = [["1", "Upcoming Election", "This is for those to vote on the knwoldge center, Those intereseted into this election may cast their vote in the pallet box appearing in the front of the box.", "2019-09-19 at 02:20 AM", "2020-09-19 at 12:20 AM"],["2", "Notice", "Notice for the period cange in the description of the world. Now as we can see the trump administration is not serious.", "https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.zoho.com%2Finvoice%2Fwhat-is-invoice%2Frecurring-invoice.png&imgrefurl=https%3A%2F%2Fwww.zoho.com%2Finvoice%2Fwhat-is-invoice%2F&docid=3C4dskUuxNNBYM&tbnid=pq6vf9MSBGHfoM%3A&vet=10ahUKEwiyq_G9_frmAhXm7HMBHQVlC2wQMwh5KAMwAw..i&w=1073&h=1519&client=safari&bih=769&biw=1360&q=invoice&ved=0ahUKEwiyq_G9_frmAhXm7HMBHQVlC2wQMwh5KAMwAw&iact=mrc&uact=8"], ["0", "Video", "https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"], ["3", "Election Result", "This is for those to vote on the knwoldge center, Those intereseted into this election may cast their vote in the pallet box appearing in the front of the box.", "Yeah, Mr. Ganesh has won the secretory election"], ["4", "Live Poll", "This is to select the right place for upcoming Gym, Those intereseted into this election may cast their vote in the pallet box appearing in the front of the box."], ["5", "Poll Result", "This is to select the right place for upcoming Gym, You might be wondering for this selection.", "Yeah the new position will be next to the circulation of upcoming gymnasium"], ["6", "Event", "2019-09-19 at 02:20 AM", "For the Birthday of Mr. Ganesh"], ["7", "Live Election", "This is for those to vote on the knwoldge center"], ["1", "Upcoming Election", "This is for those to vote on the knwoldge center, Those intereseted into this election may cast their vote in the pallet box appearing in the front of the box.", "2019-09-19 at 02:20 AM", "2020-09-19 at 12:20 AM"],["2", "Notice", "Notice for the period cange in the description of the world. Now as we can see the trump administration is not serious.", "https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.zoho.com%2Finvoice%2Fwhat-is-invoice%2Frecurring-invoice.png&imgrefurl=https%3A%2F%2Fwww.zoho.com%2Finvoice%2Fwhat-is-invoice%2F&docid=3C4dskUuxNNBYM&tbnid=pq6vf9MSBGHfoM%3A&vet=10ahUKEwiyq_G9_frmAhXm7HMBHQVlC2wQMwh5KAMwAw..i&w=1073&h=1519&client=safari&bih=769&biw=1360&q=invoice&ved=0ahUKEwiyq_G9_frmAhXm7HMBHQVlC2wQMwh5KAMwAw&iact=mrc&uact=8"], ["0", "Video", "https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"], ["3", "Election Result", "This is for those to vote on the knwoldge center, Those intereseted into this election may cast their vote in the pallet box appearing in the front of the box.", "Yeah, Mr. Ganesh has won the secretory election"], ["4", "Live Poll", "This is to select the right place for upcoming Gym, Those intereseted into this election may cast their vote in the pallet box appearing in the front of the box."], ["5", "Poll Result", "This is to select the right place for upcoming Gym, You might be wondering for this selection.", "Yeah the new position will be next to the circulation of upcoming gymnasium"], ["6", "Event", "2019-09-19 at 02:20 AM", "For the Birthday of Mr. Ganesh"], ["7", "Live Election", "This is for those to vote on the knwoldge center"]]
     let cellsName: [String] = ["videoHomePageTableViewCell", "upcomingElectionHomePageTableViewCell", "noticeHomePageTableViewCell", "electionResultsHomePageTableViewCell", "livePollHomepgeTableViewCell", "pollResultHomePageTableViewCell", "eventHomePageTableViewCell", "liveElectionHomePageTableViewCell"]
-    
+    var playVideotempUrl: String = ""
+    var pauseBtnImageTxtName: String = "pause_small"
+    var playBtnImageTxtName: String = "play_small"
     var homePageModel: homePage?
     var homePagevideoCount: Int = 0
     var homePageUpcomingElectionCount: Int = 0
@@ -113,12 +115,13 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
             cell.videoTitleLabel.text = tempVideoData?.title ?? ""
             cell.timeStampDateLabel.text = tempVideoData?.date ?? ""
             cell.Id = tempVideoData?.destinationId ?? 0
-            let url = NSURL(string: "https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4")//tempVideoData?.videoUrl ?? "")
+            let url = NSURL(string: tempVideoData?.videoUrl ?? "")
+            //"https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4")//
             let avPlayer = AVPlayer(url: url! as URL);
             cell.videoView.playerLayer.player = avPlayer;
             cell.videoBackgroundView.layer.cornerRadius = 10.0
             cell.videoView.layer.cornerRadius = 10.0
-            cell.selectionStyle = .none
+//            cell.selectionStyle = .none
             UIView.animate(withDuration: 1) {
                 cell.alpha = 1.0
             }
@@ -241,6 +244,14 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
                 cell.alpha = 1.0
             }
             return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let indexPath = tableView.indexPathForSelectedRow //optional, to get from any UIButton for example
+
+        if let currentCell = tableView.cellForRow(at: indexPath!) as? videoHomePageTableViewCell{
+            currentCell.videoView.player?.play()
         }
     }
     

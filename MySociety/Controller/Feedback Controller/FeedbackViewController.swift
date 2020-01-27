@@ -78,7 +78,7 @@ class FeedbackViewController: UIViewController, UITableViewDataSource, UITableVi
                             self.eventModelData = try? JSONDecoder().decode(event.self,from: data!)
                                 DispatchQueue.main.sync {
                                     //Got the event data
-                                    self.showToast(message: "Select the Event and give feedback 😁", fontSize: 11.0)
+                                    self.showToast(message: "Select the Event and give feedback ", fontSize: 11.0)
                                     self.getFeedbackData(false)
                                     
                                 }

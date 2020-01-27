@@ -2129,6 +2129,16 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Play" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RbC-AT-n2f">
+                                                            <rect key="frame" x="165" y="211" width="24" height="15"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="24" id="COH-wn-Z81"/>
+                                                                <constraint firstAttribute="height" constant="15" id="Gaf-9l-iYe"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.98193607233502533" green="0.98193607233502533" blue="0.98193607233502533" alpha="0.97999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
@@ -2139,8 +2149,10 @@
                                                         <constraint firstItem="pp5-cY-9Zj" firstAttribute="top" secondItem="3WN-UQ-f32" secondAttribute="bottom" constant="5" id="RoQ-i0-rbg"/>
                                                         <constraint firstItem="3WN-UQ-f32" firstAttribute="top" secondItem="PzV-CH-xYt" secondAttribute="top" constant="10" id="YVO-U8-1HT"/>
                                                         <constraint firstItem="nI1-9u-rk9" firstAttribute="top" secondItem="pp5-cY-9Zj" secondAttribute="bottom" constant="25.5" id="YVs-M8-t9O"/>
+                                                        <constraint firstAttribute="bottom" secondItem="RbC-AT-n2f" secondAttribute="bottom" constant="5" id="b4M-GE-GxI"/>
                                                         <constraint firstAttribute="bottom" secondItem="0pW-gK-50k" secondAttribute="bottom" constant="9" id="uOF-kk-vhe"/>
                                                         <constraint firstItem="nI1-9u-rk9" firstAttribute="centerX" secondItem="PzV-CH-xYt" secondAttribute="centerX" id="wSm-gH-xma"/>
+                                                        <constraint firstItem="RbC-AT-n2f" firstAttribute="centerX" secondItem="PzV-CH-xYt" secondAttribute="centerX" id="yMp-EV-UPV"/>
                                                         <constraint firstAttribute="trailing" secondItem="pp5-cY-9Zj" secondAttribute="trailing" constant="8" id="zIG-WG-1oY"/>
                                                     </constraints>
                                                 </view>

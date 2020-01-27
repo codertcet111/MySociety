@@ -54,40 +54,40 @@ class registerSocietyViewController: UIViewController {
     
     func checkAndValidateFieldBfrRegister() -> Bool{
         if societyNameTextField.text == ""{
-            showAlert("Please Type Society Name 🙁🙁")
+            showAlert("Please Type Society Name ")
             return false
         }else if societyRegistrationNumber.text == ""{
-            showAlert("Please Type Society Registration Number 🙁🙁")
+            showAlert("Please Type Society Registration Number ")
             return false
         }else if selectYourRoleBtn.title(for: .normal) == "Role"{
-            showAlert("Please Select Role 🙁🙁")
+            showAlert("Please Select Role ")
             return false
         }else if addressTextField.text == ""{
-            showAlert("Please Type Society Address 🙁🙁")
+            showAlert("Please Type Society Address ")
             return false
         }else if cityTextField.text == ""{
-            showAlert("Please Type City 🙁🙁")
+            showAlert("Please Type City ")
             return false
         }else if adminNameTextField.text == ""{
-            showAlert("Please Type Your Name 🙁🙁")
+            showAlert("Please Type Your Name ")
             return false
         }else if flatnumberTextField.text == ""{
-            showAlert("Please Type Flat Number 🙁🙁")
+            showAlert("Please Type Flat Number ")
             return false
         }else if flatAreaTextField.text == ""{
-            showAlert("Please Type FLat Area 🙁🙁")
+            showAlert("Please Type FLat Area ")
             return false
         }else if pricePerSqFtTextField.text == ""{
-            showAlert("Please Type Price Per sq ft 🙁🙁")
+            showAlert("Please Type Price Per sq ft ")
             return false
         }else if adminUsernameTextField.text == ""{
-            showAlert("Please Create Username for U 🙁🙁")
+            showAlert("Please Create Username for U ")
             return false
         }else if adminPasswordTextField.text == ""{
-            showAlert("Please Create Password for U 🙁🙁")
+            showAlert("Please Create Password for U ")
             return false
         }else if adminMobileNumber.text == ""{
-            showAlert("Please Type Mobile Number 🙁🙁")
+            showAlert("Please Type Mobile Number ")
             return false
         }else{
             return true

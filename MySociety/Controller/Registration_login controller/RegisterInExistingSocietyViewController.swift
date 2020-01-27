@@ -59,31 +59,31 @@ class RegisterInExistingSocietyViewController: UIViewController {
         
     func checkAndValidateFieldBfrRegister() -> Bool{
         if selectSocietyBtn.title(for: .normal) == "Select Society"{
-            showAlert("Please Select Society 🙁🙁")
+            showAlert("Please Select Society ")
             return false
         }else if selectYourMemberBtn.title(for: .normal) == "Role"{
-            showAlert("Please select Position 🙁🙁")
+            showAlert("Please select Position ")
             return false
         }else if nameTextField.text == ""{
-            showAlert("Please Type Full Name 🙁🙁")
+            showAlert("Please Type Full Name ")
             return false
         }else if flatNoTextField.text == ""{
-            showAlert("Please Type Flat No 🙁🙁")
+            showAlert("Please Type Flat No ")
             return false
         }else if flatAreaTextField.text == ""{
-            showAlert("Please Type flat area 🙁🙁")
+            showAlert("Please Type flat area ")
             return false
         }else if priceSqFtTextField.text == ""{
-            showAlert("Please Type price sq ft 🙁🙁")
+            showAlert("Please Type price sq ft ")
             return false
         }else if userNameTextField.text == ""{
-            showAlert("Please create user name 🙁🙁")
+            showAlert("Please create user name ")
             return false
         }else if passwordTextField.text == ""{
-            showAlert("Please create password 🙁🙁")
+            showAlert("Please create password ")
             return false
         }else if mobileTextField.text == ""{
-            showAlert("Please Type mobile number 🙁🙁")
+            showAlert("Please Type mobile number ")
             return false
         }else{
             return true

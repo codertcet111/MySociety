@@ -35,7 +35,7 @@ class AddEventViewController: UIViewController, UIImagePickerControllerDelegate,
 
         // Set photoImageView to display the selected image.
         self.tempSelectedImage = selectedImage
-        self.newEventSelectImageBtn.setTitle("\(selectedImage.accessibilityIdentifier ?? "😄 Selected")", for: .normal)
+        self.newEventSelectImageBtn.setTitle("\(selectedImage.accessibilityIdentifier ?? "Image Selected")", for: .normal)
 
         // Dismiss the picker.
         dismiss(animated: true, completion: nil)

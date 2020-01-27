@@ -90,7 +90,8 @@ class MenuViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let vc = storyboard.instantiateViewController(withIdentifier: "registrationOptionsViewController") as! registrationOptionsViewController
-       appDelegate.window!.rootViewController = vc
+        let nav = UINavigationController(rootViewController: vc)
+       appDelegate.window!.rootViewController = nav
         self.performSegue(withIdentifier: "loggedOutSegue", sender: self)
     }
     
