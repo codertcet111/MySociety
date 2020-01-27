@@ -231,4 +231,5 @@ extension UIImageView {
 extension Notification.Name {
     static let selectSocietyPopOverDismissNC = Notification.Name("selectSocietyPopOverDismissNC")
     static let selectUserMemberPopOverDismissNC = Notification.Name("selectUserMemberPopOverDismissNC")
+    static let selectUserMemberForMaintenancePopOverDismissNC = Notification.Name("selectUserMemberForMaintenancePopOverDismissNC")
 }

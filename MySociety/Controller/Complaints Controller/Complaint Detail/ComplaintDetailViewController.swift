@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ComplaintDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ComplaintDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
 
     //0: For me, 1: For front one walas
@@ -20,7 +20,8 @@ class ComplaintDetailViewController: UIViewController, UITableViewDelegate, UITa
     @IBOutlet weak var userComplaintComplaintImageView: UIImageView!
     @IBOutlet weak var userComplaintDescriptionLabel: UILabel!
     @IBOutlet weak var topConstraints: NSLayoutConstraint!
-    
+    var username: String?
+    var commentText: String?
     @IBOutlet weak var adminAddReactionView: UIView!
     @IBOutlet weak var adminReactionCOmmentTextFiedl: UITextField!
     @IBOutlet weak var adminReactionUploadImageBtn: UIButton!
@@ -36,16 +37,38 @@ class ComplaintDetailViewController: UIViewController, UITableViewDelegate, UITa
     @IBOutlet weak var addCommentUploadImageBtn: UIButton!
     @IBOutlet weak var addCommentSaveBtn: UIButton!
     
+    @IBOutlet weak var adminAddResponseHeightConstraints: NSLayoutConstraint!
+    
+    @IBOutlet weak var adminResponseHeightConstraints: NSLayoutConstraint!
+    
     @IBOutlet weak var complaintChatTableView: UITableView!
     @IBAction func adminCOmmentUploadImageAction(_ sender: UIButton) {
-        
     }
     @IBAction func adminCommentSaveBtnAction(_ sender: UIButton) {
         
     }
     
     @IBAction func furtherAddCommentUploadImageBtnAction(_ sender: UIButton) {
+        let myPickerController = UIImagePickerController()
+        myPickerController.delegate = self;
+        myPickerController.sourceType = UIImagePickerController.SourceType.photoLibrary
         
+        self.present(myPickerController, animated: true, completion: nil)
+    }
+    var tempSelectedImage: UIImage?
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+
+        // The info dictionary may contain multiple representations of the image. You want to use the original.
+        guard let selectedImage = info[.originalImage] as? UIImage else {
+            fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
+        }
+
+        // Set photoImageView to display the selected image.
+        self.tempSelectedImage = selectedImage
+        self.addCommentUploadImageBtn.setTitle("\(selectedImage.accessibilityIdentifier ?? "😄 Selected")", for: .normal)
+
+        // Dismiss the picker.
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func furtherAddCommentSaveBtnAction(_ sender: UIButton) {
@@ -64,6 +87,11 @@ class ComplaintDetailViewController: UIViewController, UITableViewDelegate, UITa
         // Do any additional setup after loading the view.
         self.complaintChatTableView.layer.cornerRadius = 10
         setView()
+        self.userComplaintUserNameLabel.text = self.username ?? ""
+        self.userComplaintSubjectLabel.text = self.commentText ?? ""
+        self.adminResponseCommentLabel.text = "We will work on it"
+        self.adminAddReactionView.isHidden = true
+        self.adminAddResponseHeightConstraints.constant = 0
     }
     
     func setView(){

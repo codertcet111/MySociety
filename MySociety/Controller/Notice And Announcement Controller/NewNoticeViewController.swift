@@ -8,9 +8,8 @@
 
 import UIKit
 
-class NewNoticeViewController: UIViewController {
+class NewNoticeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    
     @IBOutlet weak var newNoticeSetTitleTextField: UITextField!
     @IBOutlet weak var selectTimeLAbel: UILabel!
     @IBOutlet weak var newNoticeSelectImageBtn: UIButton!
@@ -21,7 +20,26 @@ class NewNoticeViewController: UIViewController {
     @IBOutlet weak var setTitleTextTopConstraints: NSLayoutConstraint!
     
     @IBAction func selectImageAction(_ sender: UIButton) {
+        let myPickerController = UIImagePickerController()
+        myPickerController.delegate = self;
+        myPickerController.sourceType = UIImagePickerController.SourceType.photoLibrary
         
+        self.present(myPickerController, animated: true, completion: nil)
+    }
+    var tempSelectedImage: UIImage?
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+
+        // The info dictionary may contain multiple representations of the image. You want to use the original.
+        guard let selectedImage = info[.originalImage] as? UIImage else {
+            fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
+        }
+
+        // Set photoImageView to display the selected image.
+        self.tempSelectedImage = selectedImage
+        self.newNoticeSelectImageBtn.setTitle("\(selectedImage.accessibilityIdentifier ?? "😄 Selected")", for: .normal)
+
+        // Dismiss the picker.
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func saveNoticeAction(_ sender: UIButton) {
@@ -35,6 +53,7 @@ class NewNoticeViewController: UIViewController {
         setView()
         // Do any additional setup after loading the view.
     }
+    
     
     func setView(){
         newNoticeSaveBtn.layer.cornerRadius = 10

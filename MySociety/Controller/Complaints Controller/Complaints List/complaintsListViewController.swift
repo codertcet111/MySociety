@@ -79,6 +79,8 @@ class complaintsListViewController: UIViewController, UITableViewDelegate, UITab
         if (segue.identifier == "complaintDetailFromListSegue") {
             let vc = segue.destination as! ComplaintDetailViewController
             vc.complaintId = self.complaintsListModel?.complaintsData[self.selectedComplainRowIndex].complainId ?? 0
+            vc.username = self.complaintsListModel?.complaintsData[self.selectedComplainRowIndex].userName ?? ""
+            vc.commentText = self.complaintsListModel?.complaintsData[self.selectedComplainRowIndex].subject ?? ""
         }
     }
     

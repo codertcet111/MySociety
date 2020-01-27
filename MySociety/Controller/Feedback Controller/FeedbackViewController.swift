@@ -34,6 +34,10 @@ class FeedbackViewController: UIViewController, UITableViewDataSource, UITableVi
     
     @IBOutlet weak var commentTypeTextField: UITextField!
     
+    @IBAction func textField(_ sender: AnyObject) {
+        self.view.endEditing(true);
+    }
+    
     @IBOutlet weak var postBtn: UIButton!
     @IBAction func postBtnAction(_ sender: UIButton) {
         postFeedback()

@@ -11,7 +11,7 @@ import UIKit
 class selectMemberPopOverViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating {
 
     let nc = NotificationCenter.default
-    var names: [String] = ["Mumbai","New York","Tokyo","London","Beijing","Sydney","Wellington","Madrid","Rome","Cape Town","Ottawa"]
+    var names: [String] = ["Shubham Mishra", "Shidhdhesh Shah","Hitendra Shah", "Zeeshan Tripathi", "Hope Javier", "Ganesh Shinde", "Anupam Tripathi"]
     
     var filteredTableData = [String]()
     var resultSearchController = UISearchController()
@@ -78,10 +78,10 @@ class selectMemberPopOverViewController: UIViewController, UITableViewDelegate, 
         }
         if (resultSearchController.isActive) {
             cell.memberNameLabel?.text = filteredTableData[indexPath.row]
-            cell.memberPhoneNumberLabel.text = "1111"
+            cell.memberPhoneNumberLabel.text = "\(Int.random(in: 11...99999))"
         }else{
             cell.memberNameLabel?.text = names[indexPath.row]
-            cell.memberPhoneNumberLabel.text = "1111"
+            cell.memberPhoneNumberLabel.text = "\(Int.random(in: 11...99999))"
         }
         return cell
     }

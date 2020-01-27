@@ -11,7 +11,7 @@ import UIKit
 class selectSocietyPopOverViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating {
 
     let nc = NotificationCenter.default
-    var names: [String] = ["Mumbai","New York","Tokyo","London","Beijing","Sydney","Wellington","Madrid","Rome","Cape Town","Ottawa"]
+    var names: [String] = ["Gokul Anand Society","Mahima Apartment","Shree Mahalakshmi Apt","Mahavir Dham Society","Gokul Vihar Housing Society","ABD new heights","Housing Chs Ltd","Anand Vihar housing society","Yakub gurukul housing Ltd"]
     
     var filteredTableData = [String]()
     var resultSearchController = UISearchController()
@@ -78,10 +78,10 @@ class selectSocietyPopOverViewController: UIViewController, UITableViewDelegate,
         }
         if (resultSearchController.isActive) {
             cell.societyNameLabel?.text = filteredTableData[indexPath.row]
-            cell.societyRegistrationNumberLabel.text = "1111"
+            cell.societyRegistrationNumberLabel.text = "\(Int.random(in: 1111111...999999999))"
         }else{
             cell.societyNameLabel?.text = names[indexPath.row]
-            cell.societyRegistrationNumberLabel.text = "1111"
+            cell.societyRegistrationNumberLabel.text = "\(Int.random(in: 1111111...999999999))"
         }
         return cell
     }

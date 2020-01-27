@@ -35,6 +35,18 @@ class logInUserViewController: UIViewController {
     }
     
     func logINUserRequest(){
+        UserDefaults.standard.set(2, forKey: loggedInUserIdDefaultKeyName)
+        UserDefaults.standard.set(true, forKey: loggedInUserIsAdminDefaultKeyName)
+        //Set Default parameters and loggingin user
+        //redirect to home page
+        loggedInUserId = UserDefaults.standard.integer(forKey: loggedInUserIdDefaultKeyName)
+        isAdminLoggedIn = true
+        
+        
+        let appDelegate = UIApplication.shared.delegate! as! AppDelegate
+        let initialViewController = self.storyboard!.instantiateViewController(withIdentifier: "tabBarControllerViewController")
+        appDelegate.window?.rootViewController = initialViewController
+        appDelegate.window?.makeKeyAndVisible()
         self.showAlert("Successfully!!!")
     }
     

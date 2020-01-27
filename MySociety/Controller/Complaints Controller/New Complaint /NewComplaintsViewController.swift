@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewComplaintsViewController: UIViewController {
+class NewComplaintsViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var registerNewComplaintTitleLabel: UILabel!
     
@@ -16,7 +16,26 @@ class NewComplaintsViewController: UIViewController {
     
     @IBOutlet weak var newComplaintUploadImageBtn: UIButton!
     @IBAction func newComplaintUploadImageAction(_ sender: UIButton) {
+        let myPickerController = UIImagePickerController()
+        myPickerController.delegate = self;
+        myPickerController.sourceType = UIImagePickerController.SourceType.photoLibrary
         
+        self.present(myPickerController, animated: true, completion: nil)
+    }
+    var tempSelectedImage: UIImage?
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+
+        // The info dictionary may contain multiple representations of the image. You want to use the original.
+        guard let selectedImage = info[.originalImage] as? UIImage else {
+            fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
+        }
+
+        // Set photoImageView to display the selected image.
+        self.tempSelectedImage = selectedImage
+        self.newComplaintUploadImageBtn.setTitle("\(selectedImage.accessibilityIdentifier ?? "😄 Selected")", for: .normal)
+
+        // Dismiss the picker.
+        dismiss(animated: true, completion: nil)
     }
     
     @IBOutlet weak var newComplaintSaveBtn: UIButton!

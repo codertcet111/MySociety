@@ -7,3 +7,9 @@
 //
 
 import Foundation
+
+class payMaintenanceSelectMemberSharedFile{
+    static let shared = payMaintenanceSelectMemberSharedFile()
+    var memberSelectedName: String = "Select Member"
+    var memberSelectedId: Int = 0
+}

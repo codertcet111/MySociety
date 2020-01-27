@@ -11,7 +11,9 @@ import UIKit
 class PayManintenanceMAountViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     var tempSelectedImage: UIImage?
-    
+    let nc = NotificationCenter.default
+    var selectedMemberId: Int = 0
+    var selectedMemberName: String = ""
     @IBOutlet weak var flatNumberTextField: UITextField!
     @IBOutlet weak var wingTextField: UITextField!
     
@@ -66,6 +68,11 @@ class PayManintenanceMAountViewController: UIViewController, UIImagePickerContro
         uploadImageBtn.layer.cornerRadius = 10
         saveBtn.layer.cornerRadius = 10
         // Do any additional setup after loading the view.
+        nc.addObserver(self, selector: #selector(updateSelectedMemberLabels), name: Notification.Name.selectUserMemberForMaintenancePopOverDismissNC, object: nil)
+    }
+    
+    @objc func updateSelectedMemberLabels(){
+        self.seleectMemberButton.setTitle("\(payMaintenanceSelectMemberSharedFile.shared.memberSelectedName)", for: .normal)
     }
    
     func myImageUploadRequest()

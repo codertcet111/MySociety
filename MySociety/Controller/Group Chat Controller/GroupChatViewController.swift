@@ -30,6 +30,9 @@ class GroupChatViewController: UIViewController, UITableViewDataSource, UITableV
         getChatData(true)
     }
     
+    @IBAction func textField(_ sender: AnyObject) {
+        self.view.endEditing(true);
+    }
     
     func postChat(){
         self.showSpinner(onView: self.view)

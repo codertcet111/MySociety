@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddEventViewController: UIViewController {
+class AddEventViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     
     @IBOutlet weak var topConstraints: NSLayoutConstraint!
@@ -19,7 +19,26 @@ class AddEventViewController: UIViewController {
     @IBOutlet weak var newEventSelectImageBtn: UIButton!
     @IBOutlet weak var saveEventBtn: UIButton!
     @IBAction func SelectImageAction(_ sender: UIButton) {
+        let myPickerController = UIImagePickerController()
+        myPickerController.delegate = self;
+        myPickerController.sourceType = UIImagePickerController.SourceType.photoLibrary
         
+        self.present(myPickerController, animated: true, completion: nil)
+    }
+    var tempSelectedImage: UIImage?
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+
+        // The info dictionary may contain multiple representations of the image. You want to use the original.
+        guard let selectedImage = info[.originalImage] as? UIImage else {
+            fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
+        }
+
+        // Set photoImageView to display the selected image.
+        self.tempSelectedImage = selectedImage
+        self.newEventSelectImageBtn.setTitle("\(selectedImage.accessibilityIdentifier ?? "😄 Selected")", for: .normal)
+
+        // Dismiss the picker.
+        dismiss(animated: true, completion: nil)
     }
     @IBAction func SaveEventAction(_ sender: UIButton) {
         self.createEvent()

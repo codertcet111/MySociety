@@ -8,23 +8,90 @@
 
 import UIKit
 
-class payMaintenaceSelectMemberPopOverViewController: UIViewController {
+class payMaintenaceSelectMemberPopOverViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    let nc = NotificationCenter.default
+    var names: [String] = ["Shubham Mishra", "Shidhdhesh Shah","Hitendra Shah", "Zeeshan Tripathi", "Hope Javier", "Ganesh Shinde", "Anupam Tripathi"]
+    
+    var filteredTableData = [String]()
+    var resultSearchController = UISearchController()
+    
+    @IBOutlet weak var popOverBackgroundView: UIView!
+    @IBOutlet weak var memberListTableView: UITableView!
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBAction func cancelButtonAction(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        cancelButton.layer.cornerRadius = 10
+        popOverBackgroundView.layer.cornerRadius = 10
+        popOverBackgroundView.layer.masksToBounds = true
+        // Do any additional setup after loading the view.
+        
+        resultSearchController = ({
+            let controller = UISearchController(searchResultsController: nil)
+            controller.searchResultsUpdater = self
+            controller.dimsBackgroundDuringPresentation = false
+            controller.searchBar.sizeToFit()
+            controller.searchBar.backgroundColor = UIColor.clear
+            memberListTableView.tableHeaderView = controller.searchBar
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+            return controller
+        })()
+        memberListTableView.reloadWithAnimation()
+        self.resultSearchController.hidesNavigationBarDuringPresentation = false
     }
-    */
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if  (resultSearchController.isActive) {
+            return filteredTableData.count
+        } else {
+            return names.count
+        }
+    }
+    
+    // Select item from tableView
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (resultSearchController.isActive) {
+            payMaintenanceSelectMemberSharedFile.shared.memberSelectedName = filteredTableData[indexPath.row]
+            payMaintenanceSelectMemberSharedFile.shared.memberSelectedId = indexPath.row
+            nc.post(name: Notification.Name.selectUserMemberForMaintenancePopOverDismissNC, object: nil)
+            dismiss(animated: true, completion: nil)
+            dismiss(animated: true, completion: nil)
+        }else{
+            payMaintenanceSelectMemberSharedFile.shared.memberSelectedName = names[indexPath.row]
+            payMaintenanceSelectMemberSharedFile.shared.memberSelectedId = indexPath.row
+            nc.post(name: Notification.Name.selectUserMemberForMaintenancePopOverDismissNC, object: nil)
+            dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    //Assign values for tableView
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "selectMemberTableViewCell", for: indexPath) as! selectMemberTableViewCell
+        cell.alpha = 0
+        UIView.animate(withDuration: 1) {
+            cell.alpha = 1.0
+        }
+        if (resultSearchController.isActive) {
+            cell.memberNameLabel?.text = filteredTableData[indexPath.row]
+            cell.memberPhoneNumberLabel.text = "\(Int.random(in: 11...99999))"
+        }else{
+            cell.memberNameLabel?.text = names[indexPath.row]
+            cell.memberPhoneNumberLabel.text = "\(Int.random(in: 11...99999))"
+        }
+        return cell
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        filteredTableData.removeAll(keepingCapacity: false)
+        let searchPredicate = NSPredicate(format: "SELF CONTAINS[c] %@", searchController.searchBar.text!)
+        let array = (names as NSArray).filtered(using: searchPredicate)
+        filteredTableData = array as! [String]
+        self.memberListTableView.reloadWithAnimation()
+    }
 
 }

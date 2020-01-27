@@ -28,7 +28,7 @@ class postVideoViewController: UIViewController, UIImagePickerControllerDelegate
     }
     
     @IBAction func uploadBtnAction(_ sender: UIButton) {
-        
+        showToast(message: "Will take few minutes", fontSize: 11.0)
     }
     
     @IBOutlet weak var uploadBtn: UIButton!

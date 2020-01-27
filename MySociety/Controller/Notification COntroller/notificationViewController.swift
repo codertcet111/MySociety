@@ -12,7 +12,7 @@ class notificationViewController: UIViewController, UITableViewDelegate, UITable
     
     
     @IBOutlet weak var notificationTableView: UITableView!
-    
+    var notificationTempData: [String] = ["A new video uploaded for navaratri event by Shubham", "New Event notice has uploaded", "New gymnasuium will be install", "New Election will be coming in the next month", "A new video for the recent meeting uploaded", "New Event notice has uploaded"]
     override func viewDidLoad() {
         super.viewDidLoad()
         self.notificationTableView.estimatedRowHeight = 71
@@ -28,6 +28,7 @@ class notificationViewController: UIViewController, UITableViewDelegate, UITable
         let cell = tableView.dequeueReusableCell(withIdentifier: "notificationTableViewCell") as! notificationTableViewCell
         cell.alpha = 0
         cell.CellbackgroundView.layer.cornerRadius = 10
+//        cell.textLabel?.text = notificationTempData[indexPath.row]
         cell.selectionStyle = .none
         UIView.animate(withDuration: 1) {
             cell.alpha = 1.0
