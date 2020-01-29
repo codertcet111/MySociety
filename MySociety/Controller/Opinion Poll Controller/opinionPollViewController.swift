@@ -80,90 +80,148 @@ class opinionPollViewController: UIViewController, UITableViewDelegate, UITableV
            self.present(alert, animated: true, completion: nil)
        }
     
-    @objc func buttonAction(sender:UIButton)
+    @objc func AvoteButtonAction(sender:UIButton)
     {
-        self.isVoted = true
+        //Send Post request for voted Id
+        //Then Rehit the Get Api for opinion Poll
+        //Refresh the Table view
+        print("A \(sender.tag)")
+        self.opinionPollTableView.reloadData()
+    }
+    @objc func BvoteButtonAction(sender:UIButton)
+    {
+        //Send Post request for voted Id
+        //Then Rehit the Get Api for opinion Poll
+        //Refresh the Table view
+        print("B \(sender.tag)")
+        self.opinionPollTableView.reloadData()
+    }
+    @objc func CvoteButtonAction(sender:UIButton)
+    {
+        //Send Post request for voted Id
+        //Then Rehit the Get Api for opinion Poll
+        //Refresh the Table view
+        print("C \(sender.tag)")
+        self.opinionPollTableView.reloadData()
+    }
+    @objc func DvoteButtonAction(sender:UIButton)
+    {
+        //Send Post request for voted Id
+        //Then Rehit the Get Api for opinion Poll
+        //Refresh the Table view
+        print("D \(sender.tag)")
         self.opinionPollTableView.reloadData()
     }
     
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return self.opinionPollModelObject?.opinionPoll.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var switchItem = indexPath.row
-        if indexPath.row == 0 && isVoted{
-            switchItem = 1
+        if let tempOpenionData = self.opinionPollModelObject?.opinionPoll[indexPath.row]{
+            let votedUsersID = tempOpenionData.votedUserIds.components(separatedBy: ",")
+            var switchCaseId = 0
+            if tempOpenionData.cellType == "0"{
+                switchCaseId = votedUsersID.contains("\(loggedInUserId)") ? 1 : 0
+            }else{
+                switchCaseId = 2
+            }
+            switch(switchCaseId){
+            case 0:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "opinionPollLiveVoteItTableViewCell") as! opinionPollLiveVoteItTableViewCell
+                cell.alpha = 0
+                cell.liveVoteBackgroundView.layer.cornerRadius = 10.0
+                cell.subjectLabel.text = tempOpenionData.subject
+                let getAnswersArray = (tempOpenionData.options).components(separatedBy: ",")
+                cell.answerALabel.text = getAnswersArray.indices.contains(0) ? getAnswersArray[0] : ""
+                cell.answerBLabel.text = getAnswersArray.indices.contains(1) ? getAnswersArray[1] : ""
+                cell.answerCLAbel.text = getAnswersArray.indices.contains(2) ? getAnswersArray[2] : ""
+                cell.answerDLabel.text = getAnswersArray.indices.contains(3) ? getAnswersArray[3] : ""
+                cell.answerAVoteBtn.addTarget(self, action: #selector(AvoteButtonAction(sender:)), for: .touchUpInside)
+                cell.answerBVoteBtn.addTarget(self, action: #selector(BvoteButtonAction(sender:)), for: .touchUpInside)
+                cell.answerCVoteBtn.addTarget(self, action: #selector(CvoteButtonAction(sender:)), for: .touchUpInside)
+                cell.answerDVoteBtn.addTarget(self, action: #selector(DvoteButtonAction(sender:)), for: .touchUpInside)
+                cell.answerAVoteBtn.tag = indexPath.row
+                cell.answerBVoteBtn.tag = indexPath.row
+                cell.answerCVoteBtn.tag = indexPath.row
+                cell.answerDVoteBtn.tag = indexPath.row
+                //Give the tags
+                cell.answerAVoteBtn.tag = indexPath.row
+                
+                cell.endDateLabel.text = "End Time: \(tempOpenionData.endDateTime)"
+                cell.selectionStyle = .none
+                UIView.animate(withDuration: 1) {
+                    cell.alpha = 1.0
+                }
+                return cell
+            case 1:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "opinionPollLiveVotedTableViewCell") as! opinionPollLiveVotedTableViewCell
+                cell.alpha = 0
+                cell.votedBackgroundView.layer.cornerRadius = 10.0
+                cell.selectionStyle = .none
+                cell.subjectLabel.text = tempOpenionData.subject
+                let getAnswersArray = (tempOpenionData.options).components(separatedBy: ",")
+                cell.answerALabel.text = getAnswersArray.indices.contains(0) ? getAnswersArray[0] : ""
+                cell.answerBLabel.text = getAnswersArray.indices.contains(1) ? getAnswersArray[1] : ""
+                cell.answerCLabel.text = getAnswersArray.indices.contains(2) ? getAnswersArray[2] : ""
+                cell.answerDLabel.text = getAnswersArray.indices.contains(3) ? getAnswersArray[3] : ""
+                
+                let votedCountForOption = (tempOpenionData.voteCountList).components(separatedBy: ",")
+                cell.answerAProgressBar.progress = 0
+                cell.answerAProgressBar.progress = Float(votedCountForOption.indices.contains(0) ? votedCountForOption[0] : "") ?? 0
+                cell.answerAVotePercenatge.text = "\(Float(votedCountForOption.indices.contains(0) ? votedCountForOption[0] : "") ?? 0)"
+                cell.answerBProgressBar.progress = 0
+                cell.answerBProgressBar.progress = Float(votedCountForOption.indices.contains(1) ? votedCountForOption[1] : "") ?? 0
+                cell.answerBVotePercentage.text = "\(Float(votedCountForOption.indices.contains(1) ? votedCountForOption[1] : "") ?? 0)"
+                
+                cell.answerCProgressBar.progress = 0
+                cell.answerCProgressBar.progress = Float(votedCountForOption.indices.contains(2) ? votedCountForOption[2] : "") ?? 0
+                cell.answerCVotePercentage.text = "\(Float(votedCountForOption.indices.contains(2) ? votedCountForOption[2] : "") ?? 0)"
+                
+                cell.answerDProgressBar.progress = 0
+                cell.answerDProgressBar.progress = Float(votedCountForOption.indices.contains(3) ? votedCountForOption[3] : "") ?? 0
+                cell.answerDVotePercetage.text = "\(Float(votedCountForOption.indices.contains(3) ? votedCountForOption[3] : "") ?? 0)"
+                cell.endDateTimeLabel.text = tempOpenionData.endDateTime
+                UIView.animate(withDuration: 1) {
+                    cell.alpha = 1.0
+                }
+                return cell
+            case 2:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "opinionPollResultTableViewCell") as! opinionPollResultTableViewCell
+                cell.alpha = 0
+                cell.resultBackgoundView.layer.cornerRadius = 10.0
+                cell.selectionStyle = .none
+                cell.resultLabel.text = result
+                cell.subjectLabel.text = tempOpenionData.subject
+                let getAnswersArray = (tempOpenionData.options).components(separatedBy: ",")
+                cell.answerALAbel.text = getAnswersArray.indices.contains(0) ? getAnswersArray[0] : ""
+                cell.answerBLabel.text = getAnswersArray.indices.contains(1) ? getAnswersArray[1] : ""
+                cell.answerCLabel.text = getAnswersArray.indices.contains(2) ? getAnswersArray[2] : ""
+                cell.answreDLabel.text = getAnswersArray.indices.contains(3) ? getAnswersArray[3] : ""
+                
+                let votedCountForOption = (tempOpenionData.voteCountList).components(separatedBy: ",")
+                
+                cell.answerATotalVoteCount.text = "\(Float(votedCountForOption.indices.contains(0) ? votedCountForOption[0] : "") ?? 0)"
+                cell.answerBTotalVoteCOunt.text = "\(Float(votedCountForOption.indices.contains(1) ? votedCountForOption[1] : "") ?? 0)"
+                cell.answerCTotalVoteCount.text = "\(Float(votedCountForOption.indices.contains(2) ? votedCountForOption[2] : "") ?? 0)"
+                cell.answerDTotalVoteCount.text = "\(Float(votedCountForOption.indices.contains(3) ? votedCountForOption[3] : "") ?? 0)"
+                UIView.animate(withDuration: 1) {
+                    cell.alpha = 1.0
+                }
+                return cell
+            default:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "opinionPollLiveVoteItTableViewCell") as! opinionPollLiveVoteItTableViewCell
+                cell.alpha = 0
+                cell.liveVoteBackgroundView.layer.cornerRadius = 10.0
+                cell.selectionStyle = .none
+                UIView.animate(withDuration: 1) {
+                    cell.alpha = 1.0
+                }
+                return cell
+            }
         }
-        switch(switchItem){
-        case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "opinionPollLiveVoteItTableViewCell") as! opinionPollLiveVoteItTableViewCell
-            cell.alpha = 0
-            cell.liveVoteBackgroundView.layer.cornerRadius = 10.0
-            cell.subjectLabel.text = firstopinionPollFirstCellData[0]
-            cell.answerALabel.text = firstopinionPollFirstCellData[1]
-            cell.answerBLabel.text = firstopinionPollFirstCellData[2]
-            cell.answerCLAbel.text = firstopinionPollFirstCellData[3]
-            cell.answerDLabel.text = firstopinionPollFirstCellData[4]
-            cell.answerAVoteBtn.addTarget(self, action: #selector(buttonAction(sender:)), for: .touchUpInside)
-            cell.answerBVoteBtn.addTarget(self, action: #selector(buttonAction(sender:)), for: .touchUpInside)
-            cell.answerCVoteBtn.addTarget(self, action: #selector(buttonAction(sender:)), for: .touchUpInside)
-            cell.answerDVoteBtn.addTarget(self, action: #selector(buttonAction(sender:)), for: .touchUpInside)
-            cell.endDateLabel.text = self.endDateTime
-            cell.selectionStyle = .none
-            UIView.animate(withDuration: 1) {
-                cell.alpha = 1.0
-            }
-            return cell
-        case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "opinionPollLiveVotedTableViewCell") as! opinionPollLiveVotedTableViewCell
-            cell.alpha = 0
-            cell.votedBackgroundView.layer.cornerRadius = 10.0
-            cell.selectionStyle = .none
-            cell.subjectLabel.text = SecondopinionPollFirstCellData[0]
-            cell.answerALabel.text = SecondopinionPollFirstCellData[1]
-            cell.answerBLabel.text = SecondopinionPollFirstCellData[2]
-            cell.answerCLabel.text = SecondopinionPollFirstCellData[3]
-            cell.answerDLabel.text = SecondopinionPollFirstCellData[4]
-            cell.answerAProgressBar.progress = 0
-            cell.answerAProgressBar.progress = Float(secondCellVotedCellData[0])
-            cell.answerAVotePercenatge.text = "\(secondCellVotedCellData[0])"
-            cell.answerBProgressBar.progress = 0
-            cell.answerBProgressBar.progress = Float(secondCellVotedCellData[1])
-            cell.answerBVotePercentage.text = "\(secondCellVotedCellData[1])"
-            
-            cell.answerCProgressBar.progress = 0
-            cell.answerCProgressBar.progress = Float(secondCellVotedCellData[2])
-            cell.answerCVotePercentage.text = "\(secondCellVotedCellData[2])"
-            
-            cell.answerDProgressBar.progress = 0
-            cell.answerDProgressBar.progress = Float(secondCellVotedCellData[3])
-            cell.answerDVotePercetage.text = "\(secondCellVotedCellData[3])"
-            cell.endDateTimeLabel.text = self.endDateTime
-            UIView.animate(withDuration: 1) {
-                cell.alpha = 1.0
-            }
-            return cell
-        case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "opinionPollResultTableViewCell") as! opinionPollResultTableViewCell
-            cell.alpha = 0
-            cell.resultBackgoundView.layer.cornerRadius = 10.0
-            cell.selectionStyle = .none
-            cell.resultLabel.text = result
-            cell.subjectLabel.text = lastopinionPollFirstCellData[0]
-            cell.answerALAbel.text = lastopinionPollFirstCellData[1]
-            cell.answerBLabel.text = lastopinionPollFirstCellData[2]
-            cell.answerCLabel.text = lastopinionPollFirstCellData[3]
-            cell.answreDLabel.text = lastopinionPollFirstCellData[4]
-            cell.answerATotalVoteCount.text = "\(secondCellVotedCellData[0])"
-            cell.answerBTotalVoteCOunt.text = "\(secondCellVotedCellData[1])"
-            cell.answerCTotalVoteCount.text = "\(secondCellVotedCellData[2])"
-            cell.answerDTotalVoteCount.text = "\(secondCellVotedCellData[3])"
-            UIView.animate(withDuration: 1) {
-                cell.alpha = 1.0
-            }
-            return cell
-        default:
+        else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "opinionPollLiveVoteItTableViewCell") as! opinionPollLiveVoteItTableViewCell
             cell.alpha = 0
             cell.liveVoteBackgroundView.layer.cornerRadius = 10.0
