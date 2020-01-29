@@ -17,7 +17,9 @@ class PayManintenanceMAountViewController: UIViewController, UIImagePickerContro
     @IBOutlet weak var flatNumberTextField: UITextField!
     @IBOutlet weak var wingTextField: UITextField!
     
+    @IBOutlet weak var billAmountLabel: UILabel!
     @IBOutlet weak var seleectMemberButton: UIButton!
+    @IBOutlet weak var billAmountTextField: UITextField!
     
     @IBOutlet weak var balancedAmountLABL: UILabel!
     @IBOutlet weak var balancedAmountTextLabel: UILabel!
