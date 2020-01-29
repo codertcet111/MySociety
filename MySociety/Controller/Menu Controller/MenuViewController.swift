@@ -13,6 +13,7 @@ class MenuViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     var adminMenuOptions: [[String]] = [["Notice & Circular","Notice_Circulate"], ["Event","EventLogo"], ["Complaints", "complaint"], ["Maintenance", "maintenance"], ["Member Directory", "memberDirectory"], ["Opinion Poll", "poll"], ["Election", "ElectionIcon"], ["Group Chat","GroupChat"], ["FeedBack","feedback"], ["Manual Video","video-players"]]
     var userMenuOptions: [[String]] = []
+    var notificationTempData: [String] = ["A new video uploaded for navaratri event by Shubham", "New Event notice has uploaded", "New gymnasuium will be install", "New Election will be coming in the next month", "A new video for the recent meeting uploaded", "New Event notice has uploaded"]
     @IBOutlet weak var menuCollectionViewOutlet: UICollectionView!
     @IBOutlet weak var collectionTopConstraints: NSLayoutConstraint!
     
@@ -20,7 +21,7 @@ class MenuViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     @IBOutlet weak var readMoreBtn: UIButton!
     @IBAction func readMoreAction(_ sender: UIButton) {
-        
+        self.performSegue(withIdentifier: "notificationFromMenuSegue", sender: self)
     }
     
     @IBOutlet weak var collectionHeightConstraints: NSLayoutConstraint!
@@ -145,7 +146,7 @@ class MenuViewController: UIViewController, UICollectionViewDelegate, UICollecti
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationInMenuTableViewCell") as! NotificationInMenuTableViewCell
         cell.alpha = 0
-        
+        cell.notificationLabel.text = notificationTempData.randomElement()!
         cell.notificationMenuBackgroundView.layer.cornerRadius = 10.0
         cell.selectionStyle = .none
         UIView.animate(withDuration: 1) {
@@ -154,5 +155,8 @@ class MenuViewController: UIViewController, UICollectionViewDelegate, UICollecti
         return cell
     }
     
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        self.notificationMenuTableView.reloadData()
+    }
 
 }
