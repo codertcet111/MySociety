@@ -11,11 +11,11 @@ import UIKit
 class selectMemberPopOverViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating {
 
     let nc = NotificationCenter.default
-    var names: [String] = ["Shubham Mishra", "Shidhdhesh Shah","Hitendra Shah", "Zeeshan Tripathi", "Hope Javier", "Ganesh Shinde", "Anupam Tripathi"]
+    var userData: [[String]] = []
     
-    var filteredTableData = [String]()
+    var filteredTableData: [[String]] = []
     var resultSearchController = UISearchController()
-    
+    var userListModel: UsersList?
     @IBOutlet weak var popOverBackgroundView: UIView!
     @IBOutlet weak var memberListTableView: UITableView!
     @IBOutlet weak var cancelButton: UIButton!
@@ -42,27 +42,87 @@ class selectMemberPopOverViewController: UIViewController, UITableViewDelegate, 
         })()
         memberListTableView.reloadWithAnimation()
         self.resultSearchController.hidesNavigationBarDuringPresentation = false
+        self.getUserListData()
     }
+    
+    func getUserListData(){
+            showSpinner(onView: self.view)
+            let headerValues = globalHeaderValue
+            let request = getRequestUrlWithHeader(url: "users/2", method: "GET", header: headerValues , bodyParams: nil)
+            let session = URLSession.shared
+            let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+                self.removeSpinner()
+                if (error != nil) {
+                    print(error ?? "")
+                } else {
+                    let httpResponse = response as? HTTPURLResponse
+                    let strData = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+                    print("Body: \(String(describing: strData))")
+                    
+                    if(response != nil && data != nil){
+                        switch  httpResponse?.statusCode {
+                        case 200:
+                            self.userListModel = try? JSONDecoder().decode(UsersList.self,from: data!)
+                            if self.userListModel?.usersData.count ?? 0 > 0{
+                                for i in 0...(self.userListModel?.usersData.count ?? 0) - 1{
+                                    if let tempData = self.userListModel?.usersData[i]{
+                                        self.userData.append([tempData.fullName, tempData.mobile, "\(tempData.id)"])
+                                    }
+                                }
+                            }
+                                DispatchQueue.main.sync{
+                                    //Got the event data
+                                    self.memberListTableView.reloadData()
+                                    self.showToast(message: "Select the Member", fontSize: 11.0)
+    //                                self.getSocietyListData()
+                                }
+                        case 401:
+                            DispatchQueue.main.sync {
+                                self.showAlert("Unauthorized User")
+                            }
+                        default:
+                            DispatchQueue.main.sync {
+                                self.showAlert("something Went Wrong Message")
+                            }
+                        }
+                    }else{
+                        self.showAlert("No data!")
+                    }
+                }
+            })
+            dataTask.resume()
+        }
+        
+        
+        func showAlert(_ message: String) -> (){
+            let alert = UIAlertController(title: message, message: nil , preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: { _ in
+                self.getUserListData()
+            }))
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if  (resultSearchController.isActive) {
             return filteredTableData.count
         } else {
-            return names.count
+            return userData.count
         }
     }
     
     // Select item from tableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (resultSearchController.isActive) {
-            selectMemberSharedFile.shared.memberSelectedName = filteredTableData[indexPath.row]
-            selectMemberSharedFile.shared.memberSelectedId = indexPath.row
+            selectMemberSharedFile.shared.memberSelectedName = filteredTableData[indexPath.row][0]
+            selectMemberSharedFile.shared.memberSelectedId = Int(filteredTableData[indexPath.row][2]) ?? 0
             nc.post(name: Notification.Name.selectUserMemberPopOverDismissNC, object: nil)
             dismiss(animated: true, completion: nil)
             dismiss(animated: true, completion: nil)
         }else{
-            selectMemberSharedFile.shared.memberSelectedName = names[indexPath.row]
-            selectMemberSharedFile.shared.memberSelectedId = indexPath.row
+            selectMemberSharedFile.shared.memberSelectedName = userData[indexPath.row][0]
+            selectMemberSharedFile.shared.memberSelectedId = Int(userData[indexPath.row][2]) ?? 0
             nc.post(name: Notification.Name.selectUserMemberPopOverDismissNC, object: nil)
             dismiss(animated: true, completion: nil)
         }
@@ -77,20 +137,22 @@ class selectMemberPopOverViewController: UIViewController, UITableViewDelegate, 
             cell.alpha = 1.0
         }
         if (resultSearchController.isActive) {
-            cell.memberNameLabel?.text = filteredTableData[indexPath.row]
-            cell.memberPhoneNumberLabel.text = "\(Int.random(in: 11...99999))"
+            cell.memberNameLabel?.text = filteredTableData[indexPath.row][0]
+            cell.memberPhoneNumberLabel.text = "Mobile: \(filteredTableData[indexPath.row][1])"
         }else{
-            cell.memberNameLabel?.text = names[indexPath.row]
-            cell.memberPhoneNumberLabel.text = "\(Int.random(in: 11...99999))"
+            cell.memberNameLabel?.text = userData[indexPath.row][0]
+            cell.memberPhoneNumberLabel.text = "Mobile: \(userData[indexPath.row][1])"
         }
         return cell
     }
     
     func updateSearchResults(for searchController: UISearchController) {
         filteredTableData.removeAll(keepingCapacity: false)
-        let searchPredicate = NSPredicate(format: "SELF CONTAINS[c] %@", searchController.searchBar.text!)
-        let array = (names as NSArray).filtered(using: searchPredicate)
-        filteredTableData = array as! [String]
+        filteredTableData = userData.filter { (dataArray:[String]) -> Bool in
+            return dataArray.filter({ (string) -> Bool in
+                return string.lowercased().contains(searchController.searchBar.text!.lowercased())
+            }).count > 0
+        }
         self.memberListTableView.reloadWithAnimation()
     }
 

@@ -19,7 +19,7 @@ class opinionPollViewController: UIViewController, UITableViewDelegate, UITableV
     var endDateTime: String = "23/03/2020 08:30PM"
     var lastopinionPollFirstCellData = ["Vote for Event plan","Party all night","Meditation camp for one day","Helping NGO's on holidays", "No idea"]
     var result = "The People opted for Party"
-    
+    var opinionPollModelObject: OpenionPollList?
     @IBOutlet weak var createOpinionollBtn: UIButton!
     @IBAction func createOpinionPollAction(_ sender: UIButton) {
         self.performSegue(withIdentifier: "createOpinionPollFromListSegue", sender: self)
@@ -28,7 +28,57 @@ class opinionPollViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.getPollListData()
     }
+    
+    func getPollListData(){
+        showSpinner(onView: self.view)
+        let headerValues = globalHeaderValue
+        let request = getRequestUrlWithHeader(url: "openionpoll/\(loggedInUserId)", method: "GET", header: headerValues , bodyParams: nil)
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+            self.removeSpinner()
+            if (error != nil) {
+                print(error ?? "")
+            } else {
+                let httpResponse = response as? HTTPURLResponse
+                let strData = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+                print("Body: \(String(describing: strData))")
+                
+                if(response != nil && data != nil){
+                    switch  httpResponse?.statusCode {
+                    case 200:
+                        self.opinionPollModelObject = try? JSONDecoder().decode(OpenionPollList.self,from: data!)
+                            DispatchQueue.main.sync {
+                                self.opinionPollTableView.reloadData()
+                                self.removeSpinner()
+                            }
+                    case 401:
+                        DispatchQueue.main.sync{
+                            self.showAlert("Unauthorized User")
+                        }
+                    default:
+                        DispatchQueue.main.sync{
+                            self.showAlert("something Went Wrong Message")
+                        }
+                    }
+                }else{
+                    self.showAlert("No data!")
+                }
+            }
+        })
+        dataTask.resume()
+    }
+    
+    func showAlert(_ message: String) -> (){
+           let alert = UIAlertController(title: message, message: nil , preferredStyle: UIAlertController.Style.alert)
+           alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: { _ in
+            self.getPollListData()
+           }))
+           alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in
+           }))
+           self.present(alert, animated: true, completion: nil)
+       }
     
     @objc func buttonAction(sender:UIButton)
     {

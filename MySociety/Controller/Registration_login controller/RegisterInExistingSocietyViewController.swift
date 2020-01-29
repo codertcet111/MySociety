@@ -91,7 +91,84 @@ class RegisterInExistingSocietyViewController: UIViewController {
     }
     
     func saveRegisterAction(){
-        showAlert("Successfully!!")
+        self.showSpinner(onView: self.view)
+            let parameters = [
+                "society_id": "\(self.selectedSocietyId)",
+                "User_position": "\(self.rolesArray[self.selectedRoleIndex])",
+                "User_full_name": "\(self.nameTextField.text ?? "")",
+                "User_flat_no": "\(self.flatNoTextField.text ?? "")",
+                "User_wing": "\(self.wingTextField.text ?? "")",
+                "User_flat_total_area": "\(self.flatAreaTextField.text ?? "")",
+                "price_per_sq_ft": "\(self.priceSqFtTextField.text ?? "")",
+                "User_name": "\(self.userNameTextField.text ?? "")",
+                "Password": "\(self.passwordTextField.text ?? "")",
+                "Mobile_number": "\(self.mobileTextField.text ?? "")",
+                "Email_id": "\(self.emailTextField.text ?? "")",
+                "position_type": "\(self.selectedRoleIndex)"
+                ] as [String : Any]
+        let headerValues = ["x-api-key": "1c552e6f2a95a883209e9b449d6f4973", "Content-Type": "application/json"]
+            let request = getRequestUrlWithHeader(url: "user-register/1", method: "POST", header: headerValues, bodyParams: parameters)
+            let session = URLSession.shared
+            let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+                DispatchQueue.main.async {
+                    self.removeSpinner()
+                }
+                if (error != nil) {
+                    print(error ?? "")
+                } else {
+                    let httpResponse = response as? HTTPURLResponse
+                    let strData = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+                    print("Body: \(String(describing: strData))")
+                    let json: NSDictionary?
+                    do {
+                        if data != nil{
+                            json = try JSONSerialization.jsonObject(with: Data(data!), options: .allowFragments) as? NSDictionary
+                        }else{
+                            json = nil
+                        }
+                    } catch let dataError {
+                        // Did the JSONObjectWithData constructor return an error? If so, log the error to the console
+                        print("**********")
+                        print(dataError)
+                        let jsonStr = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+                        print("Error could not parse JSON: '\(String(describing: jsonStr))'")
+                        self.showToast(message : "Some Error has occured, try after!", fontSize: CGFloat(15))
+                        // return or throw?
+                        return
+                    }
+                    if(response != nil && data != nil){
+                        switch  httpResponse?.statusCode ?? 204 {
+                        case 200:
+                            DispatchQueue.main.sync {
+                                let userId = (json?.value(forKey: "user_id") as? Int ?? 0)
+                                let isAdmin = (json?.value(forKey: "is_admin") as? Bool ?? true)
+                                UserDefaults.standard.set(userId, forKey: loggedInUserIdDefaultKeyName)
+                                UserDefaults.standard.set(isAdmin, forKey: loggedInUserIsAdminDefaultKeyName)
+                                //Set Default parameters and loggingin user
+                                //redirect to home page
+                                loggedInUserId = UserDefaults.standard.integer(forKey: loggedInUserIdDefaultKeyName)
+                                isAdminLoggedIn = isAdmin
+                                
+                                
+                                let appDelegate = UIApplication.shared.delegate! as! AppDelegate
+                                let initialViewController = self.storyboard!.instantiateViewController(withIdentifier: "tabBarControllerViewController")
+                                appDelegate.window?.rootViewController = initialViewController
+                                appDelegate.window?.makeKeyAndVisible()
+                            }
+                        case 401:
+                            DispatchQueue.main.sync {
+                                self.showToast(message: "Unathorized", fontSize: 14.0)
+                            }
+                        default:
+                            DispatchQueue.main.sync {
+                                self.showToast(message: "Something went wrong", fontSize: 14.0)
+                            }
+                        }
+                    }
+                }
+            })
+            
+            dataTask.resume()
     }
     
     func showAlert(_ message: String) -> (){
@@ -125,6 +202,7 @@ class RegisterInExistingSocietyViewController: UIViewController {
     
     @objc func updateSelectedSocietyLabels(){
         self.selectSocietyBtn.setTitle("\(selectSocietySharedFile.shared.societySelectedName)", for: .normal)
+        self.selectedSocietyId = selectSocietySharedFile.shared.societySelectedId
     }
 
 }
