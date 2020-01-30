@@ -45,7 +45,7 @@ class PayManintenanceMAountViewController: UIViewController, UIImagePickerContro
     }
     @IBOutlet weak var saveBtn: UIButton!
     @IBAction func saveBtnAction(_ sender: UIButton) {
-        myImageUploadRequest()
+        self.postMaintenanceData()
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -73,13 +73,59 @@ class PayManintenanceMAountViewController: UIViewController, UIImagePickerContro
         nc.addObserver(self, selector: #selector(updateSelectedMemberLabels), name: Notification.Name.selectUserMemberForMaintenancePopOverDismissNC, object: nil)
     }
     
+    func postMaintenanceData(){
+        self.showSpinner(onView: self.view)
+        let parameters = [
+            "wing": self.wingTextField.text ?? "",
+            "flat_No": self.flatNumberTextField.text ?? "",
+            "monthAndYearOfBill": "\(self.selectMonthYearDatePicker.date)",
+            "amount_paying": self.amountPayingTextField.text ?? "",
+            "transaction_id": self.transtionIdTextField.text ?? "",
+            "transaction_image": "https://scx2.b-cdn.net/gfx/news/hires/2019/2-nature.jpg",
+            "selected_user_id": self.selectedMemberId,
+            "bill_amount": self.billAmountTextField.text ?? ""
+            ] as [String : Any]
+        let headerValues = ["x-api-key": "1c552e6f2a95a883209e9b449d6f4973", "Content-Type": "application/json"]
+        let request = getRequestUrlWithHeader(url: "addfeedback/\(loggedInUserId)", method: "POST", header: headerValues, bodyParams: parameters)
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+            DispatchQueue.main.async {
+                self.removeSpinner()
+            }
+            if (error != nil) {
+                print(error ?? "")
+            } else {
+                let httpResponse = response as? HTTPURLResponse
+                
+                switch(httpResponse?.statusCode ?? 201){
+                case 200, 201:
+                    DispatchQueue.main.async {
+                        self.showAlertForError("Feedback Posted Successfully!!")
+                    }
+                default:
+                    DispatchQueue.main.async {
+                        self.showAlertForError("Some Error has occured, try again!")
+                    }
+                }
+            }
+        })
+        dataTask.resume()
+    }
+    
+    func showAlertForError(_ message: String) -> (){
+        let alert = UIAlertController(title: message, message: nil , preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     @objc func updateSelectedMemberLabels(){
         self.seleectMemberButton.setTitle("\(payMaintenanceSelectMemberSharedFile.shared.memberSelectedName)", for: .normal)
+        self.selectedMemberId = payMaintenanceSelectMemberSharedFile.shared.memberSelectedId
     }
    
     func myImageUploadRequest()
         {
-          
             let myUrl = NSURL(string: "http://www.swiftdeveloperblog.com/http-post-example-script/");
             //let myUrl = NSURL(string: "http://www.boredwear.com/utils/postImage.php");
             
