@@ -130,8 +130,8 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
             let cell = tableView.dequeueReusableCell(withIdentifier: "upcomingElectionHomePageTableViewCell") as! upcomingElectionHomePageTableViewCell
             cell.alpha = 0
             let tempUpcomingElectionData = self.homePageModel?.feed.upcomingElectionHome[indexPath.row - (self.homePagevideoCount)]
-            cell.upcomingElectionTitle.text = tempUpcomingElectionData?.title ?? ""
-            cell.upcomingElectionDescriptionLabel.text = tempUpcomingElectionData?.description ?? ""
+            cell.upcomingElectionTitle.text = "Upcoming Election"
+            cell.upcomingElectionDescriptionLabel.text = tempUpcomingElectionData?.title ?? ""
             cell.upcomingElectionStartDateLAbel.text = "Start: \(tempUpcomingElectionData?.startDate ?? "")"
             cell.upcomingElectionEndDateLabel.text = "End: \(tempUpcomingElectionData?.endDate ?? "")"
             cell.Id = tempUpcomingElectionData?.destinationId ?? 0
@@ -167,8 +167,8 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
             let cell = tableView.dequeueReusableCell(withIdentifier: "electionResultsHomePageTableViewCell") as! electionResultsHomePageTableViewCell
             cell.alpha = 0
             let tempElectionData = self.homePageModel?.feed.electionResultHome[indexPath.row - (self.homePagevideoCount + self.homePageUpcomingElectionCount + self.homePageNoticeCount)]
-            cell.electionResultTitleLabel.text = tempElectionData?.title ?? ""
-            cell.electionResultDescriptionLabel.text = tempElectionData?.description ?? ""
+            cell.electionResultTitleLabel.text = "Election Result"
+            cell.electionResultDescriptionLabel.text = tempElectionData?.title ?? ""
             cell.electionResultResultLabel.text = tempElectionData?.result ?? ""
             cell.timeStampDateLabel.text = tempElectionData?.date ?? ""
             cell.Id = tempElectionData?.destinationId ?? 0
@@ -226,8 +226,8 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
             let cell = tableView.dequeueReusableCell(withIdentifier: "liveElectionHomePageTableViewCell") as! liveElectionHomePageTableViewCell
             cell.alpha = 0
             let tempLiveElectionData = self.homePageModel?.feed.liveElectionHome[indexPath.row - (self.homePagevideoCount + self.homePageUpcomingElectionCount + self.homePageNoticeCount + self.homePageElectionResultCount + self.homePageLivePollCount + self.homePagePollResultCount + self.homePageEventCount)]
-            cell.liveElectionTitleLabel.text = tempLiveElectionData?.title ?? ""
-            cell.liveElectionDescriptionLabel.text = tempLiveElectionData?.description ?? ""
+            cell.liveElectionTitleLabel.text = "Live Election"
+            cell.liveElectionDescriptionLabel.text = tempLiveElectionData?.title ?? ""
             cell.timeStampDateLabel.text = tempLiveElectionData?.date ?? ""
             cell.Id = tempLiveElectionData?.destinationId ?? 0
             cell.liveElectionBackgroundView.layer.cornerRadius = 10.0

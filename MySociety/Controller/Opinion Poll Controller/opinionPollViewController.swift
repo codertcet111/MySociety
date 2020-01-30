@@ -192,7 +192,7 @@ class opinionPollViewController: UIViewController, UITableViewDelegate, UITableV
                 cell.alpha = 0
                 cell.resultBackgoundView.layer.cornerRadius = 10.0
                 cell.selectionStyle = .none
-                cell.resultLabel.text = result
+                cell.resultLabel.text = tempOpenionData.result ?? ""
                 cell.subjectLabel.text = tempOpenionData.subject
                 let getAnswersArray = (tempOpenionData.options).components(separatedBy: ",")
                 cell.answerALAbel.text = getAnswersArray.indices.contains(0) ? getAnswersArray[0] : ""

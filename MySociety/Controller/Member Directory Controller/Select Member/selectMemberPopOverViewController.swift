@@ -63,9 +63,9 @@ class selectMemberPopOverViewController: UIViewController, UITableViewDelegate, 
                         switch  httpResponse?.statusCode {
                         case 200:
                             self.userListModel = try? JSONDecoder().decode(UsersList.self,from: data!)
-                            if self.userListModel?.usersData.count ?? 0 > 0{
-                                for i in 0...(self.userListModel?.usersData.count ?? 0) - 1{
-                                    if let tempData = self.userListModel?.usersData[i]{
+                            if self.userListModel?.tempusersData.count ?? 0 > 0{
+                                for i in 0...(self.userListModel?.tempusersData.count ?? 0) - 1{
+                                    if let tempData = self.userListModel?.tempusersData[i]{
                                         self.userData.append([tempData.fullName, tempData.mobile, "\(tempData.id)"])
                                     }
                                 }

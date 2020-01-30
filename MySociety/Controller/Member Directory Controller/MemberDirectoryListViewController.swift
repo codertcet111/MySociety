@@ -86,7 +86,7 @@ class MemberDirectoryListViewController: UIViewController, UITableViewDataSource
         if self.memberDirectoryUserModel?.memberDirectoryData.indices.contains(indexPath.row) ?? false{
             let tempMemberDirectory = self.memberDirectoryUserModel?.memberDirectoryData[indexPath.row]
             cell.memberDIrectoryCellPositionLabel.text = tempMemberDirectory?.position ?? ""
-            cell.memebrDirectoryMobileNumberlabel.text = "\(tempMemberDirectory?.contactnumber ?? 0)"
+            cell.memebrDirectoryMobileNumberlabel.text = "\(tempMemberDirectory?.contactnumber ?? "")"
             cell.memberDirectoryUserEmailIDLabel.text = tempMemberDirectory?.emailId ?? ""
             cell.memberDirectoryuserNameLabel.text = tempMemberDirectory?.name ?? ""
             cell.memberDirectoryPhoneBtn.addTarget(self, action: #selector(onCallClicked(sender:)), for: .touchUpInside)
@@ -105,7 +105,7 @@ class MemberDirectoryListViewController: UIViewController, UITableViewDataSource
     
     @objc func onCallClicked(sender: UIButton){
         let tag = sender.tag
-        let contactNumber = "\(self.memberDirectoryUserModel?.memberDirectoryData[tag].contactnumber ?? 0)"
+        let contactNumber = "\(self.memberDirectoryUserModel?.memberDirectoryData[tag].contactnumber ?? "")"
         guard let number = URL(string: "tel://" + "\(contactNumber)") else { return }
         UIApplication.shared.open(number)
     }
@@ -122,7 +122,7 @@ class MemberDirectoryListViewController: UIViewController, UITableViewDataSource
     }
     
     @objc func whatsappButtonAction(sender: UIButton) {
-        let urlWhats = "whatsapp://send?phone=+91\(self.memberDirectoryUserModel?.memberDirectoryData[sender.tag].contactnumber ?? 0)"
+        let urlWhats = "whatsapp://send?phone=+91\(self.memberDirectoryUserModel?.memberDirectoryData[sender.tag].contactnumber ?? "")"
         if let urlString = urlWhats.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed){
             if let whatsappURL = URL(string: urlString) {
                 if UIApplication.shared.canOpenURL(whatsappURL){
