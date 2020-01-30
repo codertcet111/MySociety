@@ -21,7 +21,7 @@ let loggedInUserIsAdminDefaultKeyName = "loggedInuserIsAdmin"
 //UserDefaults.standard.set(true, forKey: loggedInUserIsAdminDefaultKeyName)
 
 //let baseUrl = "https://cortexsolutions.co.in/mysociety/api/"
-let baseUrl = "https://7efc6be4.ngrok.io/society/api/"
+let baseUrl = "https://3d14f663.ngrok.io/society/api/"
 var globalHeaderValue = ["x-api-key": "1c552e6f2a95a883209e9b449d6f4973"]
 //Update loggedInUserId everytime
 var loggedInUserId = 1//UserDefaults.standard.integer(forKey: loggedInUserIdDefaultKeyName)
