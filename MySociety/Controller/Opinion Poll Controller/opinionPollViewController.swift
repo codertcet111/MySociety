@@ -28,11 +28,13 @@ class opinionPollViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        self.getPollListData()
+        self.getPollListData(true)
     }
     
-    func getPollListData(){
-        showSpinner(onView: self.view)
+    func getPollListData(_ showSpinnerAnimation: Bool){
+        if showSpinnerAnimation{
+            showSpinner(onView: self.view)
+        }
         let headerValues = globalHeaderValue
         let request = getRequestUrlWithHeader(url: "openionpoll/\(loggedInUserId)", method: "GET", header: headerValues , bodyParams: nil)
         let session = URLSession.shared
@@ -73,7 +75,7 @@ class opinionPollViewController: UIViewController, UITableViewDelegate, UITableV
     func showAlert(_ message: String) -> (){
            let alert = UIAlertController(title: message, message: nil , preferredStyle: UIAlertController.Style.alert)
            alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: { _ in
-            self.getPollListData()
+            self.getPollListData(true)
            }))
            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in
            }))
@@ -83,34 +85,81 @@ class opinionPollViewController: UIViewController, UITableViewDelegate, UITableV
     @objc func AvoteButtonAction(sender:UIButton)
     {
         //Send Post request for voted Id
+        voteForPoll(self.opinionPollModelObject?.opinionPoll[sender.tag].openionpollId ?? 0,0)
         //Then Rehit the Get Api for opinion Poll
         //Refresh the Table view
         print("A \(sender.tag)")
-        self.opinionPollTableView.reloadData()
+//        self.opinionPollTableView.reloadData()
     }
     @objc func BvoteButtonAction(sender:UIButton)
     {
         //Send Post request for voted Id
+        voteForPoll(self.opinionPollModelObject?.opinionPoll[sender.tag].openionpollId ?? 0,1)
         //Then Rehit the Get Api for opinion Poll
         //Refresh the Table view
         print("B \(sender.tag)")
-        self.opinionPollTableView.reloadData()
+//        self.opinionPollTableView.reloadData()
     }
     @objc func CvoteButtonAction(sender:UIButton)
     {
         //Send Post request for voted Id
+        voteForPoll(self.opinionPollModelObject?.opinionPoll[sender.tag].openionpollId ?? 0,2)
         //Then Rehit the Get Api for opinion Poll
         //Refresh the Table view
         print("C \(sender.tag)")
-        self.opinionPollTableView.reloadData()
+//        self.opinionPollTableView.reloadData()
     }
     @objc func DvoteButtonAction(sender:UIButton)
     {
         //Send Post request for voted Id
+        voteForPoll(self.opinionPollModelObject?.opinionPoll[sender.tag].openionpollId ?? 0,3)
         //Then Rehit the Get Api for opinion Poll
         //Refresh the Table view
         print("D \(sender.tag)")
-        self.opinionPollTableView.reloadData()
+//        self.opinionPollTableView.reloadData()
+    }
+    
+    func voteForPoll(_ pollId: Int,_ optionIndex: Int){
+        self.showSpinner(onView: self.view)
+        let parameters = [
+            "poll_id": pollId,
+            "option": optionIndex,
+            "user_id": "\(loggedInUserId)"
+            ] as [String : Any]
+        let headerValues = ["x-api-key": "1c552e6f2a95a883209e9b449d6f4973", "Content-Type": "application/json"]
+        let request = getRequestUrlWithHeader(url: "openionpollvote", method: "POST", header: headerValues, bodyParams: parameters)
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+            DispatchQueue.main.async {
+                self.removeSpinner()
+            }
+            if (error != nil) {
+                print(error ?? "")
+            } else {
+                let httpResponse = response as? HTTPURLResponse
+                
+                switch(httpResponse?.statusCode ?? 201){
+                case 200, 201:
+                    DispatchQueue.main.async {
+                        self.showAlertForError("Voted Successfully!!")
+                        self.getPollListData(false)
+                    }
+                default:
+                    DispatchQueue.main.async {
+                        self.showAlertForError("Some Error has occured, try again!")
+                    }
+                }
+            }
+        })
+        
+        dataTask.resume()
+    }
+    
+    func showAlertForError(_ message: String) -> (){
+        let alert = UIAlertController(title: message, message: nil , preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
     
     
@@ -120,10 +169,19 @@ class opinionPollViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let tempOpenionData = self.opinionPollModelObject?.opinionPoll[indexPath.row]{
-            let votedUsersID = tempOpenionData.votedUserIds.components(separatedBy: ",")
+            let votedUsersID = tempOpenionData.votedUserIds.replacingOccurrences(of: "[", with: "").replacingOccurrences(of: "]", with: "").components(separatedBy: ",")
+            var votedUserIdInt: [Int] = []
             var switchCaseId = 0
+            for value in votedUsersID{
+                let stringArray = value.components(separatedBy: CharacterSet.decimalDigits.inverted)
+                for item in stringArray {
+                    if let number = Int(item) {
+                        votedUserIdInt.append(number)
+                    }
+                }
+            }
             if tempOpenionData.cellType == "0"{
-                switchCaseId = votedUsersID.contains("\(loggedInUserId)") ? 1 : 0
+                switchCaseId = votedUserIdInt.contains(loggedInUserId) ? 1 : 0
             }else{
                 switchCaseId = 2
             }
@@ -132,7 +190,7 @@ class opinionPollViewController: UIViewController, UITableViewDelegate, UITableV
                 let cell = tableView.dequeueReusableCell(withIdentifier: "opinionPollLiveVoteItTableViewCell") as! opinionPollLiveVoteItTableViewCell
                 cell.alpha = 0
                 cell.liveVoteBackgroundView.layer.cornerRadius = 10.0
-                cell.subjectLabel.text = tempOpenionData.subject
+                cell.subjectLabel.text = "Live: \(tempOpenionData.subject)"
                 let getAnswersArray = (tempOpenionData.options).components(separatedBy: ",")
                 cell.answerALabel.text = getAnswersArray.indices.contains(0) ? getAnswersArray[0] : ""
                 cell.answerBLabel.text = getAnswersArray.indices.contains(1) ? getAnswersArray[1] : ""
@@ -160,28 +218,39 @@ class opinionPollViewController: UIViewController, UITableViewDelegate, UITableV
                 cell.alpha = 0
                 cell.votedBackgroundView.layer.cornerRadius = 10.0
                 cell.selectionStyle = .none
-                cell.subjectLabel.text = tempOpenionData.subject
+                cell.subjectLabel.text = "Live Voted: \(tempOpenionData.subject)"
                 let getAnswersArray = (tempOpenionData.options).components(separatedBy: ",")
                 cell.answerALabel.text = getAnswersArray.indices.contains(0) ? getAnswersArray[0] : ""
                 cell.answerBLabel.text = getAnswersArray.indices.contains(1) ? getAnswersArray[1] : ""
                 cell.answerCLabel.text = getAnswersArray.indices.contains(2) ? getAnswersArray[2] : ""
                 cell.answerDLabel.text = getAnswersArray.indices.contains(3) ? getAnswersArray[3] : ""
                 
-                let votedCountForOption = (tempOpenionData.voteCountList).components(separatedBy: ",")
+                let votedCountForOptionString = (tempOpenionData.voteCountList).replacingOccurrences(of: "[", with: "").replacingOccurrences(of: "]", with: "").components(separatedBy: ",")
+                var votedCountForOption: [Int] = []
+                for value in votedCountForOptionString{
+                    let stringArray = value.components(separatedBy: CharacterSet.decimalDigits.inverted)
+                    for item in stringArray {
+                        if let number = Int(item) {
+                            votedCountForOption.append(number)
+                        }
+                    }
+                }
+                
+                
                 cell.answerAProgressBar.progress = 0
-                cell.answerAProgressBar.progress = Float(votedCountForOption.indices.contains(0) ? votedCountForOption[0] : "") ?? 0
-                cell.answerAVotePercenatge.text = "\(Float(votedCountForOption.indices.contains(0) ? votedCountForOption[0] : "") ?? 0)"
+                cell.answerAProgressBar.progress = Float(votedCountForOption.indices.contains(0) ? votedCountForOption[0] : 0)
+                cell.answerAVotePercenatge.text = "\(Int(votedCountForOption.indices.contains(0) ? votedCountForOption[0] : 0))"
                 cell.answerBProgressBar.progress = 0
-                cell.answerBProgressBar.progress = Float(votedCountForOption.indices.contains(1) ? votedCountForOption[1] : "") ?? 0
-                cell.answerBVotePercentage.text = "\(Float(votedCountForOption.indices.contains(1) ? votedCountForOption[1] : "") ?? 0)"
+                cell.answerBProgressBar.progress = Float(votedCountForOption.indices.contains(1) ? votedCountForOption[1] : 0)
+                cell.answerBVotePercentage.text = "\(Int(votedCountForOption.indices.contains(1) ? votedCountForOption[1] : 0) )"
                 
                 cell.answerCProgressBar.progress = 0
-                cell.answerCProgressBar.progress = Float(votedCountForOption.indices.contains(2) ? votedCountForOption[2] : "") ?? 0
-                cell.answerCVotePercentage.text = "\(Float(votedCountForOption.indices.contains(2) ? votedCountForOption[2] : "") ?? 0)"
+                cell.answerCProgressBar.progress = Float(votedCountForOption.indices.contains(2) ? votedCountForOption[2] : 0)
+                cell.answerCVotePercentage.text = "\(Int(votedCountForOption.indices.contains(2) ? votedCountForOption[2] : 0))"
                 
                 cell.answerDProgressBar.progress = 0
-                cell.answerDProgressBar.progress = Float(votedCountForOption.indices.contains(3) ? votedCountForOption[3] : "") ?? 0
-                cell.answerDVotePercetage.text = "\(Float(votedCountForOption.indices.contains(3) ? votedCountForOption[3] : "") ?? 0)"
+                cell.answerDProgressBar.progress = Float(votedCountForOption.indices.contains(3) ? votedCountForOption[3] : 0)
+                cell.answerDVotePercetage.text = "\(Int(votedCountForOption.indices.contains(3) ? votedCountForOption[3] : 0))"
                 cell.endDateTimeLabel.text = tempOpenionData.endDateTime
                 UIView.animate(withDuration: 1) {
                     cell.alpha = 1.0
@@ -192,8 +261,8 @@ class opinionPollViewController: UIViewController, UITableViewDelegate, UITableV
                 cell.alpha = 0
                 cell.resultBackgoundView.layer.cornerRadius = 10.0
                 cell.selectionStyle = .none
-                cell.resultLabel.text = tempOpenionData.result ?? ""
-                cell.subjectLabel.text = tempOpenionData.subject
+                cell.resultLabel.text = "Result: \(tempOpenionData.result ?? "")"
+                cell.subjectLabel.text = "Expire: \(tempOpenionData.subject)"
                 let getAnswersArray = (tempOpenionData.options).components(separatedBy: ",")
                 cell.answerALAbel.text = getAnswersArray.indices.contains(0) ? getAnswersArray[0] : ""
                 cell.answerBLabel.text = getAnswersArray.indices.contains(1) ? getAnswersArray[1] : ""
