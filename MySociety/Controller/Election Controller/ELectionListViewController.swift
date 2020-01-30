@@ -80,11 +80,10 @@ class ELectionListViewController: UIViewController, UITableViewDelegate, UITable
     {
         print("You have selected")
         var senderTag = sender.tag
-        let lasttwoDigits = Int("\(senderTag)".prefix(2)) ?? 0
 //        print("\(self.electionListModel?.electionData[lasttwoDigits].)")
         print("selected button position")
-        print("\(lasttwoDigits)")
-        senderTag -= lasttwoDigits
+        print("\(Int("\(senderTag)".suffix(2)) ?? 0)")
+        senderTag = senderTag - (Int("\(senderTag)".suffix(2)) ?? 0)
         var electionCellIndex = 0
         if senderTag == 0{
             electionCellIndex = 0
@@ -139,8 +138,8 @@ class ELectionListViewController: UIViewController, UITableViewDelegate, UITable
                         cell.alpha = 0
                         cell.upcomingElectionBackgroundView.layer.cornerRadius = 10
                         cell.selectionStyle = .none
-                        cell.upcomingElectionSubject.text = tempElectionData?.subject ?? ""
-                        cell.upcomingElectionComingDateTime.text = tempElectionData?.startDateTime ?? ""
+                        cell.upcomingElectionSubject.text = "Upcoming : \(tempElectionData?.subject ?? "")"
+                        cell.upcomingElectionComingDateTime.text = "Start Time: \(tempElectionData?.startDateTime ?? "")"
                         UIView.animate(withDuration: 1) {
                             cell.alpha = 1.0
                         }
@@ -151,8 +150,8 @@ class ELectionListViewController: UIViewController, UITableViewDelegate, UITable
                         cell.resultElectionBackgroundView.layer.cornerRadius = 10
                         cell.selectionStyle = .none
                         cell.resultElectionSubject.text = tempElectionData?.subject ?? ""
-                        cell.resultElectionResult.text = tempElectionData?.result ?? ""
-                        cell.resultELectionEndedOn.text = tempElectionData?.endDateTime ?? ""
+                        cell.resultElectionResult.text = "Result: \(tempElectionData?.result ?? "")"
+                        cell.resultELectionEndedOn.text = "Ended: \(tempElectionData?.endDateTime ?? "")"
                         UIView.animate(withDuration: 1) {
                             cell.alpha = 1.0
                         }
