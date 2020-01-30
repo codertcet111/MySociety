@@ -66,7 +66,7 @@ class payMaintenaceSelectMemberPopOverViewController: UIViewController, UITableV
                             if self.userListModel?.tempusersData.count ?? 0 > 0{
                                 for i in 0...(self.userListModel?.tempusersData.count ?? 0) - 1{
                                     if let tempData = self.userListModel?.tempusersData[i]{
-                                        self.userData.append([tempData.fullName, tempData.mobile, "\(tempData.id)"])
+                                        self.userData.append([tempData.fullName, tempData.mobile, "\(tempData.id)", "\(tempData.balancedAmount)"])
                                     }
                                 }
                             }
@@ -117,12 +117,14 @@ class payMaintenaceSelectMemberPopOverViewController: UIViewController, UITableV
         if (resultSearchController.isActive) {
             payMaintenanceSelectMemberSharedFile.shared.memberSelectedName = filteredTableData[indexPath.row][0]
             payMaintenanceSelectMemberSharedFile.shared.memberSelectedId = Int(filteredTableData[indexPath.row][2]) ?? 0
+            payMaintenanceSelectMemberSharedFile.shared.memberSelectedBalanceAmount = Float(filteredTableData[indexPath.row][3]) ?? 0
             nc.post(name: Notification.Name.selectUserMemberForMaintenancePopOverDismissNC, object: nil)
             dismiss(animated: true, completion: nil)
             dismiss(animated: true, completion: nil)
         }else{
             payMaintenanceSelectMemberSharedFile.shared.memberSelectedName = userData[indexPath.row][0]
             payMaintenanceSelectMemberSharedFile.shared.memberSelectedId = Int(userData[indexPath.row][2]) ?? 0
+            payMaintenanceSelectMemberSharedFile.shared.memberSelectedBalanceAmount = Float(userData[indexPath.row][3]) ?? 0
             nc.post(name: Notification.Name.selectUserMemberForMaintenancePopOverDismissNC, object: nil)
             dismiss(animated: true, completion: nil)
         }

@@ -86,7 +86,7 @@ class PayManintenanceMAountViewController: UIViewController, UIImagePickerContro
             "bill_amount": self.billAmountTextField.text ?? ""
             ] as [String : Any]
         let headerValues = ["x-api-key": "1c552e6f2a95a883209e9b449d6f4973", "Content-Type": "application/json"]
-        let request = getRequestUrlWithHeader(url: "addfeedback/\(loggedInUserId)", method: "POST", header: headerValues, bodyParams: parameters)
+        let request = getRequestUrlWithHeader(url: "addmaintenance/\(loggedInUserId)", method: "POST", header: headerValues, bodyParams: parameters)
         let session = URLSession.shared
         let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
             DispatchQueue.main.async {
@@ -100,7 +100,7 @@ class PayManintenanceMAountViewController: UIViewController, UIImagePickerContro
                 switch(httpResponse?.statusCode ?? 201){
                 case 200, 201:
                     DispatchQueue.main.async {
-                        self.showAlertForError("Feedback Posted Successfully!!")
+                        self.showAlertForError("Maintenance Paid Successfully!!")
                     }
                 default:
                     DispatchQueue.main.async {
@@ -122,6 +122,7 @@ class PayManintenanceMAountViewController: UIViewController, UIImagePickerContro
     @objc func updateSelectedMemberLabels(){
         self.seleectMemberButton.setTitle("\(payMaintenanceSelectMemberSharedFile.shared.memberSelectedName)", for: .normal)
         self.selectedMemberId = payMaintenanceSelectMemberSharedFile.shared.memberSelectedId
+        self.balancedAmountTextLabel.text = "\(payMaintenanceSelectMemberSharedFile.shared.memberSelectedBalanceAmount)"
     }
    
     func myImageUploadRequest()

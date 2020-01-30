@@ -12,4 +12,5 @@ class payMaintenanceSelectMemberSharedFile{
     static let shared = payMaintenanceSelectMemberSharedFile()
     var memberSelectedName: String = "Select Member"
     var memberSelectedId: Int = 0
+    var memberSelectedBalanceAmount: Float = 0
 }
