@@ -24,11 +24,13 @@ class ELectionListViewController: UIViewController, UITableViewDelegate, UITable
         self.electionListTableView.estimatedRowHeight = 325
         self.electionListTableView.rowHeight = UITableView.automaticDimension
         // Do any additional setup after loading the view.
-        getElectionListData()
+        getElectionListData(true)
     }
     
-    func getElectionListData(){
-        showSpinner(onView: self.view)
+    func getElectionListData(_ showSpinnerTemp: Bool){
+        if showSpinnerTemp{
+            showSpinner(onView: self.view)
+        }
         let headerValues = globalHeaderValue
         let request = getRequestUrlWithHeader(url: "election/\(loggedInUserId)", method: "GET", header: headerValues , bodyParams: nil)
         let session = URLSession.shared
@@ -69,12 +71,57 @@ class ELectionListViewController: UIViewController, UITableViewDelegate, UITable
     func showAlert(_ message: String) -> (){
            let alert = UIAlertController(title: message, message: nil , preferredStyle: UIAlertController.Style.alert)
            alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: { _ in
-            self.getElectionListData()
+            self.getElectionListData(true)
            }))
            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in
            }))
            self.present(alert, animated: true, completion: nil)
        }
+    
+    
+    func voteForElection(_ electionId: Int,_ optionIndex: Int){
+        self.showSpinner(onView: self.view)
+        let parameters = [
+            "election_id": electionId,
+            "option": optionIndex,
+            "user_id": "\(loggedInUserId)"
+            ] as [String : Any]
+        let headerValues = ["x-api-key": "1c552e6f2a95a883209e9b449d6f4973", "Content-Type": "application/json"]
+        let request = getRequestUrlWithHeader(url: "electionVote", method: "POST", header: headerValues, bodyParams: parameters)
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+            DispatchQueue.main.async {
+                self.removeSpinner()
+            }
+            if (error != nil) {
+                print(error ?? "")
+            } else {
+                let httpResponse = response as? HTTPURLResponse
+                
+                switch(httpResponse?.statusCode ?? 201){
+                case 200, 201:
+                    DispatchQueue.main.async {
+                        self.showAlertForError("Voted Successfully!!")
+                        self.getElectionListData(false)
+                    }
+                default:
+                    DispatchQueue.main.async {
+                        self.showAlertForError("Some Error has occured, try again!")
+                    }
+                }
+            }
+        })
+        
+        dataTask.resume()
+    }
+    
+    func showAlertForError(_ message: String) -> (){
+        let alert = UIAlertController(title: message, message: nil , preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     
     @objc func voteButtonAction(sender:UIButton)
     {
@@ -92,6 +139,7 @@ class ELectionListViewController: UIViewController, UITableViewDelegate, UITable
         }
         print("Selected cell position")
         print("\(electionCellIndex)")
+        self.voteForElection(electionCellIndex, Int("\(senderTag)".suffix(2)) ?? 0)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -128,7 +176,7 @@ class ELectionListViewController: UIViewController, UITableViewDelegate, UITable
                         
         //                cell.electionInsideTableView.reloadData()
                         cell.selectionStyle = .none
-                        cell.subjectLabel.text = tempElectionData?.subject ?? ""
+                        cell.subjectLabel.text = "Live: \(tempElectionData?.subject ?? "")"
                         UIView.animate(withDuration: 1) {
                             cell.alpha = 1.0
                         }
@@ -181,8 +229,48 @@ class ELectionListViewController: UIViewController, UITableViewDelegate, UITable
             cell.selectionStyle = .none
 //            print(tableView.tag)
 //            print(cell.electionOptionsLabel.text)
-            cell.electionOptionVoteBtn.tag = (1000 * tableView.tag + indexPath.row)
-            cell.electionOptionVoteBtn.addTarget(self, action: #selector(voteButtonAction(sender:)), for: .touchUpInside)
+            let votedUsersID = (self.electionListModel?.electionData[tableView.tag])?.isVoted.replacingOccurrences(of: "[", with: "").replacingOccurrences(of: "]", with: "").components(separatedBy: ",") ?? []
+            var votedUserIdInt: [Int] = []
+            for value in votedUsersID{
+                let stringArray = value.components(separatedBy: CharacterSet.decimalDigits.inverted)
+                for item in stringArray {
+                    if let number = Int(item) {
+                        votedUserIdInt.append(number)
+                    }
+                }
+            }
+            
+            if votedUserIdInt.contains(loggedInUserId){
+                if self.electionListModel?.electionData.indices.contains(tableView.tag) ?? false{
+                    if (self.electionListModel?.electionData[tableView.tag])?.voteCountList != nil{
+                        
+                        let votedCountForOptionString = ((self.electionListModel?.electionData[tableView.tag])?.voteCountList)?.replacingOccurrences(of: "[", with: "").replacingOccurrences(of: "]", with: "").components(separatedBy: ",") ?? []
+                        var votedCountForOption: [Int] = []
+                        for value in votedCountForOptionString{
+                            let stringArray = value.components(separatedBy: CharacterSet.decimalDigits.inverted)
+                            for item in stringArray {
+                                if let number = Int(item) {
+                                    votedCountForOption.append(number)
+                                }
+                            }
+                        }
+                        
+                        if votedCountForOption.indices.contains(indexPath.row){
+                            cell.electionOptionVoteBtn.setTitle("\(votedCountForOption[indexPath.row])", for: .normal)
+                        }else{
+                            cell.electionOptionVoteBtn.setTitle("0", for: .normal)
+                        }
+                        
+                    }else{
+                        cell.electionOptionVoteBtn.setTitle("0", for: .normal)
+                    }
+                }else{
+                    cell.electionOptionVoteBtn.setTitle("0", for: .normal)
+                }
+            }else{
+                cell.electionOptionVoteBtn.tag = (1000 * tableView.tag + indexPath.row)
+                cell.electionOptionVoteBtn.addTarget(self, action: #selector(voteButtonAction(sender:)), for: .touchUpInside)
+            }
             if self.electionListModel?.electionData.indices.contains(tableView.tag) ?? false{
                 if (self.electionListModel?.electionData[tableView.tag])?.optionsList != nil{
                     let optionsArray = (self.electionListModel?.electionData[tableView.tag])?.optionsList.components(separatedBy: ",")
