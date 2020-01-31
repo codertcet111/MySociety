@@ -83,11 +83,11 @@ class ELectionListViewController: UIViewController, UITableViewDelegate, UITable
         self.showSpinner(onView: self.view)
         let parameters = [
             "election_id": electionId,
-            "option": optionIndex,
+            "selected_option_index": optionIndex,
             "user_id": "\(loggedInUserId)"
             ] as [String : Any]
         let headerValues = ["x-api-key": "1c552e6f2a95a883209e9b449d6f4973", "Content-Type": "application/json"]
-        let request = getRequestUrlWithHeader(url: "electionVote", method: "POST", header: headerValues, bodyParams: parameters)
+        let request = getRequestUrlWithHeader(url: "electionvote", method: "POST", header: headerValues, bodyParams: parameters)
         let session = URLSession.shared
         let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
             DispatchQueue.main.async {

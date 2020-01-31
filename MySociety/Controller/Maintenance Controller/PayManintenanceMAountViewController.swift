@@ -78,7 +78,7 @@ class PayManintenanceMAountViewController: UIViewController, UIImagePickerContro
         let parameters = [
             "wing": self.wingTextField.text ?? "",
             "flat_No": self.flatNumberTextField.text ?? "",
-            "monthAndYearOfBill": "\(self.selectMonthYearDatePicker.date)",
+            "monthAndYearOfBill": "\(getDateInDateFormate(date: self.selectMonthYearDatePicker.date))",
             "amount_paying": self.amountPayingTextField.text ?? "",
             "transaction_id": self.transtionIdTextField.text ?? "",
             "transaction_image": "https://scx2.b-cdn.net/gfx/news/hires/2019/2-nature.jpg",
@@ -110,6 +110,12 @@ class PayManintenanceMAountViewController: UIViewController, UIImagePickerContro
             }
         })
         dataTask.resume()
+    }
+    
+    func getDateInDateFormate(date: Date) -> String{
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        return formatter.string(from: date)
     }
     
     func showAlertForError(_ message: String) -> (){
