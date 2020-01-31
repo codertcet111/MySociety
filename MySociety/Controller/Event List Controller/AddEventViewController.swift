@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class AddEventViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -51,40 +52,90 @@ class AddEventViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     func createEvent(){
-                self.showSpinner(onView: self.view)
-                let parameters = [
-                    "title": "\(self.newEventTitleTextField.text ?? "")",
-                    "date": "\(self.getDateInDateFormate(date: self.newEventDatePicker.date))",
-                    "description": "\(self.newEventDescriptionTextField.text ?? "")",
-                    "images": "https://images.app.goo.gl/yX1JXGNk7jkpZh6K9",
-                    "adminId": "\(loggedInUserId)"
-                    ] as [String : Any]
-            let headerValues = ["x-api-key": "1c552e6f2a95a883209e9b449d6f4973", "Content-Type": "application/json"]
-                let request = getRequestUrlWithHeader(url: "addevent/\(loggedInUserId)", method: "POST", header: headerValues, bodyParams: parameters)
-                let session = URLSession.shared
-                let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
-                    DispatchQueue.main.async {
-                        self.removeSpinner()
-                    }
-                    if (error != nil) {
-                        print(error ?? "")
-                    } else {
-                        let httpResponse = response as? HTTPURLResponse
-                        
-                        switch(httpResponse?.statusCode ?? 201){
-                        case 200, 201:
+        self.showSpinner(onView: self.view)
+        
+        let params: Parameters = [
+            "title": "\(self.newEventTitleTextField.text ?? "")",
+            "date": "\(self.getDateInDateFormate(date: self.newEventDatePicker.date))",
+            "description": "\(self.newEventDescriptionTextField.text ?? "")",
+            "images": "https://images.app.goo.gl/yX1JXGNk7jkpZh6K9",
+            "adminId": "\(loggedInUserId)"
+        ]
+        Alamofire.upload(multipartFormData:
+            {
+                (multipartFormData) in
+                multipartFormData.append((self.tempSelectedImage ?? UIImage(named: "building")!).jpegData(compressionQuality: 0.1)!, withName: "image", fileName: "file_\(Int.random(in: 0 ... 10000)).jpeg", mimeType: "image/jpeg")
+                for (key, value) in params
+                {
+                    multipartFormData.append((value as AnyObject).data(using: String.Encoding.utf8.rawValue)!, withName: key)
+                }
+        }, to:URL(string: "\(ngRokUrl)addevent/\(loggedInUserId)") ?? "",headers:["x-api-key": "1c552e6f2a95a883209e9b449d6f4973", "Content-Type": "application/json"])
+        { (result) in
+            switch result {
+            case .success(let upload,_,_ ):
+                upload.uploadProgress(closure: { (progress) in
+                    //Print progress
+                })
+                upload.responseJSON
+                    { response in
+                        DispatchQueue.main.async {
+                            self.removeSpinner()
+                        }
+                        //print response.result
+                        if response.result.value != nil
+                        {
+                            let value = response.result.value
                             DispatchQueue.main.async {
-                                self.showAlert("Event Created Successfully!!")
+                                self.showAlert("Event created Successfully!!")
                             }
-                        default:
+                        }else{
                             DispatchQueue.main.async {
-                                self.showAlert("Some Error has occured, try again!")
+                                self.showAlert("Some Error, Try again!")
                             }
                         }
-                    }
-                })
-                
-                dataTask.resume()
+                }
+            case .failure(let encodingError):
+                break
+            }
+        }
+        
+        
+        
+        
+        
+//                let parameters = [
+//                    "title": "\(self.newEventTitleTextField.text ?? "")",
+//                    "date": "\(self.getDateInDateFormate(date: self.newEventDatePicker.date))",
+//                    "description": "\(self.newEventDescriptionTextField.text ?? "")",
+//                    "images": "https://images.app.goo.gl/yX1JXGNk7jkpZh6K9",
+//                    "adminId": "\(loggedInUserId)"
+//                    ] as [String : Any]
+//            let headerValues = ["x-api-key": "1c552e6f2a95a883209e9b449d6f4973", "Content-Type": "application/json"]
+//                let request = getRequestUrlWithHeader(url: "addevent/\(loggedInUserId)", method: "POST", header: headerValues, bodyParams: parameters)
+//                let session = URLSession.shared
+//                let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+//                    DispatchQueue.main.async {
+//                        self.removeSpinner()
+//                    }
+//                    if (error != nil) {
+//                        print(error ?? "")
+//                    } else {
+//                        let httpResponse = response as? HTTPURLResponse
+//
+//                        switch(httpResponse?.statusCode ?? 201){
+//                        case 200, 201:
+//                            DispatchQueue.main.async {
+//                                self.showAlert("Event Created Successfully!!")
+//                            }
+//                        default:
+//                            DispatchQueue.main.async {
+//                                self.showAlert("Some Error has occured, try again!")
+//                            }
+//                        }
+//                    }
+//                })
+//
+//                dataTask.resume()
             }
         
         

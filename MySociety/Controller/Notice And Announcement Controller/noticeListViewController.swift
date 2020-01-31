@@ -93,7 +93,7 @@ class noticeListViewController: UIViewController, UITableViewDelegate, UITableVi
             cell.noticeCellDescriptionLabel.text = tempNotice?.description ?? ""
             
             
-            let imageURL = URL(string: "\(tempNotice?.imageUrl ?? "")")
+            let imageURL = URL(string: "\(self.noticeModel?.imageBaseUrl ?? "")\(tempNotice?.imageUrl ?? "")")
             //            myImageView.contentMode = UIView.ContentMode.scaleToFill
             cell.noticeCellImageView.sd_setImage(with: imageURL, placeholderImage: UIImage(named:"building"))
             

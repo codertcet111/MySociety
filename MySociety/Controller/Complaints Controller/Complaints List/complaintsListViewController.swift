@@ -30,7 +30,7 @@ class complaintsListViewController: UIViewController, UITableViewDelegate, UITab
     func getComplaintsData(){
         showSpinner(onView: self.view)
             let headerValues = globalHeaderValue
-            let request = getRequestUrlWithHeader(url: "complaints/\(loggedInUserId)", method: "GET", header: headerValues , bodyParams: nil)
+        let request = getRequestUrlWithHeader(url: "complaints/\(loggedInUserId)/\(isAdminLoggedIn ? 1 : 0)", method: "GET", header: headerValues , bodyParams: nil)
             let session = URLSession.shared
             let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
                 self.removeSpinner()

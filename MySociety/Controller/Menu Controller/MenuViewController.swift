@@ -46,7 +46,9 @@ class MenuViewController: UIViewController, UICollectionViewDelegate, UICollecti
         self.notificationMenuTableView.estimatedRowHeight = 59
         self.notificationMenuTableView.rowHeight = UITableView.automaticDimension
         self.setUpNavigationButtons()
-        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
+            self.menuCollectionViewOutlet.scrollToNextItem()
+        })
     }
     
     func setUpNavigationButtons(){
@@ -157,6 +159,10 @@ class MenuViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         self.notificationMenuTableView.reloadData()
+        for cell in menuCollectionViewOutlet.visibleCells {
+            let indexPath = menuCollectionViewOutlet.indexPath(for: cell)
+            print(indexPath)
+        }
     }
 
 }

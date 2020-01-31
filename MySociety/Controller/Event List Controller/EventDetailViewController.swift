@@ -97,7 +97,7 @@ class EventDetailViewController: UIViewController, UICollectionViewDelegate, UIC
         
         func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EventDetailImageGalleryCollectionViewCell", for: indexPath) as! EventDetailImageGalleryCollectionViewCell
-            Alamofire.request("\(self.eventDetailModel?.imageUrl ?? "")")
+            Alamofire.request("\(self.eventDetailModel?.imageBaseUrl ?? "")\(self.eventDetailModel?.imageUrl ?? "")")
             .responseImage { response in
 
                 if let image = response.result.value {

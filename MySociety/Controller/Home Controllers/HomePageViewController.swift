@@ -153,7 +153,7 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
             cell.timeStampDateLabel.text = tempBoticeData?.date ?? ""
             cell.noticeBackgroundView.layer.cornerRadius = 10.0
             cell.selectionStyle = .none
-            Alamofire.request("\(tempBoticeData?.image ?? "")")
+            Alamofire.request("\(self.homePageModel?.imageBaseUrl ?? "")\(tempBoticeData?.image ?? "")")
             .responseImage { response in
 
                 if let image = response.result.value {
