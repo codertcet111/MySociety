@@ -230,7 +230,7 @@ class NewNoticeViewController: UIViewController, UIImagePickerControllerDelegate
             "title": "\(self.newNoticeSetTitleTextField.text ?? "")",
             "date": "\(self.getDateInDateFormate(date: Date()))",
             "description": "\(self.descriptionTextField.text ?? "")",
-            "receiverId": ""
+            "receiverId": "0"
         ]
         Alamofire.upload(multipartFormData:
             {
@@ -281,7 +281,7 @@ class NewNoticeViewController: UIViewController, UIImagePickerControllerDelegate
     
     func getDateInDateFormate(date: Date) -> String{
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        formatter.dateFormat = "yyyy-MM-dd HH:mm"
         return formatter.string(from: date)
     }
     
