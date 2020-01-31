@@ -47,7 +47,14 @@ class MenuViewController: UIViewController, UICollectionViewDelegate, UICollecti
         self.notificationMenuTableView.rowHeight = UITableView.automaticDimension
         self.setUpNavigationButtons()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
-            self.menuCollectionViewOutlet.scrollToNextItem()
+            UIView.animate(withDuration: 1.5, animations: {
+                self.menuCollectionViewOutlet.scrollToNextItem()
+            })
+        })
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: {
+            UIView.animate(withDuration: 1.5, animations: {
+                self.menuCollectionViewOutlet.scrollToPreviousItem()
+            })
         })
     }
     
