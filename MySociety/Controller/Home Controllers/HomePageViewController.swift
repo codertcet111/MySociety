@@ -119,6 +119,7 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
             //"https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4")//
             let avPlayer = AVPlayer(url: url! as URL);
             cell.videoView.playerLayer.player = avPlayer;
+            cell.videoView.alpha = 1.0
             cell.videoBackgroundView.layer.cornerRadius = 10.0
             cell.videoView.layer.cornerRadius = 10.0
             cell.selectionStyle = .none
@@ -253,6 +254,8 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
         if indexPath != nil{
             if let currentCell = tableView.cellForRow(at: indexPath!) as? videoHomePageTableViewCell{
                 currentCell.videoView.player?.play()
+                currentCell.playImageViewOutlet?.isHidden = true
+                currentCell.videoView?.alpha = 1
             }
         }
     }

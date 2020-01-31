@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Alamofire
 class PayManintenanceMAountViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     var tempSelectedImage: UIImage?
@@ -75,41 +75,98 @@ class PayManintenanceMAountViewController: UIViewController, UIImagePickerContro
     
     func postMaintenanceData(){
         self.showSpinner(onView: self.view)
-        let parameters = [
+//        let parameters = [
+//            "wing": self.wingTextField.text ?? "",
+//            "flat_No": self.flatNumberTextField.text ?? "",
+//            "monthAndYearOfBill": "\(getDateInDateFormate(date: self.selectMonthYearDatePicker.date))",
+//            "amount_paying": self.amountPayingTextField.text ?? "",
+//            "transaction_id": self.transtionIdTextField.text ?? "",
+//            "transaction_image": "https://scx2.b-cdn.net/gfx/news/hires/2019/2-nature.jpg",
+//            "selected_user_id": self.selectedMemberId,
+//            "bill_amount": self.billAmountTextField.text ?? ""
+//            ] as [String : Any]
+//        let headerValues = ["x-api-key": "1c552e6f2a95a883209e9b449d6f4973", "Content-Type": "application/json"]
+//        let request = getRequestUrlWithHeader(url: "addmaintenance/\(loggedInUserId)", method: "POST", header: headerValues, bodyParams: parameters)
+//        let session = URLSession.shared
+//        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+//            DispatchQueue.main.async {
+//                self.removeSpinner()
+//            }
+//            if (error != nil) {
+//                print(error ?? "")
+//            } else {
+//                let httpResponse = response as? HTTPURLResponse
+//
+//                switch(httpResponse?.statusCode ?? 201){
+//                case 200, 201:
+//                    DispatchQueue.main.async {
+//                        self.showAlertForError("Maintenance Paid Successfully!!")
+//                    }
+//                default:
+//                    DispatchQueue.main.async {
+//                        self.showAlertForError("Some Error has occured, try again!")
+//                    }
+//                }
+//            }
+//        })
+//        dataTask.resume()
+        
+        
+        
+        
+        let params: Parameters = [
             "wing": self.wingTextField.text ?? "",
             "flat_No": self.flatNumberTextField.text ?? "",
             "monthAndYearOfBill": "\(getDateInDateFormate(date: self.selectMonthYearDatePicker.date))",
             "amount_paying": self.amountPayingTextField.text ?? "",
             "transaction_id": self.transtionIdTextField.text ?? "",
-            "transaction_image": "https://scx2.b-cdn.net/gfx/news/hires/2019/2-nature.jpg",
             "selected_user_id": self.selectedMemberId,
             "bill_amount": self.billAmountTextField.text ?? ""
-            ] as [String : Any]
-        let headerValues = ["x-api-key": "1c552e6f2a95a883209e9b449d6f4973", "Content-Type": "application/json"]
-        let request = getRequestUrlWithHeader(url: "addmaintenance/\(loggedInUserId)", method: "POST", header: headerValues, bodyParams: parameters)
-        let session = URLSession.shared
-        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
-            DispatchQueue.main.async {
-                self.removeSpinner()
-            }
-            if (error != nil) {
-                print(error ?? "")
-            } else {
-                let httpResponse = response as? HTTPURLResponse
-                
-                switch(httpResponse?.statusCode ?? 201){
-                case 200, 201:
-                    DispatchQueue.main.async {
-                        self.showAlertForError("Maintenance Paid Successfully!!")
-                    }
-                default:
-                    DispatchQueue.main.async {
-                        self.showAlertForError("Some Error has occured, try again!")
-                    }
+        ]
+        Alamofire.upload(multipartFormData:
+            {
+                (multipartFormData) in
+                multipartFormData.append((self.tempSelectedImage ?? UIImage(named: "building")!).jpegData(compressionQuality: 0.1)!, withName: "image", fileName: "file_\(Int.random(in: 0 ... 10000)).jpeg", mimeType: "image/jpeg")
+                for (key, value) in params
+                {
+                    multipartFormData.append((value as AnyObject).data(using: String.Encoding.utf8.rawValue)!, withName: key)
                 }
+        }, to:URL(string: "\(ngRokUrl)addmaintenance/\(loggedInUserId)") ?? "",headers:["x-api-key": "1c552e6f2a95a883209e9b449d6f4973", "Content-Type": "application/json"])
+        { (result) in
+            switch result {
+            case .success(let upload,_,_ ):
+                upload.uploadProgress(closure: { (progress) in
+                    //Print progress
+                })
+                upload.responseJSON
+                    { response in
+                        DispatchQueue.main.async {
+                            self.removeSpinner()
+                        }
+                        //print response.result
+                        if response.result.value != nil
+                        {
+                            let value = response.result.value
+                            DispatchQueue.main.async {
+                                self.showAlert("Notice created Successfully!!")
+                            }
+                        }else{
+                            DispatchQueue.main.async {
+                                self.showAlert("Some Error, Try again!")
+                            }
+                        }
+                }
+            case .failure(let encodingError):
+                break
             }
-        })
-        dataTask.resume()
+        }
+    }
+    
+    func showAlert(_ message: String) -> (){
+        let alert = UIAlertController(title: message, message: nil , preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
     
     func getDateInDateFormate(date: Date) -> String{

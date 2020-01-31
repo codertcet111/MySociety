@@ -1558,7 +1558,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B8m-gs-QLH">
-                                <rect key="frame" x="266" y="661" width="128" height="128"/>
+                                <rect key="frame" x="330" y="725" width="64" height="64"/>
                                 <state key="normal" image="plus"/>
                                 <connections>
                                     <action selector="complaintListNewComplaintAction:" destination="0qq-pW-mPb" eventType="touchUpInside" id="Lac-Na-Znx"/>
@@ -2138,9 +2138,17 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="play-button-home-red" translatesAutoresizingMaskIntoConstraints="NO" id="eGt-ox-Yjv">
+                                                            <rect key="frame" x="160" y="125" width="34" height="34"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="34" id="384-wm-apT"/>
+                                                                <constraint firstAttribute="width" constant="34" id="Bd6-lU-xvM"/>
+                                                            </constraints>
+                                                        </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.98193607233502533" green="0.98193607233502533" blue="0.98193607233502533" alpha="0.97999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
+                                                        <constraint firstItem="eGt-ox-Yjv" firstAttribute="centerX" secondItem="nI1-9u-rk9" secondAttribute="centerX" id="4LT-qR-Pjw"/>
                                                         <constraint firstAttribute="trailing" secondItem="0pW-gK-50k" secondAttribute="trailing" constant="14" id="6BR-Ak-nHe"/>
                                                         <constraint firstItem="3WN-UQ-f32" firstAttribute="centerX" secondItem="PzV-CH-xYt" secondAttribute="centerX" id="91J-gh-UVa"/>
                                                         <constraint firstItem="pp5-cY-9Zj" firstAttribute="leading" secondItem="PzV-CH-xYt" secondAttribute="leading" constant="8" id="O2t-3L-mBx"/>
@@ -2151,6 +2159,7 @@
                                                         <constraint firstItem="RbC-AT-n2f" firstAttribute="top" secondItem="nI1-9u-rk9" secondAttribute="bottom" constant="15" id="f1j-Hh-1kv"/>
                                                         <constraint firstAttribute="bottom" secondItem="0pW-gK-50k" secondAttribute="bottom" constant="9" id="uOF-kk-vhe"/>
                                                         <constraint firstItem="nI1-9u-rk9" firstAttribute="centerX" secondItem="PzV-CH-xYt" secondAttribute="centerX" id="wSm-gH-xma"/>
+                                                        <constraint firstItem="eGt-ox-Yjv" firstAttribute="centerY" secondItem="nI1-9u-rk9" secondAttribute="centerY" id="y78-rx-Jw8"/>
                                                         <constraint firstItem="RbC-AT-n2f" firstAttribute="centerX" secondItem="PzV-CH-xYt" secondAttribute="centerX" id="yMp-EV-UPV"/>
                                                         <constraint firstAttribute="trailing" secondItem="pp5-cY-9Zj" secondAttribute="trailing" constant="8" id="zIG-WG-1oY"/>
                                                     </constraints>
@@ -2193,6 +2202,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="playImageViewOutlet" destination="eGt-ox-Yjv" id="fYV-wX-A5o"/>
                                             <outlet property="timeStampDateLabel" destination="0pW-gK-50k" id="89t-aa-jMm"/>
                                             <outlet property="videoBackgroundView" destination="PzV-CH-xYt" id="mfF-mA-EEM"/>
                                             <outlet property="videoTitleLabel" destination="3WN-UQ-f32" id="HuU-fg-xu0"/>
@@ -6203,6 +6213,7 @@
         <image name="home-icon-small" width="24" height="24"/>
         <image name="menu_icon" width="24" height="24"/>
         <image name="mySocietyMenuImage" width="441" height="114"/>
+        <image name="play-button-home-red" width="64" height="64"/>
         <image name="plus" width="64" height="64"/>
         <image name="stop" width="16" height="16"/>
         <image name="whatsapp" width="16" height="16"/>

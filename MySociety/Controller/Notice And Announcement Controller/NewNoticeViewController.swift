@@ -281,7 +281,7 @@ class NewNoticeViewController: UIViewController, UIImagePickerControllerDelegate
     
     func getDateInDateFormate(date: Date) -> String{
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd HH:mm"
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         return formatter.string(from: date)
     }
     
