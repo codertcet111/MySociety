@@ -30,12 +30,12 @@ class EventDetailViewController: UIViewController, UICollectionViewDelegate, UIC
     }
     
     func getEventDetailData(){
-        showSpinner(onView: self.view)
+//        showSpinner(onView: self.view)
         let headerValues = globalHeaderValue
         let request = getRequestUrlWithHeader(url: "eventdetail/\(selectedEventId)", method: "GET", header: headerValues , bodyParams: nil)
         let session = URLSession.shared
         let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
-            self.removeSpinner()
+//            self.removeSpinner()
             if (error != nil) {
                 print(error ?? "")
             } else {

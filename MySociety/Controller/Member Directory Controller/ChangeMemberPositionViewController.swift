@@ -43,7 +43,48 @@ class ChangeMemberPositionViewController: UIViewController {
     @IBOutlet weak var updateButton: UIButton!
     
     @IBAction func updateAction(_ sender: UIButton) {
+        self.changeMmeberPositionRequest()
+    }
+    
+    func changeMmeberPositionRequest(){
+        self.showSpinner(onView: self.view)
+        let parameters = [
+            "selected_user_id": self.selectedMemberId,
+            "selected_position": self.selectedRole
+            ] as [String : Any]
+        let headerValues = ["x-api-key": "1c552e6f2a95a883209e9b449d6f4973", "Content-Type": "application/json"]
+        let request = getRequestUrlWithHeader(url: "make-position-change", method: "POST", header: headerValues, bodyParams: parameters)
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+            DispatchQueue.main.async {
+                self.removeSpinner()
+            }
+            if (error != nil) {
+                print(error ?? "")
+            } else {
+                let httpResponse = response as? HTTPURLResponse
+                
+                switch(httpResponse?.statusCode ?? 201){
+                case 200, 201:
+                    DispatchQueue.main.async {
+                        self.showAlertForError("Position changed Successfully!!")
+                    }
+                default:
+                    DispatchQueue.main.async {
+                        self.showAlertForError("Some Error has occured, try again!")
+                    }
+                }
+            }
+        })
         
+        dataTask.resume()
+    }
+        
+    func showAlertForError(_ message: String) -> (){
+        let alert = UIAlertController(title: message, message: nil , preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -57,6 +98,7 @@ class ChangeMemberPositionViewController: UIViewController {
     
     @objc func updateSelectedMemberLabels(){
         self.selectMemberButton.setTitle("\(selectMemberSharedFile.shared.memberSelectedName)", for: .normal)
+        self.selectedMemberId = selectMemberSharedFile.shared.memberSelectedId
     }
 
 }

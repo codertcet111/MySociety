@@ -58,6 +58,7 @@ class PayManintenanceMAountViewController: UIViewController, UIImagePickerContro
         // Set photoImageView to display the selected image.
         self.tempSelectedImage = selectedImage
 
+        self.uploadImageBtn.setTitle("\(selectedImage.accessibilityIdentifier ?? "Image Selected")", for: .normal)
         // Dismiss the picker.
         dismiss(animated: true, completion: nil)
     }
@@ -148,7 +149,7 @@ class PayManintenanceMAountViewController: UIViewController, UIImagePickerContro
                         {
                             let value = response.result.value
                             DispatchQueue.main.async {
-                                self.showAlert("Notice created Successfully!!")
+                                self.showAlert("Maintenance created Successfully!!")
                             }
                         }else{
                             DispatchQueue.main.async {
@@ -188,75 +189,75 @@ class PayManintenanceMAountViewController: UIViewController, UIImagePickerContro
         self.balancedAmountTextLabel.text = "\(payMaintenanceSelectMemberSharedFile.shared.memberSelectedBalanceAmount)"
     }
    
-    func myImageUploadRequest()
-        {
-            let myUrl = NSURL(string: "http://www.swiftdeveloperblog.com/http-post-example-script/");
-            //let myUrl = NSURL(string: "http://www.boredwear.com/utils/postImage.php");
-            
-            let request = NSMutableURLRequest(url:myUrl! as URL);
-            request.httpMethod = "POST";
-            
-            let param = [
-                "firstName"  : "Sergey",
-                "lastName"    : "Kargopolov",
-                "userId"    : "9"
-            ]
-            
-            let boundary = generateBoundaryString()
-            
-            request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-            
-     
-            let imageData = (self.tempSelectedImage ?? UIImage(named: "building")!).jpegData(compressionQuality: 1)
-            
-            if(imageData==nil)  { return; }
-            
-            request.httpBody = createBodyWithParameters(parameters: param, filePathKey: "file", imageDataKey: imageData! as NSData, boundary: boundary) as Data
-            
-            
-            let task = URLSession.shared.dataTask(with: request as URLRequest) {
-                data, response, error in
-                
-                if error != nil {
-//                    print("error=\(error)")
-                    return
-                }
-                
-                // You can print out response object
-//                print("******* response = \(response)")
-                
-                // Print out reponse body
-                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
-                print("****** response data = \(responseString!)")
-                
-                do {
-                    let json = try JSONSerialization.jsonObject(with: data!, options: []) as? NSDictionary
-                    
-//                    print(json)
-                    
-//                    dispatch_async(dispatch_get_main_queue(),{
-//                        self.myActivityIndicator.stopAnimating()
-//                        self.myImageView.image = nil;
-//                    });
+//    func myImageUploadRequest()
+//        {
+//            let myUrl = NSURL(string: "http://www.swiftdeveloperblog.com/http-post-example-script/");
+//            //let myUrl = NSURL(string: "http://www.boredwear.com/utils/postImage.php");
 //
-                    DispatchQueue.global(qos: .background).async {
-
-                        // Background Thread
-
-                        DispatchQueue.main.async {
-                            self.uploadImageBtn.setTitle("Select Image", for: .normal)
-                        }
-                    }
-                    
-                }catch
-                {
-                    print(error)
-                }
-                
-            }
-            
-            task.resume()
-        }
+//            let request = NSMutableURLRequest(url:myUrl! as URL);
+//            request.httpMethod = "POST";
+//
+//            let param = [
+//                "firstName"  : "Sergey",
+//                "lastName"    : "Kargopolov",
+//                "userId"    : "9"
+//            ]
+//
+//            let boundary = generateBoundaryString()
+//
+//            request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+//
+//
+//            let imageData = (self.tempSelectedImage ?? UIImage(named: "building")!).jpegData(compressionQuality: 1)
+//
+//            if(imageData==nil)  { return; }
+//
+//            request.httpBody = createBodyWithParameters(parameters: param, filePathKey: "file", imageDataKey: imageData! as NSData, boundary: boundary) as Data
+//
+//
+//            let task = URLSession.shared.dataTask(with: request as URLRequest) {
+//                data, response, error in
+//
+//                if error != nil {
+////                    print("error=\(error)")
+//                    return
+//                }
+//
+//                // You can print out response object
+////                print("******* response = \(response)")
+//
+//                // Print out reponse body
+//                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+//                print("****** response data = \(responseString!)")
+//
+//                do {
+//                    let json = try JSONSerialization.jsonObject(with: data!, options: []) as? NSDictionary
+//
+////                    print(json)
+//
+////                    dispatch_async(dispatch_get_main_queue(),{
+////                        self.myActivityIndicator.stopAnimating()
+////                        self.myImageView.image = nil;
+////                    });
+////
+//                    DispatchQueue.global(qos: .background).async {
+//
+//                        // Background Thread
+//
+//                        DispatchQueue.main.async {
+//                            self.uploadImageBtn.setTitle("Select Image", for: .normal)
+//                        }
+//                    }
+//
+//                }catch
+//                {
+//                    print(error)
+//                }
+//
+//            }
+//
+//            task.resume()
+//        }
         
         
         func createBodyWithParameters(parameters: [String: String]?, filePathKey: String?, imageDataKey: NSData, boundary: String) -> NSData {

@@ -21,12 +21,12 @@ let loggedInUserIsAdminDefaultKeyName = "loggedInuserIsAdmin"
 //UserDefaults.standard.set(true, forKey: loggedInUserIsAdminDefaultKeyName)
 
 //let baseUrl = "https://cortexsolutions.co.in/mysociety/api/"
-let baseUrl = "https://1487bf9f.ngrok.io/society/api/"
-let ngRokUrl: String = "https://1487bf9f.ngrok.io/society/api/"
+let baseUrl = "https://f8ed78ea.ngrok.io/society/api/"
+let ngRokUrl: String = "https://f8ed78ea.ngrok.io/society/api/"
 var globalHeaderValue = ["x-api-key": "1c552e6f2a95a883209e9b449d6f4973"]
 //Update loggedInUserId everytime
 var loggedInUserId = 1//UserDefaults.standard.integer(forKey: loggedInUserIdDefaultKeyName)
-var isAdminLoggedIn = UserDefaults.standard.bool(forKey: loggedInUserIsAdminDefaultKeyName)
+var isAdminLoggedIn = true//UserDefaults.standard.bool(forKey: loggedInUserIsAdminDefaultKeyName)
 //MARK: Get badged label
 func getBadgedLabelWithValue(count: Int) -> UILabel{
     //Badged set

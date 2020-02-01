@@ -46,7 +46,12 @@ class complaintsListViewController: UIViewController, UITableViewDelegate, UITab
                         case 200:
                             self.complaintsListModel = try? JSONDecoder().decode(complaints.self,from: data!)
                                 DispatchQueue.main.sync {
-                                    self.complaintsListTableView.reloadData()
+                                    if self.complaintsListModel?.complaintsData.count == 0{
+                                        self.complaintsListTableView.isHidden = true
+                                        self.showToast(message: "NO Data!", fontSize: 11.0)
+                                    }else{
+                                        self.complaintsListTableView.reloadData()
+                                    }
                                 }
                         case 401:
                             DispatchQueue.main.sync{

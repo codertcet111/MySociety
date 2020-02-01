@@ -48,7 +48,7 @@ class newElectionViewController: UIViewController, UITableViewDataSource, UITabl
     func createElection(){
             self.showSpinner(onView: self.view)
             let parameters = [
-                "adminId": "\(loggedInUserId)",
+                "user_id": "\(loggedInUserId)",
                 "subject": "\(self.subjectTextField.text ?? "")",
                 "candidate_list": "\(getCandidateListOptions())",
                 "start_time": "\(getDateInDateFormate(date: self.startTimeDatePicker.date))",

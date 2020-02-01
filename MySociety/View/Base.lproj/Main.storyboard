@@ -193,10 +193,10 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flat Area:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Du-Pe-Lyo">
-                                                <rect key="frame" x="24" y="678" width="100" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flat Total Area:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Du-Pe-Lyo">
+                                                <rect key="frame" x="24" y="678" width="120" height="21"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="100" id="fBx-Jc-sBc"/>
+                                                    <constraint firstAttribute="width" constant="120" id="fBx-Jc-sBc"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -245,7 +245,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bEe-Ad-Onw">
                                                 <rect key="frame" x="24" y="992" width="366" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E9O-pq-lYF">
                                                 <rect key="frame" x="24" y="806" width="366" height="34"/>
@@ -260,12 +260,12 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9cD-F3-sCc">
                                                 <rect key="frame" x="24" y="620" width="159" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Yb-iy-uSj">
                                                 <rect key="frame" x="24" y="713" width="159" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sn8-SH-wBJ">
                                                 <rect key="frame" x="207" y="620" width="183" height="34"/>
@@ -313,7 +313,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JQM-CA-JOV">
                                                 <rect key="frame" x="207" y="713" width="183" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -343,7 +343,6 @@
                                             <constraint firstItem="gir-KF-k9D" firstAttribute="leading" secondItem="qRr-rP-W36" secondAttribute="leading" constant="24" id="Mzm-dX-KZa"/>
                                             <constraint firstItem="kJE-JS-ILB" firstAttribute="top" secondItem="ka8-Ci-nNI" secondAttribute="bottom" constant="14" id="NEs-nY-8Ua"/>
                                             <constraint firstItem="ka8-Ci-nNI" firstAttribute="leading" secondItem="qRr-rP-W36" secondAttribute="leading" constant="24" id="Nfa-le-paX"/>
-                                            <constraint firstItem="6Du-Pe-Lyo" firstAttribute="trailing" secondItem="5fA-Rf-xFL" secondAttribute="trailing" id="OvE-LP-ThR"/>
                                             <constraint firstItem="SJo-iH-6lN" firstAttribute="centerX" secondItem="qRr-rP-W36" secondAttribute="centerX" id="P3e-eG-NMF"/>
                                             <constraint firstItem="SJo-iH-6lN" firstAttribute="top" secondItem="kJE-JS-ILB" secondAttribute="bottom" constant="34" id="Pi0-4r-fCF"/>
                                             <constraint firstAttribute="trailing" secondItem="VGg-rr-v48" secondAttribute="trailing" constant="24" id="QLp-r3-WAc"/>
@@ -621,10 +620,10 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flat Area:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t4B-iP-5bz">
-                                                <rect key="frame" x="24" y="388" width="90" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flat Total Area:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t4B-iP-5bz">
+                                                <rect key="frame" x="24" y="388" width="120" height="21"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="90" id="KXL-CV-IbK"/>
+                                                    <constraint firstAttribute="width" constant="120" id="KXL-CV-IbK"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -688,17 +687,17 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fbU-PM-cUg">
                                                 <rect key="frame" x="24" y="702" width="366" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rCO-Bj-3ex">
                                                 <rect key="frame" x="24" y="330" width="159" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bYI-Q7-CRK">
                                                 <rect key="frame" x="24" y="423" width="159" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tf0-rX-GxV">
                                                 <rect key="frame" x="207" y="330" width="183" height="34"/>
@@ -708,7 +707,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AHq-Kr-Fjx">
                                                 <rect key="frame" x="207" y="423" width="183" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wAm-Q5-TcH">
                                                 <rect key="frame" x="122" y="863" width="170" height="34"/>
@@ -4038,7 +4037,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zjq-lS-Zv9">
-                                <rect key="frame" x="326" y="725" width="64" height="64"/>
+                                <rect key="frame" x="262" y="661" width="128" height="128"/>
                                 <state key="normal" image="plus"/>
                                 <connections>
                                     <action selector="addElectionBtnAction:" destination="Gwj-k0-2aJ" eventType="touchUpInside" id="dtf-1r-Fye"/>
@@ -4153,7 +4152,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q78-uN-gup">
-                                                                    <rect key="frame" x="328" y="30.5" width="24" height="22"/>
+                                                                    <rect key="frame" x="328" y="25.5" width="24" height="32"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="24" id="ZEc-kS-xr4"/>
                                                                     </constraints>
@@ -5708,7 +5707,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zkT-mq-5mX">
                                                 <rect key="frame" x="146" y="498" width="254" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NGp-Ye-OtX">
                                                 <rect key="frame" x="146" y="550" width="254" height="34"/>
@@ -5744,7 +5743,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Flat Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lgs-iY-ocb">
                                                 <rect key="frame" x="24" y="34" width="165.5" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Wing" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8fV-76-Ma0">
                                                 <rect key="frame" x="224.5" y="34" width="165.5" height="34"/>
@@ -5769,7 +5768,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="udu-ga-P4m">
                                                 <rect key="frame" x="146" y="446" width="254" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

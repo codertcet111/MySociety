@@ -160,7 +160,7 @@ class maintenanceListViewController: UIViewController, UITableViewDataSource, UI
             cell.statusBtn.setTitle("\(tempMaintenaceData?.status ?? "")", for: .normal)
             if isAdminLoggedIn{
                 cell.statusBtn.addTarget(self, action: #selector(changeStateButtonAction(sender:)), for: .touchUpInside)
-                cell.tag = indexPath.row
+                cell.statusBtn.tag = indexPath.row
             }
             UIView.animate(withDuration: 1) {
                 cell.alpha = 1.0
