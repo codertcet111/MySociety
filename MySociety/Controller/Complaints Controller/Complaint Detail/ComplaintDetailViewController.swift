@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import Alamofire
+import SDWebImage
 
 class ComplaintDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
 
+    var complainDetailModel: ComplaintDetail?
     //0: For me, 1: For front one walas
     var complaintsChatData = [["The problem is persistent, still I cannot find out the way?","URL","0"], ["The problem is persistent, still I cannot find out the way?","URL","1"],["The problem is persistent, still I cannot find out the way?","URL","0"],["The problem is persistent, still I cannot find out the way?","URL","1"]]
     var complaintId: Int = 0
@@ -41,11 +44,59 @@ class ComplaintDetailViewController: UIViewController, UITableViewDelegate, UITa
     
     @IBOutlet weak var adminResponseHeightConstraints: NSLayoutConstraint!
     
+    
+    @IBOutlet weak var userResponseViewHeightConstraint: NSLayoutConstraint!
+    
     @IBOutlet weak var complaintChatTableView: UITableView!
     @IBAction func adminCOmmentUploadImageAction(_ sender: UIButton) {
     }
     @IBAction func adminCommentSaveBtnAction(_ sender: UIButton) {
-        
+        self.showSpinner(onView: self.view)
+        let params: Parameters = [
+            "complaint_id": self.complaintId,
+            "comment": "\(self.adminReactionCOmmentTextFiedl.text ?? "")"
+        ]
+        Alamofire.upload(multipartFormData:
+            {
+                (multipartFormData) in
+                multipartFormData.append((self.tempSelectedImage ?? UIImage(named: "building")!).jpegData(compressionQuality: 0.1)!, withName: "image", fileName: "file_\(Int.random(in: 0 ... 10000)).jpeg", mimeType: "image/jpeg")
+                for (key, value) in params
+                {
+                    multipartFormData.append((value as AnyObject).data(using: String.Encoding.utf8.rawValue)!, withName: key)
+                }
+        }, to:URL(string: "\(ngRokUrl)adminFirstReaction") ?? "",headers:["x-api-key": "1c552e6f2a95a883209e9b449d6f4973", "Content-Type": "application/json"])
+        { (result) in
+            switch result {
+            case .success(let upload,_,_ ):
+                upload.uploadProgress(closure: { (progress) in
+                    //Print progress
+                })
+                upload.responseJSON
+                    { response in
+                        DispatchQueue.main.async {
+                            self.removeSpinner()
+                        }
+                        //print response.result
+                        if response.result.value != nil
+                        {
+                            let value = response.result.value
+                            DispatchQueue.main.async {
+                                self.showAlert("Responsed Successfully!!")
+                                
+                                //***********
+                                //Reload the data again and set the screen with that data
+                                
+                            }
+                        }else{
+                            DispatchQueue.main.async {
+                                self.showAlert("Some Error, Try again!")
+                            }
+                        }
+                }
+            case .failure(let encodingError):
+                break
+            }
+        }
     }
     
     @IBAction func furtherAddCommentUploadImageBtnAction(_ sender: UIButton) {
@@ -67,12 +118,60 @@ class ComplaintDetailViewController: UIViewController, UITableViewDelegate, UITa
         self.tempSelectedImage = selectedImage
         self.addCommentUploadImageBtn.setTitle("\(selectedImage.accessibilityIdentifier ?? "Image Selected")", for: .normal)
 
+        self.adminReactionUploadImageBtn.setTitle("\(selectedImage.accessibilityIdentifier ?? "Image Selected")", for: .normal)
+        
         // Dismiss the picker.
         dismiss(animated: true, completion: nil)
     }
     
     @IBAction func furtherAddCommentSaveBtnAction(_ sender: UIButton) {
-        
+        self.showSpinner(onView: self.view)
+        let params: Parameters = [
+            "complaints_id": self.complaintId,
+            "comment": "\(self.adminReactionCOmmentTextFiedl.text ?? "")",
+            "Is_admin": isAdminLoggedIn ? 1 : 0
+        ]
+        Alamofire.upload(multipartFormData:
+            {
+                (multipartFormData) in
+                multipartFormData.append((self.tempSelectedImage ?? UIImage(named: "building")!).jpegData(compressionQuality: 0.1)!, withName: "image", fileName: "file_\(Int.random(in: 0 ... 10000)).jpeg", mimeType: "image/jpeg")
+                for (key, value) in params
+                {
+                    multipartFormData.append((value as AnyObject).data(using: String.Encoding.utf8.rawValue)!, withName: key)
+                }
+        }, to:URL(string: "\(ngRokUrl)further-comment") ?? "",headers:["x-api-key": "1c552e6f2a95a883209e9b449d6f4973", "Content-Type": "application/json"])
+        { (result) in
+            switch result {
+            case .success(let upload,_,_ ):
+                upload.uploadProgress(closure: { (progress) in
+                    //Print progress
+                })
+                upload.responseJSON
+                    { response in
+                        DispatchQueue.main.async {
+                            self.removeSpinner()
+                        }
+                        //print response.result
+                        if response.result.value != nil
+                        {
+                            let value = response.result.value
+                            DispatchQueue.main.async {
+                                self.showAlert("Responsed Successfully!!")
+                                
+                                //***********
+                                //Reload the data again and set the screen with that data
+                                
+                            }
+                        }else{
+                            DispatchQueue.main.async {
+                                self.showAlert("Some Error, Try again!")
+                            }
+                        }
+                }
+            case .failure(let encodingError):
+                break
+            }
+        }
     }
     
     
@@ -90,8 +189,9 @@ class ComplaintDetailViewController: UIViewController, UITableViewDelegate, UITa
         self.userComplaintUserNameLabel.text = self.username ?? ""
         self.userComplaintSubjectLabel.text = self.commentText ?? ""
         self.adminResponseCommentLabel.text = "We will work on it"
-        self.adminAddReactionView.isHidden = true
-        self.adminAddResponseHeightConstraints.constant = 0
+//        self.adminAddReactionView.isHidden = true
+//        self.adminAddResponseHeightConstraints.constant = 0
+        getComplaintDetailData()
     }
     
     func setView(){
@@ -105,69 +205,194 @@ class ComplaintDetailViewController: UIViewController, UITableViewDelegate, UITa
         addCommentSaveBtn.layer.cornerRadius = 10
     }
     
-    func createBodyWithParameters(parameters: [String: String]?, filePathKey: String?, imageDataKey: NSData, boundary: String) -> NSData {
-        let body = NSMutableData();
+    func getComplaintDetailData(){
+    //        showSpinner(onView: self.view)
+        let headerValues = globalHeaderValue
+        let request = getRequestUrlWithHeader(url: "complaintsdetail/\(loggedInUserId)", method: "GET", header: headerValues , bodyParams: nil)
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+//            self.removeSpinner()
+            if (error != nil) {
+                print(error ?? "")
+            } else {
+                let httpResponse = response as? HTTPURLResponse
+                let strData = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+                print("Body: \(String(describing: strData))")
+                
+                if(response != nil && data != nil){
+                    switch  httpResponse?.statusCode {
+                    case 200:
+                        self.complainDetailModel = try? JSONDecoder().decode(ComplaintDetail.self,from: data!)
+                            DispatchQueue.main.sync {
+                                //
+                                self.setDataValues()
+                            }
+                    case 401:
+                        DispatchQueue.main.sync {
+                            self.showAlert("Unauthorized User")
+                        }
+                    default:
+                        DispatchQueue.main.sync {
+                            self.showAlert("something Went Wrong Message")
+                        }
+                    }
+                }else{
+                    self.showAlert("No data!")
+                }
+            }
+        })
+        dataTask.resume()
+    }
+    
+    func showAlert(_ message: String) -> (){
+       let alert = UIAlertController(title: message, message: nil , preferredStyle: UIAlertController.Style.alert)
+       alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: { _ in
+        self.getComplaintDetailData()
+       }))
+       alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in
+       }))
+       self.present(alert, animated: true, completion: nil)
+   }
+    
+    func setDataValues(){
+        let userComplaintSubject = self.complainDetailModel?.complaintsDetailData.subject ?? ""
+        self.userComplaintSubjectLabel.text = "\(userComplaintSubject)"
         
-        if parameters != nil {
-            for (key, value) in parameters! {
-                body.appendString(string: "--\(boundary)\r\n")
-                body.appendString(string: "Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n")
-                body.appendString(string: "\(value)\r\n")
+        let imageURL = URL(string: "\(self.complainDetailModel?.imageRootUrl ?? "")\(self.complainDetailModel?.complaintsDetailData.complaintUserImageUrl ?? "")")
+        //            myImageView.contentMode = UIView.ContentMode.scaleToFill
+        self.userComplaintComplaintImageView.sd_setImage(with: imageURL, placeholderImage: UIImage(named:"building"))
+        
+        var userComplaintDescription = self.complainDetailModel?.complaintsDetailData.complaintUserDescription ?? ""
+        self.userComplaintDescriptionLabel.text = "\(userComplaintDescription)"
+        
+        //*******
+        //Use userComplaintSubject and userComplaintDescription to calcuate height for userComplaintViewHeight
+        let heightNeededForUserView = (300.0 - 36.0 + (userComplaintSubject.height(withConstrainedWidth: (self.userComplaintInfoView.frame.size.width - 28.0), font: UIFont.systemFont(ofSize: 15))) + (userComplaintDescription.height(withConstrainedWidth: (self.userComplaintInfoView.frame.size.width - 28.0), font: UIFont.systemFont(ofSize: 15))))
+        
+        self.userResponseViewHeightConstraint.constant = CGFloat(heightNeededForUserView)
+        
+        //Check if admin is loggedIn and if he has responded to this complaint
+        if isAdminLoggedIn{
+            if self.complainDetailModel?.complaintsDetailData.adminResolvedComment == "" || self.complainDetailModel?.complaintsDetailData.adminResolvedComment == nil{
+//                self.adminResponseView.isHidden = false
+//                self.adminResponseHeightConstraints.constant = 0
+                self.adminResponseView.isHidden = true
+                self.adminResponseHeightConstraints.constant = 0
+            }else{
+                self.adminAddReactionView.isHidden = true
+                self.adminAddResponseHeightConstraints.constant = 0
+                let adminResponse = self.complainDetailModel?.complaintsDetailData.adminResolvedComment ?? ""
+                //*******
+                //Calculat the total height required for the comment and based on those set the height for view
+                let heightNeededForAdminView = (200.0 - 18.0 + (adminResponse.height(withConstrainedWidth: (self.userComplaintInfoView.frame.size.width - 28.0), font: UIFont.systemFont(ofSize: 15))))
+                
+                self.adminResponseHeightConstraints.constant = CGFloat(heightNeededForAdminView)
+                
+                
+                self.adminResponseCommentLabel.text = "\(adminResponse)"
+                let imageURL = URL(string: "\(self.complainDetailModel?.imageRootUrl ?? "")\(self.complainDetailModel?.complaintsDetailData.adminImageUrl ?? "")")
+                //            myImageView.contentMode = UIView.ContentMode.scaleToFill
+                self.adminResponseImageView.sd_setImage(with: imageURL, placeholderImage: UIImage(named:"building"))
+            }
+        }else{
+            //Hide Admin response View
+            self.adminAddReactionView.isHidden = true
+            self.adminAddResponseHeightConstraints.constant = 0
+            //Check if Admin responded yet or not
+            if self.complainDetailModel?.complaintsDetailData.adminResolvedComment == "" || self.complainDetailModel?.complaintsDetailData.adminResolvedComment == nil{
+                self.adminResponseView.isHidden = true
+                self.adminResponseHeightConstraints.constant = 0
+            }else{
+                let adminResponse = self.complainDetailModel?.complaintsDetailData.adminResolvedComment ?? ""
+                //*******
+                //Calculat the total height required for the comment and based on those set the height for view
+                let heightNeededForAdminView = (200.0 - 21.0 + (adminResponse.height(withConstrainedWidth: (self.userComplaintInfoView.frame.size.width - 28.0), font: UIFont.systemFont(ofSize: 15))))
+                
+                self.adminResponseHeightConstraints.constant = CGFloat(heightNeededForAdminView)
+                self.adminResponseCommentLabel.text = "\(adminResponse)"
+                let imageURL = URL(string: "\(self.complainDetailModel?.imageRootUrl ?? "")\(self.complainDetailModel?.complaintsDetailData.adminImageUrl ?? "")")
+                //            myImageView.contentMode = UIView.ContentMode.scaleToFill
+                self.adminResponseImageView.sd_setImage(with: imageURL, placeholderImage: UIImage(named:"building"))
             }
         }
-       
-                let filename = "user-profile.jpg"
-                let mimetype = "image/jpg"
-                
-        body.appendString(string: "--\(boundary)\r\n")
-        body.appendString(string: "Content-Disposition: form-data; name=\"\(filePathKey!)\"; filename=\"\(filename)\"\r\n")
-        body.appendString(string: "Content-Type: \(mimetype)\r\n\r\n")
-        body.append(imageDataKey as Data)
-        body.appendString(string: "\r\n")
         
-    
         
-        body.appendString(string: "--\(boundary)--\r\n")
         
-        return body
     }
     
-    
-    
-    func generateBoundaryString() -> String {
-        return "Boundary-\(NSUUID().uuidString)"
-    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return complaintsChatData.count
+        return self.complainDetailModel?.complaintsDetailData.furtherChatList.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if complaintsChatData.indices.contains(indexPath.row) {
-            let tempChat = complaintsChatData[indexPath.row]
-            //"0" means it is mine message
-            //"1" means it is others message
-            if tempChat[2] == "0"{
-                let cell = tableView.dequeueReusableCell(withIdentifier: "complaintsChatMyChatTableViewCell") as! complaintsChatMyChatTableViewCell
-                cell.alpha = 0
-                cell.complaintChatMyChatBackgroundView.layer.cornerRadius = 10
-                cell.complaintChatMyChatCommentLabel.text = tempChat[0]
-                cell.selectionStyle = .none
-                UIView.animate(withDuration: 1) {
-                    cell.alpha = 1.0
+        if self.complainDetailModel?.complaintsDetailData.furtherChatList.indices.contains(indexPath.row) ?? false {
+            
+            if let tempComplainChat = self.complainDetailModel?.complaintsDetailData.furtherChatList[indexPath.row]{
+                if tempComplainChat.isAdmin == 1{
+                    if isAdminLoggedIn{
+                        let cell = tableView.dequeueReusableCell(withIdentifier: "complaintsChatMyChatTableViewCell") as! complaintsChatMyChatTableViewCell
+                        cell.alpha = 0
+                        cell.complaintChatMyChatBackgroundView.layer.cornerRadius = 10
+                        cell.complaintChatMyChatCommentLabel.text = tempComplainChat.comment
+                        let imageURL = URL(string: "\(self.complainDetailModel?.imageRootUrl ?? "")\(tempComplainChat.image)")
+                        //            myImageView.contentMode = UIView.ContentMode.scaleToFill
+                        cell.complaintChatBUildingImageView.sd_setImage(with: imageURL, placeholderImage: UIImage(named:"building"))
+                        cell.selectionStyle = .none
+                        UIView.animate(withDuration: 1) {
+                            cell.alpha = 1.0
+                        }
+                        return cell
+                    }else{
+                        let cell = tableView.dequeueReusableCell(withIdentifier: "complaintsChatOtherChatTableViewCell") as! complaintsChatOtherChatTableViewCell
+                        cell.alpha = 0
+                        cell.complaintChatMyChatBackgroundView.layer.cornerRadius = 10
+                        cell.complaintOtherChatCommentLabel.text = tempComplainChat.comment
+                        let imageURL = URL(string: "\(self.complainDetailModel?.imageRootUrl ?? "")\(tempComplainChat.image)")
+                        //            myImageView.contentMode = UIView.ContentMode.scaleToFill
+                        cell.complaintsOtherChatImageView.sd_setImage(with: imageURL, placeholderImage: UIImage(named:"building"))
+                        cell.selectionStyle = .none
+                        UIView.animate(withDuration: 1) {
+                            cell.alpha = 1.0
+                        }
+                        return cell
+                    }
+                }else{
+                    if isAdminLoggedIn{
+                        let cell = tableView.dequeueReusableCell(withIdentifier: "complaintsChatOtherChatTableViewCell") as! complaintsChatOtherChatTableViewCell
+                        cell.alpha = 0
+                        cell.complaintChatMyChatBackgroundView.layer.cornerRadius = 10
+                        cell.complaintOtherChatCommentLabel.text = tempComplainChat.comment
+                        let imageURL = URL(string: "\(self.complainDetailModel?.imageRootUrl ?? "")\(tempComplainChat.image)")
+                        //            myImageView.contentMode = UIView.ContentMode.scaleToFill
+                        cell.complaintsOtherChatImageView.sd_setImage(with: imageURL, placeholderImage: UIImage(named:"building"))
+                        cell.selectionStyle = .none
+                        UIView.animate(withDuration: 1) {
+                            cell.alpha = 1.0
+                        }
+                        return cell
+                    }else{
+                        let cell = tableView.dequeueReusableCell(withIdentifier: "complaintsChatMyChatTableViewCell") as! complaintsChatMyChatTableViewCell
+                        cell.alpha = 0
+                        cell.complaintChatMyChatBackgroundView.layer.cornerRadius = 10
+                        cell.complaintChatMyChatCommentLabel.text = tempComplainChat.comment
+                        let imageURL = URL(string: "\(self.complainDetailModel?.imageRootUrl ?? "")\(tempComplainChat.image)")
+                        //            myImageView.contentMode = UIView.ContentMode.scaleToFill
+                        cell.complaintChatBUildingImageView.sd_setImage(with: imageURL, placeholderImage: UIImage(named:"building"))
+                        cell.selectionStyle = .none
+                        UIView.animate(withDuration: 1) {
+                            cell.alpha = 1.0
+                        }
+                        return cell
+                    }
                 }
-                return cell
             }else{
                 let cell = tableView.dequeueReusableCell(withIdentifier: "complaintsChatOtherChatTableViewCell") as! complaintsChatOtherChatTableViewCell
                 cell.alpha = 0
-                cell.complaintChatMyChatBackgroundView.layer.cornerRadius = 10
-                cell.complaintOtherChatCommentLabel.text = tempChat[0]
-                cell.selectionStyle = .none
-                UIView.animate(withDuration: 1) {
-                    cell.alpha = 1.0
-                }
                 return cell
             }
+            //"0" means it is mine message
+            //"1" means it is others message
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "complaintsChatOtherChatTableViewCell") as! complaintsChatOtherChatTableViewCell
             cell.alpha = 0
