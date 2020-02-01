@@ -17,6 +17,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        //Check if user is loggedIn or not
+        if !isKeyPresentInUserDefaults(key: loggedInUserIdDefaultKeyName) || UserDefaults.standard.integer(forKey: loggedInUserIdDefaultKeyName) == 0{
+            //Send to log in screen
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+             let appDelegate = UIApplication.shared.delegate as! AppDelegate
+             let vc = storyboard.instantiateViewController(withIdentifier: "registrationOptionsViewController") as! registrationOptionsViewController
+             let nav = UINavigationController(rootViewController: vc)
+            appDelegate.window!.rootViewController = nav
+        }else{
+            //Send to home page
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let appDelegate = UIApplication.shared.delegate! as! AppDelegate
+            let initialViewController = storyboard.instantiateViewController(withIdentifier: "tabBarControllerViewController")
+            appDelegate.window?.rootViewController = initialViewController
+            appDelegate.window?.makeKeyAndVisible()
+        }
+        
         return true
     }
 

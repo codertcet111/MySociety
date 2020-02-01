@@ -55,3 +55,8 @@ func getRequestUrlWithHeader(url: String, method: String, header: [String: Strin
     }
     return request
 }
+
+
+func isKeyPresentInUserDefaults(key: String) -> Bool {
+    return UserDefaults.standard.object(forKey: key) != nil
+}
