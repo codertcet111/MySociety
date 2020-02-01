@@ -127,9 +127,9 @@ class ComplaintDetailViewController: UIViewController, UITableViewDelegate, UITa
     @IBAction func furtherAddCommentSaveBtnAction(_ sender: UIButton) {
         self.showSpinner(onView: self.view)
         let params: Parameters = [
-            "complaints_id": self.complaintId,
-            "comment": "\(self.adminReactionCOmmentTextFiedl.text ?? "")",
-            "Is_admin": isAdminLoggedIn ? 1 : 0
+            "complaints_id": "\(self.complaintId)",
+            "comment": "\(self.addCommentTextField.text ?? "")",
+            "is_admin": "\(isAdminLoggedIn ? 1 : 0)"
         ]
         Alamofire.upload(multipartFormData:
             {
@@ -157,7 +157,7 @@ class ComplaintDetailViewController: UIViewController, UITableViewDelegate, UITa
                             let value = response.result.value
                             DispatchQueue.main.async {
                                 self.showAlert("Responsed Successfully!!")
-                                
+                                self.getComplaintDetailData()
                                 //***********
                                 //Reload the data again and set the screen with that data
                                 
@@ -208,7 +208,7 @@ class ComplaintDetailViewController: UIViewController, UITableViewDelegate, UITa
     func getComplaintDetailData(){
     //        showSpinner(onView: self.view)
         let headerValues = globalHeaderValue
-        let request = getRequestUrlWithHeader(url: "complaintsdetail/\(loggedInUserId)", method: "GET", header: headerValues , bodyParams: nil)
+        let request = getRequestUrlWithHeader(url: "complaintsdetail/\(complaintId)", method: "GET", header: headerValues , bodyParams: nil)
         let session = URLSession.shared
         let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
 //            self.removeSpinner()
@@ -258,7 +258,7 @@ class ComplaintDetailViewController: UIViewController, UITableViewDelegate, UITa
         let userComplaintSubject = self.complainDetailModel?.complaintsDetailData.subject ?? ""
         self.userComplaintSubjectLabel.text = "\(userComplaintSubject)"
         
-        let imageURL = URL(string: "\(self.complainDetailModel?.imageRootUrl ?? "")\(self.complainDetailModel?.complaintsDetailData.complaintUserImageUrl ?? "")")
+        let imageURL = URL(string: "\(self.complainDetailModel?.imageRootUrl ?? "")/\(self.complainDetailModel?.complaintsDetailData.complaintUserImageUrl ?? "")")
         //            myImageView.contentMode = UIView.ContentMode.scaleToFill
         self.userComplaintComplaintImageView.sd_setImage(with: imageURL, placeholderImage: UIImage(named:"building"))
         
@@ -290,7 +290,7 @@ class ComplaintDetailViewController: UIViewController, UITableViewDelegate, UITa
                 
                 
                 self.adminResponseCommentLabel.text = "\(adminResponse)"
-                let imageURL = URL(string: "\(self.complainDetailModel?.imageRootUrl ?? "")\(self.complainDetailModel?.complaintsDetailData.adminImageUrl ?? "")")
+                let imageURL = URL(string: "\(self.complainDetailModel?.imageRootUrl ?? "")/\(self.complainDetailModel?.complaintsDetailData.adminImageUrl ?? "")")
                 //            myImageView.contentMode = UIView.ContentMode.scaleToFill
                 self.adminResponseImageView.sd_setImage(with: imageURL, placeholderImage: UIImage(named:"building"))
             }
@@ -310,13 +310,12 @@ class ComplaintDetailViewController: UIViewController, UITableViewDelegate, UITa
                 
                 self.adminResponseHeightConstraints.constant = CGFloat(heightNeededForAdminView)
                 self.adminResponseCommentLabel.text = "\(adminResponse)"
-                let imageURL = URL(string: "\(self.complainDetailModel?.imageRootUrl ?? "")\(self.complainDetailModel?.complaintsDetailData.adminImageUrl ?? "")")
+                let imageURL = URL(string: "\(self.complainDetailModel?.imageRootUrl ?? "")/\(self.complainDetailModel?.complaintsDetailData.adminImageUrl ?? "")")
                 //            myImageView.contentMode = UIView.ContentMode.scaleToFill
                 self.adminResponseImageView.sd_setImage(with: imageURL, placeholderImage: UIImage(named:"building"))
             }
         }
-        
-        
+        self.complaintChatTableView.reloadData()
         
     }
     
@@ -335,7 +334,8 @@ class ComplaintDetailViewController: UIViewController, UITableViewDelegate, UITa
                         cell.alpha = 0
                         cell.complaintChatMyChatBackgroundView.layer.cornerRadius = 10
                         cell.complaintChatMyChatCommentLabel.text = tempComplainChat.comment
-                        let imageURL = URL(string: "\(self.complainDetailModel?.imageRootUrl ?? "")\(tempComplainChat.image)")
+                        print("\(self.complainDetailModel?.imageRootUrl ?? "")/\(tempComplainChat.image)")
+                        let imageURL = URL(string: "\(self.complainDetailModel?.imageRootUrl ?? "")/\(tempComplainChat.image)")
                         //            myImageView.contentMode = UIView.ContentMode.scaleToFill
                         cell.complaintChatBUildingImageView.sd_setImage(with: imageURL, placeholderImage: UIImage(named:"building"))
                         cell.selectionStyle = .none
@@ -348,7 +348,7 @@ class ComplaintDetailViewController: UIViewController, UITableViewDelegate, UITa
                         cell.alpha = 0
                         cell.complaintChatMyChatBackgroundView.layer.cornerRadius = 10
                         cell.complaintOtherChatCommentLabel.text = tempComplainChat.comment
-                        let imageURL = URL(string: "\(self.complainDetailModel?.imageRootUrl ?? "")\(tempComplainChat.image)")
+                        let imageURL = URL(string: "\(self.complainDetailModel?.imageRootUrl ?? "")/\(tempComplainChat.image)")
                         //            myImageView.contentMode = UIView.ContentMode.scaleToFill
                         cell.complaintsOtherChatImageView.sd_setImage(with: imageURL, placeholderImage: UIImage(named:"building"))
                         cell.selectionStyle = .none
@@ -363,7 +363,7 @@ class ComplaintDetailViewController: UIViewController, UITableViewDelegate, UITa
                         cell.alpha = 0
                         cell.complaintChatMyChatBackgroundView.layer.cornerRadius = 10
                         cell.complaintOtherChatCommentLabel.text = tempComplainChat.comment
-                        let imageURL = URL(string: "\(self.complainDetailModel?.imageRootUrl ?? "")\(tempComplainChat.image)")
+                        let imageURL = URL(string: "\(self.complainDetailModel?.imageRootUrl ?? "")/\(tempComplainChat.image)")
                         //            myImageView.contentMode = UIView.ContentMode.scaleToFill
                         cell.complaintsOtherChatImageView.sd_setImage(with: imageURL, placeholderImage: UIImage(named:"building"))
                         cell.selectionStyle = .none
@@ -376,7 +376,7 @@ class ComplaintDetailViewController: UIViewController, UITableViewDelegate, UITa
                         cell.alpha = 0
                         cell.complaintChatMyChatBackgroundView.layer.cornerRadius = 10
                         cell.complaintChatMyChatCommentLabel.text = tempComplainChat.comment
-                        let imageURL = URL(string: "\(self.complainDetailModel?.imageRootUrl ?? "")\(tempComplainChat.image)")
+                        let imageURL = URL(string: "\(self.complainDetailModel?.imageRootUrl ?? "")/\(tempComplainChat.image)")
                         //            myImageView.contentMode = UIView.ContentMode.scaleToFill
                         cell.complaintChatBUildingImageView.sd_setImage(with: imageURL, placeholderImage: UIImage(named:"building"))
                         cell.selectionStyle = .none

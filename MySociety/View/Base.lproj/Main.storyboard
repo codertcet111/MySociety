@@ -3122,7 +3122,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5Iw-0L-rl4">
-                                                <rect key="frame" x="24" y="89" width="366" height="300"/>
+                                                <rect key="frame" x="50" y="89" width="340" height="300"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="300" id="4qF-wJ-FGD"/>
@@ -3186,7 +3186,7 @@
                                             <constraint firstItem="KOd-Cn-YP6" firstAttribute="top" secondItem="5Iw-0L-rl4" secondAttribute="bottom" constant="34" id="QOc-fO-Qs5"/>
                                             <constraint firstAttribute="trailing" secondItem="6nM-7n-V7C" secondAttribute="trailing" constant="24" id="bXY-lK-y0b"/>
                                             <constraint firstItem="KOd-Cn-YP6" firstAttribute="leading" secondItem="zYW-06-yor" secondAttribute="leading" constant="24" id="gUO-zN-0FQ"/>
-                                            <constraint firstItem="5Iw-0L-rl4" firstAttribute="leading" secondItem="zYW-06-yor" secondAttribute="leading" constant="24" id="jdZ-XI-37H"/>
+                                            <constraint firstItem="5Iw-0L-rl4" firstAttribute="leading" secondItem="zYW-06-yor" secondAttribute="leading" constant="50" id="jdZ-XI-37H"/>
                                             <constraint firstItem="6nM-7n-V7C" firstAttribute="leading" secondItem="zYW-06-yor" secondAttribute="leading" constant="24" id="kDr-GL-KDI"/>
                                             <constraint firstAttribute="trailing" secondItem="5Iw-0L-rl4" secondAttribute="trailing" constant="24" id="o8f-9d-LAK"/>
                                         </constraints>

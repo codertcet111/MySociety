@@ -21,7 +21,7 @@ class EventDetailViewController: UIViewController, UICollectionViewDelegate, UIC
     
     @IBOutlet weak var eventDetailLAbelTopConstraints: NSLayoutConstraint!
     var selectedEventId: Int = 1
-    var eventDetailModel: EventDetail?
+    var eventDetailModelObject: eventDetailModel?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.eventDetailDescriptionText.text = "We will be having the birthday celebration for Anmol. He will be the morgan boy of the year. Lets celbrate his birthday for this year. We will be having the birthday celebration for Anmol. He will be the morgan boy of the year. Lets celbrate his birthday for this year."
@@ -46,10 +46,10 @@ class EventDetailViewController: UIViewController, UICollectionViewDelegate, UIC
                 if(response != nil && data != nil){
                     switch  httpResponse?.statusCode {
                     case 200:
-                        self.eventDetailModel = try? JSONDecoder().decode(EventDetail.self,from: data!)
+                        self.eventDetailModelObject = try? JSONDecoder().decode(eventDetailModel.self,from: data!)
                             DispatchQueue.main.sync {
-                                self.eventTitleLabel.text = self.eventDetailModel?.title ?? ""
-                                self.eventDetailDescriptionText.text = self.eventDetailModel?.description ?? ""
+                                self.eventTitleLabel.text = self.eventDetailModelObject?.eventDetailData.title ?? ""
+                                self.eventDetailDescriptionText.text = self.eventDetailModelObject?.eventDetailData.description ?? ""
                                 self.eventDetailPhotoGalleryCollectionView.reloadData()
                             }
                     case 401:
@@ -97,7 +97,7 @@ class EventDetailViewController: UIViewController, UICollectionViewDelegate, UIC
         
         func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EventDetailImageGalleryCollectionViewCell", for: indexPath) as! EventDetailImageGalleryCollectionViewCell
-            Alamofire.request("\(self.eventDetailModel?.imageBaseUrl ?? "")\(self.eventDetailModel?.imageUrl ?? "")")
+            Alamofire.request("\(self.eventDetailModelObject?.imageRootUrl ?? "")/\(self.eventDetailModelObject?.eventDetailData.imageUrl ?? "")")
             .responseImage { response in
 
                 if let image = response.result.value {

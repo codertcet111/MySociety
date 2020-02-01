@@ -121,7 +121,7 @@ class PayManintenanceMAountViewController: UIViewController, UIImagePickerContro
             "monthAndYearOfBill": "\(getDateInDateFormate(date: self.selectMonthYearDatePicker.date))",
             "amount_paying": self.amountPayingTextField.text ?? "",
             "transaction_id": self.transtionIdTextField.text ?? "",
-            "selected_user_id": self.selectedMemberId,
+            "selected_user_id": "\(self.selectedMemberId)",
             "bill_amount": self.billAmountTextField.text ?? ""
         ]
         Alamofire.upload(multipartFormData:
