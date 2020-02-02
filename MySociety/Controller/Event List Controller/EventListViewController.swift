@@ -25,6 +25,9 @@ class EventListViewController: UIViewController, UITableViewDataSource, UITableV
         self.eventListTableView.estimatedRowHeight = 164
         self.eventListTableView.rowHeight = UITableView.automaticDimension
         // Do any additional setup after loading the view.
+        if !isAdminLoggedIn{
+            self.addEventBtn.isHidden = true
+        }
         getEventData()
     }
     

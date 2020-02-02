@@ -28,6 +28,10 @@ class opinionPollViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        if !isAdminLoggedIn{
+            self.createOpinionollBtn.isHidden = true
+            
+        }
         self.getPollListData(true)
     }
     

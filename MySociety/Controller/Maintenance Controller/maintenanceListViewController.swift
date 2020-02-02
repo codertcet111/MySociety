@@ -25,6 +25,10 @@ class maintenanceListViewController: UIViewController, UITableViewDataSource, UI
         self.maintenanceTableView.rowHeight = UITableView.automaticDimension
         payMaintenanceBtn.layer.cornerRadius = 10
         // Do any additional setup after loading the view.
+        if !isAdminLoggedIn{
+            self.payMaintenanceBtn.isHidden = true
+            
+        }
         self.getMaintenanceData(true)
     }
     

@@ -13,7 +13,7 @@ class MenuViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     var adminMenuOptions: [[String]] = [["Notice & Circular","Notice_Circulate"], ["Event","EventLogo"], ["Complaints", "complaint"], ["Maintenance", "maintenance"], ["Member Directory", "memberDirectory"], ["Opinion Poll", "poll"], ["Election", "ElectionIcon"], ["Group Chat","GroupChat"], ["FeedBack","feedback"], ["Manual Video","video-players"]]
     var userMenuOptions: [[String]] = []
-    var notificationTempData: [String] = ["A new video uploaded for navaratri event by Shubham", "New Event notice has uploaded", "New gymnasuium will be install", "New Election will be coming in the next month", "A new video for the recent meeting uploaded", "New Event notice has uploaded"]
+    var MenuDetailMenu: [[String]] = [["Notice & Circular","Secretary can publish a notice and It will be visible to all the member of the society"],["Events & Funcions","Publish any upcoming events or functions in the society, by uploading image of the event"],["Complaints","Members of the society can create complaint directly to the Secretary"],["Maintenance","While paying maintenance, Secretary will make an entry in the maintenance record"],["Member Directory","Make contact to the any of the available members of the society"],["Opinion Poll","Secretary can create an opinion poll and all the members of the society can vote for the poll"],["Election","Secretary can circulate the election, and all the members of the society will vote for it"],["Group Chat","All the members of the society can chat in the group"],["FeedBack","Just give the feedback to attented events in the society"],["Manual Video","Upload the video of the events or functions that can be seen on the home page by all the member of the society"]]
     @IBOutlet weak var menuCollectionViewOutlet: UICollectionView!
     @IBOutlet weak var collectionTopConstraints: NSLayoutConstraint!
     
@@ -46,6 +46,10 @@ class MenuViewController: UIViewController, UICollectionViewDelegate, UICollecti
         self.notificationMenuTableView.estimatedRowHeight = 59
         self.notificationMenuTableView.rowHeight = UITableView.automaticDimension
         self.setUpNavigationButtons()
+        
+        //Hide read more button
+        self.readMoreBtn.isHidden = true
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
             UIView.animate(withDuration: 1.5, animations: {
                 self.menuCollectionViewOutlet.scrollToNextItem()
@@ -60,14 +64,14 @@ class MenuViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func setUpNavigationButtons(){
         
-        let notificationItemBtn = UIButton(type: .custom)
-        notificationItemBtn.setImage(UIImage(named: "christmas-bell"), for: .normal)
-        notificationItemBtn.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
-        if notificationBadgedCount > 0{
-            notificationItemBtn.addSubview(getBadgedLabelWithValue(count: notificationBadgedCount))
-        }
-        notificationItemBtn.addTarget(self, action: #selector(NotificationNavigationButtonClicked), for: .touchUpInside)
-        let notificationItem = UIBarButtonItem(customView: notificationItemBtn)
+//        let notificationItemBtn = UIButton(type: .custom)
+//        notificationItemBtn.setImage(UIImage(named: "christmas-bell"), for: .normal)
+//        notificationItemBtn.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
+//        if notificationBadgedCount > 0{
+//            notificationItemBtn.addSubview(getBadgedLabelWithValue(count: notificationBadgedCount))
+//        }
+//        notificationItemBtn.addTarget(self, action: #selector(NotificationNavigationButtonClicked), for: .touchUpInside)
+//        let notificationItem = UIBarButtonItem(customView: notificationItemBtn)
         
         
         let logOutItemBtn = UIButton(type: .custom)
@@ -77,7 +81,7 @@ class MenuViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let notificationItem1 = UIBarButtonItem(customView: logOutItemBtn)
         
         
-    self.navigationItem.setRightBarButtonItems([notificationItem1, notificationItem], animated: true)
+    self.navigationItem.setRightBarButtonItems([notificationItem1], animated: true)
     }
     
     @objc func NotificationNavigationButtonClicked(){
@@ -149,13 +153,26 @@ class MenuViewController: UIViewController, UICollectionViewDelegate, UICollecti
 //    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return MenuDetailMenu.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationInMenuTableViewCell") as! NotificationInMenuTableViewCell
         cell.alpha = 0
-        cell.notificationLabel.text = notificationTempData.randomElement()!
+//        let normalText = "\(self.MenuDetailMenu[indexPath.row][0]):"
+//
+//        let boldText  = "\(self.MenuDetailMenu[indexPath.row][1])"
+//
+//        let attributedString = NSMutableAttributedString(string:normalText)
+//
+//        let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 15)]
+//        let boldString = NSMutableAttributedString(string: boldText, attributes:attrs)
+//
+//        attributedString.append(boldString)
+        cell.notificationLabel.attributedText =
+        NSMutableAttributedString()
+            .bold("\(self.MenuDetailMenu[indexPath.row][0]): ")
+            .normal("\(self.MenuDetailMenu[indexPath.row][1])")
         cell.notificationMenuBackgroundView.layer.cornerRadius = 10.0
         cell.selectionStyle = .none
         UIView.animate(withDuration: 1) {
@@ -165,10 +182,14 @@ class MenuViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        self.notificationMenuTableView.reloadData()
-        for cell in menuCollectionViewOutlet.visibleCells {
-            let indexPath = menuCollectionViewOutlet.indexPath(for: cell)
-            print(indexPath)
+//        self.notificationMenuTableView.reloadData()
+//        for cell in menuCollectionViewOutlet.visibleCells {
+//            let indexPath = menuCollectionViewOutlet.indexPath(for: cell)
+//            print(indexPath)
+//        }
+        if let tempCell = self.menuCollectionViewOutlet.visibleCells.last{
+            let indexPath = NSIndexPath(row: menuCollectionViewOutlet.indexPath(for: tempCell)?.row ?? 0, section: 0)
+            self.notificationMenuTableView.scrollToRow(at: indexPath as IndexPath, at: .top, animated: true)
         }
     }
 

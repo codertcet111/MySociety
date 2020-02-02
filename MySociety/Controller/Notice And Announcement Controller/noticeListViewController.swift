@@ -25,6 +25,9 @@ class noticeListViewController: UIViewController, UITableViewDelegate, UITableVi
         self.noticeListTableView.estimatedRowHeight = 316
         self.noticeListTableView.rowHeight = UITableView.automaticDimension
         // Do any additional setup after loading the view.
+        if !isAdminLoggedIn{
+            self.addNotice.isHidden = true
+        }
         getNoticeData()
     }
     

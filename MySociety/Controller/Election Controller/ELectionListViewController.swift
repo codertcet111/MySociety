@@ -24,6 +24,10 @@ class ELectionListViewController: UIViewController, UITableViewDelegate, UITable
         self.electionListTableView.estimatedRowHeight = 325
         self.electionListTableView.rowHeight = UITableView.automaticDimension
         // Do any additional setup after loading the view.
+        if !isAdminLoggedIn{
+            self.addElectionBtn.isHidden = true
+            
+        }
         getElectionListData(true)
     }
     

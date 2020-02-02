@@ -24,6 +24,10 @@ class MemberDirectoryListViewController: UIViewController, UITableViewDataSource
         self.memberDirectoryListTableView.layer.cornerRadius = 10
         self.makePositionChangeBtn.layer.cornerRadius = 10
         // Do any additional setup after loading the view.
+        if !isAdminLoggedIn{
+            self.makePositionChangeBtn.isHidden = true
+            
+        }
         self.getMemberUserData()
     }
     
