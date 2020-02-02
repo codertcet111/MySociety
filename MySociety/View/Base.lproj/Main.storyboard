@@ -3457,6 +3457,7 @@
                         <outlet property="addNotice" destination="u5a-ws-slj" id="aew-ig-wRU"/>
                         <outlet property="noticeListTableView" destination="xkl-ff-Q8x" id="kWh-9U-B8j"/>
                         <segue destination="3cj-65-JIe" kind="show" identifier="newNoticeAddSegue" id="fDW-24-s5Z"/>
+                        <segue destination="LNR-wj-0ua" kind="show" identifier="noticeShowImageSegue" id="gmM-ed-1vF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OxA-hH-2zV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -3587,6 +3588,49 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rkq-8b-wBK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4615.9420289855079" y="-475.44642857142856"/>
+        </scene>
+        <!--Notice Show Image Push Pop Over View Controller-->
+        <scene sceneID="icd-B5-JOj">
+            <objects>
+                <viewController storyboardIdentifier="noticeShowImagePushPopOverViewController" id="LNR-wj-0ua" customClass="noticeShowImagePushPopOverViewController" customModule="MySociety" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qb7-5T-e7c">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i1I-Di-3ew">
+                                <rect key="frame" x="15" y="118" width="384" height="665"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FKO-Hm-Q2w">
+                                        <rect key="frame" x="10" y="10" width="364" height="645"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.95784422589999996" green="0.95784422589999996" blue="0.95784422589999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="FKO-Hm-Q2w" firstAttribute="leading" secondItem="i1I-Di-3ew" secondAttribute="leading" constant="10" id="IT9-Rs-t5e"/>
+                                    <constraint firstAttribute="bottom" secondItem="FKO-Hm-Q2w" secondAttribute="bottom" constant="10" id="PkF-dU-zBH"/>
+                                    <constraint firstItem="FKO-Hm-Q2w" firstAttribute="top" secondItem="i1I-Di-3ew" secondAttribute="top" constant="10" id="QyC-tI-gFc"/>
+                                    <constraint firstAttribute="trailing" secondItem="FKO-Hm-Q2w" secondAttribute="trailing" constant="10" id="lb8-0K-YYj"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="i1I-Di-3ew" firstAttribute="leading" secondItem="y7n-Rb-2fq" secondAttribute="leading" constant="15" id="DNf-bq-a7I"/>
+                            <constraint firstItem="y7n-Rb-2fq" firstAttribute="bottom" secondItem="i1I-Di-3ew" secondAttribute="bottom" constant="30" id="Z7T-9j-tEM"/>
+                            <constraint firstItem="i1I-Di-3ew" firstAttribute="top" secondItem="y7n-Rb-2fq" secondAttribute="top" constant="30" id="cif-Cj-pzR"/>
+                            <constraint firstItem="y7n-Rb-2fq" firstAttribute="trailing" secondItem="i1I-Di-3ew" secondAttribute="trailing" constant="15" id="yJG-IZ-cXN"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="y7n-Rb-2fq"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="i1c-SX-faa"/>
+                    <connections>
+                        <outlet property="backgroundImage" destination="i1I-Di-3ew" id="TVg-Df-VuB"/>
+                        <outlet property="noticeImageView" destination="FKO-Hm-Q2w" id="f6C-r1-92W"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HqJ-wx-WeB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5429" y="-477"/>
         </scene>
         <!--Tab Bar Controller View Controller-->
         <scene sceneID="Kia-FC-GY8">
@@ -4720,7 +4764,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JlC-jq-cIw">
-                                <rect key="frame" x="266" y="1369" width="128" height="128"/>
+                                <rect key="frame" x="330" y="1433" width="64" height="64"/>
                                 <state key="normal" image="plus"/>
                                 <connections>
                                     <action selector="createOpinionPollAction:" destination="WUv-3z-nJ3" eventType="touchUpInside" id="ZgU-1Y-stf"/>

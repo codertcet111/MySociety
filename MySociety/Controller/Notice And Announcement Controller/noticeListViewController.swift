@@ -12,6 +12,7 @@ import SDWebImage
 class noticeListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var noticeModel: notice?
+    var selectedImageUrl = ""
     var noticeList: [[String]] = [["Tax Increment", "22/02/2020", "This is to inform you that we have incresed the functionality of what we were expecting for the circumtences."],["Position Increment", "29/03/2020", "This is to inform you that we have incresed the functionality of what we were expecting for the circumtences."],["Tax Increment", "22/02/2020", "This is to inform you that we have incresed the functionality of what we were expecting for the circumtences."],["Tax Increment", "22/02/2020", "This is to inform you that we have incresed the functionality of what we were expecting for the circumtences."],["Tax Increment", "22/02/2020", "This is to inform you that we have incresed the functionality of what we were expecting for the circumtences."]]
     @IBOutlet weak var noticeListTableView: UITableView!
     
@@ -69,6 +70,23 @@ class noticeListViewController: UIViewController, UITableViewDelegate, UITableVi
         dataTask.resume()
     }
     
+    @objc func imgTap(tapGesture: UITapGestureRecognizer) {
+           let imgView = tapGesture.view as! UIImageView
+           let idToMove = imgView.tag
+           print("\(idToMove)")
+          //Do further execution where you need idToMove
+        self.selectedImageUrl = "\(self.noticeModel?.noticeDatas[idToMove].imageUrl ?? "")"
+        self.performSegue(withIdentifier: "noticeShowImageSegue", sender: self)
+
+       }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "noticeShowImageSegue") {
+            let vc = segue.destination as! noticeShowImagePushPopOverViewController
+            vc.tempImageUrl = "\(self.noticeModel?.imageBaseUrl ?? "")/\(self.selectedImageUrl)"
+        }
+    }
+    
     func showAlert(_ message: String) -> (){
            let alert = UIAlertController(title: message, message: nil , preferredStyle: UIAlertController.Style.alert)
            alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: { _ in
@@ -95,7 +113,12 @@ class noticeListViewController: UIViewController, UITableViewDelegate, UITableVi
             cell.noticeCellDateTimeLabel.text = tempNotice?.date ?? ""
             cell.noticeCellDescriptionLabel.text = tempNotice?.description ?? ""
             
-            
+            cell.noticeCellImageView.tag = indexPath.row
+            let tapGesture = UITapGestureRecognizer (target: self, action: #selector(imgTap(tapGesture:)))
+            cell.noticeCellImageView.addGestureRecognizer(tapGesture)
+            cell.noticeCellImageView.isUserInteractionEnabled = true
+//            cell.noticeCellImageView.cornerRadius(radius: 10.0)
+            cell.noticeCellImageView.layer.cornerRadius = 10.0
             let imageURL = URL(string: "\(self.noticeModel?.imageBaseUrl ?? "")/\(tempNotice?.imageUrl ?? "")")
             //            myImageView.contentMode = UIView.ContentMode.scaleToFill
             cell.noticeCellImageView.sd_setImage(with: imageURL, placeholderImage: UIImage(named:"building"))

@@ -55,6 +55,7 @@
 		8413AFF623D335AC0033F5BB /* NoticeDatas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413AFF423D335AC0033F5BB /* NoticeDatas.swift */; };
 		8413AFFA23D342EA0033F5BB /* EventDatas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413AFF823D342E90033F5BB /* EventDatas.swift */; };
 		8413AFFB23D342EA0033F5BB /* event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413AFF923D342E90033F5BB /* event.swift */; };
+		8417F5FA23E6ED6F00B46B07 /* noticeShowImagePushPopOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8417F5F923E6ED6F00B46B07 /* noticeShowImagePushPopOverViewController.swift */; };
 		8418EBB523D9CDFC0037AE57 /* MemberDirectoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8418EBB323D9CDFC0037AE57 /* MemberDirectoryData.swift */; };
 		8418EBB623D9CDFC0037AE57 /* memeberUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8418EBB423D9CDFC0037AE57 /* memeberUsers.swift */; };
 		841C426323CEE17800993483 /* ELectionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C426223CEE17800993483 /* ELectionListViewController.swift */; };
@@ -171,6 +172,7 @@
 		8413AFF423D335AC0033F5BB /* NoticeDatas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoticeDatas.swift; path = ../../../../../Downloads/notice/NoticeDatas.swift; sourceTree = "<group>"; };
 		8413AFF823D342E90033F5BB /* EventDatas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventDatas.swift; path = ../../../../../Downloads/event/EventDatas.swift; sourceTree = "<group>"; };
 		8413AFF923D342E90033F5BB /* event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = event.swift; path = ../../../../../Downloads/event/event.swift; sourceTree = "<group>"; };
+		8417F5F923E6ED6F00B46B07 /* noticeShowImagePushPopOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = noticeShowImagePushPopOverViewController.swift; sourceTree = "<group>"; };
 		8418EBB323D9CDFC0037AE57 /* MemberDirectoryData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MemberDirectoryData.swift; path = ../../../../../Downloads/memeberUsers/MemberDirectoryData.swift; sourceTree = "<group>"; };
 		8418EBB423D9CDFC0037AE57 /* memeberUsers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = memeberUsers.swift; path = ../../../../../Downloads/memeberUsers/memeberUsers.swift; sourceTree = "<group>"; };
 		841C426223CEE17800993483 /* ELectionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ELectionListViewController.swift; sourceTree = "<group>"; };
@@ -374,6 +376,7 @@
 				8413856D23CB87FE005CFA57 /* noticeListViewController.swift */,
 				8413856F23CB880C005CFA57 /* NewNoticeViewController.swift */,
 				8413857123CB8824005CFA57 /* NoticeListTableViewCell.swift */,
+				8417F5F923E6ED6F00B46B07 /* noticeShowImagePushPopOverViewController.swift */,
 			);
 			path = "Notice And Announcement Controller";
 			sourceTree = "<group>";
@@ -863,6 +866,7 @@
 				8413595E23D1ABA80033AD1E /* notificationViewController.swift in Sources */,
 				841C426323CEE17800993483 /* ELectionListViewController.swift in Sources */,
 				8413595823D189010033AD1E /* logInUserViewController.swift in Sources */,
+				8417F5FA23E6ED6F00B46B07 /* noticeShowImagePushPopOverViewController.swift in Sources */,
 				840F820123D856BD00671370 /* LiveElectionHome.swift in Sources */,
 				841C427723CF1A7900993483 /* GroupChatViewController.swift in Sources */,
 				8432E85823E1828500374A39 /* UsersData.swift in Sources */,
