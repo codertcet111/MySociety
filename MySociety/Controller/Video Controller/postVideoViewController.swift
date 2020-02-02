@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import MobileCoreServices
+import AssetsLibrary
 
 class postVideoViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    var videoPath: URL?
+    var videoURL: URL?
     @IBOutlet weak var newVideoTitleLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var titleTextField: UITextField!
@@ -18,17 +20,28 @@ class postVideoViewController: UIViewController, UIImagePickerControllerDelegate
 //    var selectedVideo
     @IBOutlet weak var selectVideoButton: UIButton!
     
+    let imagePickerController = UIImagePickerController()
     @IBAction func selectVideoAction(_ sender: UIButton) {
-        imagePickerController.sourceType = .photoLibrary
- 
+//        imagePickerController.sourceType = .photoLibrary
+//
+//        if #available(iOS 11.0, *) {
+////            imagePickerController.videoExportPreset = AVAssetExportPresetPassthrough
+//            imagePickerController.videoExportPreset = "AVAssetExportPresetPassthrough"
+//        }
+//        imagePickerController.delegate = self
+//        imagePickerController.mediaTypes = ["public.movie"]
+//
+//        present(imagePickerController, animated: true, completion: nil)
+        
         if #available(iOS 11.0, *) {
-//            imagePickerController.videoExportPreset = AVAssetExportPresetPassthrough
             imagePickerController.videoExportPreset = "AVAssetExportPresetPassthrough"
         }
+        imagePickerController.sourceType = .savedPhotosAlbum
         imagePickerController.delegate = self
         imagePickerController.mediaTypes = ["public.movie"]
-
         present(imagePickerController, animated: true, completion: nil)
+        
+        
     }
     
     @IBAction func uploadBtnAction(_ sender: UIButton) {
@@ -37,20 +50,18 @@ class postVideoViewController: UIViewController, UIImagePickerControllerDelegate
     }
     
     @IBOutlet weak var uploadBtn: UIButton!
-    
-    
-    let imagePickerController = UIImagePickerController()
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-
-     let videoURL = info["UIImagePickerControllerReferenceURL"] as? NSURL
-     self.videoPath = videoURL as URL?
-     print(videoURL!)
-     imagePickerController.dismiss(animated: true, completion: nil)
-    }
+//    private func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+//
+//     let videoURL = info["UIImagePickerControllerReferenceURL"] as? NSURL
+//     self.videoPath = videoURL as URL?
+//     print(videoURL!)
+//     imagePickerController.dismiss(animated: true, completion: nil)
+//    }
     
 //    func imagePickerController(  didFinishPickingMediaWithInfo info:NSDictionary!) {
 //        let videoUrl = info[UIImagePickerController.InfoKey.mediaURL] as! NSURL?
@@ -58,11 +69,24 @@ class postVideoViewController: UIViewController, UIImagePickerControllerDelegate
 //        self.dismiss(animated: true, completion: nil)
 //    }
     
+    func imagePickerController(_ picker: UIImagePickerController,
+    didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+//        videoURL = info[UIImagePickerControllerMediaURL] as? URL
+        guard let tempvideoURL = info[.mediaURL] as? URL else {
+            fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
+        }
+        videoURL = tempvideoURL
+        print("videoURL:\(String(describing: videoURL))")
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     func uploadMedia(){
-        if videoPath == nil {
+        
+        if videoURL == nil {
             return
         }
 
+        showSpinner(onView: self.view)
         guard let url = URL(string: "\(ngRokUrl)uploadVideo/\(loggedInUserId)") else {
             return
         }
@@ -74,7 +98,7 @@ class postVideoViewController: UIViewController, UIImagePickerControllerDelegate
 
         var movieData: Data?
         do {
-            movieData = try Data(contentsOf: url, options: Data.ReadingOptions.alwaysMapped)
+            movieData = try Data(contentsOf: videoURL!, options: Data.ReadingOptions.alwaysMapped)
         } catch _ {
             movieData = nil
             return
@@ -93,13 +117,21 @@ class postVideoViewController: UIViewController, UIImagePickerControllerDelegate
         request.httpBody = body
 
         let task = URLSession.shared.dataTask(with: request) { (data: Data?, reponse: URLResponse?, error: Error?) in
+            DispatchQueue.main.sync {
+                self.removeSpinner()
+            }
             if let `error` = error {
-                print(error)
+                DispatchQueue.main.sync {
+                    print(error)
+                    self.showToast(message: "Some Error Accured!", fontSize: 11.0)
+                }
                 return
             }
             if let `data` = data {
-                print(String(data: data, encoding: String.Encoding.utf8))
-                self.showToast(message: "Successfully Updated!", fontSize: 11.0)
+                DispatchQueue.main.sync {
+                    print(String(data: data, encoding: String.Encoding.utf8))
+                    self.showToast(message: "Successfully Updated!", fontSize: 11.0)
+                }
             }
         }
 
@@ -107,3 +139,4 @@ class postVideoViewController: UIViewController, UIImagePickerControllerDelegate
     }
 
 }
+
