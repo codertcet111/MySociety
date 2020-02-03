@@ -24,6 +24,10 @@ class GroupChatViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var groupChattypeMessageViewTopConstraints: NSLayoutConstraint!
     @IBOutlet weak var groupChatTypeMessageViewBottomConstraints: NSLayoutConstraint!
     
+    
+    @IBOutlet weak var gropuChatTextFieldHeightCOnstraints: NSLayoutConstraint!
+    
+    
     var chatModel: chat?
     
     override func viewDidLoad() {
@@ -31,21 +35,36 @@ class GroupChatViewController: UIViewController, UITableViewDataSource, UITableV
 
         self.groupChatTableView.estimatedRowHeight = 164
         self.groupChatTableView.rowHeight = UITableView.automaticDimension
-//        self.typeMessageTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
         self.typeMessageTextField.delegate = self
+//        self.typeMessageTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)),
+//        for: .editingChanged)
         getChatData(true)
     }
     
-    @objc func textFieldDidChange(_ textField: UITextField) {
-//        self.groupChattypeMessageViewTopConstraints.constant = 300
-//        self.groupChatTypeMessageViewBottomConstraints.constant = 300
-//        UIView.animate(withDuration: 1.5, animations: {
-//            self.view.layoutIfNeeded()
-//        })
+    
+    @IBAction func editingDidBeging(_ sender: UITextField) {
+        self.gropuChatTextFieldHeightCOnstraints.constant = 350.0
+        self.view.layoutIfNeeded()
     }
+    
+    
+    @IBAction func editingDidBeginTextField(_ sender: UITextField) {
+        print("****")
+        self.gropuChatTextFieldHeightCOnstraints.constant = 350.0
+        self.view.layoutIfNeeded()
+    }
+    @IBAction func touchUpInsideTextField(_ sender: UITextField) {
+        print("****")
+    }
+    
+//    @objc func textFieldDidChange(_ textField: UITextField) {
+//
+//    }
     
     @IBAction func textField(_ sender: AnyObject) {
         self.view.endEditing(true);
+        self.gropuChatTextFieldHeightCOnstraints.constant = 90.0
+        self.view.layoutIfNeeded()
 //        self.groupChattypeMessageViewTopConstraints.constant = 0
 //        self.groupChatTypeMessageViewBottomConstraints.constant = 0
 //        UIView.animate(withDuration: 1.5, animations: {

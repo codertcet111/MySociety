@@ -14,7 +14,12 @@ class FeedbackViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var feedbackTableView: UITableView!
     @IBOutlet weak var typeFeedbackView: UIView!
     @IBOutlet weak var selectEventButton: UIButton!
+    @IBOutlet weak var feedbackTextFieldViewHeightCotsraints: NSLayoutConstraint!
     
+    @IBAction func feedbackEditingBegin(_ sender: UITextField) {
+        self.feedbackTextFieldViewHeightCotsraints.constant = 380.0
+        self.view.layoutIfNeeded()
+    }
     var feedbackModelData: FeedbackList?
     @IBAction func selectEventBtnAction(_ sender: UIButton) {
         //Fetch and show all events Availabel
@@ -37,6 +42,8 @@ class FeedbackViewController: UIViewController, UITableViewDataSource, UITableVi
     
     @IBAction func textField(_ sender: AnyObject) {
         self.view.endEditing(true);
+        self.feedbackTextFieldViewHeightCotsraints.constant = 170.0
+        self.view.layoutIfNeeded()
     }
     
     @IBOutlet weak var postBtn: UIButton!

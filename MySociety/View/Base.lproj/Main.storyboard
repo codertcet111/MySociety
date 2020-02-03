@@ -5133,7 +5133,10 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
+                                            <action selector="editingDidBeginTextField:" destination="OM0-qc-HjV" eventType="editingDidBegin" id="asx-ag-651"/>
+                                            <action selector="editingDidBeging:" destination="OM0-qc-HjV" eventType="editingChanged" id="86f-ZX-OhM"/>
                                             <action selector="textField:" destination="OM0-qc-HjV" eventType="editingDidEndOnExit" id="kD1-7C-w7H"/>
+                                            <action selector="touchUpInsideTextField:" destination="OM0-qc-HjV" eventType="touchUpInside" id="1ic-sV-BuQ"/>
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Twb-nO-nEn">
@@ -5152,9 +5155,9 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.98193607230000002" green="0.98193607230000002" blue="0.98193607230000002" alpha="0.97999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="Twb-nO-nEn" firstAttribute="centerY" secondItem="YXJ-OB-g2i" secondAttribute="centerY" id="35R-V3-8AD"/>
                                     <constraint firstAttribute="height" constant="90" id="Cdu-i1-Mcr"/>
-                                    <constraint firstItem="Rrv-QR-ehG" firstAttribute="centerY" secondItem="YXJ-OB-g2i" secondAttribute="centerY" id="Lbk-3e-G4L"/>
+                                    <constraint firstItem="Rrv-QR-ehG" firstAttribute="top" secondItem="YXJ-OB-g2i" secondAttribute="top" constant="20" id="c6W-42-Aaz"/>
+                                    <constraint firstItem="Twb-nO-nEn" firstAttribute="centerY" secondItem="Rrv-QR-ehG" secondAttribute="centerY" id="fgb-GB-ela"/>
                                     <constraint firstItem="Rrv-QR-ehG" firstAttribute="leading" secondItem="YXJ-OB-g2i" secondAttribute="leading" constant="24" id="qVL-85-03p"/>
                                     <constraint firstAttribute="trailing" secondItem="Twb-nO-nEn" secondAttribute="trailing" constant="14" id="ssU-DF-1Rg"/>
                                     <constraint firstItem="Twb-nO-nEn" firstAttribute="leading" secondItem="Rrv-QR-ehG" secondAttribute="trailing" constant="24" id="wp9-kF-6bK"/>
@@ -5291,6 +5294,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="QJ5-BP-ZGU"/>
                     <connections>
+                        <outlet property="gropuChatTextFieldHeightCOnstraints" destination="Cdu-i1-Mcr" id="j1n-Yy-yfN"/>
                         <outlet property="groupChatMessageTypeView" destination="YXJ-OB-g2i" id="MJx-0Q-3oP"/>
                         <outlet property="groupChatTableView" destination="ZyI-2g-dOp" id="XBe-Xp-tWV"/>
                         <outlet property="groupChatTypeMessageViewBottomConstraints" destination="1n5-e2-lCq" id="0oT-nd-mLp"/>
@@ -5358,6 +5362,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
+                                            <action selector="feedbackEditingBegin:" destination="NmD-5j-dpe" eventType="editingDidBegin" id="vSU-KM-31W"/>
                                             <action selector="textField:" destination="NmD-5j-dpe" eventType="editingDidEndOnExit" id="rx6-4p-0dQ"/>
                                         </connections>
                                     </textField>
@@ -5495,6 +5500,7 @@
                     <connections>
                         <outlet property="commentTypeTextField" destination="hYe-5d-1FP" id="fu6-ij-YVN"/>
                         <outlet property="feedbackTableView" destination="JkX-KY-tLN" id="xND-pl-2Z3"/>
+                        <outlet property="feedbackTextFieldViewHeightCotsraints" destination="k9p-Go-WKc" id="kLM-Uj-QqN"/>
                         <outlet property="postBtn" destination="BMV-Vr-TkC" id="XtT-Hd-Zle"/>
                         <outlet property="selectEventButton" destination="awn-QI-xwc" id="TL6-Fk-nZy"/>
                         <outlet property="typeFeedbackView" destination="J53-Kw-zms" id="uHb-Zy-NDJ"/>
