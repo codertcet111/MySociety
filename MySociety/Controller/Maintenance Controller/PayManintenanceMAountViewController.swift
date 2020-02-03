@@ -45,7 +45,33 @@ class PayManintenanceMAountViewController: UIViewController, UIImagePickerContro
     }
     @IBOutlet weak var saveBtn: UIButton!
     @IBAction func saveBtnAction(_ sender: UIButton) {
-        self.postMaintenanceData()
+        if checkAndValidateFieldBfrRegister(){
+            self.postMaintenanceData()
+        }
+    }
+    
+    func checkAndValidateFieldBfrRegister() -> Bool{
+        if self.flatNumberTextField.text == ""{
+            showAlert("Please Type Flat Number ")
+            return false
+        }else if self.billAmountTextField.text == ""{
+            showAlert("Please Enter bill amount")
+            return false
+        }else if !(self.billAmountTextField.text?.isNumeric ?? true){
+            showAlert("Please Enter Bill amount Correctly, Remove (,) commas and spaces")
+            return false
+        }else if self.amountPayingTextField.text == ""{
+            showAlert("Please enter amount paying")
+            return false
+        }else if !(self.amountPayingTextField.text?.isNumeric ?? true){
+            showAlert("Please Enter Paying amount Correctly, Remove (,) commas and spaces")
+            return false
+        }else if selectedMemberId == 0{
+            showAlert("Please Select Member ")
+            return false
+        }else{
+            return true
+        }
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {

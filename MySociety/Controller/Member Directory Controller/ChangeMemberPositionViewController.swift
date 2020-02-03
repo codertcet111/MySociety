@@ -46,6 +46,15 @@ class ChangeMemberPositionViewController: UIViewController {
         self.changeMmeberPositionRequest()
     }
     
+    func checkAndValidateFieldBfrRegister() -> Bool{
+        if self.selectedMemberId == 0{
+            showAlertForError("Please select member first!")
+            return false
+        }else{
+            return true
+        }
+    }
+    
     func changeMmeberPositionRequest(){
         self.showSpinner(onView: self.view)
         let parameters = [

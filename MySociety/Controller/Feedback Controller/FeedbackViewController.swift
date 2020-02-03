@@ -8,12 +8,13 @@
 
 import UIKit
 
-class FeedbackViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class FeedbackViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     
 
     @IBOutlet weak var feedbackTableView: UITableView!
     @IBOutlet weak var typeFeedbackView: UIView!
     @IBOutlet weak var selectEventButton: UIButton!
+    
     var feedbackModelData: FeedbackList?
     @IBAction func selectEventBtnAction(_ sender: UIButton) {
         //Fetch and show all events Availabel
@@ -40,8 +41,29 @@ class FeedbackViewController: UIViewController, UITableViewDataSource, UITableVi
     
     @IBOutlet weak var postBtn: UIButton!
     @IBAction func postBtnAction(_ sender: UIButton) {
-        postFeedback()
-        self.commentTypeTextField.text = ""
+        if checkAndValidateFieldBfrRegister(){
+            postFeedback()
+            self.commentTypeTextField.text = ""
+        }
+    }
+    
+    func checkAndValidateFieldBfrRegister() -> Bool{
+        if self.commentTypeTextField.text == ""{
+            showAlertFOrMissingField("Please Type Feedback")
+            return false
+        }else if self.slectedEventId == nil{
+            showAlertFOrMissingField("Please Select Event")
+            return false
+        }else{
+            return true
+        }
+    }
+    
+    func showAlertFOrMissingField(_ message: String) -> (){
+        let alert = UIAlertController(title: message, message: nil , preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
     
     var eventModelData: event?

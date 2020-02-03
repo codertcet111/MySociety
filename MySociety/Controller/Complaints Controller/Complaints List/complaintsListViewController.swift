@@ -25,9 +25,9 @@ class complaintsListViewController: UIViewController, UITableViewDelegate, UITab
         self.complaintsListTableView.estimatedRowHeight = 164
         self.complaintsListTableView.rowHeight = UITableView.automaticDimension
         getComplaintsData()
-        if isAdminLoggedIn{
-            self.complaintListNewComplaintBtn.isHidden = true
-        }
+//        if isAdminLoggedIn{
+//            self.complaintListNewComplaintBtn.isHidden = true
+//        }
     }
     
     func getComplaintsData(){

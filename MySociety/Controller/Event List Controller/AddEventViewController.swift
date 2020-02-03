@@ -42,7 +42,24 @@ class AddEventViewController: UIViewController, UIImagePickerControllerDelegate,
         dismiss(animated: true, completion: nil)
     }
     @IBAction func SaveEventAction(_ sender: UIButton) {
-        self.createEvent()
+        if checkAndValidateFieldBfrRegister(){
+            self.createEvent()
+        }
+    }
+    
+    func checkAndValidateFieldBfrRegister() -> Bool{
+        if self.newEventTitleTextField.text == "" {
+            showAlert("Please type Title for the event")
+            return false
+        }else if self.newEventDescriptionTextField.text == "" {
+            showAlert("Please type description for the event!")
+            return false
+        }else if self.tempSelectedImage == nil {
+            showAlert("Please attach Image!")
+            return false
+        }else{
+            return true
+        }
     }
     
     override func viewDidLoad() {

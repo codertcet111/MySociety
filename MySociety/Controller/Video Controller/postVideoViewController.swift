@@ -45,8 +45,29 @@ class postVideoViewController: UIViewController, UIImagePickerControllerDelegate
     }
     
     @IBAction func uploadBtnAction(_ sender: UIButton) {
-        showToast(message: "Will take few minutes", fontSize: 11.0)
-        self.uploadMedia()
+        if checkAndValidateFieldBfrRegister(){
+            showToast(message: "Will take few minutes", fontSize: 11.0)
+            self.uploadMedia()
+        }
+    }
+    
+    func checkAndValidateFieldBfrRegister() -> Bool{
+        if self.titleTextField.text == ""{
+            showAlert("Please Type Title")
+            return false
+        }else if self.videoURL == nil{
+            showAlert("Please select video!")
+            return false
+        }else{
+            return true
+        }
+    }
+    
+    func showAlert(_ message: String) -> (){
+        let alert = UIAlertController(title: message, message: nil , preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
     
     @IBOutlet weak var uploadBtn: UIButton!

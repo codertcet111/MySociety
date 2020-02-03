@@ -49,8 +49,23 @@ class ComplaintDetailViewController: UIViewController, UITableViewDelegate, UITa
     
     @IBOutlet weak var complaintChatTableView: UITableView!
     @IBAction func adminCOmmentUploadImageAction(_ sender: UIButton) {
+        let myPickerController = UIImagePickerController()
+        myPickerController.delegate = self;
+        myPickerController.sourceType = UIImagePickerController.SourceType.photoLibrary
+        
+        self.present(myPickerController, animated: true, completion: nil)
     }
+    
     @IBAction func adminCommentSaveBtnAction(_ sender: UIButton) {
+        
+        if self.adminReactionCOmmentTextFiedl.text == "" {
+            showAlert("Please type comment first!")
+            return
+        }else if self.tempSelectedImage == nil{
+            showAlert("Please attach image also!")
+            return
+        }
+        
         self.showSpinner(onView: self.view)
         let params: Parameters = [
             "complaint_id": self.complaintId,
@@ -125,6 +140,15 @@ class ComplaintDetailViewController: UIViewController, UITableViewDelegate, UITa
     }
     
     @IBAction func furtherAddCommentSaveBtnAction(_ sender: UIButton) {
+        
+        if self.addCommentTextField.text == "" {
+            showAlert("Please type comment first!")
+            return
+        }else if self.tempSelectedImage == nil{
+            showAlert("Please attach image also!")
+            return
+        }
+        
         self.showSpinner(onView: self.view)
         let params: Parameters = [
             "complaints_id": "\(self.complaintId)",

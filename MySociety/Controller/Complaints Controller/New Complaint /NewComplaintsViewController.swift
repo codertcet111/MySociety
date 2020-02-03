@@ -42,11 +42,27 @@ class NewComplaintsViewController: UIViewController, UIImagePickerControllerDele
     @IBOutlet weak var newComplaintSaveBtn: UIButton!
     
     @IBAction func newComplaintSaveAction(_ sender: UIButton) {
-        self.createComplaint()
-        self.newComplaintSubjectTextField.text = ""
-        self.newComplaintDescriptionTextField.text = ""
+        if checkAndValidateFieldBfrRegister(){
+            self.createComplaint()
+            self.newComplaintSubjectTextField.text = ""
+            self.newComplaintDescriptionTextField.text = ""
+        }
     }
     
+    func checkAndValidateFieldBfrRegister() -> Bool{
+        if self.newComplaintSubjectTextField.text == "" {
+            showAlert("Please type subject for the complaint first!")
+            return false
+        }else if self.newComplaintDescriptionTextField.text == "" {
+            showAlert("Please type description for the complaint!")
+            return false
+        }else if self.tempSelectedImage == nil {
+            showAlert("Please attach Image!")
+            return false
+        }else{
+            return true
+        }
+    }
     
     @IBOutlet weak var newComplaintDescriptionTextField: UITextField!
     override func viewDidLoad() {

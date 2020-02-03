@@ -56,6 +56,7 @@
 		8413AFFA23D342EA0033F5BB /* EventDatas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413AFF823D342E90033F5BB /* EventDatas.swift */; };
 		8413AFFB23D342EA0033F5BB /* event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413AFF923D342E90033F5BB /* event.swift */; };
 		8417F5FA23E6ED6F00B46B07 /* noticeShowImagePushPopOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8417F5F923E6ED6F00B46B07 /* noticeShowImagePushPopOverViewController.swift */; };
+		8417F5FD23E7672D00B46B07 /* homePagePlayVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8417F5FC23E7672D00B46B07 /* homePagePlayVideoViewController.swift */; };
 		8418EBB523D9CDFC0037AE57 /* MemberDirectoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8418EBB323D9CDFC0037AE57 /* MemberDirectoryData.swift */; };
 		8418EBB623D9CDFC0037AE57 /* memeberUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8418EBB423D9CDFC0037AE57 /* memeberUsers.swift */; };
 		841C426323CEE17800993483 /* ELectionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C426223CEE17800993483 /* ELectionListViewController.swift */; };
@@ -173,6 +174,7 @@
 		8413AFF823D342E90033F5BB /* EventDatas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventDatas.swift; path = ../../../../../Downloads/event/EventDatas.swift; sourceTree = "<group>"; };
 		8413AFF923D342E90033F5BB /* event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = event.swift; path = ../../../../../Downloads/event/event.swift; sourceTree = "<group>"; };
 		8417F5F923E6ED6F00B46B07 /* noticeShowImagePushPopOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = noticeShowImagePushPopOverViewController.swift; sourceTree = "<group>"; };
+		8417F5FC23E7672D00B46B07 /* homePagePlayVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homePagePlayVideoViewController.swift; sourceTree = "<group>"; };
 		8418EBB323D9CDFC0037AE57 /* MemberDirectoryData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MemberDirectoryData.swift; path = ../../../../../Downloads/memeberUsers/MemberDirectoryData.swift; sourceTree = "<group>"; };
 		8418EBB423D9CDFC0037AE57 /* memeberUsers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = memeberUsers.swift; path = ../../../../../Downloads/memeberUsers/memeberUsers.swift; sourceTree = "<group>"; };
 		841C426223CEE17800993483 /* ELectionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ELectionListViewController.swift; sourceTree = "<group>"; };
@@ -541,6 +543,7 @@
 			isa = PBXGroup;
 			children = (
 				84F2923323C7547000502408 /* HomePageViewController.swift */,
+				8417F5FC23E7672D00B46B07 /* homePagePlayVideoViewController.swift */,
 				842CCF8C23C846CD003FF488 /* TableView Cells */,
 			);
 			path = "Home Controllers";
@@ -961,6 +964,7 @@
 				841205FE23E3082C00912A6B /* MaintenanceData.swift in Sources */,
 				8413857823CB8862005CFA57 /* EventDetailViewController.swift in Sources */,
 				8451C04623CDEFAC00250292 /* opinionPollViewController.swift in Sources */,
+				8417F5FD23E7672D00B46B07 /* homePagePlayVideoViewController.swift in Sources */,
 				841C426C23CEE1E300993483 /* UpcomingElectionTableViewCell.swift in Sources */,
 				84F2923223C7542C00502408 /* extension.swift in Sources */,
 				841C427B23CF1AE200993483 /* GroupCHatMyCHatTableViewCell.swift in Sources */,

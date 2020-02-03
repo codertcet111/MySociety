@@ -8,13 +8,15 @@
 
 import UIKit
 
-class GroupChatViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class GroupChatViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var groupChatTableView: UITableView!
     @IBOutlet weak var postBtn: UIButton!
     @IBAction func postBtnAction(_ sender: UIButton) {
-        self.postChat()
-        self.typeMessageTextField.text = ""
+        if checkAndValidateFieldBfrRegister(){
+            self.postChat()
+            self.typeMessageTextField.text = ""
+        }
     }
     @IBOutlet weak var typeMessageTextField: UITextField!
     @IBOutlet weak var groupChatMessageTypeView: UIView!
@@ -29,7 +31,8 @@ class GroupChatViewController: UIViewController, UITableViewDataSource, UITableV
 
         self.groupChatTableView.estimatedRowHeight = 164
         self.groupChatTableView.rowHeight = UITableView.automaticDimension
-        self.typeMessageTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
+//        self.typeMessageTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
+        self.typeMessageTextField.delegate = self
         getChatData(true)
     }
     
@@ -48,7 +51,53 @@ class GroupChatViewController: UIViewController, UITableViewDataSource, UITableV
 //        UIView.animate(withDuration: 1.5, animations: {
 //            self.view.layoutIfNeeded()
 //        })
-    } 
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) { // became first responder
+
+        //move textfields up
+        let myScreenRect: CGRect = UIScreen.main.bounds
+        let keyboardHeight : CGFloat = 216
+
+        UIView.beginAnimations( "animateView", context: nil)
+        var movementDuration:TimeInterval = 0.35
+        var needToMove: CGFloat = 0
+
+        var frame : CGRect = self.view.frame
+        if (textField.frame.origin.y + textField.frame.size.height + /*self.navigationController.navigationBar.frame.size.height + */UIApplication.shared.statusBarFrame.size.height > (myScreenRect.size.height - keyboardHeight)) {
+            needToMove = (textField.frame.origin.y + textField.frame.size.height + /*self.navigationController.navigationBar.frame.size.height +*/ UIApplication.shared.statusBarFrame.size.height) - (myScreenRect.size.height - keyboardHeight);
+        }
+
+        frame.origin.y = -needToMove
+        self.view.frame = frame
+        UIView.commitAnimations()
+    }
+
+    func textFieldDidEndEditing(textField: UITextField) {
+            //move textfields back down
+            UIView.beginAnimations( "animateView", context: nil)
+        var movementDuration:TimeInterval = 0.35
+            var frame : CGRect = self.view.frame
+            frame.origin.y = 0
+            self.view.frame = frame
+            UIView.commitAnimations()
+    }
+    
+    func checkAndValidateFieldBfrRegister() -> Bool{
+        if self.typeMessageTextField.text == ""{
+            showAlertFOrMissingField("Please Type Text!")
+            return false
+        }else{
+            return true
+        }
+    }
+    
+    func showAlertFOrMissingField(_ message: String) -> (){
+        let alert = UIAlertController(title: message, message: nil , preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
     
     func postChat(){
         self.showSpinner(onView: self.view)

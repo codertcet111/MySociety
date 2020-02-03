@@ -44,9 +44,25 @@ class NewNoticeViewController: UIViewController, UIImagePickerControllerDelegate
     }
     
     @IBAction func saveNoticeAction(_ sender: UIButton) {
-        self.createNotice()
+        if checkAndValidateFieldBfrRegister(){
+            self.createNotice()
+        }
     }
     
+    func checkAndValidateFieldBfrRegister() -> Bool{
+        if self.newNoticeSetTitleTextField.text == "" {
+            showAlert("Please type Title for the notice")
+            return false
+        }else if self.descriptionTextField.text == "" {
+            showAlert("Please type description for the notice!")
+            return false
+        }else if self.tempSelectedImage == nil {
+            showAlert("Please attach Image!")
+            return false
+        }else{
+            return true
+        }
+    }
     
     
     override func viewDidLoad() {

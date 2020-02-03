@@ -15,7 +15,7 @@ class videoHomePageTableViewCell: UITableViewCell {
     @IBOutlet weak var videoTitleLabel: UILabel!
     @IBOutlet weak var videoView: PlayerView!
     @IBOutlet weak var timeStampDateLabel: UILabel!
-    @IBOutlet weak var playPauseBtn: UIButton!
+    @IBOutlet weak var playInFullScreenBtn: UIButton!
     
     @IBOutlet weak var playImageViewOutlet: UIImageView!
     var isPlaying: Bool = false

@@ -31,9 +31,29 @@ class newElectionViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var optionsTitleLabel: UILabel!
     @IBOutlet weak var optionsListTableView: UITableView!
     @IBAction func postBtnAction(_ sender: UIButton) {
-        self.createElection()
+        if checkAndValidateFieldBfrRegister(){
+            self.createElection()
+        }
     }
     @IBOutlet weak var postBtn: UIButton!
+    
+    func checkAndValidateFieldBfrRegister() -> Bool{
+        if self.subjectTextField.text == ""{
+            showAlert("Please Type Subject Title")
+            return false
+        }else if self.startTimeDatePicker.date == self.endDateTimePicker.date  {
+            showAlert("Please Select Start time and end time of election")
+            return false
+        }else if self.startTimeDatePicker.date > self.endDateTimePicker.date{
+            showAlert("Please select proper End time!")
+            return false
+        }else if self.electionOptionsArrayList.count == 0 || self.electionOptionsArrayList.count == 1{
+            showAlert("Please enter election Options")
+            return false
+        }else{
+            return true
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
