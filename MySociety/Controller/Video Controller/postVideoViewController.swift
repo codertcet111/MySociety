@@ -9,6 +9,7 @@
 import UIKit
 import MobileCoreServices
 import AssetsLibrary
+import Alamofire
 
 class postVideoViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -103,60 +104,116 @@ class postVideoViewController: UIViewController, UIImagePickerControllerDelegate
     
     func uploadMedia(){
         
-        if videoURL == nil {
-            return
-        }
+        let params: Parameters = [
+            "userId": "\(loggedInUserId)",
+            "name": "\(self.titleTextField.text ?? "")"
+        ]
+        Alamofire.upload(multipartFormData:
+            {
+                (multipartFormData) in
 
-        showSpinner(onView: self.view)
-        guard let url = URL(string: "\(ngRokUrl)uploadVideo/\(loggedInUserId)") else {
-            return
-        }
-        var request = URLRequest(url: url)
-        let boundary = "------------------------your_boundary"
-
-        request.httpMethod = "POST"
-        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-
-        var movieData: Data?
-        do {
-            movieData = try Data(contentsOf: videoURL!, options: Data.ReadingOptions.alwaysMapped)
-        } catch _ {
-            movieData = nil
-            return
-        }
-
-        var body = Data()
-
-        // change file name whatever you want
-        let filename = "upload.mov"
-        let mimetype = "video/mov"
-
-        body.append("--\(boundary)\r\n".data(using: String.Encoding.utf8)!)
-        body.append("Content-Disposition:form-data; name=\"file\"; filename=\"\(filename)\"\r\n".data(using: String.Encoding.utf8)!)
-        body.append("Content-Type: \(mimetype)\r\n\r\n".data(using: String.Encoding.utf8)!)
-        body.append(movieData!)
-        request.httpBody = body
-
-        let task = URLSession.shared.dataTask(with: request) { (data: Data?, reponse: URLResponse?, error: Error?) in
-            DispatchQueue.main.sync {
-                self.removeSpinner()
-            }
-            if let `error` = error {
-                DispatchQueue.main.sync {
-                    print(error)
-                    self.showToast(message: "Some Error Accured!", fontSize: 11.0)
+                multipartFormData.append(self.videoURL!, withName: "video")
+                for (key, value) in params
+                {
+                    multipartFormData.append((value as AnyObject).data(using: String.Encoding.utf8.rawValue)!, withName: key)
                 }
-                return
-            }
-            if let `data` = data {
-                DispatchQueue.main.sync {
-                    print(String(data: data, encoding: String.Encoding.utf8))
-                    self.showToast(message: "Successfully Updated!", fontSize: 11.0)
+        }, to:URL(string: "\(ngRokUrl)videos") ?? "",headers:["x-api-key": "1c552e6f2a95a883209e9b449d6f4973", "Content-Type": "application/json"])
+        { (result) in
+            switch result {
+            case .success(let upload,_,_ ):
+                upload.uploadProgress(closure: { (progress) in
+                    //Print progress
+                })
+                upload.responseJSON
+                    { response in
+                        DispatchQueue.main.async {
+                            self.removeSpinner()
+                        }
+                        //print response.result
+                        if response.result.value != nil
+                        {
+                            let value = response.result.value
+                            DispatchQueue.main.async {
+                                self.showAlert("Video Uploaded Successfully!!")
+                            }
+                        }else{
+                            DispatchQueue.main.async {
+                                self.showAlert("Some Error, Try again!")
+                            }
+                        }
                 }
+            case .failure(let encodingError):
+                break
             }
         }
-
-        task.resume()
+        
+        
+        
+        
+        
+        
+        
+        
+//        let params: Parameters = [
+//            "userId": "\(loggedInUserId)",
+//            "name":  "\(self.titleTextField.text ?? "")"
+//        ]
+//
+//        if videoURL == nil {
+//            return
+//        }
+//
+//        showSpinner(onView: self.view)
+//        guard let url = URL(string: "\(ngRokUrl)uploadVideo/\(loggedInUserId)") else {
+//            return
+//        }
+//        var request = URLRequest(url: url)
+//        let boundary = "------------------------your_boundary"
+//
+//        request.httpMethod = "POST"
+//        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+//
+//        var movieData: Data?
+//        do {
+//            movieData = try Data(contentsOf: videoURL!, options: Data.ReadingOptions.alwaysMapped)
+//        } catch _ {
+//            movieData = nil
+//            return
+//        }
+//
+//        var body = Data()
+//
+//        // change file name whatever you want
+//        let filename = "upload.mov"
+//        let mimetype = "video/mov"
+//
+//        body.append("--\(boundary)\r\n".data(using: String.Encoding.utf8)!)
+//        body.append("Content-Disposition:form-data; name=\"file\"; filename=\"\(filename)\"\r\n".data(using: String.Encoding.utf8)!)
+//        body.append("Content-Type: \(mimetype)\r\n\r\n".data(using: String.Encoding.utf8)!)
+//        body.append(movieData!)
+//        request.httpBody = body
+//
+//        let task = URLSession.shared.dataTask(with: request) { (data: Data?, reponse: URLResponse?, error: Error?) in
+//            DispatchQueue.main.sync {
+//                self.removeSpinner()
+//            }
+//            if let `error` = error {
+//                DispatchQueue.main.sync {
+//                    print(error)
+//                    self.showToast(message: "Some Error Accured!", fontSize: 11.0)
+//                }
+//                return
+//            }
+//            if let `data` = data {
+//                DispatchQueue.main.sync {
+//                    print(String(data: data, encoding: String.Encoding.utf8))
+//                    self.showToast(message: "Successfully Updated!", fontSize: 11.0)
+//                }
+//            }
+//        }
+//
+//        task.resume()
+//    }
     }
 
 }

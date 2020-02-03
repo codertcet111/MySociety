@@ -112,8 +112,9 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
             self.videoUrlForFUllScreenMode = "\(tempVideoModel.videoUrl)"
         }
         self.performSegue(withIdentifier: self.playVideoSegueString, sender: self)
+        //**********************Uncomment below code, and comment out above code
 //        if let tempVideoModel = self.homePageModel?.feed.videoHome[sender.tag]{
-//            self.videoUrlForFUllScreenMode = "\(self.homePageModel?.imageBaseUrl ?? "")/\(tempVideoModel.videoUrl)"
+//            self.videoUrlForFUllScreenMode = "\(self.homePageModel?.videoBaseUrl ?? "")/\(tempVideoModel.videoUrl)"
 //        }
         
     }
@@ -139,6 +140,8 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
             cell.timeStampDateLabel.text = tempVideoData?.date ?? ""
             cell.Id = tempVideoData?.destinationId ?? 0
             let url = NSURL(string: tempVideoData?.videoUrl ?? "")
+            //**********************Uncomment below code, and comment out above code
+//            let url = NSURL(string: "\(self.homePageModel?.videoBaseUrl ?? "")/\(tempVideoData?.videoUrl ?? "")")
             //"https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4")//
             let avPlayer = AVPlayer(url: url! as URL);
             cell.videoView.playerLayer.player = avPlayer;
