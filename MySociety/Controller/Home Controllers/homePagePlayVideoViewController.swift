@@ -14,6 +14,8 @@ class homePagePlayVideoViewController: UIViewController {
     var state: Int = 1 //0: Play, 1: Pause
     var player: AVPlayer?
     var videoUrl = ""
+    
+    @IBOutlet weak var loaderView: UIActivityIndicatorView!
     @IBOutlet weak var videoView: UIView!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var pauseButton: UIButton!
@@ -35,6 +37,22 @@ class homePagePlayVideoViewController: UIViewController {
         playButton.cornerRadius(radius: 10.0)
         pauseButton.cornerRadius(radius: 10.0)
     }
+    
+    override public func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "timeControlStatus", let change = change, let newValue = change[NSKeyValueChangeKey.newKey] as? Int, let oldValue = change[NSKeyValueChangeKey.oldKey] as? Int {
+            let oldStatus = AVPlayer.TimeControlStatus(rawValue: oldValue)
+            let newStatus = AVPlayer.TimeControlStatus(rawValue: newValue)
+            if newStatus != oldStatus {
+                DispatchQueue.main.async {[weak self] in
+                    if newStatus == .playing || newStatus == .paused {
+                        self?.loaderView.isHidden = true
+                    } else {
+                        self?.loaderView.isHidden = false
+                    }
+                }
+            }
+        }
+    }
 
     override func viewDidAppear(_ animated: Bool) {
         let videoURL = URL(string: "\(self.videoUrl)")
@@ -43,6 +61,7 @@ class homePagePlayVideoViewController: UIViewController {
         playerLayer.frame = self.videoView.bounds
         self.videoView.layer.addSublayer(playerLayer)
         player?.play()
+        player?.addObserver(self, forKeyPath: "timeControlStatus", options: [.old, .new], context: nil)
         state = 0
     }
 }

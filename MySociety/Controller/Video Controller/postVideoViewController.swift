@@ -10,6 +10,7 @@ import UIKit
 import MobileCoreServices
 import AssetsLibrary
 import Alamofire
+import AVKit
 
 class postVideoViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -75,6 +76,7 @@ class postVideoViewController: UIViewController, UIImagePickerControllerDelegate
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.uploadBtn.cornerRadius(radius: 10.0)
     }
     
 //    private func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
@@ -100,10 +102,38 @@ class postVideoViewController: UIViewController, UIImagePickerControllerDelegate
         videoURL = tempvideoURL
         print("videoURL:\(String(describing: videoURL))")
         self.dismiss(animated: true, completion: nil)
+        if videoURL != nil{
+            DispatchQueue.global(qos: .background).async {
+                let image = self.imageFromVideo(url: self.videoURL!, at: 0)
+
+                DispatchQueue.main.async {
+                    self.selectVideoButton.setImage(image, for: .normal)
+                }
+            }
+        }
+    }
+    
+    func imageFromVideo(url: URL, at time: TimeInterval) -> UIImage? {
+        let asset = AVURLAsset(url: url)
+
+        let assetIG = AVAssetImageGenerator(asset: asset)
+        assetIG.appliesPreferredTrackTransform = true
+        assetIG.apertureMode = AVAssetImageGenerator.ApertureMode.encodedPixels
+
+        let cmTime = CMTime(seconds: time, preferredTimescale: 60)
+        let thumbnailImageRef: CGImage
+        do {
+            thumbnailImageRef = try assetIG.copyCGImage(at: cmTime, actualTime: nil)
+        } catch let error {
+            print("Error: \(error)")
+            return nil
+        }
+
+        return UIImage(cgImage: thumbnailImageRef)
     }
     
     func uploadMedia(){
-        
+        self.showSpinner(onView: self.view)
         let params: Parameters = [
             "userId": "\(loggedInUserId)",
             "name": "\(self.titleTextField.text ?? "")"

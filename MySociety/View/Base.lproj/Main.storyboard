@@ -66,7 +66,7 @@
                                     <action selector="becomeMemeberAction:" destination="UBW-lD-WsA" eventType="touchUpInside" id="CUs-4k-8k1"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7dF-Pd-phw">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7dF-Pd-phw">
                                 <rect key="frame" x="122" y="482" width="170" height="34"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -3068,7 +3068,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z1z-wD-sao">
-                                <rect key="frame" x="266" y="665" width="128" height="128"/>
+                                <rect key="frame" x="330" y="729" width="64" height="64"/>
                                 <state key="normal" image="plus"/>
                                 <connections>
                                     <action selector="addEventAction:" destination="ZYW-eV-3wC" eventType="touchUpInside" id="qnF-dY-WUC"/>
@@ -3435,7 +3435,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u5a-ws-slj">
-                                <rect key="frame" x="266" y="665" width="128" height="128"/>
+                                <rect key="frame" x="330" y="729" width="64" height="64"/>
                                 <state key="normal" image="plus"/>
                                 <connections>
                                     <action selector="addNoticeAction:" destination="wi4-VD-LvS" eventType="touchUpInside" id="27G-LT-BH2"/>
@@ -3676,6 +3676,9 @@
                                     <action selector="pauseButtonAction:" destination="FDW-E4-uq0" eventType="touchUpInside" id="Gmc-nP-cuu"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="t3G-pT-fyU">
+                                <rect key="frame" x="197" y="350.5" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -3684,6 +3687,8 @@
                             <constraint firstItem="qgr-Yz-CXz" firstAttribute="top" secondItem="eFR-ge-ujX" secondAttribute="bottom" constant="34" id="Oal-Jz-G7P"/>
                             <constraint firstItem="WzJ-nQ-DaH" firstAttribute="top" secondItem="eFR-ge-ujX" secondAttribute="bottom" constant="34" id="Q7f-cR-V9a"/>
                             <constraint firstItem="eFR-ge-ujX" firstAttribute="centerX" secondItem="Lln-ia-ycI" secondAttribute="centerX" id="Ypu-U5-thQ"/>
+                            <constraint firstItem="t3G-pT-fyU" firstAttribute="centerY" secondItem="Lln-ia-ycI" secondAttribute="centerY" multiplier="0.8" id="Zvc-wR-MI8"/>
+                            <constraint firstItem="t3G-pT-fyU" firstAttribute="centerX" secondItem="Lln-ia-ycI" secondAttribute="centerX" id="kae-c8-LSk"/>
                             <constraint firstItem="eFR-ge-ujX" firstAttribute="leading" secondItem="Lln-ia-ycI" secondAttribute="leading" constant="34" id="mBC-XH-quI"/>
                             <constraint firstItem="Lln-ia-ycI" firstAttribute="trailing" secondItem="eFR-ge-ujX" secondAttribute="trailing" constant="34" id="rP0-Ix-bpD"/>
                             <constraint firstItem="eFR-ge-ujX" firstAttribute="centerY" secondItem="Lln-ia-ycI" secondAttribute="centerY" multiplier="0.8" id="xbC-Sm-Tyu"/>
@@ -3692,6 +3697,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Ogi-Dc-vzF"/>
                     <connections>
+                        <outlet property="loaderView" destination="t3G-pT-fyU" id="Wx9-Ir-Uat"/>
                         <outlet property="pauseButton" destination="qgr-Yz-CXz" id="bKo-vb-IgH"/>
                         <outlet property="playButton" destination="WzJ-nQ-DaH" id="fVn-cf-xoq"/>
                         <outlet property="videoView" destination="eFR-ge-ujX" id="fhA-XK-aI5"/>
@@ -4144,7 +4150,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zjq-lS-Zv9">
-                                <rect key="frame" x="262" y="661" width="128" height="128"/>
+                                <rect key="frame" x="326" y="725" width="64" height="64"/>
                                 <state key="normal" image="plus"/>
                                 <connections>
                                     <action selector="addElectionBtnAction:" destination="Gwj-k0-2aJ" eventType="touchUpInside" id="dtf-1r-Fye"/>
