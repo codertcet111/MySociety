@@ -155,6 +155,7 @@ class maintenanceListViewController: UIViewController, UITableViewDataSource, UI
             let cell = tableView.dequeueReusableCell(withIdentifier: "maintenanceTableViewCell") as! maintenanceTableViewCell
             cell.alpha = 0
             cell.maintenanceBackgroundView.layer.cornerRadius = 10
+            cell.maintenanceBackgroundView.giveBorder()
             cell.statusBtn.layer.cornerRadius = 10
             cell.selectionStyle = .none
             cell.FlatNumberLabel.text = "Flat: \(tempMaintenaceData?.FlatNo ?? "")/ \(tempMaintenaceData?.wing ?? "")"

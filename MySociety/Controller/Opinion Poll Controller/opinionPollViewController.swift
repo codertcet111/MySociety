@@ -213,6 +213,7 @@ class opinionPollViewController: UIViewController, UITableViewDelegate, UITableV
                 
                 cell.endDateLabel.text = "End Time: \(tempOpenionData.endDateTime)"
                 cell.selectionStyle = .none
+                cell.liveVoteBackgroundView.giveBorder()
                 UIView.animate(withDuration: 1) {
                     cell.alpha = 1.0
                 }
@@ -228,7 +229,7 @@ class opinionPollViewController: UIViewController, UITableViewDelegate, UITableV
                 cell.answerBLabel.text = getAnswersArray.indices.contains(1) ? getAnswersArray[1] : ""
                 cell.answerCLabel.text = getAnswersArray.indices.contains(2) ? getAnswersArray[2] : ""
                 cell.answerDLabel.text = getAnswersArray.indices.contains(3) ? getAnswersArray[3] : ""
-                
+                cell.votedBackgroundView.giveBorder()
                 let votedCountForOptionString = (tempOpenionData.voteCountList).replacingOccurrences(of: "[", with: "").replacingOccurrences(of: "]", with: "").components(separatedBy: ",")
                 var votedCountForOption: [Int] = []
                 for value in votedCountForOptionString{
@@ -272,7 +273,7 @@ class opinionPollViewController: UIViewController, UITableViewDelegate, UITableV
                 cell.answerBLabel.text = getAnswersArray.indices.contains(1) ? getAnswersArray[1] : ""
                 cell.answerCLabel.text = getAnswersArray.indices.contains(2) ? getAnswersArray[2] : ""
                 cell.answreDLabel.text = getAnswersArray.indices.contains(3) ? getAnswersArray[3] : ""
-                
+                cell.resultBackgoundView.giveBorder()
                 let votedCountForOption = (tempOpenionData.voteCountList).components(separatedBy: ",")
                 
                 cell.answerATotalVoteCount.text = "\(Float(votedCountForOption.indices.contains(0) ? votedCountForOption[0] : "") ?? 0)"

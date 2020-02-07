@@ -112,7 +112,7 @@ class noticeListViewController: UIViewController, UITableViewDelegate, UITableVi
             cell.noticeCellTitleLabel.text = tempNotice?.title ?? ""
             cell.noticeCellDateTimeLabel.text = tempNotice?.date ?? ""
             cell.noticeCellDescriptionLabel.text = tempNotice?.description ?? ""
-            
+            cell.noticeCellBackgoundView.giveBorder()
             cell.noticeCellImageView.tag = indexPath.row
             let tapGesture = UITapGestureRecognizer (target: self, action: #selector(imgTap(tapGesture:)))
             cell.noticeCellImageView.addGestureRecognizer(tapGesture)
@@ -130,7 +130,7 @@ class noticeListViewController: UIViewController, UITableViewDelegate, UITableVi
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "NoticeListTableViewCell") as! NoticeListTableViewCell
             cell.alpha = 0
-            
+            cell.noticeCellBackgoundView.giveBorder()
             cell.noticeCellBackgoundView.layer.cornerRadius = 10.0
             cell.selectionStyle = .none
             UIView.animate(withDuration: 1) {

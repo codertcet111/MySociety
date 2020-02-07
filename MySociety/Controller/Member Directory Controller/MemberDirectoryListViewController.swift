@@ -99,6 +99,7 @@ class MemberDirectoryListViewController: UIViewController, UITableViewDataSource
             cell.memberDirectoryPhoneBtn.tag = indexPath.row
             cell.memberDiretoryEMailBtn.tag = indexPath.row
             cell.memberDirectoryWhatsappBtn.tag = indexPath.row
+            cell.memberDirectoryBackgroundView.giveBorder()
         }
         cell.memberDirectoryBackgroundView.layer.cornerRadius = 10
         UIView.animate(withDuration: 1) {

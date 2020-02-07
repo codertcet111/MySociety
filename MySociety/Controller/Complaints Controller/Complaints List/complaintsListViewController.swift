@@ -107,6 +107,7 @@ class complaintsListViewController: UIViewController, UITableViewDelegate, UITab
             cell.dateAndTimeLabel.text = tempchat?.date ?? ""
             cell.statusLabel.text = tempchat?.status ?? 0 == 0 ? "Open" : "Closed"
             cell.selectionStyle = .none
+            cell.complaintsCellBackgroundView.giveBorder()
             UIView.animate(withDuration: 1) {
                 cell.alpha = 1.0
             }

@@ -79,8 +79,8 @@ class logInUserViewController: UIViewController {
                             if json?.value(forKey: "Error") != nil{
                                 self.showAlert("\(json?.value(forKey: "Error") as? String ?? "Unauthorised")")
                             }else{
-                                let userId = (json?.value(forKey: "id") as? Int ?? 0)
-                                let isAdmin = (json?.value(forKey: "roleId") as? Int ?? 0) == 0 ? false : true
+                                let userId = (json?.value(forKey: "id") as? Int ?? 1)
+                                let isAdmin = (json?.value(forKey: "roleId") as? Int ?? 1) == 0 ? false : true
                                 UserDefaults.standard.set(userId, forKey: loggedInUserIdDefaultKeyName)
                                 UserDefaults.standard.set(isAdmin, forKey: loggedInUserIsAdminDefaultKeyName)
                                 //Set Default parameters and loggingin user

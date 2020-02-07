@@ -101,6 +101,7 @@ class EventListViewController: UIViewController, UITableViewDataSource, UITableV
             cell.eventListDateLabel.text = tempEvent?.date ?? ""
             cell.eventLsitDescriptionLabel.text = tempEvent?.description ?? ""
             cell.eventListBackgroundView.layer.cornerRadius = 10.0
+            cell.eventListBackgroundView.giveBorder()
             cell.selectionStyle = .none
             UIView.animate(withDuration: 1) {
                 cell.alpha = 1.0
@@ -109,7 +110,7 @@ class EventListViewController: UIViewController, UITableViewDataSource, UITableV
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "EventListTableViewCell") as! EventListTableViewCell
             cell.alpha = 0
-            
+            cell.eventListBackgroundView.giveBorder()
             cell.eventListBackgroundView.layer.cornerRadius = 10.0
             cell.selectionStyle = .none
             UIView.animate(withDuration: 1) {

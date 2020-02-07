@@ -226,7 +226,7 @@ class GroupChatViewController: UIViewController, UITableViewDataSource, UITableV
                 cell.myChatBackgroundView.layer.cornerRadius = 10
                 cell.myChatMyMessageLabel.text = tempchat?.text ?? ""
                 cell.myChatTimeStampLabel.text = tempchat?.datetime ?? ""
-                
+                cell.myChatBackgroundView.giveBorder()
                 cell.selectionStyle = .none
                 UIView.animate(withDuration: 1) {
                     cell.alpha = 1.0
@@ -239,6 +239,7 @@ class GroupChatViewController: UIViewController, UITableViewDataSource, UITableV
                 cell.otherChatUserNameLabel.text = tempchat?.userName ?? ""
                 cell.otherCHatMEssageLabel.text = tempchat?.text ?? ""
                 cell.otherChatDatetimeLabel.text = tempchat?.datetime ?? ""
+                cell.otherChatBackgroundView.giveBorder()
                 cell.selectionStyle = .none
                 UIView.animate(withDuration: 1) {
                     cell.alpha = 1.0
@@ -249,7 +250,7 @@ class GroupChatViewController: UIViewController, UITableViewDataSource, UITableV
             let cell = tableView.dequeueReusableCell(withIdentifier: "groupChatOthersCHatTableViewCell") as! groupChatOthersCHatTableViewCell
                cell.alpha = 0
                cell.otherChatBackgroundView.layer.cornerRadius = 10
-               
+                cell.otherChatBackgroundView.giveBorder()
                cell.selectionStyle = .none
                UIView.animate(withDuration: 1) {
                    cell.alpha = 1.0

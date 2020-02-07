@@ -234,7 +234,7 @@ class FeedbackViewController: UIViewController, UITableViewDataSource, UITableVi
         let cell = tableView.dequeueReusableCell(withIdentifier: "feedbackTableViewCell") as! feedbackTableViewCell
        cell.alpha = 0
        cell.feedbackCellBackgroundView.layer.cornerRadius = 10
-       
+        cell.feedbackCellBackgroundView.giveBorder()
         if self.feedbackModelData?.feedbackData.indices.contains(indexPath.row) ?? false{
             cell.eventNameLabel.text = self.feedbackModelData?.feedbackData[indexPath.row].eventName ?? ""
             cell.userDescriptionTextLabel.text = self.feedbackModelData?.feedbackData[indexPath.row].description ?? ""

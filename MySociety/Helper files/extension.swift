@@ -337,3 +337,14 @@ extension String {
         return Set(self).isSubset(of: nums)
     }
 }
+
+extension UIView{
+    func giveBorder(){
+        let yourColor : UIColor = UIColor.lightGray
+        self.layer.masksToBounds = true
+        self.layer.borderColor = yourColor.cgColor
+        self.layer.borderWidth = 1.0
+        self.dropShadow()
+    }
+}
+

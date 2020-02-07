@@ -152,6 +152,7 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
             cell.playInFullScreenBtn.addTarget(self, action: #selector(playFullScreenButtonAction(sender:)), for: .touchUpInside)
             cell.videoView.alpha = 1.0
             cell.videoBackgroundView.layer.cornerRadius = 10.0
+            cell.videoBackgroundView.giveBorder()
             cell.videoView.layer.cornerRadius = 10.0
             cell.selectionStyle = .none
             UIView.animate(withDuration: 1) {
@@ -169,6 +170,7 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
             cell.Id = tempUpcomingElectionData?.destinationId ?? 0
             cell.timeStampDateLabel.text = tempUpcomingElectionData?.date ?? ""
             cell.upcomingElectionBackgroundView.layer.cornerRadius = 10.0
+            cell.upcomingElectionBackgroundView.giveBorder()
             cell.selectionStyle = .none
             UIView.animate(withDuration: 1) {
                 cell.alpha = 1.0
@@ -183,6 +185,7 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
             cell.Id = tempBoticeData?.destinationId ?? 0
             cell.timeStampDateLabel.text = tempBoticeData?.date ?? ""
             cell.noticeBackgroundView.layer.cornerRadius = 10.0
+            cell.noticeBackgroundView.giveBorder()
             cell.selectionStyle = .none
             cell.noticeimageView?.contentMode = UIView.ContentMode.scaleAspectFit
             cell.noticeimageView?.clipsToBounds = true
@@ -193,14 +196,6 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
                     cell.noticeimageView?.image = image
                 }
             }
-            
-//            Alamofire.request("https://api.myproperty4u.com/public/images/1580793537.jpg")
-//            .responseImage { response in
-//
-//                if let image = response.result.value {
-//                    cell.imageView?.image = image
-//                }
-//            }
             
             UIView.animate(withDuration: 1) {
                 cell.alpha = 1.0
@@ -216,6 +211,7 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
             cell.timeStampDateLabel.text = tempElectionData?.date ?? ""
             cell.Id = tempElectionData?.destinationId ?? 0
             cell.electionResultBackgroundView.layer.cornerRadius = 10.0
+            cell.electionResultBackgroundView.giveBorder()
             cell.selectionStyle = .none
             UIView.animate(withDuration: 1) {
                 cell.alpha = 1.0
@@ -230,6 +226,7 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
             cell.timeStampDateLabel.text = templivePollData?.date ?? ""
             cell.Id = templivePollData?.destinationId ?? 0
             cell.livePollBackgroundView.layer.cornerRadius = 10.0
+            cell.livePollBackgroundView.giveBorder()
             cell.selectionStyle = .none
             UIView.animate(withDuration: 1) {
                 cell.alpha = 1.0
@@ -245,6 +242,7 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
             cell.timeStampDateLabel.text = temppollResultData?.date ?? ""
             cell.Id = temppollResultData?.destinationId ?? 0
             cell.pollResultBackgroundView.layer.cornerRadius = 10.0
+            cell.pollResultBackgroundView.giveBorder()
             cell.selectionStyle = .none
             UIView.animate(withDuration: 1) {
                 cell.alpha = 1.0
@@ -260,6 +258,7 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
             cell.timeStampDateLabel.text = tempEventData?.date ?? ""
             cell.Id = tempEventData?.destinationId ?? 0
             cell.evetnHomeackgroundView.layer.cornerRadius = 10.0
+            cell.evetnHomeackgroundView.giveBorder()
             cell.selectionStyle = .none
             UIView.animate(withDuration: 1) {
                 cell.alpha = 1.0
@@ -274,6 +273,7 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
             cell.timeStampDateLabel.text = tempLiveElectionData?.date ?? ""
             cell.Id = tempLiveElectionData?.destinationId ?? 0
             cell.liveElectionBackgroundView.layer.cornerRadius = 10.0
+            cell.liveElectionBackgroundView.giveBorder()
             cell.selectionStyle = .none
             UIView.animate(withDuration: 1) {
                 cell.alpha = 1.0
@@ -283,6 +283,7 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
             let cell = tableView.dequeueReusableCell(withIdentifier: "liveElectionHomePageTableViewCell") as! liveElectionHomePageTableViewCell
             cell.alpha = 0
             cell.liveElectionBackgroundView.layer.cornerRadius = 10.0
+            cell.liveElectionBackgroundView.giveBorder()
             UIView.animate(withDuration: 1) {
                 cell.alpha = 1.0
             }

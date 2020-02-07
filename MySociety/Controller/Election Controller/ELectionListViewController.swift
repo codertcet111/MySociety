@@ -177,7 +177,7 @@ class ELectionListViewController: UIViewController, UITableViewDelegate, UITable
                         cell.electionInsideTableView.tag = indexPath.row
 //                        cell.electionInsideTableView.tag = insideTableViewTagCount
 //                        insideTableViewTagCount += 1
-                        
+                        cell.liveElectionListBackgroundView.giveBorder()
         //                cell.electionInsideTableView.reloadData()
                         cell.selectionStyle = .none
                         cell.subjectLabel.text = "Live: \(tempElectionData?.subject ?? "")"
@@ -192,6 +192,7 @@ class ELectionListViewController: UIViewController, UITableViewDelegate, UITable
                         cell.selectionStyle = .none
                         cell.upcomingElectionSubject.text = "Upcoming : \(tempElectionData?.subject ?? "")"
                         cell.upcomingElectionComingDateTime.text = "Start Time: \(tempElectionData?.startDateTime ?? "")"
+                        cell.upcomingElectionBackgroundView.giveBorder()
                         UIView.animate(withDuration: 1) {
                             cell.alpha = 1.0
                         }
@@ -203,6 +204,7 @@ class ELectionListViewController: UIViewController, UITableViewDelegate, UITable
                         cell.selectionStyle = .none
                         cell.resultElectionSubject.text = tempElectionData?.subject ?? ""
                         cell.resultElectionResult.text = "Result: \(tempElectionData?.result ?? "")"
+                        cell.resultElectionBackgroundView.giveBorder()
                         cell.resultELectionEndedOn.text = "Ended: \(tempElectionData?.endDateTime ?? "")"
                         UIView.animate(withDuration: 1) {
                             cell.alpha = 1.0
