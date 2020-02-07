@@ -9,7 +9,7 @@
 import UIKit
 import AnimatedCollectionViewLayout
 
-class MenuViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource{
+class MenuViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
 
     var adminMenuOptions: [[String]] = [["Notice & Circular","Notice_Circulate"], ["Event","EventLogo"], ["Complaints", "complaint"], ["Maintenance", "maintenance"], ["Member Directory", "memberDirectory"], ["Opinion Poll", "poll"], ["Election", "ElectionIcon"], ["Group Chat","GroupChat"], ["FeedBack","feedback"], ["Manual Video","video-players"]]
     var userMenuOptions: [[String]] = []
@@ -31,35 +31,39 @@ class MenuViewController: UIViewController, UICollectionViewDelegate, UICollecti
 //        layout.animator = LinearCardAttributesAnimator()
 //        menuCollectionViewOutlet.collectionViewLayout = layout
 //        menuCollectionViewOutlet.reloadData()
-        collectionTopConstraints.constant = 400
-        collectionTopConstraints.constant = 40
-        collectionHeightConstraints.constant = 50.0
-        collectionHeightConstraints.constant = 200
-        notificationMenuTableView.alpha = 0
-        notificationMenuTableView.alpha = 1
-        readMoreBtn.layer.cornerRadius = 10
-        readMoreBtn.alpha = 0
-        readMoreBtn.alpha = 1
-        UIView.animate(withDuration: 1.5, animations: {
-            self.view.layoutIfNeeded()
-        })
-        self.notificationMenuTableView.estimatedRowHeight = 59
-        self.notificationMenuTableView.rowHeight = UITableView.automaticDimension
+        //**
+//        collectionTopConstraints.constant = 40
+//        collectionTopConstraints.constant = 10
+//        collectionHeightConstraints.constant = 50.0
+//        collectionHeightConstraints.constant = 200
+        //**
+//        notificationMenuTableView.alpha = 0
+//        notificationMenuTableView.alpha = 1
+//        readMoreBtn.layer.cornerRadius = 10
+//        readMoreBtn.alpha = 0
+//        readMoreBtn.alpha = 1
+//        UIView.animate(withDuration: 1.5, animations: {
+//            self.view.layoutIfNeeded()
+//        })
+        //**
+//        self.notificationMenuTableView.estimatedRowHeight = 59
+//        self.notificationMenuTableView.rowHeight = UITableView.automaticDimension
         self.setUpNavigationButtons()
         
         //Hide read more button
-        self.readMoreBtn.isHidden = true
+        //**
+//        self.readMoreBtn.isHidden = true
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
-            UIView.animate(withDuration: 1.5, animations: {
-                self.menuCollectionViewOutlet.scrollToNextItem()
-            })
-        })
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: {
-            UIView.animate(withDuration: 1.5, animations: {
-                self.menuCollectionViewOutlet.scrollToPreviousItem()
-            })
-        })
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
+//            UIView.animate(withDuration: 1.5, animations: {
+//                self.menuCollectionViewOutlet.scrollToNextItem()
+//            })
+//        })
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: {
+//            UIView.animate(withDuration: 1.5, animations: {
+//                self.menuCollectionViewOutlet.scrollToPreviousItem()
+//            })
+//        })
     }
     
     func setUpNavigationButtons(){
@@ -118,6 +122,16 @@ class MenuViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let tempData = adminMenuOptions[indexPath.row]
         cell.cellImageView.image = UIImage(named: "\(tempData[1])")
         cell.cellMenuLabelOutlet.text = tempData[0]
+        let viewWidth = self.view.frame.size.width
+        cell.widthConstraints.constant = CGFloat(viewWidth * 0.35)
+        cell.cellBackgroundView.giveBorder()
+        cell.alpha = 0.0
+//        UIView.animate(withDuration: 1.5) {
+//            cell.alpha = 1.0
+//        }
+        UIView.animate(withDuration: 1.5, animations: { () -> Void in
+            cell.alpha = 1.0
+        })
 //        cell.cellBackgroundView.layer.cornerRadius = 10.0
         return cell
     }
@@ -152,45 +166,47 @@ class MenuViewController: UIViewController, UICollectionViewDelegate, UICollecti
 //        return CGSize(width: 263.0, height: 170.0)
 //    }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return MenuDetailMenu.count
-    }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationInMenuTableViewCell") as! NotificationInMenuTableViewCell
-        cell.alpha = 0
-//        let normalText = "\(self.MenuDetailMenu[indexPath.row][0]):"
+    //**
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return MenuDetailMenu.count
+//    }
 //
-//        let boldText  = "\(self.MenuDetailMenu[indexPath.row][1])"
-//
-//        let attributedString = NSMutableAttributedString(string:normalText)
-//
-//        let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 15)]
-//        let boldString = NSMutableAttributedString(string: boldText, attributes:attrs)
-//
-//        attributedString.append(boldString)
-        cell.notificationLabel.attributedText =
-        NSMutableAttributedString()
-            .bold("\(self.MenuDetailMenu[indexPath.row][0]): ")
-            .normal("\(self.MenuDetailMenu[indexPath.row][1])")
-        cell.notificationMenuBackgroundView.layer.cornerRadius = 10.0
-        cell.selectionStyle = .none
-        UIView.animate(withDuration: 1) {
-            cell.alpha = 1.0
-        }
-        return cell
-    }
-    
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-//        self.notificationMenuTableView.reloadData()
-//        for cell in menuCollectionViewOutlet.visibleCells {
-//            let indexPath = menuCollectionViewOutlet.indexPath(for: cell)
-//            print(indexPath)
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationInMenuTableViewCell") as! NotificationInMenuTableViewCell
+//        cell.alpha = 0
+////        let normalText = "\(self.MenuDetailMenu[indexPath.row][0]):"
+////
+////        let boldText  = "\(self.MenuDetailMenu[indexPath.row][1])"
+////
+////        let attributedString = NSMutableAttributedString(string:normalText)
+////
+////        let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 15)]
+////        let boldString = NSMutableAttributedString(string: boldText, attributes:attrs)
+////
+////        attributedString.append(boldString)
+//        cell.notificationLabel.attributedText =
+//        NSMutableAttributedString()
+//            .bold("\(self.MenuDetailMenu[indexPath.row][0]): ")
+//            .normal("\(self.MenuDetailMenu[indexPath.row][1])")
+//        cell.notificationMenuBackgroundView.layer.cornerRadius = 10.0
+//        cell.selectionStyle = .none
+//        UIView.animate(withDuration: 1) {
+//            cell.alpha = 1.0
 //        }
-        if let tempCell = self.menuCollectionViewOutlet.visibleCells.last{
-            let indexPath = NSIndexPath(row: menuCollectionViewOutlet.indexPath(for: tempCell)?.row ?? 0, section: 0)
-            self.notificationMenuTableView.scrollToRow(at: indexPath as IndexPath, at: .top, animated: true)
-        }
-    }
+//        return cell
+//    }
+//
+//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+////        self.notificationMenuTableView.reloadData()
+////        for cell in menuCollectionViewOutlet.visibleCells {
+////            let indexPath = menuCollectionViewOutlet.indexPath(for: cell)
+////            print(indexPath)
+////        }
+////        if let tempCell = self.menuCollectionViewOutlet.visibleCells.last{
+////            let indexPath = NSIndexPath(row: menuCollectionViewOutlet.indexPath(for: tempCell)?.row ?? 0, section: 0)
+////            self.notificationMenuTableView.scrollToRow(at: indexPath as IndexPath, at: .top, animated: true)
+////        }
+//    }
 
 }
