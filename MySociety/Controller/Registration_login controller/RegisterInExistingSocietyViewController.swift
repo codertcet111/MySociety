@@ -190,11 +190,11 @@ class RegisterInExistingSocietyViewController: UIViewController {
         registerBtn.layer.cornerRadius = 10
         
         // Do any additional setup after loading the view.
-        self.registerInExistingSocietyTopConstraints.constant = 400
-        self.registerInExistingSocietyTopConstraints.constant = 40
-        UIView.animate(withDuration: 1.5, animations: {
-            self.view.layoutIfNeeded()
-        })
+//        self.registerInExistingSocietyTopConstraints.constant = 400
+        self.registerInExistingSocietyTopConstraints.constant = 24
+//        UIView.animate(withDuration: 1.5, animations: {
+//            self.view.layoutIfNeeded()
+//        })
         self.selectSocietyBtn.setTitle("Select Society", for: .normal)
         self.selectYourMemberBtn.setTitle("Role", for: .normal)
         nc.addObserver(self, selector: #selector(updateSelectedSocietyLabels), name: Notification.Name.selectSocietyPopOverDismissNC, object: nil)

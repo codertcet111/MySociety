@@ -10,9 +10,9 @@ import UIKit
 
 class logInUserViewController: UIViewController {
 
-    @IBOutlet weak var mySocietyImageView: UIImageView!
+//    @IBOutlet weak var mySocietyImageView: UIImageView!
     
-    @IBOutlet weak var mySocietyImageTopConstraints: NSLayoutConstraint!
+//    @IBOutlet weak var mySocietyImageTopConstraints: NSLayoutConstraint!
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var LogInBtn: UIButton!
@@ -22,7 +22,7 @@ class logInUserViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var logInImageView: UIImageView!
+//    @IBOutlet weak var logInImageView: UIImageView!
     
     
     func checkAndValidateFields() -> Bool{
@@ -126,24 +126,24 @@ class logInUserViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        mySocietyImageView.giveBorder()
+//        mySocietyImageView.giveBorder()
         userNameTextField.bottomBorder()
         passwordTextField.bottomBorder()
         LogInBtn.layer.cornerRadius = 10
         // Do any additional setup after loading the view.
-        self.mySocietyImageTopConstraints.constant = 400
-        self.mySocietyImageTopConstraints.constant = 40
-        userNameTextField.placeholder = ""
-        passwordTextField.placeholder = ""
+//        self.mySocietyImageTopConstraints.constant = 400
+//        self.mySocietyImageTopConstraints.constant = 40
+//        userNameTextField.placeholder = ""
+//        passwordTextField.placeholder = ""
 //        self.logInImageView.addBlackGradientLayerInBackground(frame: view.bounds, colors: [.clear, .black])
         
-        UIView.animate(withDuration: 1.5, animations: {
+//        UIView.animate(withDuration: 1.5, animations: {
 //            self.userNameTextField.bottomBorder()
 //            self.passwordTextField.bottomBorder()
             self.userNameTextField.placeholder = "USERNAME"
             self.passwordTextField.placeholder = "PASSWORD"
-            self.view.layoutIfNeeded()
-        })
+//            self.view.layoutIfNeeded()
+//        })
     }
 
 }

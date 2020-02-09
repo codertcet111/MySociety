@@ -8,8 +8,9 @@
 
 import UIKit
 
-class registerSocietyViewController: UIViewController {
+class registerSocietyViewController: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var societyNameTitleLabel: UILabel!
     @IBOutlet weak var societyNameTitleTopConstraints: NSLayoutConstraint!
     @IBOutlet weak var societyNameTextField: UITextField!
@@ -20,6 +21,57 @@ class registerSocietyViewController: UIViewController {
     
     @IBOutlet weak var societyRegistrationNumber: UITextField!
     @IBOutlet weak var selectYourRoleBtn: UIButton!
+    @IBOutlet weak var mainViewHeightConstraints: NSLayoutConstraint!
+    //Above default value 1150
+    @IBAction func passwordDidEndOnExitAction(_ sender: Any) {
+        self.view.endEditing(true)
+        self.mainViewHeightConstraints.constant = 1150
+        self.view.layoutIfNeeded()
+    }
+    @IBAction func passwordEditingChangeAction(_ sender: UITextField) {
+        self.mainViewHeightConstraints.constant = 1300
+        self.view.layoutIfNeeded()
+    }
+    @IBAction func passwordEditingDidBeginAction(_ sender: UITextField) {
+        self.mainViewHeightConstraints.constant = 1300
+        self.view.layoutIfNeeded()
+    }
+    
+    @IBAction func mobileNumberDidEnd(_ sender: UITextField) {
+        self.view.endEditing(true)
+        self.mainViewHeightConstraints.constant = 1150
+        self.view.layoutIfNeeded()
+    }
+    @IBAction func mobilenumberEditingChanged(_ sender: UITextField) {
+        self.mainViewHeightConstraints.constant = 1300
+        self.view.layoutIfNeeded()
+    }
+    @IBAction func mbileEditingDidBegin(_ sender: UITextField) {
+        self.mainViewHeightConstraints.constant = 1300
+        self.view.layoutIfNeeded()
+    }
+    
+    @IBAction func emailDidBegiin(_ sender: UITextField) {
+        self.view.endEditing(true)
+        self.mainViewHeightConstraints.constant = 1150
+        self.view.layoutIfNeeded()
+    }
+    @IBAction func emailEdiditingChanged(_ sender: UITextField) {
+        self.mainViewHeightConstraints.constant = 1300
+        self.view.layoutIfNeeded()
+    }
+    @IBAction func emailEditiingDid(_ sender: UITextField) {
+        self.mainViewHeightConstraints.constant = 1300
+        self.view.layoutIfNeeded()
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        self.mainViewHeightConstraints.constant = 1150
+        self.view.layoutIfNeeded()
+        return false
+    }
+    
+    
     
     var rolesArray = ["Secretary", "Chairman", "Treasurer"]
     var selectedRole: Int = 0
@@ -189,16 +241,20 @@ class registerSocietyViewController: UIViewController {
         super.viewDidLoad()
         selectYourRoleBtn.layer.cornerRadius = 10
         registerButtn.layer.cornerRadius = 10
-        self.societyNameTitleTopConstraints.constant = 400
-        self.societyNameTitleTopConstraints.constant = 40
-        UIView.animate(withDuration: 1.5, animations: {
-            self.view.layoutIfNeeded()
-        })
+//        self.societyNameTitleTopConstraints.constant = 400
+        self.societyNameTitleTopConstraints.constant = 24
+//        UIView.animate(withDuration: 1.5, animations: {
+//            self.view.layoutIfNeeded()
+//        })
+        self.emailIdTextField.delegate = self
+        self.adminMobileNumber.delegate = self
+        self.adminPasswordTextField.delegate = self
         self.selectYourRoleBtn.setTitle("Role", for: .normal)
         self.setView()
     }
     
     func setView(){
+//        scrollView.keyboardDismissMode = .interactive
         self.societyNameTextField.dropShadow()
         self.societyRegistrationNumber.dropShadow()
         self.addressTextField.dropShadow()
