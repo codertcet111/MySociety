@@ -198,6 +198,21 @@ class RegisterInExistingSocietyViewController: UIViewController {
         self.selectSocietyBtn.setTitle("Select Society", for: .normal)
         self.selectYourMemberBtn.setTitle("Role", for: .normal)
         nc.addObserver(self, selector: #selector(updateSelectedSocietyLabels), name: Notification.Name.selectSocietyPopOverDismissNC, object: nil)
+        setView()
+    }
+    
+    func setView(){
+        self.selectSocietyBtn.dropShadow()
+        self.selectYourMemberBtn.dropShadow()
+        self.nameTextField.dropShadow()
+        self.flatAreaTextField.dropShadow()
+        self.flatNoTextField.dropShadow()
+        self.wingTextField.dropShadow()
+        self.priceSqFtTextField.dropShadow()
+        self.userNameTextField.dropShadow()
+        self.passwordTextField.dropShadow()
+        self.mobileTextField.dropShadow()
+        self.emailTextField.dropShadow()
     }
     
     @objc func updateSelectedSocietyLabels(){

@@ -195,6 +195,24 @@ class registerSocietyViewController: UIViewController {
             self.view.layoutIfNeeded()
         })
         self.selectYourRoleBtn.setTitle("Role", for: .normal)
+        self.setView()
+    }
+    
+    func setView(){
+        self.societyNameTextField.dropShadow()
+        self.societyRegistrationNumber.dropShadow()
+        self.addressTextField.dropShadow()
+        self.cityTextField.dropShadow()
+        self.adminNameTextField.dropShadow()
+        self.flatnumberTextField.dropShadow()
+        self.wingTextField.dropShadow()
+        self.flatAreaTextField.dropShadow()
+        self.pricePerSqFtTextField.dropShadow()
+        self.adminUsernameTextField.dropShadow()
+        self.adminPasswordTextField.dropShadow()
+        self.adminMobileNumber.dropShadow()
+        self.emailIdTextField.dropShadow()
+        self.selectYourRoleBtn.dropShadow()
     }
     
     
