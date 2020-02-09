@@ -31,13 +31,13 @@ class NewNoticeViewController: UIViewController, UIImagePickerControllerDelegate
     
     @objc func keyboardWillShow(_ notification: Notification) {
         // Do something here.
-        self.mainViewHeightConstraint.constant = 1200
+        self.mainViewHeightConstraint.constant = 900
         self.view.layoutIfNeeded()
     }
 
     @objc func keyboardWillHide(_ notification: Notification) {
         // Do something here.
-        self.mainViewHeightConstraint.constant = 900
+        self.mainViewHeightConstraint.constant = 800
         self.view.layoutIfNeeded()
     }
     //

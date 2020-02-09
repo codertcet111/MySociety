@@ -13,6 +13,8 @@ import SDWebImage
 class ComplaintDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
 
+    
+    @IBOutlet weak var scrollView: UIScrollView!
     var complainDetailModel: ComplaintDetail?
     //0: For me, 1: For front one walas
     var complaintsChatData = [["The problem is persistent, still I cannot find out the way?","URL","0"], ["The problem is persistent, still I cannot find out the way?","URL","1"],["The problem is persistent, still I cannot find out the way?","URL","0"],["The problem is persistent, still I cannot find out the way?","URL","1"]]
@@ -219,6 +221,7 @@ class ComplaintDetailViewController: UIViewController, UITableViewDelegate, UITa
     }
     
     func setView(){
+        scrollView.keyboardDismissMode = .interactive
         userComplaintInfoView.layer.cornerRadius = 10
         adminAddReactionView.layer.cornerRadius = 10
         adminResponseView.layer.cornerRadius = 10

@@ -14,6 +14,38 @@ class PayManintenanceMAountViewController: UIViewController, UIImagePickerContro
     let nc = NotificationCenter.default
     var selectedMemberId: Int = 0
     var selectedMemberName: String = ""
+    
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var mainViewHeightConstranit: NSLayoutConstraint!
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        addKeyboardListeners()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+    }
+
+    func addKeyboardListeners() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        // Do something here.
+        self.mainViewHeightConstranit.constant = 900
+        self.view.layoutIfNeeded()
+    }
+
+    @objc func keyboardWillHide(_ notification: Notification) {
+        // Do something here.
+        self.mainViewHeightConstranit.constant = 800
+        self.view.layoutIfNeeded()
+    }
+    
+    
+    
     @IBOutlet weak var flatNumberTextField: UITextField!
     @IBOutlet weak var wingTextField: UITextField!
     
@@ -96,6 +128,7 @@ class PayManintenanceMAountViewController: UIViewController, UIImagePickerContro
         seleectMemberButton.layer.cornerRadius = 10
         uploadImageBtn.layer.cornerRadius = 10
         saveBtn.layer.cornerRadius = 10
+        self.scrollView.keyboardDismissMode = .interactive
         // Do any additional setup after loading the view.
         nc.addObserver(self, selector: #selector(updateSelectedMemberLabels), name: Notification.Name.selectUserMemberForMaintenancePopOverDismissNC, object: nil)
     }

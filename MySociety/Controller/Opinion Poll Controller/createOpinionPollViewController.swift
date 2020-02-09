@@ -12,6 +12,36 @@ class createOpinionPollViewController: UIViewController {
 
     @IBOutlet weak var subjectTitleLabel: UILabel!
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var mainViewHeightConstraint: NSLayoutConstraint!
+    //Default 900
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        addKeyboardListeners()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+    }
+
+    func addKeyboardListeners() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        // Do something here.
+        self.mainViewHeightConstraint.constant = 1000
+        self.view.layoutIfNeeded()
+    }
+
+    @objc func keyboardWillHide(_ notification: Notification) {
+        // Do something here.
+        self.mainViewHeightConstraint.constant = 900
+        self.view.layoutIfNeeded()
+    }
+    
     @IBOutlet weak var subjectTextField: UITextField!
     @IBOutlet weak var ATitleLabel: UILabel!
     @IBOutlet weak var ATextField: UITextField!
@@ -95,6 +125,7 @@ class createOpinionPollViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.CreatePollCreateBtn.addTarget(self, action: #selector(CreateOpinionPollAction(sender:)), for: .touchUpInside)
+        self.scrollView.keyboardDismissMode = .interactive
         // Do any additional setup after loading the view.
     }
     

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class registerSocietyViewController: UIViewController, UITextFieldDelegate {
+class registerSocietyViewController: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var societyNameTitleLabel: UILabel!
@@ -24,53 +24,78 @@ class registerSocietyViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var mainViewHeightConstraints: NSLayoutConstraint!
     //Above default value 1150
     @IBAction func passwordDidEndOnExitAction(_ sender: Any) {
-        self.view.endEditing(true)
-        self.mainViewHeightConstraints.constant = 1150
-        self.view.layoutIfNeeded()
+//        self.view.endEditing(true)
+//        self.mainViewHeightConstraints.constant = 1150
+//        self.view.layoutIfNeeded()
     }
     @IBAction func passwordEditingChangeAction(_ sender: UITextField) {
-        self.mainViewHeightConstraints.constant = 1300
-        self.view.layoutIfNeeded()
+//        self.mainViewHeightConstraints.constant = 1300
+//        self.view.layoutIfNeeded()
     }
     @IBAction func passwordEditingDidBeginAction(_ sender: UITextField) {
-        self.mainViewHeightConstraints.constant = 1300
-        self.view.layoutIfNeeded()
+//        self.mainViewHeightConstraints.constant = 1300
+//        self.view.layoutIfNeeded()
     }
-    
+
     @IBAction func mobileNumberDidEnd(_ sender: UITextField) {
-        self.view.endEditing(true)
-        self.mainViewHeightConstraints.constant = 1150
-        self.view.layoutIfNeeded()
+//        self.view.endEditing(true)
+//        self.mainViewHeightConstraints.constant = 1150
+//        self.view.layoutIfNeeded()
     }
     @IBAction func mobilenumberEditingChanged(_ sender: UITextField) {
-        self.mainViewHeightConstraints.constant = 1300
-        self.view.layoutIfNeeded()
+//        self.mainViewHeightConstraints.constant = 1300
+//        self.view.layoutIfNeeded()
     }
     @IBAction func mbileEditingDidBegin(_ sender: UITextField) {
-        self.mainViewHeightConstraints.constant = 1300
-        self.view.layoutIfNeeded()
+//        self.mainViewHeightConstraints.constant = 1300
+//        self.view.layoutIfNeeded()
     }
-    
+
     @IBAction func emailDidBegiin(_ sender: UITextField) {
-        self.view.endEditing(true)
-        self.mainViewHeightConstraints.constant = 1150
-        self.view.layoutIfNeeded()
+//        self.view.endEditing(true)
+//        self.mainViewHeightConstraints.constant = 1150
+//        self.view.layoutIfNeeded()
     }
     @IBAction func emailEdiditingChanged(_ sender: UITextField) {
-        self.mainViewHeightConstraints.constant = 1300
-        self.view.layoutIfNeeded()
+//        self.mainViewHeightConstraints.constant = 1300
+//        self.view.layoutIfNeeded()
     }
     @IBAction func emailEditiingDid(_ sender: UITextField) {
-        self.mainViewHeightConstraints.constant = 1300
-        self.view.layoutIfNeeded()
+//        self.mainViewHeightConstraints.constant = 1300
+//        self.view.layoutIfNeeded()
     }
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        self.mainViewHeightConstraints.constant = 1150
-        self.view.layoutIfNeeded()
-        return false
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        self.view.endEditing(true)
+//        self.mainViewHeightConstraints.constant = 1150
+//        self.view.layoutIfNeeded()
+//        return false
+//    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        addKeyboardListeners()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+    }
+
+    func addKeyboardListeners() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
     
+    @objc func keyboardWillShow(_ notification: Notification) {
+        // Do something here.
+        self.mainViewHeightConstraints.constant = 1350
+        self.view.layoutIfNeeded()
+    }
+
+    @objc func keyboardWillHide(_ notification: Notification) {
+        // Do something here.
+        self.mainViewHeightConstraints.constant = 1150
+        self.view.layoutIfNeeded()
+    }
     
     
     var rolesArray = ["Secretary", "Chairman", "Treasurer"]
@@ -246,15 +271,15 @@ class registerSocietyViewController: UIViewController, UITextFieldDelegate {
 //        UIView.animate(withDuration: 1.5, animations: {
 //            self.view.layoutIfNeeded()
 //        })
-        self.emailIdTextField.delegate = self
-        self.adminMobileNumber.delegate = self
-        self.adminPasswordTextField.delegate = self
+//        self.emailIdTextField.delegate = self
+//        self.adminMobileNumber.delegate = self
+//        self.adminPasswordTextField.delegate = self
         self.selectYourRoleBtn.setTitle("Role", for: .normal)
         self.setView()
     }
     
     func setView(){
-//        scrollView.keyboardDismissMode = .interactive
+        scrollView.keyboardDismissMode = .interactive
         self.societyNameTextField.dropShadow()
         self.societyRegistrationNumber.dropShadow()
         self.addressTextField.dropShadow()

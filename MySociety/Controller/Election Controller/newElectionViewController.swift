@@ -10,7 +10,9 @@ import UIKit
 
 class newElectionViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    
     @IBOutlet weak var subjectTextField: UITextField!
     @IBOutlet weak var startTimeTitleLabel: UILabel!
     @IBOutlet weak var startTimeDatePicker: UIDatePicker!
@@ -57,6 +59,7 @@ class newElectionViewController: UIViewController, UITableViewDataSource, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.scrollView.keyboardDismissMode = .interactive
         self.optionsListTableView.estimatedRowHeight = 83
         self.optionsListTableView.rowHeight = UITableView.automaticDimension
         self.postBtn.layer.cornerRadius = 10

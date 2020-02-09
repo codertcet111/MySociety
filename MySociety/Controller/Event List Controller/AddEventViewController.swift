@@ -12,6 +12,35 @@ import Alamofire
 class AddEventViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var mainViewHeightConstrait: NSLayoutConstraint!
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        addKeyboardListeners()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+    }
+
+    func addKeyboardListeners() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        // Do something here.
+        self.mainViewHeightConstrait.constant = 900
+        self.view.layoutIfNeeded()
+    }
+
+    @objc func keyboardWillHide(_ notification: Notification) {
+        // Do something here.
+        self.mainViewHeightConstrait.constant = 800
+        self.view.layoutIfNeeded()
+    }
+    
     @IBOutlet weak var topConstraints: NSLayoutConstraint!
     @IBOutlet weak var newEventTitleTextField: UITextField!
     @IBOutlet weak var newEventDescriptionTextField: UITextField!
@@ -200,6 +229,7 @@ class AddEventViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     func setView(){
+        scrollView.keyboardDismissMode = .interactive
         saveEventBtn.layer.cornerRadius = 10
         newEventSelectImageBtn.layer.cornerRadius = 10
         topConstraints.constant = 500
