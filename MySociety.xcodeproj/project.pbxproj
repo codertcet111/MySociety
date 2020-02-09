@@ -19,6 +19,7 @@
 		840F81FF23D856BD00671370 /* EventHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F81F523D856BD00671370 /* EventHome.swift */; };
 		840F820023D856BD00671370 /* ElectionResultHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F81F623D856BD00671370 /* ElectionResultHome.swift */; };
 		840F820123D856BD00671370 /* LiveElectionHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F81F723D856BD00671370 /* LiveElectionHome.swift */; };
+		8411FEE123EEBE5500A57121 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8411FEE023EEBE5500A57121 /* GoogleService-Info.plist */; };
 		841205F923E2E3E300912A6B /* ElectionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841205F723E2E3E300912A6B /* ElectionData.swift */; };
 		841205FA23E2E3E300912A6B /* ElectionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841205F823E2E3E300912A6B /* ElectionList.swift */; };
 		841205FE23E3082C00912A6B /* MaintenanceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841205FC23E3082C00912A6B /* MaintenanceData.swift */; };
@@ -137,6 +138,8 @@
 		840F81F523D856BD00671370 /* EventHome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventHome.swift; path = ../../../../../Downloads/homePage/EventHome.swift; sourceTree = "<group>"; };
 		840F81F623D856BD00671370 /* ElectionResultHome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ElectionResultHome.swift; path = ../../../../../Downloads/homePage/ElectionResultHome.swift; sourceTree = "<group>"; };
 		840F81F723D856BD00671370 /* LiveElectionHome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LiveElectionHome.swift; path = ../../../../../Downloads/homePage/LiveElectionHome.swift; sourceTree = "<group>"; };
+		8411FEE023EEBE5500A57121 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8411FEE223EEE30800A57121 /* MySociety.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MySociety.entitlements; sourceTree = "<group>"; };
 		841205F723E2E3E300912A6B /* ElectionData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ElectionData.swift; path = ../../../../../Downloads/ElectionList/ElectionData.swift; sourceTree = "<group>"; };
 		841205F823E2E3E300912A6B /* ElectionList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ElectionList.swift; path = ../../../../../Downloads/ElectionList/ElectionList.swift; sourceTree = "<group>"; };
 		841205FC23E3082C00912A6B /* MaintenanceData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MaintenanceData.swift; path = ../../../../../Downloads/maintenanceList/MaintenanceData.swift; sourceTree = "<group>"; };
@@ -671,11 +674,13 @@
 		84F2921323C7372400502408 /* MySociety */ = {
 			isa = PBXGroup;
 			children = (
+				8411FEE223EEE30800A57121 /* MySociety.entitlements */,
 				84F2922E23C753E400502408 /* Helper files */,
 				84F2922D23C753DA00502408 /* Controller */,
 				84F2922C23C753D400502408 /* View */,
 				84F2922B23C753CC00502408 /* Model */,
 				84F2922523C7372700502408 /* Info.plist */,
+				8411FEE023EEBE5500A57121 /* GoogleService-Info.plist */,
 				84F2921D23C7372400502408 /* MySociety.xcdatamodeld */,
 			);
 			path = MySociety;
@@ -806,6 +811,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84F2922423C7372700502408 /* LaunchScreen.storyboard in Resources */,
+				8411FEE123EEBE5500A57121 /* GoogleService-Info.plist in Resources */,
 				84F2922123C7372700502408 /* Assets.xcassets in Resources */,
 				84F2921C23C7372400502408 /* Main.storyboard in Resources */,
 			);
@@ -1113,6 +1119,7 @@
 			baseConfigurationReference = 26E4484AD80C2B227BCF7FD7 /* Pods-MySociety.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MySociety/MySociety.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XKJSYM82N6;
 				INFOPLIST_FILE = MySociety/Info.plist;
@@ -1133,6 +1140,7 @@
 			baseConfigurationReference = 67FE426745B0933B74F71AD5 /* Pods-MySociety.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MySociety/MySociety.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XKJSYM82N6;
 				INFOPLIST_FILE = MySociety/Info.plist;

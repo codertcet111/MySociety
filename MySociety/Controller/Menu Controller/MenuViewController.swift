@@ -123,7 +123,7 @@ class MenuViewController: UIViewController, UICollectionViewDelegate, UICollecti
         cell.cellImageView.image = UIImage(named: "\(tempData[1])")
         cell.cellMenuLabelOutlet.text = tempData[0]
         let viewWidth = self.view.frame.size.width
-        cell.widthConstraints.constant = CGFloat(viewWidth * 0.35)
+        cell.widthConstraints.constant = CGFloat(viewWidth * 0.25)
         cell.cellBackgroundView.giveBorder()
         cell.alpha = 0.0
 //        UIView.animate(withDuration: 1.5) {

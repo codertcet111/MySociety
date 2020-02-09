@@ -348,3 +348,29 @@ extension UIView{
     }
 }
 
+extension UITextField{
+    func bottomBorder(){
+        let bottomLine = CALayer()
+        bottomLine.frame = CGRect(0.0, self.frame.height - 1, self.frame.width, 1.0)
+        bottomLine.backgroundColor = UIColor.gray.cgColor
+        self.borderStyle = UITextField.BorderStyle.none
+        self.layer.addSublayer(bottomLine)
+    }
+}
+
+extension UIView{
+   // For insert layer in Foreground
+   func addBlackGradientLayerInForeground(frame: CGRect, colors:[UIColor]){
+    let gradient = CAGradientLayer()
+    gradient.frame = frame
+    gradient.colors = colors.map{$0.cgColor}
+    self.layer.addSublayer(gradient)
+   }
+   // For insert layer in background
+   func addBlackGradientLayerInBackground(frame: CGRect, colors:[UIColor]){
+    let gradient = CAGradientLayer()
+    gradient.frame = frame
+    gradient.colors = colors.map{$0.cgColor}
+    self.layer.insertSublayer(gradient, at: 0)
+   }
+}
