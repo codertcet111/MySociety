@@ -8,8 +8,58 @@
 
 import UIKit
 
-class RegisterInExistingSocietyViewController: UIViewController {
+class RegisterInExistingSocietyViewController: UIViewController, UITextFieldDelegate {
 
+    
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var mainviewheightConstraints: NSLayoutConstraint!
+    
+    @IBAction func passwordDIdEnd(_ sender: Any) {
+        self.view.endEditing(true)
+        self.mainviewheightConstraints.constant = 900
+        self.view.layoutIfNeeded()
+    }
+    @IBAction func passwordChanged(_ sender: Any) {
+        self.mainviewheightConstraints.constant = 1100
+        self.view.layoutIfNeeded()
+    }
+    @IBAction func passwordBegin(_ sender: Any) {
+        self.mainviewheightConstraints.constant = 1100
+        self.view.layoutIfNeeded()
+    }
+    @IBAction func mobileEnd(_ sender: Any) {
+        self.view.endEditing(true)
+        self.mainviewheightConstraints.constant = 900
+        self.view.layoutIfNeeded()
+    }
+    @IBAction func mobileChanged(_ sender: Any) {
+        self.mainviewheightConstraints.constant = 1100
+        self.view.layoutIfNeeded()
+    }
+    @IBAction func mobileBegin(_ sender: Any) {
+        self.mainviewheightConstraints.constant = 1100
+        self.view.layoutIfNeeded()
+    }
+    @IBAction func emailend(_ sender: Any) {
+        self.view.endEditing(true)
+        self.mainviewheightConstraints.constant = 900
+        self.view.layoutIfNeeded()
+    }
+    @IBAction func emailchanged(_ sender: Any) {
+        self.mainviewheightConstraints.constant = 1100
+        self.view.layoutIfNeeded()
+    }
+    @IBAction func emailbegin(_ sender: Any) {
+        self.mainviewheightConstraints.constant = 1100
+        self.view.layoutIfNeeded()
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        self.mainviewheightConstraints.constant = 900
+        self.view.layoutIfNeeded()
+        return false
+    }
+    
     let nc = NotificationCenter.default
     @IBOutlet weak var selectSocietyTitleLabel: UILabel!
     @IBOutlet weak var selectSocietyTitleTopConstraints: UIView!
@@ -202,6 +252,9 @@ class RegisterInExistingSocietyViewController: UIViewController {
     }
     
     func setView(){
+        self.passwordTextField.delegate = self
+        self.mobileTextField.delegate = self
+        self.emailTextField.delegate = self
         self.selectSocietyBtn.dropShadow()
         self.selectYourMemberBtn.dropShadow()
         self.nameTextField.dropShadow()

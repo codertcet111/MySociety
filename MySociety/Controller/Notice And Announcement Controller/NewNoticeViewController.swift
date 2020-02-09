@@ -11,6 +11,38 @@ import Alamofire
 
 class NewNoticeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    //
+    @IBOutlet weak var mainViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var scrollView: UIScrollView!
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        addKeyboardListeners()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+    }
+
+    func addKeyboardListeners() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        // Do something here.
+        self.mainViewHeightConstraint.constant = 1200
+        self.view.layoutIfNeeded()
+    }
+
+    @objc func keyboardWillHide(_ notification: Notification) {
+        // Do something here.
+        self.mainViewHeightConstraint.constant = 900
+        self.view.layoutIfNeeded()
+    }
+    //
+    
+    
     @IBOutlet weak var newNoticeSetTitleTextField: UITextField!
     @IBOutlet weak var selectTimeLAbel: UILabel!
     @IBOutlet weak var newNoticeSelectImageBtn: UIButton!
@@ -73,6 +105,7 @@ class NewNoticeViewController: UIViewController, UIImagePickerControllerDelegate
     
     
     func setView(){
+        self.scrollView.keyboardDismissMode = .interactive
         newNoticeSaveBtn.layer.cornerRadius = 10
         newNoticeSelectImageBtn.layer.cornerRadius = 10
         setTitleTextTopConstraints.constant = 500

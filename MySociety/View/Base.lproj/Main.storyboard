@@ -691,11 +691,21 @@
                                                 <rect key="frame" x="24" y="512" width="366" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="passwordBegin:" destination="utQ-7Q-tzt" eventType="editingDidBegin" id="sM1-27-vef"/>
+                                                    <action selector="passwordChanged:" destination="utQ-7Q-tzt" eventType="editingChanged" id="iQf-0h-4EF"/>
+                                                    <action selector="passwordDIdEnd:" destination="utQ-7Q-tzt" eventType="editingDidEndOnExit" id="oLa-BP-8Xl"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fbU-PM-cUg">
                                                 <rect key="frame" x="24" y="594" width="366" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                                <connections>
+                                                    <action selector="mobileBegin:" destination="utQ-7Q-tzt" eventType="editingDidBegin" id="DPE-gf-78E"/>
+                                                    <action selector="mobileChanged:" destination="utQ-7Q-tzt" eventType="editingChanged" id="62p-q8-gek"/>
+                                                    <action selector="mobileEnd:" destination="utQ-7Q-tzt" eventType="editingDidEndOnExit" id="F7A-4K-7LJ"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="201" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rCO-Bj-3ex">
                                                 <rect key="frame" x="24" y="266" width="159" height="34"/>
@@ -735,6 +745,11 @@
                                                 <rect key="frame" x="24" y="676" width="366" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="emailbegin:" destination="utQ-7Q-tzt" eventType="editingDidBegin" id="65i-3m-Qdh"/>
+                                                    <action selector="emailchanged:" destination="utQ-7Q-tzt" eventType="editingChanged" id="PP6-Mg-l5L"/>
+                                                    <action selector="emailend:" destination="utQ-7Q-tzt" eventType="editingDidEndOnExit" id="mI0-4g-O89"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" red="0.98193607230000002" green="0.98193607230000002" blue="0.98193607230000002" alpha="0.97999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
@@ -831,12 +846,14 @@
                         <outlet property="emailTextField" destination="tQK-gl-EKB" id="MLN-Zn-Av8"/>
                         <outlet property="flatAreaTextField" destination="bYI-Q7-CRK" id="DdE-XW-1qn"/>
                         <outlet property="flatNoTextField" destination="rCO-Bj-3ex" id="2no-5P-W91"/>
+                        <outlet property="mainviewheightConstraints" destination="nGt-zN-yWO" id="pAZ-2N-JUY"/>
                         <outlet property="mobileTextField" destination="fbU-PM-cUg" id="sLX-TF-K3F"/>
                         <outlet property="nameTextField" destination="Lb3-Lr-giO" id="i1L-QU-1qf"/>
                         <outlet property="passwordTextField" destination="wtx-fm-Y1W" id="7KI-mk-SYr"/>
                         <outlet property="priceSqFtTextField" destination="AHq-Kr-Fjx" id="Uvr-Ac-zWX"/>
                         <outlet property="registerBtn" destination="wAm-Q5-TcH" id="Pm4-yZ-k0L"/>
                         <outlet property="registerInExistingSocietyTopConstraints" destination="qc7-6k-9b8" id="t24-jB-FgM"/>
+                        <outlet property="scrollView" destination="VGp-Bv-ZEU" id="g4g-TI-Xd2"/>
                         <outlet property="selectSocietyBtn" destination="CzA-w1-Pn5" id="MDp-Lh-NFG"/>
                         <outlet property="selectSocietyBtnAction" destination="CzA-w1-Pn5" id="nIh-yb-T2A"/>
                         <outlet property="selectSocietyTitleLabel" destination="n8P-OR-CWJ" id="b3l-Bk-Fhf"/>
@@ -3578,9 +3595,11 @@
                     <connections>
                         <outlet property="NewNoticeDatePicker" destination="IMe-kh-4JG" id="5YB-Xy-hvF"/>
                         <outlet property="descriptionTextField" destination="95F-fh-1CI" id="fDd-SE-BAV"/>
+                        <outlet property="mainViewHeightConstraint" destination="I8a-5C-CFl" id="UJg-rX-LGu"/>
                         <outlet property="newNoticeSaveBtn" destination="Vgm-NJ-epv" id="zlO-Wk-kJ8"/>
                         <outlet property="newNoticeSelectImageBtn" destination="gHP-BD-MWC" id="dmj-W8-ZtX"/>
                         <outlet property="newNoticeSetTitleTextField" destination="cIF-CJ-8F8" id="FWt-rD-nkY"/>
+                        <outlet property="scrollView" destination="Xek-ne-IdJ" id="vaW-tS-esB"/>
                         <outlet property="selectTimeLAbel" destination="1Yl-f3-gaH" id="Thx-Fe-bac"/>
                         <outlet property="setTitleTextTopConstraints" destination="kEx-ww-2St" id="sJk-St-hbF"/>
                     </connections>
