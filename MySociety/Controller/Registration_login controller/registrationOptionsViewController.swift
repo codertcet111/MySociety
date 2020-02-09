@@ -8,8 +8,11 @@
 
 import UIKit
 
-class registrationOptionsViewController: UIViewController {
+class registrationOptionsViewController: UIViewController, UIScrollViewDelegate {
 
+    var slides:[Slide] = [];
+    @IBOutlet weak var contentScrollView: UIScrollView!
+    @IBOutlet weak var contentPageControll: UIPageControl!
     
 //    @IBOutlet weak var mySocietyImageView: UIImageView!
     @IBOutlet weak var mySocietyLabel: UILabel!
@@ -60,8 +63,64 @@ class registrationOptionsViewController: UIViewController {
         self.becomeMmberBtn.giveBorder()
         self.animateView()
         self.navigationController?.navigationBar.isHidden = false
+        
+        
+        self.contentScrollView.delegate = self
+        slides = createSlides()
+        setupSlideScrollView(slides: slides)
+        contentPageControll.numberOfPages = slides.count
+        contentPageControll.currentPage = 0
+        view.bringSubviewToFront(self.contentScrollView)
+        view.bringSubviewToFront(self.contentPageControll)
         // Do any additional setup after loading the view.
     }
+//
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let sliderIndivisualWidth = CGFloat(view.frame.size.width - 48.0)
+        let sliderIndivisualHeight = CGFloat(128.0)
+            let pageIndex = round(contentScrollView.contentOffset.x/sliderIndivisualWidth)
+        self.contentPageControll.currentPage = Int(pageIndex)
+//
+//            let maximumHorizontalOffset: CGFloat = contentScrollView.contentSize.width - contentScrollView.frame.width
+//            let currentHorizontalOffset: CGFloat = contentScrollView.contentOffset.x
+//
+//            // vertical
+//            let maximumVerticalOffset: CGFloat = contentScrollView.contentSize.height - contentScrollView.frame.height
+//            let currentVerticalOffset: CGFloat = contentScrollView.contentOffset.y
+//
+//            let percentageHorizontalOffset: CGFloat = currentHorizontalOffset / maximumHorizontalOffset
+//            let percentageVerticalOffset: CGFloat = currentVerticalOffset / maximumVerticalOffset
+//
+            
+            /*
+             * below code changes the background color of view on paging the scrollview
+             */
+    //        self.scrollView(scrollView, didScrollToPercentageOffset: percentageHorizontalOffset)
+            
+        
+            /*
+             * below code scales the imageview on paging the scrollview
+             */
+//            let percentOffset: CGPoint = CGPoint(x: percentageHorizontalOffset, y: percentageVerticalOffset)
+//
+//            if(percentOffset.x > 0 && percentOffset.x <= 0.25) {
+//
+//                slides[0].imageView.transform = CGAffineTransform(scaleX: (0.25-percentOffset.x)/0.25, y: (0.25-percentOffset.x)/0.25)
+//                slides[1].imageView.transform = CGAffineTransform(scaleX: percentOffset.x/0.25, y: percentOffset.x/0.25)
+//
+//            } else if(percentOffset.x > 0.25 && percentOffset.x <= 0.50) {
+//                slides[1].imageView.transform = CGAffineTransform(scaleX: (0.50-percentOffset.x)/0.25, y: (0.50-percentOffset.x)/0.25)
+//                slides[2].imageView.transform = CGAffineTransform(scaleX: percentOffset.x/0.50, y: percentOffset.x/0.50)
+//
+//            } else if(percentOffset.x > 0.50 && percentOffset.x <= 0.75) {
+//                slides[2].imageView.transform = CGAffineTransform(scaleX: (0.75-percentOffset.x)/0.25, y: (0.75-percentOffset.x)/0.25)
+//                slides[3].imageView.transform = CGAffineTransform(scaleX: percentOffset.x/0.75, y: percentOffset.x/0.75)
+//
+//            } else if(percentOffset.x > 0.75 && percentOffset.x <= 1) {
+//                slides[3].imageView.transform = CGAffineTransform(scaleX: (1-percentOffset.x)/0.25, y: (1-percentOffset.x)/0.25)
+//                slides[4].imageView.transform = CGAffineTransform(scaleX: percentOffset.x, y: percentOffset.x)
+//            }
+        }
     
     func animateView(){
         lgoINButton.layer.cornerRadius = 10
@@ -88,6 +147,36 @@ class registrationOptionsViewController: UIViewController {
 //            self.logInBtnWidthConstraits.constant = 170
 //            self.signUpMemberBtnWidthConstraints.constant = 170
 //        })
+    }
+    
+    func createSlides() -> [Slide] {
+
+        let slide1:Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
+        slide1.TitleHeaderTitle.text = "Connect Society"
+        slide1.titleSubHeaderTitle.text = "Gets connected to all the members of your society"
+        
+        let slide2:Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
+        slide2.TitleHeaderTitle.text = "Post Notice & Event"
+        slide2.titleSubHeaderTitle.text = "Post your societies notice and functional events and chat in the group"
+        
+        let slide3:Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
+        slide3.TitleHeaderTitle.text = "Election & Opinion"
+        slide3.titleSubHeaderTitle.text = "Conduct election and opinion polls and cast the vote for it"
+        
+        return [slide1, slide2, slide3]
+    }
+    
+    func setupSlideScrollView(slides : [Slide]) {
+        let sliderIndivisualWidth = CGFloat(view.frame.size.width - 48.0)
+        let sliderIndivisualHeight = CGFloat(128.0)
+        contentScrollView.frame = CGRect(x: 0, y: 0, width: sliderIndivisualWidth, height: sliderIndivisualHeight)
+        contentScrollView.contentSize = CGSize(width: sliderIndivisualWidth * CGFloat(slides.count), height: sliderIndivisualHeight)
+        contentScrollView.isPagingEnabled = true
+        
+        for i in 0 ..< slides.count {
+            slides[i].frame = CGRect(x: sliderIndivisualWidth * CGFloat(i), y: 0, width: sliderIndivisualWidth, height: sliderIndivisualHeight)
+            contentScrollView.addSubview(slides[i])
+        }
     }
 
 }

@@ -175,7 +175,7 @@ class ELectionListViewController: UIViewController, UITableViewDelegate, UITable
                         cell.electionInsideTableViewHeight.constant = CGFloat(60.0 * Float(optionsArray?.count ?? 0))
                         
                         cell.electionInsideTableView.tag = indexPath.row
-//                        cell.electionInsideTableView.tag = insideTableViewTagCount
+                        //                        cell.electionInsideTableView.tag = insideTableViewTagCount
 //                        insideTableViewTagCount += 1
                         cell.liveElectionListBackgroundView.giveBorder()
         //                cell.electionInsideTableView.reloadData()

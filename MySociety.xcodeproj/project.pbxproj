@@ -56,6 +56,8 @@
 		8413AFF623D335AC0033F5BB /* NoticeDatas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413AFF423D335AC0033F5BB /* NoticeDatas.swift */; };
 		8413AFFA23D342EA0033F5BB /* EventDatas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413AFF823D342E90033F5BB /* EventDatas.swift */; };
 		8413AFFB23D342EA0033F5BB /* event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413AFF923D342E90033F5BB /* event.swift */; };
+		8413DCFF23F0A3AD00BC73A2 /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413DCFE23F0A3AD00BC73A2 /* Slide.swift */; };
+		8413DD0123F0A3E200BC73A2 /* Slide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8413DD0023F0A3E200BC73A2 /* Slide.xib */; };
 		8417F5FA23E6ED6F00B46B07 /* noticeShowImagePushPopOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8417F5F923E6ED6F00B46B07 /* noticeShowImagePushPopOverViewController.swift */; };
 		8417F5FD23E7672D00B46B07 /* homePagePlayVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8417F5FC23E7672D00B46B07 /* homePagePlayVideoViewController.swift */; };
 		8418EBB523D9CDFC0037AE57 /* MemberDirectoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8418EBB323D9CDFC0037AE57 /* MemberDirectoryData.swift */; };
@@ -176,6 +178,8 @@
 		8413AFF423D335AC0033F5BB /* NoticeDatas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoticeDatas.swift; path = ../../../../../Downloads/notice/NoticeDatas.swift; sourceTree = "<group>"; };
 		8413AFF823D342E90033F5BB /* EventDatas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventDatas.swift; path = ../../../../../Downloads/event/EventDatas.swift; sourceTree = "<group>"; };
 		8413AFF923D342E90033F5BB /* event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = event.swift; path = ../../../../../Downloads/event/event.swift; sourceTree = "<group>"; };
+		8413DCFE23F0A3AD00BC73A2 /* Slide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slide.swift; sourceTree = "<group>"; };
+		8413DD0023F0A3E200BC73A2 /* Slide.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Slide.xib; sourceTree = "<group>"; };
 		8417F5F923E6ED6F00B46B07 /* noticeShowImagePushPopOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = noticeShowImagePushPopOverViewController.swift; sourceTree = "<group>"; };
 		8417F5FC23E7672D00B46B07 /* homePagePlayVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homePagePlayVideoViewController.swift; sourceTree = "<group>"; };
 		8418EBB323D9CDFC0037AE57 /* MemberDirectoryData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MemberDirectoryData.swift; path = ../../../../../Downloads/memeberUsers/MemberDirectoryData.swift; sourceTree = "<group>"; };
@@ -712,6 +716,8 @@
 			children = (
 				84F2921A23C7372400502408 /* Main.storyboard */,
 				84F2922223C7372700502408 /* LaunchScreen.storyboard */,
+				8413DCFE23F0A3AD00BC73A2 /* Slide.swift */,
+				8413DD0023F0A3E200BC73A2 /* Slide.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -810,6 +816,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8413DD0123F0A3E200BC73A2 /* Slide.xib in Resources */,
 				84F2922423C7372700502408 /* LaunchScreen.storyboard in Resources */,
 				8411FEE123EEBE5500A57121 /* GoogleService-Info.plist in Resources */,
 				84F2922123C7372700502408 /* Assets.xcassets in Resources */,
@@ -895,6 +902,7 @@
 				84F2923023C7541200502408 /* helper.swift in Sources */,
 				841205FA23E2E3E300912A6B /* ElectionList.swift in Sources */,
 				8441C01423DC722E00B0B1E0 /* tabBarControllerViewController.swift in Sources */,
+				8413DCFF23F0A3AD00BC73A2 /* Slide.swift in Sources */,
 				8413596023D1AC720033AD1E /* notificationTableViewCell.swift in Sources */,
 				841C427523CF144D00993483 /* newElectionTableViewCell.swift in Sources */,
 				841C426E23CEE25300993483 /* ResultElectionListTableViewCell.swift in Sources */,

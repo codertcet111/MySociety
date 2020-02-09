@@ -18,12 +18,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vh8-Wa-gAL">
-                                <rect key="frame" x="20.5" y="514" width="373" height="54"/>
+                                <rect key="frame" x="20.5" y="697" width="373" height="45"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="54" id="9Xt-bJ-c6f"/>
+                                    <constraint firstAttribute="height" constant="45" id="9Xt-bJ-c6f"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                                 <state key="normal" title="LogIn">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -32,12 +32,12 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="UQM-pA-h4b">
-                                <rect key="frame" x="20.5" y="598" width="178" height="64"/>
+                                <rect key="frame" x="20.5" y="772" width="178" height="45"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="64" id="vE6-a9-noB"/>
+                                    <constraint firstAttribute="height" constant="45" id="vE6-a9-noB"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                                 <state key="normal" title="Register Society">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -46,48 +46,69 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="013-39-BFB">
-                                <rect key="frame" x="215.5" y="598" width="178" height="64"/>
+                                <rect key="frame" x="215.5" y="772" width="178" height="45"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="64" id="iYw-hR-eaP"/>
+                                    <constraint firstAttribute="height" constant="45" id="iYw-hR-eaP"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
-                                <state key="normal" title="Become Member In Existing Society">
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                                <state key="normal" title="Become Member In Society">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="becomeMemeberAction:" destination="UBW-lD-WsA" eventType="touchUpInside" id="CUs-4k-8k1"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ImageBackground" translatesAutoresizingMaskIntoConstraints="NO" id="u68-mx-GVs">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lightImagesBack" translatesAutoresizingMaskIntoConstraints="NO" id="u68-mx-GVs">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" red="0.54509803921568623" green="0.36078431372549019" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Society" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Xp-3J-Ae8">
-                                <rect key="frame" x="97.5" y="222" width="219.5" height="50"/>
+                                <rect key="frame" x="97.5" y="158" width="219.5" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="s8M-UF-jMn"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="40"/>
-                                <color key="textColor" red="0.070709073604060868" green="0.069694003569794369" blue="0.0004465701483164594" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uDK-2b-hV4">
+                                <rect key="frame" x="87" y="483" width="240" height="128"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="EJA-gW-M0n"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="O0E-DH-Bp6"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="zfP-Gu-yr0"/>
+                            </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="E13-ev-fj5">
+                                <rect key="frame" x="187.5" y="622" width="39" height="37"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="pageIndicatorTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="currentPageIndicatorTintColor" red="0.5450980392" green="0.36078431370000003" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="vh8-Wa-gAL" firstAttribute="width" secondItem="sk4-aV-j6e" secondAttribute="width" multiplier="0.9" id="4os-pl-Uen"/>
+                            <constraint firstItem="uDK-2b-hV4" firstAttribute="bottom" secondItem="E13-ev-fj5" secondAttribute="bottom" constant="14" id="Cn2-e2-8lx"/>
                             <constraint firstItem="u68-mx-GVs" firstAttribute="leading" secondItem="sk4-aV-j6e" secondAttribute="leading" id="M1R-PX-hQC"/>
                             <constraint firstItem="013-39-BFB" firstAttribute="top" secondItem="UQM-pA-h4b" secondAttribute="top" id="Oaq-Tf-BlA"/>
+                            <constraint firstItem="uDK-2b-hV4" firstAttribute="centerX" secondItem="sk4-aV-j6e" secondAttribute="centerX" id="SzW-Va-r0k"/>
                             <constraint firstItem="UQM-pA-h4b" firstAttribute="width" secondItem="sk4-aV-j6e" secondAttribute="width" multiplier="0.43" id="TVa-u1-owD"/>
                             <constraint firstItem="u68-mx-GVs" firstAttribute="top" secondItem="sk4-aV-j6e" secondAttribute="top" id="Tx6-vi-eDA"/>
-                            <constraint firstItem="9Xp-3J-Ae8" firstAttribute="top" secondItem="sk4-aV-j6e" secondAttribute="top" constant="134" id="V9t-Ng-MAb"/>
-                            <constraint firstItem="sk4-aV-j6e" firstAttribute="bottom" secondItem="UQM-pA-h4b" secondAttribute="bottom" constant="200" id="VLJ-0w-L9h"/>
+                            <constraint firstItem="9Xp-3J-Ae8" firstAttribute="top" secondItem="sk4-aV-j6e" secondAttribute="top" constant="70" id="V9t-Ng-MAb"/>
+                            <constraint firstItem="sk4-aV-j6e" firstAttribute="bottom" secondItem="UQM-pA-h4b" secondAttribute="bottom" constant="45" id="VLJ-0w-L9h"/>
                             <constraint firstItem="UQM-pA-h4b" firstAttribute="top" secondItem="vh8-Wa-gAL" secondAttribute="bottom" constant="30" id="WbS-gI-6Sq"/>
+                            <constraint firstItem="vh8-Wa-gAL" firstAttribute="top" secondItem="uDK-2b-hV4" secondAttribute="bottom" constant="24" id="Z4T-Tp-I6N"/>
+                            <constraint firstItem="E13-ev-fj5" firstAttribute="centerX" secondItem="sk4-aV-j6e" secondAttribute="centerX" id="cS7-gj-PyN"/>
                             <constraint firstItem="sk4-aV-j6e" firstAttribute="trailing" secondItem="u68-mx-GVs" secondAttribute="trailing" id="cWa-kW-HtD"/>
                             <constraint firstItem="013-39-BFB" firstAttribute="width" secondItem="UQM-pA-h4b" secondAttribute="width" id="dCk-Q1-Uuw"/>
                             <constraint firstItem="9Xp-3J-Ae8" firstAttribute="centerX" secondItem="sk4-aV-j6e" secondAttribute="centerX" id="g56-lm-P4N"/>
                             <constraint firstItem="sk4-aV-j6e" firstAttribute="bottom" secondItem="u68-mx-GVs" secondAttribute="bottom" id="gsm-io-6p7"/>
+                            <constraint firstItem="sk4-aV-j6e" firstAttribute="trailing" secondItem="uDK-2b-hV4" secondAttribute="trailing" constant="24" id="iAv-JX-ZBx"/>
                             <constraint firstItem="UQM-pA-h4b" firstAttribute="leading" secondItem="vh8-Wa-gAL" secondAttribute="leading" id="mxX-12-NQy"/>
+                            <constraint firstItem="uDK-2b-hV4" firstAttribute="leading" secondItem="sk4-aV-j6e" secondAttribute="leading" constant="24" id="oo2-Xo-DAu"/>
                             <constraint firstItem="013-39-BFB" firstAttribute="trailing" secondItem="vh8-Wa-gAL" secondAttribute="trailing" id="vSM-gy-fId"/>
                             <constraint firstItem="vh8-Wa-gAL" firstAttribute="centerX" secondItem="sk4-aV-j6e" secondAttribute="centerX" id="xKu-od-J0v"/>
                         </constraints>
@@ -97,6 +118,8 @@
                     <connections>
                         <outlet property="backgroundImage" destination="u68-mx-GVs" id="8G5-iy-i8q"/>
                         <outlet property="becomeMmberBtn" destination="013-39-BFB" id="qgE-Ks-eKk"/>
+                        <outlet property="contentPageControll" destination="E13-ev-fj5" id="LoK-o6-rTO"/>
+                        <outlet property="contentScrollView" destination="uDK-2b-hV4" id="9Zb-lO-kjq"/>
                         <outlet property="lgoINButton" destination="vh8-Wa-gAL" id="wHa-TQ-ErR"/>
                         <outlet property="makeMySocietyBtn" destination="UQM-pA-h4b" id="Tab-Fb-WON"/>
                         <outlet property="mySocietyLabel" destination="9Xp-3J-Ae8" id="tkv-ak-MjJ"/>
@@ -1509,7 +1532,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B8m-gs-QLH">
-                                <rect key="frame" x="330" y="725" width="64" height="64"/>
+                                <rect key="frame" x="266" y="661" width="128" height="128"/>
                                 <state key="normal" image="plus"/>
                                 <connections>
                                     <action selector="complaintListNewComplaintAction:" destination="0qq-pW-mPb" eventType="touchUpInside" id="Lac-Na-Znx"/>
@@ -3454,7 +3477,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u5a-ws-slj">
-                                <rect key="frame" x="330" y="729" width="64" height="64"/>
+                                <rect key="frame" x="266" y="665" width="128" height="128"/>
                                 <state key="normal" image="plus"/>
                                 <connections>
                                     <action selector="addNoticeAction:" destination="wi4-VD-LvS" eventType="touchUpInside" id="27G-LT-BH2"/>
@@ -4204,7 +4227,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zjq-lS-Zv9">
-                                <rect key="frame" x="262" y="661" width="128" height="128"/>
+                                <rect key="frame" x="326" y="725" width="64" height="64"/>
                                 <state key="normal" image="plus"/>
                                 <connections>
                                     <action selector="addElectionBtnAction:" destination="Gwj-k0-2aJ" eventType="touchUpInside" id="dtf-1r-Fye"/>
@@ -4319,7 +4342,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q78-uN-gup">
-                                                                    <rect key="frame" x="328" y="30.5" width="24" height="22"/>
+                                                                    <rect key="frame" x="328" y="25.5" width="24" height="32"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="24" id="ZEc-kS-xr4"/>
                                                                     </constraints>
@@ -6448,7 +6471,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ImageBackground" width="570" height="1140"/>
         <image name="building" width="512" height="512"/>
         <image name="call_small" width="16" height="16"/>
         <image name="click" width="128" height="128"/>
@@ -6456,6 +6478,7 @@
         <image name="expand" width="24" height="24"/>
         <image name="gmail" width="16" height="16"/>
         <image name="home-icon-small" width="24" height="24"/>
+        <image name="lightImagesBack" width="1080" height="1920"/>
         <image name="menu_icon" width="24" height="24"/>
         <image name="mySocietyMenuImage" width="441" height="114"/>
         <image name="play-button-home-red" width="64" height="64"/>

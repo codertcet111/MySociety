@@ -221,6 +221,7 @@ class ComplaintDetailViewController: UIViewController, UITableViewDelegate, UITa
     }
     
     func setView(){
+//        self.complaintChatTableView.giveBorder()
         scrollView.keyboardDismissMode = .interactive
         userComplaintInfoView.layer.cornerRadius = 10
         adminAddReactionView.layer.cornerRadius = 10
