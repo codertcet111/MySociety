@@ -14,6 +14,8 @@ class registrationOptionsViewController: UIViewController, UIScrollViewDelegate 
     @IBOutlet weak var contentScrollView: UIScrollView!
     @IBOutlet weak var contentPageControll: UIPageControl!
     
+    @IBOutlet weak var secretoryChairmanSbTitleLabel: UILabel!
+    
 //    @IBOutlet weak var mySocietyImageView: UIImageView!
     @IBOutlet weak var mySocietyLabel: UILabel!
     @IBOutlet weak var backgroundImage: UIImageView!
@@ -43,7 +45,22 @@ class registrationOptionsViewController: UIViewController, UIScrollViewDelegate 
 //    @IBOutlet weak var logInBtnWidthConstraits: NSLayoutConstraint!
 //    @IBOutlet weak var registerSocietyWidthConstraints: NSLayoutConstraint!
 //    @IBOutlet weak var signUpMemberBtnWidthConstraints: NSLayoutConstraint!
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        super.viewWillAppear(animated)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        super.viewWillDisappear(animated)
+    }
     
+//    override var prefersStatusBarHidden: Bool {
+//        return true
+//    }
+//    override var preferredStatusBarStyle: UIStatusBarStyle {
+//         return .default
+//    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -51,16 +68,14 @@ class registrationOptionsViewController: UIViewController, UIScrollViewDelegate 
         self.view.bringSubviewToFront(self.lgoINButton)
         self.view.bringSubviewToFront(self.makeMySocietyBtn)
         self.view.bringSubviewToFront(self.becomeMmberBtn)
+        self.view.bringSubviewToFront(self.secretoryChairmanSbTitleLabel)
         
-        let attrString = NSMutableAttributedString(string: "Register Society",
-                                                   attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)]);
-
-//        attrString.append(NSMutableAttributedString(string: "(Secretary/ Chairman/ Treasurer)",
-//                                                    attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13)]));
-        self.makeMySocietyBtn.setTitle(attrString.string, for: .normal)
-        self.lgoINButton.giveBorder()
-        self.makeMySocietyBtn.giveBorder()
-        self.becomeMmberBtn.giveBorder()
+//        self.lgoINButton.giveBorder()
+//        self.makeMySocietyBtn.giveBorder()
+//        self.becomeMmberBtn.giveBorder()
+        self.lgoINButton.layer.cornerRadius = 10.0
+        self.makeMySocietyBtn.layer.cornerRadius = 10.0
+        self.becomeMmberBtn.layer.cornerRadius = 10.0
         self.animateView()
         self.navigationController?.navigationBar.isHidden = false
         
@@ -72,8 +87,25 @@ class registrationOptionsViewController: UIViewController, UIScrollViewDelegate 
         contentPageControll.currentPage = 0
         view.bringSubviewToFront(self.contentScrollView)
         view.bringSubviewToFront(self.contentPageControll)
+//        setButtonText()
         // Do any additional setup after loading the view.
     }
+    
+//    func setButtonText(){
+//        let fulltext = "Register Society (Secretory/ Chairman/ Treasurer)"
+//        let mainText = "Register Society "
+//        let creditsText = "(Secretory/ Chairman/ Treasurer)"
+//        let fontBig = UIFont.systemFont(ofSize: 12.0)
+//        let fontSmall = UIFont.systemFont(ofSize: 9.0)
+//        let attributedString = NSMutableAttributedString(string: fulltext, attributes: nil)
+//
+//        let bigRange = (attributedString.string as NSString).range(of: mainText)
+//        let creditsRange = (attributedString.string as NSString).range(of: creditsText)
+//        attributedString.setAttributes([NSAttributedString.Key.font: fontBig, NSAttributedString.Key.foregroundColor: UIColor.white], range: bigRange)
+//        attributedString.setAttributes([NSAttributedString.Key.font: fontSmall, NSAttributedString.Key.foregroundColor: UIColor.white], range: creditsRange)
+//
+//        makeMySocietyBtn.setAttributedTitle(attributedString, for: .normal)
+//    }
 //
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let sliderIndivisualWidth = CGFloat(view.frame.size.width - 48.0)

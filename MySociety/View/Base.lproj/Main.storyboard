@@ -17,27 +17,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vh8-Wa-gAL">
-                                <rect key="frame" x="20.5" y="697" width="373" height="45"/>
+                            <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vh8-Wa-gAL">
+                                <rect key="frame" x="20.5" y="667" width="373" height="55"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="9Xt-bJ-c6f"/>
+                                    <constraint firstAttribute="height" constant="55" id="9Xt-bJ-c6f"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
-                                <state key="normal" title="LogIn">
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <state key="normal" title="LOG IN">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="logInButtonAction:" destination="UBW-lD-WsA" eventType="touchUpInside" id="dFI-sW-zKQ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="UQM-pA-h4b">
-                                <rect key="frame" x="20.5" y="772" width="178" height="45"/>
+                            <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="UQM-pA-h4b">
+                                <rect key="frame" x="20.5" y="752" width="178" height="65"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="vE6-a9-noB"/>
+                                    <constraint firstAttribute="height" constant="65" id="vE6-a9-noB"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
                                 <state key="normal" title="Register Society">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -45,33 +45,25 @@
                                     <action selector="makeMySocietyAction:" destination="UBW-lD-WsA" eventType="touchUpInside" id="CZQ-yZ-gON"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="013-39-BFB">
-                                <rect key="frame" x="215.5" y="772" width="178" height="45"/>
+                            <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="013-39-BFB">
+                                <rect key="frame" x="215.5" y="752" width="178" height="65"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="iYw-hR-eaP"/>
+                                    <constraint firstAttribute="height" constant="65" id="iYw-hR-eaP"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
-                                <state key="normal" title="Become Member In Society">
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                                <state key="normal" title="Become Member">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="becomeMemeberAction:" destination="UBW-lD-WsA" eventType="touchUpInside" id="CUs-4k-8k1"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lightImagesBack" translatesAutoresizingMaskIntoConstraints="NO" id="u68-mx-GVs">
+                            <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pngtree-real-estate-development-background-map-image" translatesAutoresizingMaskIntoConstraints="NO" id="u68-mx-GVs">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
-                                <color key="backgroundColor" red="0.54509803921568623" green="0.36078431372549019" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Society" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Xp-3J-Ae8">
-                                <rect key="frame" x="97.5" y="158" width="219.5" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="s8M-UF-jMn"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="40"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uDK-2b-hV4">
                                 <rect key="frame" x="87" y="483" width="240" height="128"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -82,29 +74,46 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="zfP-Gu-yr0"/>
                             </scrollView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="E13-ev-fj5">
-                                <rect key="frame" x="187.5" y="622" width="39" height="37"/>
+                                <rect key="frame" x="187.5" y="570" width="39" height="37"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="pageIndicatorTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="currentPageIndicatorTintColor" red="0.5450980392" green="0.36078431370000003" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="currentPageIndicatorTintColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </pageControl>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mySocietyMenuImage-2" translatesAutoresizingMaskIntoConstraints="NO" id="AbK-cc-wgR">
+                                <rect key="frame" x="87" y="208" width="240" height="90"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="BMR-X0-z3k"/>
+                                    <constraint firstAttribute="width" constant="240" id="HT4-hx-Wd5"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="(Secretory/ Chairman/ Treasurer)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hrK-n2-GJZ">
+                                <rect key="frame" x="87" y="774" width="42" height="21"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="vh8-Wa-gAL" firstAttribute="width" secondItem="sk4-aV-j6e" secondAttribute="width" multiplier="0.9" id="4os-pl-Uen"/>
-                            <constraint firstItem="uDK-2b-hV4" firstAttribute="bottom" secondItem="E13-ev-fj5" secondAttribute="bottom" constant="14" id="Cn2-e2-8lx"/>
+                            <constraint firstItem="hrK-n2-GJZ" firstAttribute="bottom" secondItem="UQM-pA-h4b" secondAttribute="bottom" constant="-15" id="6TH-6e-tPN"/>
+                            <constraint firstItem="uDK-2b-hV4" firstAttribute="bottom" secondItem="E13-ev-fj5" secondAttribute="bottom" constant="4" id="Cn2-e2-8lx"/>
+                            <constraint firstItem="hrK-n2-GJZ" firstAttribute="trailing" secondItem="UQM-pA-h4b" secondAttribute="trailing" id="H0k-w6-QUK"/>
+                            <constraint firstItem="AbK-cc-wgR" firstAttribute="top" secondItem="sk4-aV-j6e" secondAttribute="top" constant="120" id="LZp-DB-uGg"/>
                             <constraint firstItem="u68-mx-GVs" firstAttribute="leading" secondItem="sk4-aV-j6e" secondAttribute="leading" id="M1R-PX-hQC"/>
                             <constraint firstItem="013-39-BFB" firstAttribute="top" secondItem="UQM-pA-h4b" secondAttribute="top" id="Oaq-Tf-BlA"/>
                             <constraint firstItem="uDK-2b-hV4" firstAttribute="centerX" secondItem="sk4-aV-j6e" secondAttribute="centerX" id="SzW-Va-r0k"/>
+                            <constraint firstItem="AbK-cc-wgR" firstAttribute="centerX" secondItem="u68-mx-GVs" secondAttribute="centerX" id="T2S-pv-mU7"/>
                             <constraint firstItem="UQM-pA-h4b" firstAttribute="width" secondItem="sk4-aV-j6e" secondAttribute="width" multiplier="0.43" id="TVa-u1-owD"/>
                             <constraint firstItem="u68-mx-GVs" firstAttribute="top" secondItem="sk4-aV-j6e" secondAttribute="top" id="Tx6-vi-eDA"/>
-                            <constraint firstItem="9Xp-3J-Ae8" firstAttribute="top" secondItem="sk4-aV-j6e" secondAttribute="top" constant="70" id="V9t-Ng-MAb"/>
                             <constraint firstItem="sk4-aV-j6e" firstAttribute="bottom" secondItem="UQM-pA-h4b" secondAttribute="bottom" constant="45" id="VLJ-0w-L9h"/>
+                            <constraint firstItem="vh8-Wa-gAL" firstAttribute="top" secondItem="uDK-2b-hV4" secondAttribute="bottom" constant="56" id="VTj-9Z-jt9"/>
                             <constraint firstItem="UQM-pA-h4b" firstAttribute="top" secondItem="vh8-Wa-gAL" secondAttribute="bottom" constant="30" id="WbS-gI-6Sq"/>
-                            <constraint firstItem="vh8-Wa-gAL" firstAttribute="top" secondItem="uDK-2b-hV4" secondAttribute="bottom" constant="24" id="Z4T-Tp-I6N"/>
+                            <constraint firstItem="hrK-n2-GJZ" firstAttribute="leading" secondItem="UQM-pA-h4b" secondAttribute="leading" id="Wz6-nC-j0g"/>
                             <constraint firstItem="E13-ev-fj5" firstAttribute="centerX" secondItem="sk4-aV-j6e" secondAttribute="centerX" id="cS7-gj-PyN"/>
                             <constraint firstItem="sk4-aV-j6e" firstAttribute="trailing" secondItem="u68-mx-GVs" secondAttribute="trailing" id="cWa-kW-HtD"/>
                             <constraint firstItem="013-39-BFB" firstAttribute="width" secondItem="UQM-pA-h4b" secondAttribute="width" id="dCk-Q1-Uuw"/>
-                            <constraint firstItem="9Xp-3J-Ae8" firstAttribute="centerX" secondItem="sk4-aV-j6e" secondAttribute="centerX" id="g56-lm-P4N"/>
                             <constraint firstItem="sk4-aV-j6e" firstAttribute="bottom" secondItem="u68-mx-GVs" secondAttribute="bottom" id="gsm-io-6p7"/>
                             <constraint firstItem="sk4-aV-j6e" firstAttribute="trailing" secondItem="uDK-2b-hV4" secondAttribute="trailing" constant="24" id="iAv-JX-ZBx"/>
                             <constraint firstItem="UQM-pA-h4b" firstAttribute="leading" secondItem="vh8-Wa-gAL" secondAttribute="leading" id="mxX-12-NQy"/>
@@ -122,7 +131,7 @@
                         <outlet property="contentScrollView" destination="uDK-2b-hV4" id="9Zb-lO-kjq"/>
                         <outlet property="lgoINButton" destination="vh8-Wa-gAL" id="wHa-TQ-ErR"/>
                         <outlet property="makeMySocietyBtn" destination="UQM-pA-h4b" id="Tab-Fb-WON"/>
-                        <outlet property="mySocietyLabel" destination="9Xp-3J-Ae8" id="tkv-ak-MjJ"/>
+                        <outlet property="secretoryChairmanSbTitleLabel" destination="hrK-n2-GJZ" id="6vY-0T-ovp"/>
                         <segue destination="8ak-WC-hUf" kind="show" identifier="registerSocietySegue" id="P3g-GM-KFb"/>
                         <segue destination="fSq-BI-I2O" kind="show" identifier="logINUserSegue" id="6yh-XX-1Ug"/>
                         <segue destination="utQ-7Q-tzt" kind="show" identifier="registerUserSegue" id="e51-fG-51j"/>
@@ -511,7 +520,7 @@
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JUx-37-Uz4">
                                                 <rect key="frame" x="248.5" y="307" width="124" height="40"/>
-                                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.0" green="0.48072296739999998" blue="0.36282508559999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="5fk-Fe-K6Y"/>
                                                 </constraints>
@@ -532,7 +541,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let's form the digital soiety" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3N3-qs-VU9">
                                                 <rect key="frame" x="30" y="89" width="186" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" red="0.0" green="0.48072296739999998" blue="0.36282508559999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -4227,7 +4236,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zjq-lS-Zv9">
-                                <rect key="frame" x="326" y="725" width="64" height="64"/>
+                                <rect key="frame" x="262" y="661" width="128" height="128"/>
                                 <state key="normal" image="plus"/>
                                 <connections>
                                     <action selector="addElectionBtnAction:" destination="Gwj-k0-2aJ" eventType="touchUpInside" id="dtf-1r-Fye"/>
@@ -4342,7 +4351,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q78-uN-gup">
-                                                                    <rect key="frame" x="328" y="25.5" width="24" height="32"/>
+                                                                    <rect key="frame" x="328" y="30.5" width="24" height="22"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="24" id="ZEc-kS-xr4"/>
                                                                     </constraints>
@@ -4917,7 +4926,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JlC-jq-cIw">
-                                <rect key="frame" x="266" y="1369" width="128" height="128"/>
+                                <rect key="frame" x="330" y="1433" width="64" height="64"/>
                                 <state key="normal" image="plus"/>
                                 <connections>
                                     <action selector="createOpinionPollAction:" destination="WUv-3z-nJ3" eventType="touchUpInside" id="ZgU-1Y-stf"/>
@@ -6478,11 +6487,12 @@
         <image name="expand" width="24" height="24"/>
         <image name="gmail" width="16" height="16"/>
         <image name="home-icon-small" width="24" height="24"/>
-        <image name="lightImagesBack" width="1080" height="1920"/>
         <image name="menu_icon" width="24" height="24"/>
         <image name="mySocietyMenuImage" width="441" height="114"/>
+        <image name="mySocietyMenuImage-2" width="441" height="114"/>
         <image name="play-button-home-red" width="64" height="64"/>
         <image name="plus" width="64" height="64"/>
+        <image name="pngtree-real-estate-development-background-map-image" width="960" height="1440"/>
         <image name="stop" width="16" height="16"/>
         <image name="whatsapp" width="16" height="16"/>
     </resources>
