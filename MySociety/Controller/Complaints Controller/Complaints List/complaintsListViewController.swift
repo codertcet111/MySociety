@@ -104,8 +104,9 @@ class complaintsListViewController: UIViewController, UITableViewDelegate, UITab
             cell.complaintsCellBackgroundView.layer.cornerRadius = 10
             cell.userNameLAbel.text = tempchat?.userName ?? ""
             cell.subjectLbel.text = tempchat?.subject ?? ""
-            cell.dateAndTimeLabel.text = tempchat?.date ?? ""
+            cell.dateAndTimeLabel.text = "Date: \(tempchat?.date ?? "")"
             cell.statusLabel.text = tempchat?.status ?? 0 == 0 ? "Open" : "Closed"
+            cell.statusLabel.textColor = tempchat?.status ?? 0 == 0 ? UIColor.red : UIColor.green
             cell.selectionStyle = .none
             cell.complaintsCellBackgroundView.giveBorder()
             UIView.animate(withDuration: 1) {
