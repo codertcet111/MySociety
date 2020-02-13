@@ -32,7 +32,12 @@ class opinionPollViewController: UIViewController, UITableViewDelegate, UITableV
             self.createOpinionollBtn.isHidden = true
             
         }
-        self.getPollListData(true)
+    }
+    
+    var isFirstLoad: Bool = true
+    override func viewWillAppear(_ animated: Bool) {
+        self.getPollListData(self.isFirstLoad)
+        self.isFirstLoad = false
     }
     
     func getPollListData(_ showSpinnerAnimation: Bool){
@@ -229,7 +234,7 @@ class opinionPollViewController: UIViewController, UITableViewDelegate, UITableV
                 cell.answerBLabel.text = getAnswersArray.indices.contains(1) ? getAnswersArray[1] : ""
                 cell.answerCLabel.text = getAnswersArray.indices.contains(2) ? getAnswersArray[2] : ""
                 cell.answerDLabel.text = getAnswersArray.indices.contains(3) ? getAnswersArray[3] : ""
-                cell.votedBackgroundView.giveBorder()
+                cell.votedBackgroundView.giveBorderWithColor(UIColor.green)
                 let votedCountForOptionString = (tempOpenionData.voteCountList).replacingOccurrences(of: "[", with: "").replacingOccurrences(of: "]", with: "").components(separatedBy: ",")
                 var votedCountForOption: [Int] = []
                 for value in votedCountForOptionString{
@@ -241,7 +246,10 @@ class opinionPollViewController: UIViewController, UITableViewDelegate, UITableV
                     }
                 }
                 
-                
+                print("***VotedCount for Option")
+                print("\(tempOpenionData.voteCountList)")
+                print("\(votedCountForOption)")
+                print("****")
                 cell.answerAProgressBar.progress = 0
                 cell.answerAProgressBar.progress = Float(votedCountForOption.indices.contains(0) ? votedCountForOption[0] : 0)
                 cell.answerAVotePercenatge.text = "\(Int(votedCountForOption.indices.contains(0) ? votedCountForOption[0] : 0))"
@@ -256,7 +264,7 @@ class opinionPollViewController: UIViewController, UITableViewDelegate, UITableV
                 cell.answerDProgressBar.progress = 0
                 cell.answerDProgressBar.progress = Float(votedCountForOption.indices.contains(3) ? votedCountForOption[3] : 0)
                 cell.answerDVotePercetage.text = "\(Int(votedCountForOption.indices.contains(3) ? votedCountForOption[3] : 0))"
-                cell.endDateTimeLabel.text = tempOpenionData.endDateTime
+                cell.endDateTimeLabel.text = "End Time: \(tempOpenionData.endDateTime)"
                 UIView.animate(withDuration: 1) {
                     cell.alpha = 1.0
                 }
@@ -266,20 +274,49 @@ class opinionPollViewController: UIViewController, UITableViewDelegate, UITableV
                 cell.alpha = 0
                 cell.resultBackgoundView.layer.cornerRadius = 10.0
                 cell.selectionStyle = .none
-                cell.resultLabel.text = "Result: \(tempOpenionData.result ?? "")"
+                
+                
+                //get the result
+                let votedCountForOption = (tempOpenionData.voteCountList).components(separatedBy: ",")
+                var wonCandidatesIndexs = ["1"]
+                var tempHeighestVoteCount = Int(votedCountForOption[0]) ?? 0
+                for (tempindex,tempVote) in votedCountForOption.enumerated(){
+                    if Int(tempVote) ?? 0 > tempHeighestVoteCount{
+                        wonCandidatesIndexs = ["\((tempindex + 1))"]
+                        tempHeighestVoteCount = Int(tempVote) ?? 0
+                    }else if Int(tempVote) ?? 0 == tempHeighestVoteCount{
+                        wonCandidatesIndexs.append("\((tempindex + 1))")
+                    }
+                }
+                var resultString = ""
+                if wonCandidatesIndexs.count > 1{
+//                    resultString = "The Poll is tied in between \(wonCandidatesIndexs.joined(separator:","))"
+                    resultString = "No result, The Poll is tied"
+                }else{
+                    resultString = "Candidate at Position \(wonCandidatesIndexs.first ?? "1") won the poll"
+                }
+                cell.resultLabel.text = "Result: \(resultString)"
+                
+                
+                
+//                cell.resultLabel.text = "Result: \(tempOpenionData.result ?? "")"
                 cell.subjectLabel.text = "Expire: \(tempOpenionData.subject)"
                 let getAnswersArray = (tempOpenionData.options).components(separatedBy: ",")
                 cell.answerALAbel.text = getAnswersArray.indices.contains(0) ? getAnswersArray[0] : ""
                 cell.answerBLabel.text = getAnswersArray.indices.contains(1) ? getAnswersArray[1] : ""
                 cell.answerCLabel.text = getAnswersArray.indices.contains(2) ? getAnswersArray[2] : ""
                 cell.answreDLabel.text = getAnswersArray.indices.contains(3) ? getAnswersArray[3] : ""
-                cell.resultBackgoundView.giveBorder()
-                let votedCountForOption = (tempOpenionData.voteCountList).components(separatedBy: ",")
+                cell.resultBackgoundView.giveBorderWithColor(UIColor.green)
                 
-                cell.answerATotalVoteCount.text = "\(Float(votedCountForOption.indices.contains(0) ? votedCountForOption[0] : "") ?? 0)"
-                cell.answerBTotalVoteCOunt.text = "\(Float(votedCountForOption.indices.contains(1) ? votedCountForOption[1] : "") ?? 0)"
-                cell.answerCTotalVoteCount.text = "\(Float(votedCountForOption.indices.contains(2) ? votedCountForOption[2] : "") ?? 0)"
-                cell.answerDTotalVoteCount.text = "\(Float(votedCountForOption.indices.contains(3) ? votedCountForOption[3] : "") ?? 0)"
+                print("***VotedCount for Option")
+                print("\(tempOpenionData.voteCountList)")
+                print("\(votedCountForOption)")
+                print("****")
+                
+                cell.answerATotalVoteCount.text = "\(Int(votedCountForOption.indices.contains(0) ? votedCountForOption[0] : "") ?? 0)"
+                cell.answerBTotalVoteCOunt.text = "\(Int(votedCountForOption.indices.contains(1) ? votedCountForOption[1] : "") ?? 0)"
+                cell.answerCTotalVoteCount.text = "\(Int(votedCountForOption.indices.contains(2) ? votedCountForOption[2] : "") ?? 0)"
+                cell.answerDTotalVoteCount.text = "\(Int(votedCountForOption.indices.contains(3) ? votedCountForOption[3] : "") ?? 0)"
                 UIView.animate(withDuration: 1) {
                     cell.alpha = 1.0
                 }

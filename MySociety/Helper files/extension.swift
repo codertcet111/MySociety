@@ -28,6 +28,15 @@ extension UIView{
         layer.masksToBounds = false
     }
     
+    func dropShadowWithColorOption(_ ShadowColor: UIColor) {
+        layer.shadowColor = ShadowColor.cgColor
+        layer.shadowOpacity = 1.0
+        layer.shadowOffset = CGSize.zero
+        layer.shadowRadius = 5
+        layer.cornerRadius = 10
+        layer.masksToBounds = false
+    }
+    
     func dropSmallShadow(){
         layer.shadowColor = UIColor.lightGray.cgColor
         layer.shadowOpacity = 1.0
@@ -346,13 +355,21 @@ extension UIView{
         self.layer.borderWidth = 1.0
         self.dropShadow()
     }
+    
+    func giveBorderWithColor(_ giveColor: UIColor){
+        let yourColor : UIColor = giveColor
+        self.layer.masksToBounds = true
+        self.layer.borderColor = yourColor.cgColor
+        self.layer.borderWidth = 1.0
+        self.dropShadow()
+    }
 }
 
 extension UITextField{
-    func bottomBorder(){
+    func bottomBorder(_ borderColor: UIColor = UIColor.gray){
         let bottomLine = CALayer()
         bottomLine.frame = CGRect(0.0, self.frame.height - 1, self.frame.width, 1.0)
-        bottomLine.backgroundColor = UIColor.gray.cgColor
+        bottomLine.backgroundColor = borderColor.cgColor
         self.borderStyle = UITextField.BorderStyle.none
         self.layer.addSublayer(bottomLine)
     }

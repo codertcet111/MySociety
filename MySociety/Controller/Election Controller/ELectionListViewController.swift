@@ -28,7 +28,12 @@ class ELectionListViewController: UIViewController, UITableViewDelegate, UITable
             self.addElectionBtn.isHidden = true
             
         }
-        getElectionListData(true)
+    }
+    
+    var isFirstLoad: Bool = true
+    override func viewWillAppear(_ animated: Bool) {
+        self.getElectionListData(self.isFirstLoad)
+        self.isFirstLoad = false
     }
     
     func getElectionListData(_ showSpinnerTemp: Bool){
@@ -177,7 +182,31 @@ class ELectionListViewController: UIViewController, UITableViewDelegate, UITable
                         cell.electionInsideTableView.tag = indexPath.row
                         //                        cell.electionInsideTableView.tag = insideTableViewTagCount
 //                        insideTableViewTagCount += 1
-                        cell.liveElectionListBackgroundView.giveBorder()
+                        
+                        let votedUsersID = self.electionListModel?.electionData[indexPath.row].isVoted.replacingOccurrences(of: "[", with: "").replacingOccurrences(of: "]", with: "").components(separatedBy: ",") ?? []
+                        var votedUserIdInt: [Int] = []
+                        for value in votedUsersID{
+                            let stringArray = value.components(separatedBy: CharacterSet.decimalDigits.inverted)
+                            for item in stringArray {
+                                if let number = Int(item) {
+                                    votedUserIdInt.append(number)
+                                }
+                            }
+                        }
+                        
+                        
+                        print("*** VotedUserId")
+                        print("\(indexPath.row)")
+                        print("\(self.electionListModel?.electionData[indexPath.row].isVoted ?? "")")
+                        print("\(votedUserIdInt)")
+                        
+                        if votedUserIdInt.contains(loggedInUserId){
+                            cell.liveElectionListBackgroundView.giveBorderWithColor(UIColor.green)
+                        }else{
+                            cell.liveElectionListBackgroundView.giveBorderWithColor(UIColor.red)
+                        }
+                        
+                        
         //                cell.electionInsideTableView.reloadData()
                         cell.selectionStyle = .none
                         cell.subjectLabel.text = "Live: \(tempElectionData?.subject ?? "")"
@@ -192,7 +221,7 @@ class ELectionListViewController: UIViewController, UITableViewDelegate, UITable
                         cell.selectionStyle = .none
                         cell.upcomingElectionSubject.text = "Upcoming : \(tempElectionData?.subject ?? "")"
                         cell.upcomingElectionComingDateTime.text = "Start Time: \(tempElectionData?.startDateTime ?? "")"
-                        cell.upcomingElectionBackgroundView.giveBorder()
+                        cell.upcomingElectionBackgroundView.giveBorderWithColor(UIColor.green)
                         UIView.animate(withDuration: 1) {
                             cell.alpha = 1.0
                         }
@@ -203,12 +232,53 @@ class ELectionListViewController: UIViewController, UITableViewDelegate, UITable
                         cell.resultElectionBackgroundView.layer.cornerRadius = 10
                         cell.selectionStyle = .none
                         cell.resultElectionSubject.text = tempElectionData?.subject ?? ""
-                        cell.resultElectionResult.text = "Result: \(tempElectionData?.result ?? "")"
+                        
+                        
+                        
+                        //get the result
+                        let votedCountForOptionString = ((self.electionListModel?.electionData[indexPath.row])?.voteCountList)?.replacingOccurrences(of: "[", with: "").replacingOccurrences(of: "]", with: "").components(separatedBy: ",") ?? []
+                        var votedCountForOption: [Int] = []
+                        for value in votedCountForOptionString{
+                            let stringArray = value.components(separatedBy: CharacterSet.decimalDigits.inverted)
+                            for item in stringArray {
+                                if let number = Int(item) {
+                                    votedCountForOption.append(number)
+                                }
+                            }
+                        }
+                        let optionsForElection = ((self.electionListModel?.electionData[indexPath.row])?.optionsList ?? "").components(separatedBy: ",")
+                        var wonCandidatesIndexs = [0]
+                        var tempHeighestVoteCount = votedCountForOption[0]
+                        for (tempindex,tempVote) in votedCountForOption.enumerated(){
+                            if tempVote > tempHeighestVoteCount{
+                                wonCandidatesIndexs = [tempindex]
+                                tempHeighestVoteCount = tempVote
+                            }else if tempVote == tempHeighestVoteCount{
+                                wonCandidatesIndexs.append(tempindex)
+                            }
+                        }
+                        var resultString = ""
+                        if wonCandidatesIndexs.count > 1{
+        //                    resultString = "The Poll is tied in between \(wonCandidatesIndexs.joined(separator:","))"
+                            resultString = "No result, The Election is tied for "
+                            for tempResult in wonCandidatesIndexs{
+                                resultString.append(": \(optionsForElection.indices.contains(tempResult) ? optionsForElection[tempResult] : "")")
+                            }
+                        }else{
+                            resultString = "\(optionsForElection.indices.contains(wonCandidatesIndexs.first ?? 0) ? optionsForElection[wonCandidatesIndexs.first ?? 0] : "") won the Election"
+                        }
+                        cell.resultElectionResult.text = "Result: \(resultString)"
+                        
+                        
+                        
+                        
+//                        cell.resultElectionResult.text = "Result: \(tempElectionData?.result ?? "")"
                         cell.resultElectionBackgroundView.giveBorder()
                         cell.resultELectionEndedOn.text = "Ended: \(tempElectionData?.endDateTime ?? "")"
                         UIView.animate(withDuration: 1) {
                             cell.alpha = 1.0
                         }
+                        cell.resultElectionBackgroundView.giveBorderWithColor(UIColor.green)
                         return cell
                     default:
                         let cell = tableView.dequeueReusableCell(withIdentifier: "ResultElectionListTableViewCell") as! ResultElectionListTableViewCell
@@ -246,6 +316,11 @@ class ELectionListViewController: UIViewController, UITableViewDelegate, UITable
                 }
             }
             
+            print("*** VotedUserId Inside the cell")
+            print("\(indexPath.row)")
+            print("\(self.electionListModel?.electionData[indexPath.row].isVoted ?? "")")
+            print("\(votedUserIdInt)")
+            
             if votedUserIdInt.contains(loggedInUserId){
                 if self.electionListModel?.electionData.indices.contains(tableView.tag) ?? false{
                     if (self.electionListModel?.electionData[tableView.tag])?.voteCountList != nil{
@@ -260,6 +335,12 @@ class ELectionListViewController: UIViewController, UITableViewDelegate, UITable
                                 }
                             }
                         }
+                        
+                        print("*** VotedCount list")
+                        print("\(tableView.tag)")
+                        print("\(self.electionListModel?.electionData[tableView.tag].voteCountList ?? "")")
+                        print("\(votedCountForOption)")
+                        print("Index Path: \(indexPath.row)")
                         
                         if votedCountForOption.indices.contains(indexPath.row){
                             cell.electionOptionVoteBtn.setTitle("\(votedCountForOption[indexPath.row])", for: .normal)

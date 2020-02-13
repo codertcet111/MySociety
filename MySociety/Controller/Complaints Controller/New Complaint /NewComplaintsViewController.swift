@@ -109,7 +109,8 @@ class NewComplaintsViewController: UIViewController, UIImagePickerControllerDele
                         {
                             let value = response.result.value
                             DispatchQueue.main.async {
-                                self.showAlert("Complaint created Successfully!!")
+                                self.showToast(message: "Complaint created Successfully!!", fontSize: 11.0)
+                                self.navigationController?.popViewController(animated: true)
                             }
                         }else{
                             DispatchQueue.main.async {

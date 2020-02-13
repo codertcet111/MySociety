@@ -76,7 +76,8 @@ class ChangeMemberPositionViewController: UIViewController {
                 switch(httpResponse?.statusCode ?? 201){
                 case 200, 201:
                     DispatchQueue.main.async {
-                        self.showAlertForError("Position changed Successfully!!")
+                        self.showToast(message: "Position changed Successfully!!", fontSize: 11.0)
+                        self.navigationController?.popViewController(animated: true)
                     }
                 default:
                     DispatchQueue.main.async {

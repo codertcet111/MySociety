@@ -29,7 +29,12 @@ class maintenanceListViewController: UIViewController, UITableViewDataSource, UI
             self.payMaintenanceBtn.isHidden = true
             
         }
-        self.getMaintenanceData(true)
+    }
+    
+    var isFirstLoad: Bool = true
+    override func viewWillAppear(_ animated: Bool) {
+        self.getMaintenanceData(self.isFirstLoad)
+        self.isFirstLoad = false
     }
     
     func getMaintenanceData(_ showSpinnerView: Bool){

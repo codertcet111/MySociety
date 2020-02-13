@@ -24,15 +24,23 @@ class complaintsListViewController: UIViewController, UITableViewDelegate, UITab
         super.viewDidLoad()
         self.complaintsListTableView.estimatedRowHeight = 164
         self.complaintsListTableView.rowHeight = UITableView.automaticDimension
-        getComplaintsData()
+        
 //        if isAdminLoggedIn{
 //            self.complaintListNewComplaintBtn.isHidden = true
 //        }
     }
     
+    var isFirstLoad: Bool = true
+    override func viewWillAppear(_ animated: Bool) {
+        self.getComplaintsData()
+        self.isFirstLoad = false
+    }
+    
     func getComplaintsData(){
-        showSpinner(onView: self.view)
-            let headerValues = globalHeaderValue
+        if isFirstLoad{
+            showSpinner(onView: self.view)
+        }
+        let headerValues = globalHeaderValue
         let request = getRequestUrlWithHeader(url: "complaints/\(loggedInUserId)/\(isAdminLoggedIn ? 1 : 0)", method: "GET", header: headerValues , bodyParams: nil)
             let session = URLSession.shared
             let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in

@@ -28,12 +28,18 @@ class EventListViewController: UIViewController, UITableViewDataSource, UITableV
         if !isAdminLoggedIn{
             self.addEventBtn.isHidden = true
         }
-        getEventData()
     }
     
+    var isFirstLoad: Bool = true
+    override func viewWillAppear(_ animated: Bool) {
+        self.getEventData()
+        self.isFirstLoad = false
+    }
     
     func getEventData(){
-        showSpinner(onView: self.view)
+        if isFirstLoad{
+            showSpinner(onView: self.view)
+        }
         let headerValues = globalHeaderValue
         let request = getRequestUrlWithHeader(url: "event/\(loggedInUserId)", method: "GET", header: headerValues , bodyParams: nil)
         let session = URLSession.shared

@@ -29,11 +29,18 @@ class noticeListViewController: UIViewController, UITableViewDelegate, UITableVi
         if !isAdminLoggedIn{
             self.addNotice.isHidden = true
         }
-        getNoticeData()
+    }
+    
+    var isFirstLoad: Bool = true
+    override func viewWillAppear(_ animated: Bool) {
+        self.getNoticeData()
+        self.isFirstLoad = false
     }
     
     func getNoticeData(){
-        showSpinner(onView: self.view)
+        if isFirstLoad{
+            showSpinner(onView: self.view)
+        }
         let headerValues = globalHeaderValue
         let request = getRequestUrlWithHeader(url: "notice/\(loggedInUserId)", method: "GET", header: headerValues , bodyParams: nil)
         let session = URLSession.shared

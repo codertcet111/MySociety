@@ -28,11 +28,18 @@ class MemberDirectoryListViewController: UIViewController, UITableViewDataSource
             self.makePositionChangeBtn.isHidden = true
             
         }
+    }
+    
+    var isFirstLoad: Bool = true
+    override func viewWillAppear(_ animated: Bool) {
         self.getMemberUserData()
+        self.isFirstLoad = false
     }
     
     func getMemberUserData(){
-        showSpinner(onView: self.view)
+        if isFirstLoad{
+            showSpinner(onView: self.view)
+        }
         let headerValues = globalHeaderValue
         let request = getRequestUrlWithHeader(url: "member/\(loggedInUserId)", method: "GET", header: headerValues , bodyParams: nil)
         let session = URLSession.shared

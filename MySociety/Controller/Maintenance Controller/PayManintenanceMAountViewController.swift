@@ -208,7 +208,8 @@ class PayManintenanceMAountViewController: UIViewController, UIImagePickerContro
                         {
                             let value = response.result.value
                             DispatchQueue.main.async {
-                                self.showAlert("Maintenance created Successfully!!")
+                                self.showToast(message: "Maintenance created Successfully!!", fontSize: 11.0)
+                                self.navigationController?.popViewController(animated: true)
                             }
                         }else{
                             DispatchQueue.main.async {

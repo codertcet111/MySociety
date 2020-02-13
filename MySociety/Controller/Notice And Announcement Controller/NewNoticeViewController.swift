@@ -306,7 +306,8 @@ class NewNoticeViewController: UIViewController, UIImagePickerControllerDelegate
                         {
                             let value = response.result.value
                             DispatchQueue.main.async {
-                                self.showAlert("Notice created Successfully!!")
+                                self.showToast(message: "Notice created Successfully!!", fontSize: 11.0)
+                                self.navigationController?.popViewController(animated: true)
                             }
                         }else{
                             DispatchQueue.main.async {

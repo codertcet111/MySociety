@@ -95,7 +95,8 @@ class createOpinionPollViewController: UIViewController {
                 switch(httpResponse?.statusCode ?? 201){
                 case 200, 201:
                     DispatchQueue.main.async {
-                        self.showAlertForError("Opinion Poll Created Successfully!!")
+                        self.showToast(message: "Opinion Poll created Successfully!!", fontSize: 11.0)
+                        self.navigationController?.popViewController(animated: true)
                     }
                 default:
                     DispatchQueue.main.async {

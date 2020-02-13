@@ -132,7 +132,8 @@ class AddEventViewController: UIViewController, UIImagePickerControllerDelegate,
                         {
                             let value = response.result.value
                             DispatchQueue.main.async {
-                                self.showAlert("Event created Successfully!!")
+                                self.showToast(message: "Event created Successfully!!", fontSize: 11.0)
+                                self.navigationController?.popViewController(animated: true)
                             }
                         }else{
                             DispatchQueue.main.async {
