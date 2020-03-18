@@ -146,6 +146,8 @@ class FeedbackViewController: UIViewController, UITableViewDataSource, UITableVi
                 print(error ?? "")
             } else {
                 let httpResponse = response as? HTTPURLResponse
+                let strData = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+                print("Body: \(String(describing: strData))")
                 
                 switch(httpResponse?.statusCode ?? 201){
                 case 200, 201:

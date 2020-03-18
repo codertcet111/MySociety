@@ -106,6 +106,8 @@ class ELectionListViewController: UIViewController, UITableViewDelegate, UITable
                 print(error ?? "")
             } else {
                 let httpResponse = response as? HTTPURLResponse
+                let strData = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+                print("Body: \(String(describing: strData))")
                 
                 switch(httpResponse?.statusCode ?? 201){
                 case 200, 201:
@@ -136,6 +138,7 @@ class ELectionListViewController: UIViewController, UITableViewDelegate, UITable
     {
         print("You have selected")
         var senderTag = sender.tag
+        let tempSenderTag = sender.tag
 //        print("\(self.electionListModel?.electionData[lasttwoDigits].)")
         print("selected button position")
         print("\(Int("\(senderTag)".suffix(2)) ?? 0)")
@@ -148,7 +151,7 @@ class ELectionListViewController: UIViewController, UITableViewDelegate, UITable
         }
         print("Selected cell position")
         print("\(electionCellIndex)")
-        self.voteForElection(electionCellIndex, Int("\(senderTag)".suffix(2)) ?? 0)
+        self.voteForElection(self.electionListModel?.electionData[electionCellIndex].electionId ?? 0, tempSenderTag)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

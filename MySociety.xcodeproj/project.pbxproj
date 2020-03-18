@@ -52,8 +52,6 @@
 		8413AFDD23D2F9990033F5BB /* complaints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413AFDB23D2F9990033F5BB /* complaints.swift */; };
 		8413AFE023D304290033F5BB /* ChatData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413AFDE23D304290033F5BB /* ChatData.swift */; };
 		8413AFE123D304290033F5BB /* chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413AFDF23D304290033F5BB /* chat.swift */; };
-		8413AFF523D335AC0033F5BB /* notice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413AFF323D335AC0033F5BB /* notice.swift */; };
-		8413AFF623D335AC0033F5BB /* NoticeDatas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413AFF423D335AC0033F5BB /* NoticeDatas.swift */; };
 		8413AFFA23D342EA0033F5BB /* EventDatas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413AFF823D342E90033F5BB /* EventDatas.swift */; };
 		8413AFFB23D342EA0033F5BB /* event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413AFF923D342E90033F5BB /* event.swift */; };
 		8413DCFF23F0A3AD00BC73A2 /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413DCFE23F0A3AD00BC73A2 /* Slide.swift */; };
@@ -110,6 +108,8 @@
 		8451C04F23CDF03800250292 /* opinionPollLiveVotedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8451C04E23CDF03800250292 /* opinionPollLiveVotedTableViewCell.swift */; };
 		8451C05123CDF05100250292 /* opinionPollResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8451C05023CDF05100250292 /* opinionPollResultTableViewCell.swift */; };
 		84867EA723C9F11100D9B83C /* menuViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84867EA623C9F11100D9B83C /* menuViewCollectionViewCell.swift */; };
+		84979962241FB0C400E0417B /* NoticeDatas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84979960241FB0C400E0417B /* NoticeDatas.swift */; };
+		84979963241FB0C400E0417B /* notice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84979961241FB0C400E0417B /* notice.swift */; };
 		84A209CB23DD3986008E9574 /* selectMemberPopOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A209CA23DD3986008E9574 /* selectMemberPopOverViewController.swift */; };
 		84A209CD23DD399B008E9574 /* selectMemberSharedFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A209CC23DD399B008E9574 /* selectMemberSharedFile.swift */; };
 		84A209CF23DD39B9008E9574 /* selectMemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A209CE23DD39B9008E9574 /* selectMemberTableViewCell.swift */; };
@@ -174,8 +174,6 @@
 		8413AFDB23D2F9990033F5BB /* complaints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = complaints.swift; path = ../../../../../Downloads/complaints/complaints.swift; sourceTree = "<group>"; };
 		8413AFDE23D304290033F5BB /* ChatData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatData.swift; path = ../../../../../Downloads/chat/ChatData.swift; sourceTree = "<group>"; };
 		8413AFDF23D304290033F5BB /* chat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = chat.swift; path = ../../../../../Downloads/chat/chat.swift; sourceTree = "<group>"; };
-		8413AFF323D335AC0033F5BB /* notice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = notice.swift; path = ../../../../../Downloads/notice/notice.swift; sourceTree = "<group>"; };
-		8413AFF423D335AC0033F5BB /* NoticeDatas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoticeDatas.swift; path = ../../../../../Downloads/notice/NoticeDatas.swift; sourceTree = "<group>"; };
 		8413AFF823D342E90033F5BB /* EventDatas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventDatas.swift; path = ../../../../../Downloads/event/EventDatas.swift; sourceTree = "<group>"; };
 		8413AFF923D342E90033F5BB /* event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = event.swift; path = ../../../../../Downloads/event/event.swift; sourceTree = "<group>"; };
 		8413DCFE23F0A3AD00BC73A2 /* Slide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slide.swift; sourceTree = "<group>"; };
@@ -232,6 +230,8 @@
 		8451C04E23CDF03800250292 /* opinionPollLiveVotedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = opinionPollLiveVotedTableViewCell.swift; sourceTree = "<group>"; };
 		8451C05023CDF05100250292 /* opinionPollResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = opinionPollResultTableViewCell.swift; sourceTree = "<group>"; };
 		84867EA623C9F11100D9B83C /* menuViewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuViewCollectionViewCell.swift; sourceTree = "<group>"; };
+		84979960241FB0C400E0417B /* NoticeDatas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoticeDatas.swift; path = ../../../../../Downloads/NoticeDatas.swift; sourceTree = "<group>"; };
+		84979961241FB0C400E0417B /* notice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = notice.swift; path = ../../../../../Downloads/notice.swift; sourceTree = "<group>"; };
 		84A209CA23DD3986008E9574 /* selectMemberPopOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = selectMemberPopOverViewController.swift; sourceTree = "<group>"; };
 		84A209CC23DD399B008E9574 /* selectMemberSharedFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = selectMemberSharedFile.swift; sourceTree = "<group>"; };
 		84A209CE23DD39B9008E9574 /* selectMemberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = selectMemberTableViewCell.swift; sourceTree = "<group>"; };
@@ -476,8 +476,8 @@
 		8413AFF223D335920033F5BB /* Notice Model */ = {
 			isa = PBXGroup;
 			children = (
-				8413AFF323D335AC0033F5BB /* notice.swift */,
-				8413AFF423D335AC0033F5BB /* NoticeDatas.swift */,
+				84979961241FB0C400E0417B /* notice.swift */,
+				84979960241FB0C400E0417B /* NoticeDatas.swift */,
 			);
 			path = "Notice Model";
 			sourceTree = "<group>";
@@ -888,6 +888,7 @@
 				8432E85823E1828500374A39 /* UsersData.swift in Sources */,
 				841C427123CEE2BA00993483 /* ElectionLiveInsideTableViewCell.swift in Sources */,
 				843755CB23DB0B240085DA0D /* FeedbackList.swift in Sources */,
+				84979963241FB0C400E0417B /* notice.swift in Sources */,
 				8413857223CB8824005CFA57 /* NoticeListTableViewCell.swift in Sources */,
 				8413858223CB88D4005CFA57 /* complaintsListTableViewCell.swift in Sources */,
 				841C428A23CF3E3200993483 /* maintenanceTableViewCell.swift in Sources */,
@@ -895,7 +896,6 @@
 				842CCF9A23C8476E003FF488 /* eventHomePageTableViewCell.swift in Sources */,
 				84A209CB23DD3986008E9574 /* selectMemberPopOverViewController.swift in Sources */,
 				841C428323CF363F00993483 /* postVideoViewController.swift in Sources */,
-				8413AFF523D335AC0033F5BB /* notice.swift in Sources */,
 				8413858C23CB89D8005CFA57 /* MemberDirectoryListTableViewCell.swift in Sources */,
 				840F81FE23D856BD00671370 /* Notice.swift in Sources */,
 				840F81F923D856BD00671370 /* UpcomingElectionHome.swift in Sources */,
@@ -928,10 +928,10 @@
 				84A209D423DD4821008E9574 /* payMaintenanceSelectMemberSharedFile.swift in Sources */,
 				84A209CF23DD39B9008E9574 /* selectMemberTableViewCell.swift in Sources */,
 				8413595623D17A860033AD1E /* registerSocietyViewController.swift in Sources */,
-				8413AFF623D335AC0033F5BB /* NoticeDatas.swift in Sources */,
 				840F81FA23D856BD00671370 /* VideoHome.swift in Sources */,
 				8421443023CCB5A300803589 /* complaintsChatOtherChatTableViewCell.swift in Sources */,
 				8413856E23CB87FE005CFA57 /* noticeListViewController.swift in Sources */,
+				84979962241FB0C400E0417B /* NoticeDatas.swift in Sources */,
 				8413AFFB23D342EA0033F5BB /* event.swift in Sources */,
 				84867EA723C9F11100D9B83C /* menuViewCollectionViewCell.swift in Sources */,
 				8423F9E023E55C2000A7A9CB /* ComplaintsDetailData.swift in Sources */,

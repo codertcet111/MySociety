@@ -77,7 +77,7 @@ class registerSocietyViewController: UIViewController {
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        NotificationCenter.default.removeObserver(self)
+//        NotificationCenter.default.removeObserver(self)
     }
 
     func addKeyboardListeners() {
@@ -165,6 +165,9 @@ class registerSocietyViewController: UIViewController {
             return false
         }else if adminMobileNumber.text == ""{
             showAlert("Please Type Mobile Number ")
+            return false
+        }else if emailIdTextField.text == ""{
+            showAlert("Please Type Email ID ")
             return false
         }else{
             return true

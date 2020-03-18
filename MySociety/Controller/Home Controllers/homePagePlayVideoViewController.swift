@@ -15,6 +15,8 @@ class homePagePlayVideoViewController: UIViewController {
     var player: AVPlayer?
     var videoUrl = ""
     
+    
+    @IBOutlet weak var videoProgressBar: UIProgressView!
     @IBOutlet weak var loaderView: UIActivityIndicatorView!
     @IBOutlet weak var videoView: UIView!
     @IBOutlet weak var playButton: UIButton!
@@ -31,11 +33,24 @@ class homePagePlayVideoViewController: UIViewController {
             player?.pause()
         }
     }
+    
+    @IBOutlet weak var rewindButton: UIButton!
+    @IBOutlet weak var forwardButton: UIButton!
+    @IBAction func rewindAction(_ sender: UIButton) {
+        
+    }
+    @IBAction func forwardAction(_ sender: UIButton) {
+        
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 //        self.tabBarController?.tabBar.isHidden = true
         playButton.cornerRadius(radius: 10.0)
         pauseButton.cornerRadius(radius: 10.0)
+        rewindButton.isHidden = true
+        forwardButton.isHidden = true
     }
     
     override public func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -46,8 +61,12 @@ class homePagePlayVideoViewController: UIViewController {
                 DispatchQueue.main.async {[weak self] in
                     if newStatus == .playing || newStatus == .paused {
                         self?.loaderView.isHidden = true
+                        self?.rewindButton.isHidden = false
+                        self?.forwardButton.isHidden = false
                     } else {
                         self?.loaderView.isHidden = false
+                        self?.rewindButton.isHidden = true
+                        self?.forwardButton.isHidden = true
                     }
                 }
             }
@@ -63,5 +82,25 @@ class homePagePlayVideoViewController: UIViewController {
         player?.play()
         player?.addObserver(self, forKeyPath: "timeControlStatus", options: [.old, .new], context: nil)
         state = 0
+    }
+    
+    func rewindVideo(by seconds: Float64) {
+        if let currentTime = player?.currentTime() {
+            var newTime = CMTimeGetSeconds(currentTime) - seconds
+            if newTime <= 0 {
+                newTime = 0
+            }
+            player?.seek(to: CMTime(value: CMTimeValue(newTime * 1000), timescale: 1000))
+        }
+    }
+
+    func forwardVideo(by seconds: Float64) {
+        if let currentTime = player?.currentTime(), let duration = player?.currentItem?.duration {
+            var newTime = CMTimeGetSeconds(currentTime) + seconds
+            if newTime >= CMTimeGetSeconds(duration) {
+                newTime = CMTimeGetSeconds(duration)
+            }
+            player?.seek(to: CMTime(value: CMTimeValue(newTime * 1000), timescale: 1000))
+        }
     }
 }

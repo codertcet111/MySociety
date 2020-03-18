@@ -48,7 +48,7 @@ class payMaintenaceSelectMemberPopOverViewController: UIViewController, UITableV
      func getUserListData(){
             showSpinner(onView: self.view)
             let headerValues = globalHeaderValue
-            let request = getRequestUrlWithHeader(url: "users/2", method: "GET", header: headerValues , bodyParams: nil)
+            let request = getRequestUrlWithHeader(url: "users/\(loggedInUserId)", method: "GET", header: headerValues , bodyParams: nil)
             let session = URLSession.shared
             let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
                 self.removeSpinner()

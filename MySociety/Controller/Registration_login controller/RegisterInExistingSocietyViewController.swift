@@ -66,7 +66,7 @@ class RegisterInExistingSocietyViewController: UIViewController, UITextFieldDele
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        NotificationCenter.default.removeObserver(self)
+//        NotificationCenter.default.removeObserver(self)
     }
 
     func addKeyboardListeners() {
@@ -132,7 +132,7 @@ class RegisterInExistingSocietyViewController: UIViewController, UITextFieldDele
     
     var selectedSocietyId: Int = 0
     var selectedSocietyName: String = ""
-    var rolesArray = ["Secretary", "Treasurer", "Chairman", "Simple Member"]
+    var rolesArray = ["Secretary", "Treasurer", "Chairman", "Member"]
     var selectedRoleIndex: Int = 0 //0:Secretory, 1:Treasurer, 2:Chairman, 3:Simple Member
         
     func checkAndValidateFieldBfrRegister() -> Bool{
