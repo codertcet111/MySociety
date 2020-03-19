@@ -110,11 +110,11 @@ class complaintsListViewController: UIViewController, UITableViewDelegate, UITab
             let cell = tableView.dequeueReusableCell(withIdentifier: "complaintsListTableViewCell") as! complaintsListTableViewCell
             cell.alpha = 0
             cell.complaintsCellBackgroundView.layer.cornerRadius = 10
-            cell.userNameLAbel.text = "Comp by: \(tempchat?.userName ?? "")"
+            cell.userNameLAbel.text = "Member: \(tempchat?.userName ?? "")"
             cell.subjectLbel.text = "Date: \((tempchat?.date ?? "").getIntoDateTimeFOrmate())"
             cell.dateAndTimeLabel.text = "Subj: \(tempchat?.subject ?? "")"
-            cell.statusLabel.text = "# \(tempchat?.date ?? "")"//tempchat?.status ?? 0 == 0 ? "Open" : "Closed"
-            cell.statusLabel.textColor = tempchat?.status ?? 0 == 0 ? UIColor.red : UIColor.green
+            cell.statusLabel.text = "Flat No: \(tempchat?.flatNumber ?? "")"//tempchat?.status ?? 0 == 0 ? "Open" : "Closed"
+//            cell.statusLabel.textColor = tempchat?.status ?? 0 == 0 ? UIColor.red : UIColor.green
             cell.selectionStyle = .none
             cell.complaintsCellBackgroundView.giveBorder()
             UIView.animate(withDuration: 1) {

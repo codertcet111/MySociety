@@ -221,20 +221,24 @@ class RegisterInExistingSocietyViewController: UIViewController, UITextFieldDele
                         switch  httpResponse?.statusCode ?? 204 {
                         case 200:
                             DispatchQueue.main.sync {
-                                let userId = (json?.value(forKey: "user_id") as? Int ?? 0)
-                                let isAdmin = (json?.value(forKey: "is_admin") as? Bool ?? true)
-                                UserDefaults.standard.set(userId, forKey: loggedInUserIdDefaultKeyName)
-                                UserDefaults.standard.set(isAdmin, forKey: loggedInUserIsAdminDefaultKeyName)
-                                //Set Default parameters and loggingin user
-                                //redirect to home page
-                                loggedInUserId = UserDefaults.standard.integer(forKey: loggedInUserIdDefaultKeyName)
-                                isAdminLoggedIn = isAdmin
-                                
-                                
-                                let appDelegate = UIApplication.shared.delegate! as! AppDelegate
-                                let initialViewController = self.storyboard!.instantiateViewController(withIdentifier: "tabBarControllerViewController")
-                                appDelegate.window?.rootViewController = initialViewController
-                                appDelegate.window?.makeKeyAndVisible()
+                                if json?.value(forKey: "status") as? Int ?? 0 == 200{
+                                    let userId = (json?.value(forKey: "user_id") as? Int ?? 0)
+                                    let isAdmin = (json?.value(forKey: "is_admin") as? Bool ?? true)
+                                    UserDefaults.standard.set(userId, forKey: loggedInUserIdDefaultKeyName)
+                                    UserDefaults.standard.set(isAdmin, forKey: loggedInUserIsAdminDefaultKeyName)
+                                    //Set Default parameters and loggingin user
+                                    //redirect to home page
+                                    loggedInUserId = UserDefaults.standard.integer(forKey: loggedInUserIdDefaultKeyName)
+                                    isAdminLoggedIn = isAdmin
+                                    
+                                    
+                                    let appDelegate = UIApplication.shared.delegate! as! AppDelegate
+                                    let initialViewController = self.storyboard!.instantiateViewController(withIdentifier: "tabBarControllerViewController")
+                                    appDelegate.window?.rootViewController = initialViewController
+                                    appDelegate.window?.makeKeyAndVisible()
+                                }else{
+                                    self.showAlert("\(json?.value(forKey: "msg") as? String ?? "")")
+                                }
                             }
                         case 401:
                             DispatchQueue.main.sync {
@@ -280,6 +284,18 @@ class RegisterInExistingSocietyViewController: UIViewController, UITextFieldDele
         self.selectYourMemberBtn.setTitle("Role", for: .normal)
         nc.addObserver(self, selector: #selector(updateSelectedSocietyLabels), name: Notification.Name.selectSocietyPopOverDismissNC, object: nil)
         setView()
+        self.mobileTextField.smartInsertDeleteType = UITextSmartInsertDeleteType.no
+        self.mobileTextField.delegate = self
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let textFieldText = textField.text,
+            let rangeOfTextToReplace = Range(range, in: textFieldText) else {
+                return false
+        }
+        let substringToReplace = textFieldText[rangeOfTextToReplace]
+        let count = textFieldText.count - substringToReplace.count + string.count
+        return count <= 10
     }
     
     func setView(){

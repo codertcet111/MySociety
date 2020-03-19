@@ -8,7 +8,7 @@
 
 import UIKit
 
-class registerSocietyViewController: UIViewController {
+class registerSocietyViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var societyNameTitleLabel: UILabel!
@@ -227,19 +227,22 @@ class registerSocietyViewController: UIViewController {
                         switch  httpResponse?.statusCode ?? 204 {
                         case 200:
                             DispatchQueue.main.sync {
-                                let userId = (json?.value(forKey: "user_id") as? Int ?? 0)
-                                UserDefaults.standard.set(userId, forKey: loggedInUserIdDefaultKeyName)
-                                UserDefaults.standard.set(true, forKey: loggedInUserIsAdminDefaultKeyName)
-                                //Set Default parameters and loggingin user
-                                //redirect to home page
-                                loggedInUserId = UserDefaults.standard.integer(forKey: loggedInUserIdDefaultKeyName)
-                                isAdminLoggedIn = true
-                                
-                                
-                                let appDelegate = UIApplication.shared.delegate! as! AppDelegate
-                                let initialViewController = self.storyboard!.instantiateViewController(withIdentifier: "tabBarControllerViewController")
-                                appDelegate.window?.rootViewController = initialViewController
-                                appDelegate.window?.makeKeyAndVisible()
+                                if json?.value(forKey: "status") as? Int ?? 0 == 200{
+                                    let userId = (json?.value(forKey: "user_id") as? Int ?? 0)
+                                    UserDefaults.standard.set(userId, forKey: loggedInUserIdDefaultKeyName)
+                                    UserDefaults.standard.set(true, forKey: loggedInUserIsAdminDefaultKeyName)
+                                    //Set Default parameters and loggingin user
+                                    //redirect to home page
+                                    loggedInUserId = UserDefaults.standard.integer(forKey: loggedInUserIdDefaultKeyName)
+                                    isAdminLoggedIn = true
+                                    
+                                    let appDelegate = UIApplication.shared.delegate! as! AppDelegate
+                                    let initialViewController = self.storyboard!.instantiateViewController(withIdentifier: "tabBarControllerViewController")
+                                    appDelegate.window?.rootViewController = initialViewController
+                                    appDelegate.window?.makeKeyAndVisible()
+                                }else{
+                                    self.showAlert("\(json?.value(forKey: "msg") as? String ?? "")")
+                                }
                             }
                         case 401:
                             DispatchQueue.main.sync {
@@ -279,6 +282,18 @@ class registerSocietyViewController: UIViewController {
 //        self.adminPasswordTextField.delegate = self
         self.selectYourRoleBtn.setTitle("Role", for: .normal)
         self.setView()
+        self.adminMobileNumber.smartInsertDeleteType = UITextSmartInsertDeleteType.no
+        self.adminMobileNumber.delegate = self
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let textFieldText = textField.text,
+            let rangeOfTextToReplace = Range(range, in: textFieldText) else {
+                return false
+        }
+        let substringToReplace = textFieldText[rangeOfTextToReplace]
+        let count = textFieldText.count - substringToReplace.count + string.count
+        return count <= 10
     }
     
     func setView(){
