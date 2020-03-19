@@ -166,7 +166,8 @@ class postVideoViewController: UIViewController, UIImagePickerControllerDelegate
                         {
                             let value = response.result.value
                             DispatchQueue.main.async {
-                                self.showAlert("Video Uploaded Successfully!!")
+                                self.showToast(message: "Video Uploaded Successfully!!", fontSize: 12.0)
+                                self.tabBarController?.selectedIndex = 1
                             }
                         }else{
                             DispatchQueue.main.async {

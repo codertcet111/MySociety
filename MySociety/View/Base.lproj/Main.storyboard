@@ -645,7 +645,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EmailId (Optional):" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SyQ-FK-LQO">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EmailId:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SyQ-FK-LQO">
                                                 <rect key="frame" x="24" y="652" width="366" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <nil key="textColor"/>
@@ -2065,10 +2065,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="2000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No Data to Show" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xYh-42-xCq">
-                                <rect key="frame" x="186" y="989" width="129" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Data to Show" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xYh-42-xCq">
+                                <rect key="frame" x="149.5" y="993.5" width="115" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -3032,6 +3031,8 @@
                             <constraint firstItem="anh-Et-lTx" firstAttribute="trailing" secondItem="LCx-7g-61D" secondAttribute="trailing" id="Hp2-N0-b5G"/>
                             <constraint firstItem="anh-Et-lTx" firstAttribute="bottom" secondItem="LCx-7g-61D" secondAttribute="bottom" constant="5" id="KEl-Z6-Rvq"/>
                             <constraint firstItem="LCx-7g-61D" firstAttribute="top" secondItem="anh-Et-lTx" secondAttribute="top" constant="15" id="epk-S3-cBQ"/>
+                            <constraint firstItem="xYh-42-xCq" firstAttribute="centerX" secondItem="anh-Et-lTx" secondAttribute="centerX" id="mKW-2U-4gN"/>
+                            <constraint firstItem="xYh-42-xCq" firstAttribute="centerY" secondItem="anh-Et-lTx" secondAttribute="centerY" id="sd9-JY-qcF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="anh-Et-lTx"/>
                     </view>
@@ -3039,6 +3040,7 @@
                     <size key="freeformSize" width="414" height="2000"/>
                     <connections>
                         <outlet property="homeFeedViewController" destination="LCx-7g-61D" id="0zI-Jh-ewQ"/>
+                        <outlet property="noDataAvailableLabel" destination="xYh-42-xCq" id="7mj-dG-8cY"/>
                         <segue destination="FDW-E4-uq0" kind="show" identifier="homeVideoPlaySegue" id="wFR-CE-L9R"/>
                     </connections>
                 </viewController>

@@ -163,6 +163,9 @@ class RegisterInExistingSocietyViewController: UIViewController, UITextFieldDele
         }else if mobileTextField.text == ""{
             showAlert("Please Type mobile number ")
             return false
+        }else if emailTextField.text == ""{
+            showAlert("Please Type Email ID ")
+            return false
         }else{
             return true
         }

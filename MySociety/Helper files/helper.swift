@@ -25,8 +25,8 @@ let baseUrl = "https://api.myproperty4u.com/api/"
 let ngRokUrl: String = "https://api.myproperty4u.com/api/"
 var globalHeaderValue = ["x-api-key": "1c552e6f2a95a883209e9b449d6f4973"]
 //Update loggedInUserId everytime
-var loggedInUserId = 59//UserDefaults.standard.integer(forKey: loggedInUserIdDefaultKeyName)
-var isAdminLoggedIn = true//UserDefaults.standard.bool(forKey: loggedInUserIsAdminDefaultKeyName)
+var loggedInUserId = UserDefaults.standard.integer(forKey: loggedInUserIdDefaultKeyName)
+var isAdminLoggedIn = UserDefaults.standard.bool(forKey: loggedInUserIsAdminDefaultKeyName)
 //MARK: Get badged label
 func getBadgedLabelWithValue(count: Int) -> UILabel{
     //Badged set

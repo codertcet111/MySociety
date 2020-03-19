@@ -68,12 +68,25 @@ class newElectionViewController: UIViewController, UITableViewDataSource, UITabl
 //        optionsListTableView.layer.borderWidth = 1.0
     }
     
+    func getInitialVoteCountList() -> String{
+        var tempString = ""
+        for index in self.electionOptionsArrayList.enumerated(){
+            if tempString == ""{
+                tempString += "0"
+            }else{
+                tempString += ",0"
+            }
+        }
+        return tempString
+    }
+    
     func createElection(){
             self.showSpinner(onView: self.view)
             let parameters = [
                 "user_id": "\(loggedInUserId)",
                 "subject": "\(self.subjectTextField.text ?? "")",
                 "candidate_list": "\(getCandidateListOptions())",
+                "vote_count_list": "\(getInitialVoteCountList())",
                 "start_time": "\(getDateInDateFormate(date: self.startTimeDatePicker.date))",
                 "end_time": "\(getDateInDateFormate(date: self.endDateTimePicker.date))"
                 ] as [String : Any]

@@ -196,7 +196,7 @@ class ELectionListViewController: UIViewController, UITableViewDelegate, UITable
                                 }
                             }
                         }
-                        
+                        cell.electionInsideTableView.reloadData()
                         
                         print("*** VotedUserId")
                         print("\(indexPath.row)")
@@ -208,9 +208,6 @@ class ELectionListViewController: UIViewController, UITableViewDelegate, UITable
                         }else{
                             cell.liveElectionListBackgroundView.giveBorderWithColor(UIColor.red)
                         }
-                        
-                        
-        //                cell.electionInsideTableView.reloadData()
                         cell.selectionStyle = .none
                         cell.subjectLabel.text = "Live: \(tempElectionData?.subject ?? "")"
                         UIView.animate(withDuration: 1) {
@@ -320,9 +317,9 @@ class ELectionListViewController: UIViewController, UITableViewDelegate, UITable
             }
             
             print("*** VotedUserId Inside the cell")
-            print("\(indexPath.row)")
-            print("\(self.electionListModel?.electionData[indexPath.row].isVoted ?? "")")
-            print("\(votedUserIdInt)")
+//            print("\(indexPath.row)")
+//            print("\(self.electionListModel?.electionData[indexPath.row].isVoted ?? "")")
+//            print("\(votedUserIdInt)")
             
             if votedUserIdInt.contains(loggedInUserId){
                 if self.electionListModel?.electionData.indices.contains(tableView.tag) ?? false{

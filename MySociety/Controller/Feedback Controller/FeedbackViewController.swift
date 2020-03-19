@@ -153,6 +153,7 @@ class FeedbackViewController: UIViewController, UITableViewDataSource, UITableVi
                 case 200, 201:
                     DispatchQueue.main.async {
                         self.showAlertForError("Feedback Posted Successfully!!")
+                        self.getFeedbackData(false)
                     }
                 default:
                     DispatchQueue.main.async {

@@ -56,7 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         //Check if user is loggedIn or not
-        if false { //!isKeyPresentInUserDefaults(key: loggedInUserIdDefaultKeyName) || UserDefaults.standard.integer(forKey: loggedInUserIdDefaultKeyName) == 0{
+        if !isKeyPresentInUserDefaults(key: loggedInUserIdDefaultKeyName) || UserDefaults.standard.integer(forKey: loggedInUserIdDefaultKeyName) == 0{
             //Send to log in screen
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
              let appDelegate = UIApplication.shared.delegate as! AppDelegate
