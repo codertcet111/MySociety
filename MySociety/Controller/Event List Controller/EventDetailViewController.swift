@@ -49,7 +49,7 @@ class EventDetailViewController: UIViewController, UICollectionViewDelegate, UIC
                         self.eventDetailModelObject = try? JSONDecoder().decode(eventDetailModel.self,from: data!)
                             DispatchQueue.main.sync {
                                 self.eventTitleLabel.text = self.eventDetailModelObject?.eventDetailData.title ?? ""
-                                self.eventDetailDescriptionText.text = self.eventDetailModelObject?.eventDetailData.description ?? ""
+                                self.eventDetailDescriptionText.text = "Detail: \(self.eventDetailModelObject?.eventDetailData.description ?? "")"
                                 self.eventDetailPhotoGalleryCollectionView.reloadData()
                             }
                     case 401:

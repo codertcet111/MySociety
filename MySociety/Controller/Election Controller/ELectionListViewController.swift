@@ -151,7 +151,7 @@ class ELectionListViewController: UIViewController, UITableViewDelegate, UITable
         }
         print("Selected cell position")
         print("\(electionCellIndex)")
-        self.voteForElection(self.electionListModel?.electionData[electionCellIndex].electionId ?? 0, tempSenderTag)
+        self.voteForElection(self.electionListModel?.electionData[electionCellIndex].electionId ?? 0, Int("\(tempSenderTag)".suffix(2)) ?? 0)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

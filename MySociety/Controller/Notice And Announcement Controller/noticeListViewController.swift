@@ -116,8 +116,8 @@ class noticeListViewController: UIViewController, UITableViewDelegate, UITableVi
             
             cell.noticeCellBackgoundView.layer.cornerRadius = 10.0
             cell.selectionStyle = .none
-            cell.noticeCellTitleLabel.text = tempNotice?.title ?? ""
-            cell.noticeCellDateTimeLabel.text = tempNotice?.date ?? ""
+            cell.noticeCellTitleLabel.text = "Subj: \(tempNotice?.title ?? "")"
+            cell.noticeCellDateTimeLabel.text = "Date: \((tempNotice?.date ?? "").getIntoDateTimeFOrmate())"
             cell.noticeCellDescriptionLabel.text = tempNotice?.description ?? ""
             cell.noticeCellBackgoundView.giveBorder()
             cell.noticeCellImageView.tag = indexPath.row

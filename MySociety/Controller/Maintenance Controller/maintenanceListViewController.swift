@@ -164,8 +164,8 @@ class maintenanceListViewController: UIViewController, UITableViewDataSource, UI
             cell.statusBtn.layer.cornerRadius = 10
             cell.selectionStyle = .none
             cell.FlatNumberLabel.text = "Flat: \(tempMaintenaceData?.FlatNo ?? "")/ \(tempMaintenaceData?.wing ?? "")"
-            cell.billDateLabel.text = "Bill Date: \(tempMaintenaceData?.Billdate ?? "")"
-            cell.paidDateLabel.text = "Paid On: \(tempMaintenaceData?.Paiddate ?? "")"
+            cell.billDateLabel.text = "Bill Date: \((tempMaintenaceData?.Billdate ?? "").getIntoDateTimeFOrmate())"
+            cell.paidDateLabel.text = "Paid On: \((tempMaintenaceData?.Paiddate ?? "").getIntoDateTimeFOrmate())"
             cell.paidAmountLabel.text = "Amount Paid: \(tempMaintenaceData?.paidAmount ?? 0)"
             cell.statusBtn.setTitle("\(tempMaintenaceData?.status ?? "")", for: .normal)
             if isAdminLoggedIn{

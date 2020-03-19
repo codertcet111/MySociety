@@ -102,6 +102,7 @@ class MemberDirectoryListViewController: UIViewController, UITableViewDataSource
             cell.memberDirectoryuserNameLabel.text = tempMemberDirectory?.name ?? ""
             cell.memberDirectoryPhoneBtn.addTarget(self, action: #selector(onCallClicked(sender:)), for: .touchUpInside)
             cell.memberDiretoryEMailBtn.addTarget(self, action: #selector(mailButtonAction(sender:)), for: .touchUpInside)
+            cell.selectionStyle = .none
             cell.memberDirectoryWhatsappBtn.addTarget(self, action: #selector(whatsappButtonAction(sender:)), for: .touchUpInside)
             cell.memberDirectoryPhoneBtn.tag = indexPath.row
             cell.memberDiretoryEMailBtn.tag = indexPath.row

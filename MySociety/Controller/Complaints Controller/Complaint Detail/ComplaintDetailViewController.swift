@@ -70,7 +70,7 @@ class ComplaintDetailViewController: UIViewController, UITableViewDelegate, UITa
         
         self.showSpinner(onView: self.view)
         let params: Parameters = [
-            "complaint_id": self.complaintId,
+            "complaint_id": "\(self.complaintId)",
             "comment": "\(self.adminReactionCOmmentTextFiedl.text ?? "")"
         ]
         Alamofire.upload(multipartFormData:
@@ -213,7 +213,7 @@ class ComplaintDetailViewController: UIViewController, UITableViewDelegate, UITa
         self.complaintChatTableView.layer.cornerRadius = 10
         setView()
         self.userComplaintUserNameLabel.text = self.username ?? ""
-        self.userComplaintSubjectLabel.text = self.commentText ?? ""
+        self.userComplaintSubjectLabel.text = "Subject: \(self.commentText ?? "")"
         self.adminResponseCommentLabel.text = "We will work on it"
 //        self.adminAddReactionView.isHidden = true
 //        self.adminAddResponseHeightConstraints.constant = 0
@@ -290,7 +290,7 @@ class ComplaintDetailViewController: UIViewController, UITableViewDelegate, UITa
         //            myImageView.contentMode = UIView.ContentMode.scaleToFill
         self.userComplaintComplaintImageView.sd_setImage(with: imageURL, placeholderImage: UIImage(named:"building"))
         
-        var userComplaintDescription = self.complainDetailModel?.complaintsDetailData.complaintUserDescription ?? ""
+        var userComplaintDescription = "Detail: \(self.complainDetailModel?.complaintsDetailData.complaintUserDescription ?? "")"
         self.userComplaintDescriptionLabel.text = "\(userComplaintDescription)"
         
         //*******
@@ -304,10 +304,10 @@ class ComplaintDetailViewController: UIViewController, UITableViewDelegate, UITa
             if self.complainDetailModel?.complaintsDetailData.adminResolvedComment == "" || self.complainDetailModel?.complaintsDetailData.adminResolvedComment == nil{
 //                self.adminResponseView.isHidden = false
 //                self.adminResponseHeightConstraints.constant = 0
-                self.adminResponseView.isHidden = true
+//                self.adminResponseView.isHidden = true
                 self.adminResponseHeightConstraints.constant = 0
             }else{
-                self.adminAddReactionView.isHidden = true
+//                self.adminAddReactionView.isHidden = true
                 self.adminAddResponseHeightConstraints.constant = 0
                 let adminResponse = self.complainDetailModel?.complaintsDetailData.adminResolvedComment ?? ""
                 //*******
@@ -324,11 +324,11 @@ class ComplaintDetailViewController: UIViewController, UITableViewDelegate, UITa
             }
         }else{
             //Hide Admin response View
-            self.adminAddReactionView.isHidden = true
+//            self.adminAddReactionView.isHidden = true
             self.adminAddResponseHeightConstraints.constant = 0
             //Check if Admin responded yet or not
             if self.complainDetailModel?.complaintsDetailData.adminResolvedComment == "" || self.complainDetailModel?.complaintsDetailData.adminResolvedComment == nil{
-                self.adminResponseView.isHidden = true
+//                self.adminResponseView.isHidden = true
                 self.adminResponseHeightConstraints.constant = 0
             }else{
                 let adminResponse = self.complainDetailModel?.complaintsDetailData.adminResolvedComment ?? ""

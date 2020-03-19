@@ -391,3 +391,17 @@ extension UIView{
     self.layer.insertSublayer(gradient, at: 0)
    }
 }
+
+extension String{
+    func getIntoDateTimeFOrmate() -> String{
+        
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+
+        let outputFormatter = DateFormatter()
+        outputFormatter.dateFormat = "YYYY-MM-dd"
+
+        let showDate = inputFormatter.date(from: self) ?? Date()
+        return outputFormatter.string(from: showDate)
+    }
+}

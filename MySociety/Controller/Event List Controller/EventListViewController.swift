@@ -104,8 +104,8 @@ class EventListViewController: UIViewController, UITableViewDataSource, UITableV
             let cell = tableView.dequeueReusableCell(withIdentifier: "EventListTableViewCell") as! EventListTableViewCell
             cell.alpha = 0
             cell.eventListTitleLabel.text = tempEvent?.title ?? ""
-            cell.eventListDateLabel.text = tempEvent?.date ?? ""
-            cell.eventLsitDescriptionLabel.text = tempEvent?.description ?? ""
+            cell.eventListDateLabel.text = "On: \((tempEvent?.date ?? "").getIntoDateTimeFOrmate())"
+            cell.eventLsitDescriptionLabel.text = "Detail: \(tempEvent?.description ?? "")"
             cell.eventListBackgroundView.layer.cornerRadius = 10.0
             cell.eventListBackgroundView.giveBorder()
             cell.selectionStyle = .none
