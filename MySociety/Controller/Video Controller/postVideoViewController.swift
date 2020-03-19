@@ -159,6 +159,8 @@ class postVideoViewController: UIViewController, UIImagePickerControllerDelegate
                         DispatchQueue.main.async {
                             self.removeSpinner()
                         }
+//                        let strData = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+//                        print("Body: \(String(describing: strData))")
                         //print response.result
                         if response.result.value != nil
                         {
