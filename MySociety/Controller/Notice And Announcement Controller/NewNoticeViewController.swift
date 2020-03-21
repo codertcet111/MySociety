@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import Photos
 
 class NewNoticeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -67,9 +68,19 @@ class NewNoticeViewController: UIViewController, UIImagePickerControllerDelegate
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
 
+        if let asset = info[UIImagePickerController.InfoKey.phAsset] as? PHAsset {
+            let assetResources = PHAssetResource.assetResources(for: asset)
+            print(assetResources.first!.originalFilename)
+        }
+        
         // Set photoImageView to display the selected image.
         self.tempSelectedImage = selectedImage
-        self.newNoticeSelectImageBtn.setTitle("\(selectedImage.accessibilityIdentifier ?? "Image Selected")", for: .normal)
+        
+        if let url = info[UIImagePickerController.InfoKey.imageURL] as? URL {
+            self.newNoticeSelectImageBtn.setTitle("\(url.lastPathComponent)", for: .normal)
+            print("\(url.lastPathComponent)")
+        }
+        
 
         // Dismiss the picker.
         dismiss(animated: true, completion: nil)

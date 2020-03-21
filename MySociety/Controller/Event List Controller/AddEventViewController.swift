@@ -67,6 +67,10 @@ class AddEventViewController: UIViewController, UIImagePickerControllerDelegate,
         self.tempSelectedImage = selectedImage
         self.newEventSelectImageBtn.setTitle("\(selectedImage.accessibilityIdentifier ?? "Image Selected")", for: .normal)
 
+        if let url = info[UIImagePickerController.InfoKey.imageURL] as? URL {
+            self.newEventSelectImageBtn.setTitle("\(url.lastPathComponent)", for: .normal)
+        }
+        
         // Dismiss the picker.
         dismiss(animated: true, completion: nil)
     }

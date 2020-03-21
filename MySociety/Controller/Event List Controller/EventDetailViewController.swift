@@ -89,6 +89,7 @@ class EventDetailViewController: UIViewController, UICollectionViewDelegate, UIC
         UIView.animate(withDuration: 1.5, animations: {
             self.view.layoutIfNeeded()
         })
+
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -102,6 +103,7 @@ class EventDetailViewController: UIViewController, UICollectionViewDelegate, UIC
 
                 if let image = response.result.value {
                     cell.eventDetailCollectionViewCellImageView?.image = image
+                    cell.eventDetailCollectionViewCellImageView.enableZoom()
                 }
             }
     //        cell.cellBackgroundView.layer.cornerRadius = 10.0

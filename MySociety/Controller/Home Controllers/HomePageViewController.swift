@@ -182,7 +182,7 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
             cell.upcomingElectionBackgroundView.layer.cornerRadius = 10.0
             cell.upcomingElectionBackgroundView.giveBorder()
             cell.selectionStyle = .none
-            UIView.animate(withDuration: 1) {
+            UIView.animate(withDuration: 1){
                 cell.alpha = 1.0
             }
             return cell

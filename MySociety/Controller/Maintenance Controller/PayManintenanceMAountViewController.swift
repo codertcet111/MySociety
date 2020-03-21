@@ -116,7 +116,13 @@ class PayManintenanceMAountViewController: UIViewController, UIImagePickerContro
         // Set photoImageView to display the selected image.
         self.tempSelectedImage = selectedImage
 
-        self.uploadImageBtn.setTitle("\(selectedImage.accessibilityIdentifier ?? "Image Selected")", for: .normal)
+//        self.uploadImageBtn.setTitle("\(selectedImage.accessibilityIdentifier ?? "Image Selected")", for: .normal)
+        
+        if let url = info[UIImagePickerController.InfoKey.imageURL] as? URL {
+            self.uploadImageBtn.setTitle("\(url.lastPathComponent)", for: .normal)
+            print("\(url.lastPathComponent)")
+        }
+        
         // Dismiss the picker.
         dismiss(animated: true, completion: nil)
     }

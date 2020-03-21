@@ -21,6 +21,7 @@ class noticeShowImagePushPopOverViewController: UIViewController {
         let imageURL = URL(string: "\(self.tempImageUrl)")
         //            myImageView.contentMode = UIView.ContentMode.scaleToFill
         self.noticeImageView.sd_setImage(with: imageURL, placeholderImage: UIImage(named:"building"))
+        self.noticeImageView.enableZoom()
         // Do any additional setup after loading the view.
     }
 

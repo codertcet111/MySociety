@@ -137,6 +137,12 @@ class ComplaintDetailViewController: UIViewController, UITableViewDelegate, UITa
 
         self.adminReactionUploadImageBtn.setTitle("\(selectedImage.accessibilityIdentifier ?? "Image Selected")", for: .normal)
         
+        if let url = info[UIImagePickerController.InfoKey.imageURL] as? URL {
+            self.addCommentUploadImageBtn.setTitle("\(url.lastPathComponent)", for: .normal)
+            self.adminReactionUploadImageBtn.setTitle("\(url.lastPathComponent)", for: .normal)
+            print("\(url.lastPathComponent)")
+        }
+        
         // Dismiss the picker.
         dismiss(animated: true, completion: nil)
     }
@@ -284,12 +290,13 @@ class ComplaintDetailViewController: UIViewController, UITableViewDelegate, UITa
     
     func setDataValues(){
         let userComplaintSubject = self.complainDetailModel?.complaintsDetailData.subject ?? ""
-        self.userComplaintSubjectLabel.text = "\(userComplaintSubject)"
+        self.userComplaintSubjectLabel.text = "Subject: \(userComplaintSubject)"
         
         let imageURL = URL(string: "\(self.complainDetailModel?.imageRootUrl ?? "")/\(self.complainDetailModel?.complaintsDetailData.complaintUserImageUrl ?? "")")
         //            myImageView.contentMode = UIView.ContentMode.scaleToFill
         self.userComplaintComplaintImageView.sd_setImage(with: imageURL, placeholderImage: UIImage(named:"building"))
-        
+        self.userComplaintComplaintImageView.dropShadow()
+        self.userComplaintComplaintImageView.enableZoom()
         var userComplaintDescription = "Detail: \(self.complainDetailModel?.complaintsDetailData.complaintUserDescription ?? "")"
         self.userComplaintDescriptionLabel.text = "\(userComplaintDescription)"
         
