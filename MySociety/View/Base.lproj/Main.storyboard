@@ -1541,7 +1541,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B8m-gs-QLH">
-                                <rect key="frame" x="330" y="725" width="64" height="64"/>
+                                <rect key="frame" x="266" y="661" width="128" height="128"/>
                                 <state key="normal" image="plus"/>
                                 <connections>
                                     <action selector="complaintListNewComplaintAction:" destination="0qq-pW-mPb" eventType="touchUpInside" id="Lac-Na-Znx"/>
@@ -3414,6 +3414,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Notice Available" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ANC-nQ-AUn">
+                                <rect key="frame" x="140.5" y="441.5" width="133" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xkl-ff-Q8x">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -3503,10 +3509,12 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="ANC-nQ-AUn" firstAttribute="centerY" secondItem="FWI-zc-dum" secondAttribute="centerY" id="4Ve-Er-acN"/>
                             <constraint firstItem="FWI-zc-dum" firstAttribute="bottom" secondItem="u5a-ws-slj" secondAttribute="bottom" constant="20" id="7zh-zG-h27"/>
                             <constraint firstItem="FWI-zc-dum" firstAttribute="trailing" secondItem="xkl-ff-Q8x" secondAttribute="trailing" id="Mc2-45-IbU"/>
                             <constraint firstItem="FWI-zc-dum" firstAttribute="bottom" secondItem="xkl-ff-Q8x" secondAttribute="bottom" id="V2A-rT-l37"/>
                             <constraint firstItem="xkl-ff-Q8x" firstAttribute="top" secondItem="FWI-zc-dum" secondAttribute="top" id="bOu-eE-VtI"/>
+                            <constraint firstItem="ANC-nQ-AUn" firstAttribute="centerX" secondItem="FWI-zc-dum" secondAttribute="centerX" id="fCy-5o-hU0"/>
                             <constraint firstItem="u5a-ws-slj" firstAttribute="trailing" secondItem="FWI-zc-dum" secondAttribute="trailing" constant="-20" id="svv-vM-NrD"/>
                             <constraint firstItem="xkl-ff-Q8x" firstAttribute="leading" secondItem="FWI-zc-dum" secondAttribute="leading" id="xTs-cc-GXM"/>
                         </constraints>
@@ -3515,6 +3523,7 @@
                     <navigationItem key="navigationItem" title="Notice" id="GGT-R1-jTa"/>
                     <connections>
                         <outlet property="addNotice" destination="u5a-ws-slj" id="aew-ig-wRU"/>
+                        <outlet property="noNoticeDataAvailable" destination="ANC-nQ-AUn" id="baD-NQ-Anm"/>
                         <outlet property="noticeListTableView" destination="xkl-ff-Q8x" id="kWh-9U-B8j"/>
                         <segue destination="3cj-65-JIe" kind="show" identifier="newNoticeAddSegue" id="fDW-24-s5Z"/>
                         <segue destination="LNR-wj-0ua" kind="show" identifier="noticeShowImageSegue" id="gmM-ed-1vF"/>
@@ -3533,7 +3542,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xek-ne-IdJ">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7p5-pA-3rj">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="800"/>
@@ -6586,7 +6595,7 @@
         <segue reference="nwv-I0-Im3"/>
         <segue reference="es8-sD-ab2"/>
         <segue reference="wFR-CE-L9R"/>
-        <segue reference="Lhr-d8-J4Z"/>
+        <segue reference="fDW-24-s5Z"/>
         <segue reference="Cnj-Sf-roy"/>
         <segue reference="F4b-82-w6E"/>
         <segue reference="2ed-Wt-Xf4"/>

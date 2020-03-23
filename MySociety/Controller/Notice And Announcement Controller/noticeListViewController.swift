@@ -11,6 +11,7 @@ import SDWebImage
 
 class noticeListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var noNoticeDataAvailable: UILabel!
     var noticeModel: notice?
     var selectedImageUrl = ""
     var noticeList: [[String]] = [["Tax Increment", "22/02/2020", "This is to inform you that we have incresed the functionality of what we were expecting for the circumtences."],["Position Increment", "29/03/2020", "This is to inform you that we have incresed the functionality of what we were expecting for the circumtences."],["Tax Increment", "22/02/2020", "This is to inform you that we have incresed the functionality of what we were expecting for the circumtences."],["Tax Increment", "22/02/2020", "This is to inform you that we have incresed the functionality of what we were expecting for the circumtences."],["Tax Increment", "22/02/2020", "This is to inform you that we have incresed the functionality of what we were expecting for the circumtences."]]
@@ -58,7 +59,15 @@ class noticeListViewController: UIViewController, UITableViewDelegate, UITableVi
                     case 200:
                         self.noticeModel = try? JSONDecoder().decode(notice.self,from: data!)
                             DispatchQueue.main.sync {
-                                self.noticeListTableView.reloadData()
+                                if self.noticeModel?.noticeDatas.count ?? 0 == 0{
+                                    self.view.bringSubviewToFront(self.noNoticeDataAvailable)
+                                    self.noNoticeDataAvailable.alpha = 1.0
+                                    self.noticeListTableView.alpha = 0.0
+                                }else{
+                                    self.noNoticeDataAvailable.alpha = 0.0
+                                    self.noticeListTableView.alpha = 1.0
+                                    self.noticeListTableView.reloadData()
+                                }
                             }
                     case 401:
                         DispatchQueue.main.sync{
