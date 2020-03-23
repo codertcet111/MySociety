@@ -126,7 +126,7 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
         if let tempVideoModel = self.homePageModel?.feed.videoHome[sender.tag]{
             self.videoUrlForFUllScreenMode = "\(self.homePageModel?.videoBaseUrl ?? "")/\(tempVideoModel.videoUrl)"
         }
-        self.performSegue(withIdentifier: self.playVideoSegueString, sender: self)
+//        self.performSegue(withIdentifier: self.playVideoSegueString, sender: self)
         
     }
     

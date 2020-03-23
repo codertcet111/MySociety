@@ -3719,7 +3719,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WzJ-nQ-DaH">
-                                <rect key="frame" x="48" y="549.5" width="70" height="30"/>
+                                <rect key="frame" x="48" y="549" width="70" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="DsO-fk-0vt"/>
@@ -3733,7 +3733,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qgr-Yz-CXz">
-                                <rect key="frame" x="296" y="549.5" width="70" height="30"/>
+                                <rect key="frame" x="296" y="549" width="70" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="c8z-87-aqw"/>
@@ -3749,11 +3749,11 @@
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="t3G-pT-fyU">
                                 <rect key="frame" x="197" y="350.5" width="20" height="20"/>
                             </activityIndicatorView>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="USv-fC-ct8">
-                                <rect key="frame" x="44" y="522" width="326" height="2"/>
+                            <progressView opaque="NO" alpha="0.0" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="USv-fC-ct8">
+                                <rect key="frame" x="44" y="522" width="326" height="1.5"/>
                                 <color key="progressTintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </progressView>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lhe-Im-aWX">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lhe-Im-aWX">
                                 <rect key="frame" x="153.5" y="552" width="24" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="24" id="g3d-gT-i5u"/>
@@ -3764,7 +3764,7 @@
                                     <action selector="rewindAction:" destination="FDW-E4-uq0" eventType="touchUpInside" id="zMU-Dr-yB7"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qsg-9L-sai">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qsg-9L-sai">
                                 <rect key="frame" x="236.5" y="552" width="24" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="PBs-HL-Okl"/>
@@ -3781,13 +3781,16 @@
                         <constraints>
                             <constraint firstItem="USv-fC-ct8" firstAttribute="leading" secondItem="5g0-0O-voJ" secondAttribute="leadingMargin" constant="24" id="0fA-DX-cJ7"/>
                             <constraint firstItem="qsg-9L-sai" firstAttribute="centerX" secondItem="Lln-ia-ycI" secondAttribute="centerX" multiplier="1.2" id="0iZ-Wm-l1a"/>
+                            <constraint firstItem="qsg-9L-sai" firstAttribute="top" secondItem="Lhe-Im-aWX" secondAttribute="top" id="2lW-aJ-c2m"/>
                             <constraint firstItem="qgr-Yz-CXz" firstAttribute="top" secondItem="USv-fC-ct8" secondAttribute="bottom" constant="25.5" id="3Cv-Yn-ak2"/>
                             <constraint firstItem="WzJ-nQ-DaH" firstAttribute="centerX" secondItem="Lln-ia-ycI" secondAttribute="centerX" multiplier="0.4" id="5nB-Nn-IXY"/>
                             <constraint firstItem="Lhe-Im-aWX" firstAttribute="centerX" secondItem="Lln-ia-ycI" secondAttribute="centerX" multiplier="0.8" id="KJ9-te-Va1"/>
                             <constraint firstItem="qgr-Yz-CXz" firstAttribute="centerX" secondItem="Lln-ia-ycI" secondAttribute="centerX" multiplier="1.6" id="Mej-dZ-Snr"/>
+                            <constraint firstItem="Lln-ia-ycI" firstAttribute="bottom" secondItem="qsg-9L-sai" secondAttribute="bottom" constant="237" id="Uei-rM-ijv"/>
                             <constraint firstItem="USv-fC-ct8" firstAttribute="top" secondItem="eFR-ge-ujX" secondAttribute="bottom" constant="36.5" id="WZf-Xj-eya"/>
                             <constraint firstItem="eFR-ge-ujX" firstAttribute="centerX" secondItem="Lln-ia-ycI" secondAttribute="centerX" id="Ypu-U5-thQ"/>
                             <constraint firstItem="t3G-pT-fyU" firstAttribute="centerY" secondItem="Lln-ia-ycI" secondAttribute="centerY" multiplier="0.8" id="Zvc-wR-MI8"/>
+                            <constraint firstItem="qsg-9L-sai" firstAttribute="centerY" secondItem="qgr-Yz-CXz" secondAttribute="centerY" id="aaX-aP-53z"/>
                             <constraint firstItem="WzJ-nQ-DaH" firstAttribute="top" secondItem="USv-fC-ct8" secondAttribute="bottom" constant="25.5" id="eN8-hj-IAF"/>
                             <constraint firstItem="t3G-pT-fyU" firstAttribute="centerX" secondItem="Lln-ia-ycI" secondAttribute="centerX" id="kae-c8-LSk"/>
                             <constraint firstItem="eFR-ge-ujX" firstAttribute="leading" secondItem="Lln-ia-ycI" secondAttribute="leading" constant="34" id="mBC-XH-quI"/>
